@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 03/10/2017 05:48:11 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="cr.ac.una.prograiv.project.domain.Asignacion" table="asignacion" catalog="transporte" optimistic-lock="version">
+        <composite-id name="id" class="cr.ac.una.prograiv.project.domain.AsignacionId">
+            <key-property name="pkIdChofer" type="int">
+                <column name="PK_idChofer" />
+            </key-property>
+            <key-property name="pkIdVehiculo" type="int">
+                <column name="PK_idVehiculo" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="chofer" class="cr.ac.una.prograiv.project.domain.Chofer" update="false" insert="false" fetch="select">
+            <column name="PK_idChofer" not-null="true" />
+        </many-to-one>
+        <many-to-one name="vehiculo" class="cr.ac.una.prograiv.project.domain.Vehiculo" update="false" insert="false" fetch="select">
+            <column name="PK_idVehiculo" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

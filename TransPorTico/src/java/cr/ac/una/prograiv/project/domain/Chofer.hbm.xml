@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 03/10/2017 05:48:11 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="cr.ac.una.prograiv.project.domain.Chofer" table="chofer" catalog="transporte" optimistic-lock="version">
+        <id name="pkIdChofer" type="java.lang.Integer">
+            <column name="PK_idChofer" />
+            <generator class="identity" />
+        </id>
+        <property name="cedula" type="string">
+            <column name="cedula" length="15" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" not-null="true" />
+        </property>
+        <property name="fechaNacimiento" type="date">
+            <column name="fechaNacimiento" length="10" not-null="true" />
+        </property>
+        <property name="tipoLicencia" type="string">
+            <column name="tipoLicencia" length="45" not-null="true" />
+        </property>
+        <property name="vencimientoLicencia" type="date">
+            <column name="vencimientoLicencia" length="10" not-null="true" />
+        </property>
+        <property name="ultimaFecha" type="date">
+            <column name="ultimaFecha" length="10" not-null="true" />
+        </property>
+        <property name="ultimoUsuario" type="string">
+            <column name="ultimoUsuario" length="45" not-null="true" />
+        </property>
+        <set name="asignacions" table="asignacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PK_idChofer" not-null="true" />
+            </key>
+            <one-to-many class="cr.ac.una.prograiv.project.domain.Asignacion" />
+        </set>
+        <set name="historials" table="historial" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="FK_idChofer" not-null="true" />
+            </key>
+            <one-to-many class="cr.ac.una.prograiv.project.domain.Historial" />
+        </set>
+    </class>
+</hibernate-mapping>
