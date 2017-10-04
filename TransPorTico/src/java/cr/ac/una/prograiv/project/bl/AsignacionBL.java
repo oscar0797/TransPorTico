@@ -22,9 +22,9 @@ public class AsignacionBL extends BaseBL implements IBaseBL<Asignacion,Integer>{
     }
     public boolean AgregarEditar(Asignacion o){//true si agrega false si edita
         
-        Asignacion aux = findByID(o.getId());
+        Asignacion aux = findByID(o.getPkIdAsignacion());
         if( aux != null ){
-            o.setId(aux.getId());
+            o.setPkIdAsignacion(aux.getPkIdAsignacion());
             merge(o);
             return false;
         }else{

@@ -1,33 +1,27 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 03/10/2017 05:48:11 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 04/10/2017 01:05:04 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="cr.ac.una.prograiv.project.domain.Historial" table="historial" catalog="transporte" optimistic-lock="version">
         <id name="pkIdHistorial" type="java.lang.Integer">
             <column name="PK_idHistorial" />
             <generator class="identity" />
         </id>
-        <property name="chofer" type="java.lang.Integer">
+        <many-to-one name="chofer" class="cr.ac.una.prograiv.project.domain.Chofer" fetch="select">
             <column name="FK_idChofer" not-null="true" />
-        </property>
-        <property name="usuario" type="java.lang.Integer">
+        </many-to-one>
+        <many-to-one name="usuario" class="cr.ac.una.prograiv.project.domain.Usuario" fetch="select">
             <column name="FK_idUsuario" not-null="true" />
-        </property>
-        <property name="vehiculo" type="java.lang.Integer">
+        </many-to-one>
+        <many-to-one name="vehiculo" class="cr.ac.una.prograiv.project.domain.Vehiculo" fetch="select">
             <column name="FK_idVehiculo" not-null="true" />
-        </property>
-        <property name="chofer_1" type="string">
-            <column name="chofer" length="45" not-null="true" />
-        </property>
+        </many-to-one>
         <property name="origen" type="serializable">
             <column name="origen" not-null="true" />
         </property>
         <property name="destino" type="serializable">
             <column name="destino" not-null="true" />
-        </property>
-        <property name="vehiculo_1" type="string">
-            <column name="vehiculo" length="45" not-null="true" />
         </property>
         <property name="monto" type="double">
             <column name="monto" precision="22" scale="0" not-null="true" />

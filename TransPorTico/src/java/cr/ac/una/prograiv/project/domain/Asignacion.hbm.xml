@@ -1,22 +1,18 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 03/10/2017 05:48:11 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 04/10/2017 01:05:04 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="cr.ac.una.prograiv.project.domain.Asignacion" table="asignacion" catalog="transporte" optimistic-lock="version">
-        <composite-id name="id" class="cr.ac.una.prograiv.project.domain.AsignacionId">
-            <key-property name="pkIdChofer" type="java.lang.Integer">
-                <column name="PK_idChofer" />
-            </key-property>
-            <key-property name="pkIdVehiculo" type="java.lang.Integer">
-                <column name="PK_idVehiculo" />
-            </key-property>
-        </composite-id>
-        <property name="chofer" type="java.lang.Integer">
+        <id name="pkIdAsignacion" type="java.lang.Integer">
+            <column name="PK_idAsignacion" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="chofer" class="cr.ac.una.prograiv.project.domain.Chofer" fetch="select">
             <column name="PK_idChofer" not-null="true" />
-        </property>
-        <property name="vehiculo" type="java.lang.Integer">
+        </many-to-one>
+        <many-to-one name="vehiculo" class="cr.ac.una.prograiv.project.domain.Vehiculo" fetch="select">
             <column name="PK_idVehiculo" not-null="true" />
-        </property>
+        </many-to-one>
     </class>
 </hibernate-mapping>

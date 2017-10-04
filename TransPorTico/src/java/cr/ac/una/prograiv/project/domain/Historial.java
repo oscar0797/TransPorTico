@@ -1,5 +1,5 @@
 package cr.ac.una.prograiv.project.domain;
-// Generated 03/10/2017 05:48:10 PM by Hibernate Tools 4.3.1
+// Generated 04/10/2017 01:05:04 AM by Hibernate Tools 4.3.1
 
 
 import java.io.Serializable;
@@ -25,10 +25,11 @@ import javax.persistence.TemporalType;
 )
 public class Historial  implements java.io.Serializable {
 
+
      private Integer pkIdHistorial;
-     private Integer chofer;
-     private Integer usuario;
-     private Integer vehiculo;
+     private Chofer chofer;
+     private Usuario usuario;
+     private Vehiculo vehiculo;
      private Serializable origen;
      private Serializable destino;
      private double monto;
@@ -40,7 +41,7 @@ public class Historial  implements java.io.Serializable {
     public Historial() {
     }
 
-    public Historial(Integer chofer, Integer usuario, Integer vehiculo, String chofer_1, Serializable origen, Serializable destino, String vehiculo_1, double monto, int tiempo, String retroalimentacion, String cliente, Date ultimaFecha, String ultimoUsuario) {
+    public Historial(Chofer chofer, Usuario usuario, Vehiculo vehiculo, Serializable origen, Serializable destino, double monto, int tiempo, String retroalimentacion, Date ultimaFecha, String ultimoUsuario) {
        this.chofer = chofer;
        this.usuario = usuario;
        this.vehiculo = vehiculo;
@@ -67,33 +68,34 @@ public class Historial  implements java.io.Serializable {
 
 @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="FK_idChofer", nullable=false)
-    public Integer getChofer() {
+    public Chofer getChofer() {
         return this.chofer;
     }
     
-    public void setChofer(Integer chofer) {
+    public void setChofer(Chofer chofer) {
         this.chofer = chofer;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="FK_idUsuario", nullable=false)
-    public Integer getUsuario() {
+    public Usuario getUsuario() {
         return this.usuario;
     }
     
-    public void setUsuario(Integer usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="FK_idVehiculo", nullable=false)
-    public Integer getVehiculo() {
+    public Vehiculo getVehiculo() {
         return this.vehiculo;
     }
     
-    public void setVehiculo(Integer vehiculo) {
+    public void setVehiculo(Vehiculo vehiculo) {
         this.vehiculo = vehiculo;
     }
+
     
     @Column(name="origen", nullable=false)
     public Serializable getOrigen() {
@@ -113,6 +115,7 @@ public class Historial  implements java.io.Serializable {
     public void setDestino(Serializable destino) {
         this.destino = destino;
     }
+
     
     @Column(name="monto", nullable=false, precision=22, scale=0)
     public double getMonto() {
@@ -162,6 +165,9 @@ public class Historial  implements java.io.Serializable {
     public void setUltimoUsuario(String ultimoUsuario) {
         this.ultimoUsuario = ultimoUsuario;
     }
+
+
+
 
 }
 

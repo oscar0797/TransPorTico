@@ -7,17 +7,18 @@ package cr.ac.una.prograiv.project.utils;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.AnnotationConfiguration;
 
 /**
+ * Hibernate Utility class with a convenient method to get Session Factory
+ * object.
  *
- * @author oscar
+ * @author Oscar
  */
 public class HibernateUtil {
 
-   
     private static final SessionFactory sessionFactory;
     private Session sesion;
     private Transaction transac;
@@ -63,5 +64,5 @@ public class HibernateUtil {
 
     public void setTransac(Transaction transac) {
         this.transac = transac;
-    }   
+    }
 }

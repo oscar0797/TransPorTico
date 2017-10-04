@@ -1,13 +1,13 @@
 package cr.ac.una.prograiv.project.domain;
-// Generated 03/10/2017 05:48:10 PM by Hibernate Tools 4.3.1
+// Generated 04/10/2017 01:05:04 AM by Hibernate Tools 4.3.1
 
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -21,50 +21,48 @@ import javax.persistence.Table;
 )
 public class Asignacion  implements java.io.Serializable {
 
-     private Integer id;
-     private Integer chofer;
-     private Integer vehiculo;
+
+     private Integer pkIdAsignacion;
+     private Chofer chofer;
+     private Vehiculo vehiculo;
 
     public Asignacion() {
     }
 
-    public Asignacion(Integer id, Integer chofer, Integer vehiculo) {
-       this.id = id;
+    public Asignacion(Chofer chofer, Vehiculo vehiculo) {
        this.chofer = chofer;
        this.vehiculo = vehiculo;
     }
    
-     @EmbeddedId
+     @Id @GeneratedValue(strategy=IDENTITY)
 
     
-    @AttributeOverrides( {
-        @AttributeOverride(name="pkIdChofer", column=@Column(name="PK_idChofer", nullable=false) ), 
-        @AttributeOverride(name="pkIdVehiculo", column=@Column(name="PK_idVehiculo", nullable=false) ) } )
-    public Integer getId() {
-        return this.id;
+    @Column(name="PK_idAsignacion", unique=true, nullable=false)
+    public Integer getPkIdAsignacion() {
+        return this.pkIdAsignacion;
     }
     
-    public void setId(Integer id) {
-        this.id = id;
+    public void setPkIdAsignacion(Integer pkIdAsignacion) {
+        this.pkIdAsignacion = pkIdAsignacion;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="PK_idChofer", nullable=false, insertable=false, updatable=false)
-    public Integer getChofer() {
+    @JoinColumn(name="PK_idChofer", nullable=false)
+    public Chofer getChofer() {
         return this.chofer;
     }
     
-    public void setChofer(Integer chofer) {
+    public void setChofer(Chofer chofer) {
         this.chofer = chofer;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="PK_idVehiculo", nullable=false, insertable=false, updatable=false)
-    public Integer getVehiculo() {
+    @JoinColumn(name="PK_idVehiculo", nullable=false)
+    public Vehiculo getVehiculo() {
         return this.vehiculo;
     }
     
-    public void setVehiculo(Integer vehiculo) {
+    public void setVehiculo(Vehiculo vehiculo) {
         this.vehiculo = vehiculo;
     }
 

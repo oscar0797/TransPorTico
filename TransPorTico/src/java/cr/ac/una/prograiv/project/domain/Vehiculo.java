@@ -1,5 +1,5 @@
 package cr.ac.una.prograiv.project.domain;
-// Generated 03/10/2017 05:48:10 PM by Hibernate Tools 4.3.1
+// Generated 04/10/2017 01:05:04 AM by Hibernate Tools 4.3.1
 
 
 import java.io.Serializable;
@@ -30,7 +30,7 @@ public class Vehiculo  implements java.io.Serializable {
 
 
      private Integer pkIdVehiculo;
-     private Integer usuario;
+     private Usuario usuario;
      private int ano;
      private String modelo;
      private String placa;
@@ -47,7 +47,7 @@ public class Vehiculo  implements java.io.Serializable {
     }
 
 	
-    public Vehiculo(Integer usuario, int ano, String modelo, String placa, String color, Serializable ubicacion, boolean activo, boolean espera, Date ultimaFecha, String ultimoUsuario) {
+    public Vehiculo(Usuario usuario, int ano, String modelo, String placa, String color, Serializable ubicacion, boolean activo, boolean espera, Date ultimaFecha, String ultimoUsuario) {
         this.usuario = usuario;
         this.ano = ano;
         this.modelo = modelo;
@@ -59,7 +59,7 @@ public class Vehiculo  implements java.io.Serializable {
         this.ultimaFecha = ultimaFecha;
         this.ultimoUsuario = ultimoUsuario;
     }
-    public Vehiculo(Integer usuario, int ano, String modelo, String placa, String color, Serializable ubicacion, boolean activo, boolean espera, Date ultimaFecha, String ultimoUsuario, Set<Asignacion> asignacions, Set<Historial> historials) {
+    public Vehiculo(Usuario usuario, int ano, String modelo, String placa, String color, Serializable ubicacion, boolean activo, boolean espera, Date ultimaFecha, String ultimoUsuario, Set<Asignacion> asignacions, Set<Historial> historials) {
        this.usuario = usuario;
        this.ano = ano;
        this.modelo = modelo;
@@ -88,11 +88,11 @@ public class Vehiculo  implements java.io.Serializable {
 
 @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="FK_idUsuario", nullable=false)
-    public Integer getUsuario() {
+    public Usuario getUsuario() {
         return this.usuario;
     }
     
-    public void setUsuario(Integer usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 

@@ -1,5 +1,5 @@
 package cr.ac.una.prograiv.project.domain;
-// Generated 03/10/2017 05:48:10 PM by Hibernate Tools 4.3.1
+// Generated 04/10/2017 01:05:04 AM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -34,9 +34,7 @@ public class Chofer  implements java.io.Serializable {
      private Date vencimientoLicencia;
      private Date ultimaFecha;
      private String ultimoUsuario;
-     private Set<Asignacion> asignacions = new HashSet<Asignacion>(0);
-     private Set<Historial> historials = new HashSet<Historial>(0);
-
+     
     public Chofer() {
     }
 
@@ -50,7 +48,8 @@ public class Chofer  implements java.io.Serializable {
         this.ultimaFecha = ultimaFecha;
         this.ultimoUsuario = ultimoUsuario;
     }
-    public Chofer(String cedula, String nombre, Date fechaNacimiento, String tipoLicencia, Date vencimientoLicencia, Date ultimaFecha, String ultimoUsuario, Set<Asignacion> asignacions, Set<Historial> historials) {
+    public Chofer(Integer pkIdChofer, String cedula, String nombre, Date fechaNacimiento, String tipoLicencia, Date vencimientoLicencia, Date ultimaFecha, String ultimoUsuario) {
+       this.pkIdChofer = pkIdChofer;
        this.cedula = cedula;
        this.nombre = nombre;
        this.fechaNacimiento = fechaNacimiento;
@@ -58,9 +57,7 @@ public class Chofer  implements java.io.Serializable {
        this.vencimientoLicencia = vencimientoLicencia;
        this.ultimaFecha = ultimaFecha;
        this.ultimoUsuario = ultimoUsuario;
-       this.asignacions = asignacions;
-       this.historials = historials;
-    }
+          }
    
      @Id @GeneratedValue(strategy=IDENTITY)
 
@@ -143,27 +140,6 @@ public class Chofer  implements java.io.Serializable {
     public void setUltimoUsuario(String ultimoUsuario) {
         this.ultimoUsuario = ultimoUsuario;
     }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="chofer")
-    public Set<Asignacion> getAsignacions() {
-        return this.asignacions;
-    }
-    
-    public void setAsignacions(Set<Asignacion> asignacions) {
-        this.asignacions = asignacions;
-    }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="chofer")
-    public Set<Historial> getHistorials() {
-        return this.historials;
-    }
-    
-    public void setHistorials(Set<Historial> historials) {
-        this.historials = historials;
-    }
-
-
-
 
 }
 
