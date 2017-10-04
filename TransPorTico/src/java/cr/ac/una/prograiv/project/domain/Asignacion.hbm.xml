@@ -5,18 +5,18 @@
 <hibernate-mapping>
     <class name="cr.ac.una.prograiv.project.domain.Asignacion" table="asignacion" catalog="transporte" optimistic-lock="version">
         <composite-id name="id" class="cr.ac.una.prograiv.project.domain.AsignacionId">
-            <key-property name="pkIdChofer" type="int">
+            <key-property name="pkIdChofer" type="java.lang.Integer">
                 <column name="PK_idChofer" />
             </key-property>
-            <key-property name="pkIdVehiculo" type="int">
+            <key-property name="pkIdVehiculo" type="java.lang.Integer">
                 <column name="PK_idVehiculo" />
             </key-property>
         </composite-id>
-        <many-to-one name="chofer" class="cr.ac.una.prograiv.project.domain.Chofer" update="false" insert="false" fetch="select">
+        <property name="chofer" type="java.lang.Integer">
             <column name="PK_idChofer" not-null="true" />
-        </many-to-one>
-        <many-to-one name="vehiculo" class="cr.ac.una.prograiv.project.domain.Vehiculo" update="false" insert="false" fetch="select">
+        </property>
+        <property name="vehiculo" type="java.lang.Integer">
             <column name="PK_idVehiculo" not-null="true" />
-        </many-to-one>
+        </property>
     </class>
 </hibernate-mapping>

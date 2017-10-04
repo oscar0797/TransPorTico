@@ -21,15 +21,14 @@ import javax.persistence.Table;
 )
 public class Asignacion  implements java.io.Serializable {
 
-
-     private AsignacionId id;
-     private Chofer chofer;
-     private Vehiculo vehiculo;
+     private Integer id;
+     private Integer chofer;
+     private Integer vehiculo;
 
     public Asignacion() {
     }
 
-    public Asignacion(AsignacionId id, Chofer chofer, Vehiculo vehiculo) {
+    public Asignacion(Integer id, Integer chofer, Integer vehiculo) {
        this.id = id;
        this.chofer = chofer;
        this.vehiculo = vehiculo;
@@ -41,31 +40,31 @@ public class Asignacion  implements java.io.Serializable {
     @AttributeOverrides( {
         @AttributeOverride(name="pkIdChofer", column=@Column(name="PK_idChofer", nullable=false) ), 
         @AttributeOverride(name="pkIdVehiculo", column=@Column(name="PK_idVehiculo", nullable=false) ) } )
-    public AsignacionId getId() {
+    public Integer getId() {
         return this.id;
     }
     
-    public void setId(AsignacionId id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="PK_idChofer", nullable=false, insertable=false, updatable=false)
-    public Chofer getChofer() {
+    public Integer getChofer() {
         return this.chofer;
     }
     
-    public void setChofer(Chofer chofer) {
+    public void setChofer(Integer chofer) {
         this.chofer = chofer;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="PK_idVehiculo", nullable=false, insertable=false, updatable=false)
-    public Vehiculo getVehiculo() {
+    public Integer getVehiculo() {
         return this.vehiculo;
     }
     
-    public void setVehiculo(Vehiculo vehiculo) {
+    public void setVehiculo(Integer vehiculo) {
         this.vehiculo = vehiculo;
     }
 

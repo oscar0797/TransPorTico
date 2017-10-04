@@ -8,9 +8,9 @@
             <column name="PK_idVehiculo" />
             <generator class="identity" />
         </id>
-        <many-to-one name="usuario" class="cr.ac.una.prograiv.project.domain.Usuario" fetch="select">
+        <property name="usuario" type="java.lang.Integer">
             <column name="FK_idUsuario" not-null="true" />
-        </many-to-one>
+        </property>
         <property name="ano" type="int">
             <column name="ano" not-null="true" />
         </property>
