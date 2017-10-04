@@ -16,7 +16,7 @@ public class UsuarioBL extends BaseBL implements IBaseBL <Usuario,Integer>{
 
     @Override
     public void save(Usuario obj) {
-        this.getDAO(obj.getClass().getName()).save(obj);
+        this.getDAO( obj.getClass().getName()).save(obj);
     }
 
     @Override
