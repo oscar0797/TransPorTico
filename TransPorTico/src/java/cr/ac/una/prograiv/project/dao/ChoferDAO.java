@@ -60,10 +60,10 @@ public class ChoferDAO extends HibernateUtil implements IBaseDAO<Chofer, Integer
     }
 
     @Override
-    public void delete(Integer key) {
+    public void delete(Chofer obj) {
         try {
             iniciarOperacion();
-            getSesion().delete(key);
+            getSesion().delete(obj);
             getTransac().commit();
         } catch (HibernateException he) {
             manejarException(he);

@@ -19,10 +19,9 @@ public class TestChofer {
      public static void main(String []args){
         //saveChofer();
         //mergeChofer();
-        //deleteChofer(1);
+        //deleteChofer(2);
         //findAllChofer();
-         Chofer cho = findIdChofer(1);
-       System.out.println(cho.getNombre());
+         
     }
     
     public static void saveChofer(){
@@ -40,15 +39,16 @@ public class TestChofer {
     }
     
     public static void mergeChofer(){
-        Chofer cho = new Chofer(2,"1111111","XXXX",new Date(),"B1",new Date(),new Date(),"Nadie");
+        Chofer cho = new Chofer(1,"999999","eeeeeee",new Date(),"B1",new Date(),new Date(),"Nadie");
         ChoferBL bl = new ChoferBL();
         bl.merge(cho);
     }
     
      public static void deleteChofer(Integer key){ 
-        //Chofer cho = new Chofer(1,"1111111","XXXX",new Date(),"B1",new Date(),new Date(),"Nadie"); 
+        Chofer cho = new Chofer(); 
+        cho.setPkIdChofer(key);
         ChoferBL bl = new ChoferBL();
-        bl.delete(key);
+        bl.delete(cho);
     }
      
      public static Chofer findIdChofer(Integer key){ 

@@ -30,8 +30,8 @@ public class UsuarioBL extends BaseBL implements IBaseBL <Usuario,Integer>{
     }
 
     @Override
-    public void delete(Integer key) {
-        this.getDAO(Usuario.class.getName()).delete(key);
+    public void delete(Usuario obj) {
+        this.getDAO(Usuario.class.getName()).delete(obj);
     }
 
     @Override

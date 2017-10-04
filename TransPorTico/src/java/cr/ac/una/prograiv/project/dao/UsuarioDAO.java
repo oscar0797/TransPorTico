@@ -60,10 +60,10 @@ public class UsuarioDAO extends HibernateUtil implements IBaseDAO <Usuario,Integ
     }
 
     @Override
-    public void delete(Integer key) {
+    public void delete(Usuario obj) {
         try{
             iniciarOperacion();
-            getSesion().delete(key);
+            getSesion().delete(obj);
             getTransac().commit();
         }catch(HibernateException he){
             manejarException(he);

@@ -60,10 +60,10 @@ public class AsignacionDAO extends HibernateUtil implements IBaseDAO<Asignacion,
     }
 
     @Override
-    public void delete(Integer key) {
+    public void delete(Asignacion obj) {
         try{
             iniciarOperacion();
-            getSesion().delete(key);
+            getSesion().delete(obj);
             getTransac().commit();
         }catch(HibernateException he){
             manejarException(he);

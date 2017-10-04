@@ -17,7 +17,7 @@ public interface IBaseBL<T,K>{
     public abstract void save(T obj);
     public abstract void merge(T obj);
     public abstract T findByID(K key);
-    public abstract void delete(K key);
+    public abstract void delete(T obj);
     public abstract List<T> findAll();
     public abstract List<T> findByQuery(String query);
 }

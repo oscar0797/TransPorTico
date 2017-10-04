@@ -43,8 +43,8 @@ public class VehiculoBL extends BaseBL implements IBaseBL<Vehiculo,Integer>{
     }
 
     @Override
-    public void delete(Integer key) {
-        this.getDAO("cr.ac.una.prograiv.project.domain.Vehiculo").delete(key);  
+    public void delete(Vehiculo obj) {
+        this.getDAO("cr.ac.una.prograiv.project.domain.Vehiculo").delete(obj);  
     }
 
     @Override

@@ -62,10 +62,10 @@ public class VehiculoDAO extends HibernateUtil implements IBaseDAO<Vehiculo,Inte
     }
 
     @Override
-    public void delete(Integer key) {
+    public void delete(Vehiculo obj) {
         try{
             iniciarOperacion();
-            getSesion().delete(key);
+            getSesion().delete(obj);
             getTransac().commit();
         }catch(HibernateException he){
             manejarException(he);

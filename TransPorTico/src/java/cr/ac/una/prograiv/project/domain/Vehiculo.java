@@ -30,7 +30,7 @@ public class Vehiculo  implements java.io.Serializable {
 
 
      private Integer pkIdVehiculo;
-     private Usuario usuario;
+     private Integer usuario;
      private int ano;
      private String modelo;
      private String placa;
@@ -40,14 +40,11 @@ public class Vehiculo  implements java.io.Serializable {
      private boolean espera;
      private Date ultimaFecha;
      private String ultimoUsuario;
-     private Set<Asignacion> asignacions = new HashSet<Asignacion>(0);
-     private Set<Historial> historials = new HashSet<Historial>(0);
 
     public Vehiculo() {
     }
-
 	
-    public Vehiculo(Usuario usuario, int ano, String modelo, String placa, String color, Serializable ubicacion, boolean activo, boolean espera, Date ultimaFecha, String ultimoUsuario) {
+    public Vehiculo(Integer usuario, int ano, String modelo, String placa, String color, Serializable ubicacion, boolean activo, boolean espera, Date ultimaFecha, String ultimoUsuario) {
         this.usuario = usuario;
         this.ano = ano;
         this.modelo = modelo;
@@ -59,7 +56,7 @@ public class Vehiculo  implements java.io.Serializable {
         this.ultimaFecha = ultimaFecha;
         this.ultimoUsuario = ultimoUsuario;
     }
-    public Vehiculo(Usuario usuario, int ano, String modelo, String placa, String color, Serializable ubicacion, boolean activo, boolean espera, Date ultimaFecha, String ultimoUsuario, Set<Asignacion> asignacions, Set<Historial> historials) {
+    public Vehiculo(Integer pkIdVehiculo,Integer usuario, int ano, String modelo, String placa, String color, Serializable ubicacion, boolean activo, boolean espera, Date ultimaFecha, String ultimoUsuario) {
        this.usuario = usuario;
        this.ano = ano;
        this.modelo = modelo;
@@ -70,8 +67,6 @@ public class Vehiculo  implements java.io.Serializable {
        this.espera = espera;
        this.ultimaFecha = ultimaFecha;
        this.ultimoUsuario = ultimoUsuario;
-       this.asignacions = asignacions;
-       this.historials = historials;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -88,11 +83,11 @@ public class Vehiculo  implements java.io.Serializable {
 
 @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="FK_idUsuario", nullable=false)
-    public Usuario getUsuario() {
+    public Integer getUsuario() {
         return this.usuario;
     }
     
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(Integer usuario) {
         this.usuario = usuario;
     }
 
@@ -185,27 +180,6 @@ public class Vehiculo  implements java.io.Serializable {
     public void setUltimoUsuario(String ultimoUsuario) {
         this.ultimoUsuario = ultimoUsuario;
     }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="vehiculo")
-    public Set<Asignacion> getAsignacions() {
-        return this.asignacions;
-    }
-    
-    public void setAsignacions(Set<Asignacion> asignacions) {
-        this.asignacions = asignacions;
-    }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="vehiculo")
-    public Set<Historial> getHistorials() {
-        return this.historials;
-    }
-    
-    public void setHistorials(Set<Historial> historials) {
-        this.historials = historials;
-    }
-
-
-
 
 }
 

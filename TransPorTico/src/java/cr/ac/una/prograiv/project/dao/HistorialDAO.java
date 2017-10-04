@@ -60,10 +60,10 @@ public class HistorialDAO extends HibernateUtil implements IBaseDAO<Historial,In
     }
 
     @Override
-    public void delete(Integer key) {
+    public void delete(Historial obj) {
         try{
             iniciarOperacion();
-            getSesion().delete(key);
+            getSesion().delete(obj);
             getTransac().commit();
         }catch(HibernateException he){
             manejarException(he);

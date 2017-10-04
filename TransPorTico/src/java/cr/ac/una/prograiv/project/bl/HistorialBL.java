@@ -43,8 +43,8 @@ public class HistorialBL extends BaseBL implements IBaseBL<Historial,Integer>{
     }
 
     @Override
-    public void delete(Integer key) {
-        this.getDAO("cr.ac.una.prograiv.project.domain.Historial").delete(key);  
+    public void delete(Historial obj) {
+        this.getDAO("cr.ac.una.prograiv.project.domain.Historial").delete(obj);  
     }
 
     @Override
