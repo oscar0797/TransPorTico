@@ -21,7 +21,8 @@ public class TestChofer {
         //mergeChofer();
         //deleteChofer(2);
         //findAllChofer();
-         
+         Chofer cho = findIdChofer(1);
+       System.out.println(cho.getNombre());
     }
     
     public static void saveChofer(){
