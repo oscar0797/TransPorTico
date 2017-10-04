@@ -18,7 +18,11 @@ public class BaseBL {
 
     public BaseBL() {
         daos = new LinkedHashMap();
-        daos.put("cr.ac.una.prograiv.project.domain.Usuario", new UsuarioDAO());        
+        daos.put("cr.ac.una.prograiv.project.domain.Usuario", new UsuarioDAO());
+        daos.put("cr.ac.una.prograiv.project.domain.Vehiculo", new VehiculoDAO());
+        daos.put("cr.ac.una.prograiv.project.domain.Historial", new HistorialDAO());
+        daos.put("cr.ac.una.prograiv.project.domain.Asignacion", new AsignacionDAO());
+        daos.put("cr.ac.una.prograiv.project.domain.Chofer", new ChoferDAO());
     }
     /**
      *
