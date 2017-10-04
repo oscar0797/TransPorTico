@@ -31,9 +31,8 @@ public class ChoferBL extends BaseBL implements IBaseBL <Chofer,Integer>{
     }
 
     @Override
-    public void delete(Integer key) {
-      // this.getDAO(obj.getClass().getName()).delete(obj);
-         this.getDAO("cr.ac.una.prograiv.project.domain.Chofer").delete(key);
+    public void delete(Chofer obj) {
+      this.getDAO(obj.getClass().getName()).delete(obj);         
     }
 
     @Override

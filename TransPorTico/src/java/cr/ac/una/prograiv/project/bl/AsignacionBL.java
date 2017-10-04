@@ -43,8 +43,8 @@ public class AsignacionBL extends BaseBL implements IBaseBL<Asignacion,Integer>{
     }
 
     @Override
-    public void delete(Integer key) {
-        this.getDAO("cr.ac.una.prograiv.project.domain.Asignacion").delete(key);  
+    public void delete(Asignacion obj) {
+        this.getDAO("cr.ac.una.prograiv.project.domain.Asignacion").delete(obj);  
     }
 
     @Override
