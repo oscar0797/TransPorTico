@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package cr.ac.una.prograiv.project.bl;
+
 import cr.ac.una.prograiv.project.dao.IBaseDAO;
 import cr.ac.una.prograiv.project.dao.*;
 import java.util.LinkedHashMap;
@@ -24,7 +25,7 @@ public class BaseBL {
      * @param className
      * @return
      */
-    public IBaseDAO getDao(String className){
+    public IBaseDAO getDAO(String className){
         return daos.get(className);
     }
 }

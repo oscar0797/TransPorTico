@@ -12,36 +12,35 @@ import java.util.List;
  *
  * @author Oscar
  */
-public class UsuarioBL extends BaseBL implements IBaseBL <Usuario,Integer> {
+public class UsuarioBL extends BaseBL implements IBaseBL <Usuario,Integer>{
 
     @Override
     public void save(Usuario obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.getDAO(obj.getClass().getName()).save(obj);
     }
 
     @Override
     public void merge(Usuario obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.getDAO(obj.getClass().getName()).merge(obj);
     }
 
     @Override
     public Usuario findByID(Integer key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (Usuario) this.getDAO(Usuario.class.getName()).findByID(key);
     }
 
     @Override
     public void delete(Integer key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.getDAO(Usuario.class.getName()).delete(key);
     }
 
     @Override
     public List<Usuario> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.getDAO(Usuario.class.getName()).findAll();
     }
 
     @Override
     public List<Usuario> findByQuery(String query) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.getDAO(Usuario.class.getName()).findByQuery(query);
     }
-    
 }

@@ -13,18 +13,33 @@ import org.hibernate.HibernateException;
 
 /**
  *
- * @author oscar
+ * @author Oscar
  */
-public class UsuarioDAO extends HibernateUtil implements IBaseDAO<Usuario,Integer>{ // cuidado ver en el dominio el tipo de la llave primaria de la tabla por eso Integer
+public class UsuarioDAO extends HibernateUtil implements IBaseDAO <Usuario,Integer>{
 
     @Override
-    public void save(Usuario o) {
+    public void save(Usuario obj) {
         try{
             iniciarOperacion();
-            getSesion().save(o);
-            getTransac().commit(); // si no se hace commit los cambios no se suben a la base de datos
+            getSesion().save(obj);
+            getTransac().commit();
         }catch(HibernateException he){
-            manejarExcepcion(he);
+            manejarException(he);
+            throw he;
+        }finally{
+            getSesion().close();
+        }
+        
+    }
+
+    @Override
+    public void merge(Usuario obj) {
+        try{
+            iniciarOperacion();
+            getSesion().merge(obj);
+            getTransac().commit();
+        }catch(HibernateException he){
+            manejarException(he);
             throw he;
         }finally{
             getSesion().close();
@@ -32,76 +47,60 @@ public class UsuarioDAO extends HibernateUtil implements IBaseDAO<Usuario,Intege
     }
 
     @Override
-    public Usuario merge(Usuario o){
+    public Usuario findByID(Integer key) {
         try{
-        iniciarOperacion();
-        o = (Usuario) getSesion().merge(o);
-        getTransac().commit();
+            Usuario usu;
+            iniciarOperacion();
+            usu = (Usuario) getSesion().createQuery("SELECT * FROM Usuario WHERE pk_idUsuario = " + key);
+            return usu;
         }catch(HibernateException he){
-            manejarExcepcion(he);
+            manejarException(he);
             throw he;
-        }finally{
-            getSesion().close();
         }
-        return o;
     }
 
     @Override
-    public void delete(Usuario o) {
+    public void delete(Integer key) {
         try{
-        iniciarOperacion();
-        getSesion().delete(o);
-        getTransac().commit();
+            iniciarOperacion();
+            getSesion().delete(key);
+            getTransac().commit();
         }catch(HibernateException he){
-            manejarExcepcion(he);
+            manejarException(he);
             throw he;
         }finally{
             getSesion().close();
         }
     }
 
-    @Override
-    public Usuario findById(Integer key) {
-        Usuario usuarios = null;
-        try{
-        iniciarOperacion();
-        usuarios = (Usuario) getSesion().get(Usuario.class,key);
-        }finally{
-            getSesion().close();
-        }
-        return usuarios;
-    }
-    
     @Override
     public List<Usuario> findAll() {
-        List<Usuario> listaUsuario;
         try{
-        iniciarOperacion();
-        listaUsuario = getSesion().createQuery("from Usuario").list();
+            List<Usuario> usuarios;
+            iniciarOperacion();
+            usuarios = (List<Usuario>) getSesion().createQuery("FROM Usuario").list();
+            return usuarios;
+        }catch(HibernateException he){
+            manejarException(he);
+            throw he;
         }finally{
             getSesion().close();
         }
-        return listaUsuario;
     }
 
     @Override
-    public Usuario findByWord(String key) {
-        Usuario usuarios = null;
-        List<Usuario> listaUsuario;
+    public List findByQuery(String query) {
         try{
-        iniciarOperacion();
-        listaUsuario = getSesion().createQuery("from Usuario where nombreUsuario = '" + key + "'").list();
-        if(listaUsuario != null){
-            usuarios=listaUsuario.get(0);
-        }
+            List<Usuario> usuarios;
+            iniciarOperacion();
+            usuarios = (List<Usuario>) getSesion().createQuery(query).list();
+            return usuarios;
+        }catch(HibernateException he){
+            manejarException(he);
+            throw he;
         }finally{
             getSesion().close();
         }
-        return usuarios;    
     }
-
-    @Override
-    public List createQueryHQL(String query) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 }

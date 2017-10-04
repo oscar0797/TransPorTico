@@ -14,12 +14,11 @@ import java.util.List;
  * @param <T>
  * @param <K>
  */
-public interface IBaseDAO <T,K>{ // K = key ,  T = objeto T generico 
-    public abstract void save(T o);
-    public abstract T merge (T o);
-    public abstract void delete (T o);
-    public abstract T findById(K key);
-    public abstract T findByWord(String key);
+public interface IBaseDAO <T,K>{
+    public abstract void save(T obj);
+    public abstract void merge(T obj);
+    public abstract T findByID(K key);
+    public abstract void delete(K key);
     public abstract List<T> findAll();
-    public abstract List createQueryHQL(String query);
+    public abstract List<T> findByQuery(String query);
 }

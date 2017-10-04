@@ -17,6 +17,7 @@ import org.hibernate.cfg.AnnotationConfiguration;
  */
 public class HibernateUtil {
 
+   
     private static final SessionFactory sessionFactory;
     private Session sesion;
     private Transaction transac;
@@ -33,16 +34,17 @@ public class HibernateUtil {
         }
     }
     
-    public void iniciarOperacion()throws HibernateException{
-        sesion = HibernateUtil.getSessionFactory().openSession();
-        transac = sesion.beginTransaction();
+    public void iniciarOperacion() throws HibernateException{
+       sesion= HibernateUtil.getSessionFactory().openSession(); // toma toda la config abre sesion, inicia una transaccion por ejemplo cajero
+       transac= sesion.beginTransaction();
+               
     }
     
-    public void manejarExcepcion(HibernateException he) throws HibernateException{
-        transac.rollback(); // devolver todo a como estaba antes en caso de que alguna transaccion sea erronea.
-        throw new HibernateException("Error Hibernate Utils",he);
+    public void manejarException(HibernateException he)throws HibernateException{
+        transac.rollback(); // si hay un error con la transac hace un rollback y devuelve el error q hizo q se cayera
+        throw new HibernateException(he.getMessage(),he);
     }
-    
+            
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
@@ -61,5 +63,5 @@ public class HibernateUtil {
 
     public void setTransac(Transaction transac) {
         this.transac = transac;
-    }      
+    }   
 }
