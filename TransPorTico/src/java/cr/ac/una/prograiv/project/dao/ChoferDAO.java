@@ -48,15 +48,15 @@ public class ChoferDAO extends HibernateUtil implements IBaseDAO<Chofer, Integer
 
     @Override
     public Chofer findByID(Integer key) {
+        Chofer chofer = null;
+
         try {
-            Chofer usu;
             iniciarOperacion();
-            usu = (Chofer) getSesion().createQuery("SELECT * FROM Chofer WHERE pkIdChofer = " + key);
-            return usu;
-        } catch (HibernateException he) {
-            manejarException(he);
-            throw he;
+            chofer = (Chofer) getSesion().get(Chofer.class, key);
+        } finally {
+            getSesion().close();
         }
+        return chofer;
     }
 
     @Override

@@ -19,9 +19,10 @@ public class TestChofer {
      public static void main(String []args){
         //saveChofer();
         //mergeChofer();
-        deleteChofer(1);
+        //deleteChofer(1);
         //findAllChofer();
-       
+         Chofer cho = findIdChofer(1);
+       System.out.println(cho.getNombre());
     }
     
     public static void saveChofer(){
@@ -48,5 +49,10 @@ public class TestChofer {
         //Chofer cho = new Chofer(1,"1111111","XXXX",new Date(),"B1",new Date(),new Date(),"Nadie"); 
         ChoferBL bl = new ChoferBL();
         bl.delete(key);
+    }
+     
+     public static Chofer findIdChofer(Integer key){ 
+        ChoferBL bl = new ChoferBL();
+       return bl.findByID(key);
     }
 }
