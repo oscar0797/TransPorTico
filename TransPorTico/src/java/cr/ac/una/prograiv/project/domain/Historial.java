@@ -37,7 +37,6 @@ public class Historial  implements java.io.Serializable {
      private double monto;
      private int tiempo;
      private String retroalimentacion;
-     private String cliente;
      private Date ultimaFecha;
      private String ultimoUsuario;
 
@@ -55,7 +54,6 @@ public class Historial  implements java.io.Serializable {
        this.monto = monto;
        this.tiempo = tiempo;
        this.retroalimentacion = retroalimentacion;
-       this.cliente = cliente;
        this.ultimaFecha = ultimaFecha;
        this.ultimoUsuario = ultimoUsuario;
     }
@@ -172,16 +170,6 @@ public class Historial  implements java.io.Serializable {
         this.retroalimentacion = retroalimentacion;
     }
 
-    
-    @Column(name="cliente", nullable=false, length=45)
-    public String getCliente() {
-        return this.cliente;
-    }
-    
-    public void setCliente(String cliente) {
-        this.cliente = cliente;
-    }
-
     @Temporal(TemporalType.DATE)
     @Column(name="ultimaFecha", nullable=false, length=10)
     public Date getUltimaFecha() {
@@ -201,9 +189,6 @@ public class Historial  implements java.io.Serializable {
     public void setUltimoUsuario(String ultimoUsuario) {
         this.ultimoUsuario = ultimoUsuario;
     }
-
-
-
 
 }
 
