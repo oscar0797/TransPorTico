@@ -27,7 +27,7 @@ public class TestUsuario {
     }
     
     public static void saveUsuario(){
-        Usuario usu = new Usuario("Usuario6","123","Oscar","Carmona","Mora","Nadie@gmail.com","8888888",1,new Date(),"Nadie");
+        Usuario usu = new Usuario("Usuario1","123","Oscar","Carmona","Mora","Nadie@gmail.com","8888888",1,new Date(),"Nadie");
         UsuarioBL bl = new UsuarioBL();
         bl.save(usu);
         System.out.println("Usuario guardado con exito");

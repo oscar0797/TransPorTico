@@ -18,13 +18,13 @@ import java.util.List;
 public class TestHistorial {
 
     public static void main(String[] args) {
-        //saveHistorial();
+        saveHistorial();
         //mergeHistorial(1);
-        deleteHistorial(1);
+        //deleteHistorial(1);
     }
 
     public static void saveHistorial() {
-        Historial his = new Historial(1,1,3,null,null,3000,30,"Excelente Viaje", new Date(), "Nadie");
+        Historial his = new Historial(1,1,1,null,null,3000,30,"Excelente Viaje", new Date(), "Nadie");
         HistorialBL bl = new HistorialBL();
         bl.save(his);
         System.out.println("Historial guardado con exito");
