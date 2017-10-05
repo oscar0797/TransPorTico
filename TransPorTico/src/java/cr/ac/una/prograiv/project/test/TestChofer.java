@@ -25,7 +25,7 @@ public class TestChofer {
     }
     
     public static void saveChofer(){
-        Chofer cho = new Chofer("999","ChoPrueba",new Date(),"B1",new Date(),new Date(),"Nadie");
+        Chofer cho = new Chofer("23","Cho1",new Date(),"B1",new Date(),new Date(),"Nadie");
         ChoferBL bl = new ChoferBL();
         bl.save(cho);
         System.out.println("Chofer guardado con exito");
