@@ -45,18 +45,15 @@ public class HistorialDAO extends HibernateUtil implements IBaseDAO<Historial,In
 
     @Override
     public Historial findByID(Integer key) {
-        try{
-            Historial v;
+         Historial historial = null;
+
+        try {
             iniciarOperacion();
-            v =  (Historial) getSesion().createQuery("from Vehiculo where pkIdHistorial = " + key).uniqueResult();
-            getTransac().commit();
-            return v;
-        }catch(HibernateException he){
-            manejarException(he);
-            throw he;
-        }finally{
+            historial = (Historial) getSesion().get(Historial.class, key);
+        } finally {
             getSesion().close();
         }
+        return historial;
     }
 
     @Override

@@ -47,18 +47,15 @@ public class VehiculoDAO extends HibernateUtil implements IBaseDAO<Vehiculo,Inte
 
     @Override
     public Vehiculo findByID(Integer key) {
-        try{
-            Vehiculo v;
+         Vehiculo vehiculo = null;
+
+        try {
             iniciarOperacion();
-            v =  (Vehiculo) getSesion().createQuery("from Vehiculo where pkIdVehiculo = " + key).uniqueResult();
-            getTransac().commit();
-            return v;
-        }catch(HibernateException he){
-            manejarException(he);
-            throw he;
-        }finally{
+            vehiculo = (Vehiculo) getSesion().get(Vehiculo.class, key);
+        } finally {
             getSesion().close();
         }
+        return vehiculo;
     }
 
     @Override

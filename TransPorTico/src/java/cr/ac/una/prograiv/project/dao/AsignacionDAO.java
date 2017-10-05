@@ -45,18 +45,15 @@ public class AsignacionDAO extends HibernateUtil implements IBaseDAO<Asignacion,
 
     @Override
     public Asignacion findByID(Integer key) {
-        try{
-            Asignacion v;
+        Asignacion asignacion = null;
+
+        try {
             iniciarOperacion();
-            v =  (Asignacion) getSesion().createQuery("from Asignacion where id = " + key).uniqueResult();
-            getTransac().commit();
-            return v;
-        }catch(HibernateException he){
-            manejarException(he);
-            throw he;
-        }finally{
+            asignacion = (Asignacion) getSesion().get(Asignacion.class, key);
+        } finally {
             getSesion().close();
         }
+        return asignacion;
     }
 
     @Override
