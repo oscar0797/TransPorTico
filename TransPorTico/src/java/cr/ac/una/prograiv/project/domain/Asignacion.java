@@ -1,5 +1,5 @@
 package cr.ac.una.prograiv.project.domain;
-// Generated 04/10/2017 01:05:04 AM by Hibernate Tools 4.3.1
+// Generated 05/10/2017 12:43:10 AM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
@@ -47,7 +47,7 @@ public class Asignacion  implements java.io.Serializable {
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="PK_idChofer", nullable=false)
+    @JoinColumn(name="FK_idChofer", nullable=false)
     public Chofer getChofer() {
         return this.chofer;
     }
@@ -57,7 +57,7 @@ public class Asignacion  implements java.io.Serializable {
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="PK_idVehiculo", nullable=false)
+    @JoinColumn(name="FK_idVehiculo", nullable=false)
     public Vehiculo getVehiculo() {
         return this.vehiculo;
     }

@@ -1,5 +1,5 @@
 package cr.ac.una.prograiv.project.domain;
-// Generated 04/10/2017 01:05:04 AM by Hibernate Tools 4.3.1
+// Generated 05/10/2017 12:43:10 AM by Hibernate Tools 4.3.1
 
 
 import java.io.Serializable;
@@ -26,7 +26,6 @@ import javax.persistence.TemporalType;
 )
 public class Usuario  implements java.io.Serializable {
 
-
      private Integer pkIdUsuario;
      private String nombreUsuario;
      private String contrasena;
@@ -45,7 +44,7 @@ public class Usuario  implements java.io.Serializable {
     }
 
 	
-    public Usuario(String nombreUsuario, String contrasena, String nombre, String apellido1, String apellido2, String correo, String telefono, Serializable direccion, int tipo, Date ultimaFecha, String ultimoUsuario) {
+    public Usuario(String nombreUsuario, String contrasena, String nombre, String apellido1, String apellido2, String correo, String telefono, int tipo, Date ultimaFecha, String ultimoUsuario) {
         this.nombreUsuario = nombreUsuario;
         this.contrasena = contrasena;
         this.nombre = nombre;
@@ -53,13 +52,12 @@ public class Usuario  implements java.io.Serializable {
         this.apellido2 = apellido2;
         this.correo = correo;
         this.telefono = telefono;
-        this.direccion = direccion;
         this.tipo = tipo;
         this.ultimaFecha = ultimaFecha;
         this.ultimoUsuario = ultimoUsuario;
     }
     public Usuario(Integer pkIdUsuario,String nombreUsuario, String contrasena, String nombre, String apellido1, String apellido2, String correo, Date fechaNacimiento, String telefono, Serializable direccion, int tipo, Date ultimaFecha, String ultimoUsuario) {
-       this.pkIdUsuario = pkIdUsuario;
+       this.pkIdUsuario=pkIdUsuario;
        this.nombreUsuario = nombreUsuario;
        this.contrasena = contrasena;
        this.nombre = nombre;
@@ -167,7 +165,7 @@ public class Usuario  implements java.io.Serializable {
     }
 
     
-    @Column(name="direccion", nullable=false)
+    @Column(name="direccion")
     public Serializable getDireccion() {
         return this.direccion;
     }

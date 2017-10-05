@@ -14,6 +14,7 @@ import java.util.LinkedHashMap;
  * @author admin
  */
 public class BaseBL {
+
     private final LinkedHashMap<String, IBaseDAO> daos;
 
     public BaseBL() {
@@ -24,12 +25,13 @@ public class BaseBL {
         daos.put("cr.ac.una.prograiv.project.domain.Asignacion", new AsignacionDAO());
         daos.put("cr.ac.una.prograiv.project.domain.Chofer", new ChoferDAO());
     }
+
     /**
      *
      * @param className
      * @return
      */
-    public IBaseDAO getDAO(String className){
+    public IBaseDAO getDAO(String className) {
         return daos.get(className);
     }
 }

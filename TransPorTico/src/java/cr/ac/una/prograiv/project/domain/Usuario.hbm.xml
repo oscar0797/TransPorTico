@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 04/10/2017 01:05:04 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 05/10/2017 12:43:11 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="cr.ac.una.prograiv.project.domain.Usuario" table="usuario" catalog="transporte" optimistic-lock="version">
         <id name="pkIdUsuario" type="java.lang.Integer">
@@ -33,7 +33,7 @@
             <column name="telefono" length="45" not-null="true" />
         </property>
         <property name="direccion" type="serializable">
-            <column name="direccion" not-null="true" />
+            <column name="direccion" />
         </property>
         <property name="tipo" type="int">
             <column name="tipo" not-null="true" />
@@ -44,6 +44,6 @@
         <property name="ultimoUsuario" type="string">
             <column name="ultimoUsuario" length="45" not-null="true" />
         </property>
-       
+        
     </class>
 </hibernate-mapping>

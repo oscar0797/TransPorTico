@@ -12,11 +12,25 @@ import java.util.List;
  *
  * @author Oscar
  */
-public class UsuarioBL extends BaseBL implements IBaseBL <Usuario,Integer>{
+public class UsuarioBL extends BaseBL implements IBaseBL<Usuario, Integer> {
 
     @Override
     public void save(Usuario obj) {
-        this.getDAO( obj.getClass().getName()).save(obj);
+        if (findByNombreUsuario(obj.getNombreUsuario()) == null) {
+            this.getDAO(obj.getClass().getName()).save(obj);
+        } else {
+            System.out.println("Ya existe");
+        }
+    }
+
+    public Usuario findByNombreUsuario(String name) {
+        List<Usuario> usuarios = findAll();
+        for (Usuario aux : usuarios) {
+            if (aux.getNombreUsuario().equals(name)) {
+                return aux;
+            }
+        }
+        return null;
     }
 
     @Override

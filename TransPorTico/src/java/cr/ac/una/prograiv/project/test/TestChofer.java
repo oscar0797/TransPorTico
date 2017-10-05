@@ -17,16 +17,15 @@ import java.util.List;
 public class TestChofer {
     
      public static void main(String []args){
-        //saveChofer();
-        //mergeChofer();
-        //deleteChofer(2);
+        saveChofer();
+        //mergeChofer(1);
+        //deleteChofer(1);
         //findAllChofer();
-         Chofer cho = findIdChofer(1);
-       System.out.println(cho.getNombre());
+         
     }
     
     public static void saveChofer(){
-        Chofer cho = new Chofer("116810872","Oscar",new Date(),"B1",new Date(),new Date(),"Nadie");
+        Chofer cho = new Chofer("8","Cho1",new Date(),"B1",new Date(),new Date(),"Nadie");
         ChoferBL bl = new ChoferBL();
         bl.save(cho);
         System.out.println("Chofer guardado con exito");
@@ -39,8 +38,8 @@ public class TestChofer {
         choferes.forEach((aux) -> {System.out.println(aux.toString());});
     }
     
-    public static void mergeChofer(){
-        Chofer cho = new Chofer(1,"999999","eeeeeee",new Date(),"B1",new Date(),new Date(),"Nadie");
+    public static void mergeChofer(Integer Key){
+        Chofer cho = new Chofer(Key,"999999","eeeeeee",new Date(),"B1",new Date(),new Date(),"Nadie");
         ChoferBL bl = new ChoferBL();
         bl.merge(cho);
     }

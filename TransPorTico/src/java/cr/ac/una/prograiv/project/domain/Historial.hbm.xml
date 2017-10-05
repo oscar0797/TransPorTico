@@ -1,27 +1,27 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 04/10/2017 01:05:04 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 05/10/2017 12:43:11 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="cr.ac.una.prograiv.project.domain.Historial" table="historial" catalog="transporte" optimistic-lock="version">
         <id name="pkIdHistorial" type="java.lang.Integer">
             <column name="PK_idHistorial" />
             <generator class="identity" />
         </id>
-        <many-to-one name="chofer" class="cr.ac.una.prograiv.project.domain.Chofer" fetch="select">
+        <property name="chofer" type="java.lang.Integer">
             <column name="FK_idChofer" not-null="true" />
-        </many-to-one>
-        <many-to-one name="usuario" class="cr.ac.una.prograiv.project.domain.Usuario" fetch="select">
+        </property>
+        <property name="usuario" type="java.lang.Integer">
             <column name="FK_idUsuario" not-null="true" />
-        </many-to-one>
-        <many-to-one name="vehiculo" class="cr.ac.una.prograiv.project.domain.Vehiculo" fetch="select">
+        </property>
+        <property name="vehiculo" type="java.lang.Integer">
             <column name="FK_idVehiculo" not-null="true" />
-        </many-to-one>
+        </property>
         <property name="origen" type="serializable">
-            <column name="origen" not-null="true" />
+            <column name="origen" />
         </property>
         <property name="destino" type="serializable">
-            <column name="destino" not-null="true" />
+            <column name="destino" />
         </property>
         <property name="monto" type="double">
             <column name="monto" precision="22" scale="0" not-null="true" />

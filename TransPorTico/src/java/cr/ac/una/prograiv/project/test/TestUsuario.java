@@ -5,6 +5,7 @@
  */
 package cr.ac.una.prograiv.project.test;
 
+import cr.ac.una.prograiv.project.bl.ChoferBL;
 import cr.ac.una.prograiv.project.bl.UsuarioBL;
 import cr.ac.una.prograiv.project.domain.Chofer;
 import cr.ac.una.prograiv.project.domain.Usuario;
@@ -12,6 +13,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import java.awt.Point;
+import java.awt.Polygon;
 
 /**
  *
@@ -20,15 +22,21 @@ import java.awt.Point;
 public class TestUsuario {
     public static void main(String []args){
        saveUsuario();
-        //mergeUsuario();
-        //findAllUsuario();
+        //mergeUsuario(1);
+        //deleteUsuario(1);        
     }
     
     public static void saveUsuario(){
-        Usuario usu = new Usuario("OscarCM","123","Oscar","Carmona","Mora","Nadie@gmail.com","8888888",new Point(),1,new Date(),"Nadie");
+        Usuario usu = new Usuario("Usuario6","123","Oscar","Carmona","Mora","Nadie@gmail.com","8888888",1,new Date(),"Nadie");
         UsuarioBL bl = new UsuarioBL();
         bl.save(usu);
         System.out.println("Usuario guardado con exito");
+    }
+     public static void deleteUsuario(Integer key){ 
+        Usuario usu = new Usuario(); 
+        usu.setPkIdUsuario(key);
+        UsuarioBL bl = new UsuarioBL();
+        bl.delete(usu);
     }
     
     public static void findAllUsuario(){
@@ -38,8 +46,8 @@ public class TestUsuario {
         usuarios.forEach((aux) -> {System.out.println(aux.toString());});
     }
     
-    public static void mergeUsuario(){
-        Usuario usu = new Usuario(1,"OscarCM","123","Oscar","Carmona","Mora","Nadie@gmail.com",new Date(),"8888888","PUNTO",1,new Date(),"Nadie");
+    public static void mergeUsuario(Integer key){
+        Usuario usu = new Usuario(key,"OscarCM","123","Oscar","Carmona","Mora","Nadie@gmail.com",new Date(),"8888888",null,1,new Date(),"Nadie");
         UsuarioBL bl = new UsuarioBL();
         bl.merge(usu);
     }

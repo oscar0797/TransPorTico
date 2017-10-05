@@ -1,5 +1,5 @@
 package cr.ac.una.prograiv.project.domain;
-// Generated 04/10/2017 01:05:04 AM by Hibernate Tools 4.3.1
+// Generated 05/10/2017 12:43:10 AM by Hibernate Tools 4.3.1
 
 
 import java.io.Serializable;
@@ -27,8 +27,7 @@ import javax.persistence.TemporalType;
     ,catalog="transporte"
 )
 public class Vehiculo  implements java.io.Serializable {
-
-
+    
      private Integer pkIdVehiculo;
      private Integer usuario;
      private int ano;
@@ -43,20 +42,21 @@ public class Vehiculo  implements java.io.Serializable {
 
     public Vehiculo() {
     }
+
 	
-    public Vehiculo(Integer usuario, int ano, String modelo, String placa, String color, Serializable ubicacion, boolean activo, boolean espera, Date ultimaFecha, String ultimoUsuario) {
+    public Vehiculo(Integer usuario, int ano, String modelo, String placa, String color, boolean activo, boolean espera, Date ultimaFecha, String ultimoUsuario) {
         this.usuario = usuario;
         this.ano = ano;
         this.modelo = modelo;
         this.placa = placa;
         this.color = color;
-        this.ubicacion = ubicacion;
         this.activo = activo;
         this.espera = espera;
         this.ultimaFecha = ultimaFecha;
         this.ultimoUsuario = ultimoUsuario;
     }
     public Vehiculo(Integer pkIdVehiculo,Integer usuario, int ano, String modelo, String placa, String color, Serializable ubicacion, boolean activo, boolean espera, Date ultimaFecha, String ultimoUsuario) {
+       this.pkIdVehiculo=pkIdVehiculo;
        this.usuario = usuario;
        this.ano = ano;
        this.modelo = modelo;
@@ -81,8 +81,7 @@ public class Vehiculo  implements java.io.Serializable {
         this.pkIdVehiculo = pkIdVehiculo;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="FK_idUsuario", nullable=false)
+    @Column(name="FK_idUsuario", nullable=false)
     public Integer getUsuario() {
         return this.usuario;
     }
@@ -132,7 +131,7 @@ public class Vehiculo  implements java.io.Serializable {
     }
 
     
-    @Column(name="ubicacion", nullable=false)
+    @Column(name="ubicacion")
     public Serializable getUbicacion() {
         return this.ubicacion;
     }
@@ -180,7 +179,6 @@ public class Vehiculo  implements java.io.Serializable {
     public void setUltimoUsuario(String ultimoUsuario) {
         this.ultimoUsuario = ultimoUsuario;
     }
-
 }
 
 
