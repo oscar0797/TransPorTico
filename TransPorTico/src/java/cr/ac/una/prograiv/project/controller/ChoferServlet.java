@@ -5,12 +5,20 @@
  */
 package cr.ac.una.prograiv.project.controller;
 
+import com.google.gson.Gson;
+import cr.ac.una.prograiv.project.bl.ChoferBL;
+import cr.ac.una.prograiv.project.domain.Chofer;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -30,17 +38,64 @@ public class ChoferServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ChoferServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ChoferServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        PrintWriter out = response.getWriter();
+        try {
+            String json;
+            int idChofer;
+            Chofer chofer = new Chofer();
+            ChoferBL choferBL = new ChoferBL();
+            HttpSession sesion = request.getSession();
+            String accion = request.getParameter("accion");
+
+            switch (accion) {
+                case "agregarChofer":
+                case "modificarChofer":
+                   
+                    chofer.setCedula(request.getParameter("cedula"));
+                    chofer.setNombre(request.getParameter("nombre"));
+                    String fechaNacimiento = request.getParameter("fechaNacimiento");
+                    DateFormat format = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
+                    Date date = format.parse(fechaNacimiento);
+                    chofer.setFechaNacimiento(date);
+                    chofer.setTipoLicencia(request.getParameter("tipoLicencia"));
+                    String fechaVencimiento = request.getParameter("vencimientoLicencia");
+                    Date fecha = format.parse(fechaVencimiento);
+                    chofer.setVencimientoLicencia(fecha);
+                    chofer.setUltimoUsuario(request.getParameter("ultimoUsuario"));
+
+                    if (accion.equals("modificarChofer")) {
+                        chofer.setPkIdChofer(Integer.parseInt(request.getParameter("idChofer")));
+                        choferBL.merge(chofer);
+                        out.print("C~Chofer modificado con exito");
+                    } else {
+                        choferBL.save(chofer);
+                        out.print("C~Chofer agregado con exito");
+                    }
+                    break;
+
+                case "eliminarChofer":
+                    chofer.setPkIdChofer(Integer.parseInt(request.getParameter("idChofer")));
+                    choferBL.delete(chofer);
+                    out.print("C~Chofer Eliminado con exito");
+                    break;
+                case "consultarChoferByID":
+                    idChofer = Integer.parseInt(request.getParameter("idChofer"));
+                    chofer = choferBL.findByID(idChofer);
+                    json = new Gson().toJson(chofer);
+                    out.print(json);
+                    break;
+                case "consultarChoferes":
+                    json = new Gson().toJson(choferBL.findAll());
+                    out.print(json);
+                    break;
+                default:
+                    out.print("E~No se indico la acción que se desea realizar");
+                    break;
+            }
+        } catch (NumberFormatException e) {
+            out.print("E~" + e.getMessage());
+        } catch (Exception e) {
+            out.print("E~" + e.getMessage());
         }
     }
 
