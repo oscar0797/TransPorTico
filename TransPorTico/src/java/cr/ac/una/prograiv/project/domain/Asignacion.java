@@ -23,17 +23,22 @@ public class Asignacion  implements java.io.Serializable {
 
 
      private Integer pkIdAsignacion;
-     private Chofer chofer;
-     private Vehiculo vehiculo;
+     private Integer chofer;
+     private Integer vehiculo;
 
     public Asignacion() {
     }
 
-    public Asignacion(Chofer chofer, Vehiculo vehiculo) {
+    public Asignacion(Integer chofer, Integer vehiculo) {
        this.chofer = chofer;
        this.vehiculo = vehiculo;
     }
    
+     public Asignacion(Integer pkIdAsignacion,Integer chofer, Integer vehiculo) {
+       this.pkIdAsignacion=pkIdAsignacion;
+       this.chofer = chofer;
+       this.vehiculo = vehiculo;
+    }
      @Id @GeneratedValue(strategy=IDENTITY)
 
     
@@ -48,21 +53,21 @@ public class Asignacion  implements java.io.Serializable {
 
 @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="FK_idChofer", nullable=false)
-    public Chofer getChofer() {
+    public Integer getChofer() {
         return this.chofer;
     }
     
-    public void setChofer(Chofer chofer) {
+    public void setChofer(Integer chofer) {
         this.chofer = chofer;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="FK_idVehiculo", nullable=false)
-    public Vehiculo getVehiculo() {
+    public Integer getVehiculo() {
         return this.vehiculo;
     }
     
-    public void setVehiculo(Vehiculo vehiculo) {
+    public void setVehiculo(Integer vehiculo) {
         this.vehiculo = vehiculo;
     }
 
