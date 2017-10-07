@@ -21,9 +21,12 @@ import java.awt.Polygon;
  */
 public class TestUsuario {
     public static void main(String []args){
-       saveUsuario();
+        //saveUsuario();
         //mergeUsuario(1);
-        //deleteUsuario(1);        
+        //deleteUsuario(1);    
+        //findAllUsuario();
+        //findIdUsuario(1);
+        
     }
     
     public static void saveUsuario(){
@@ -52,4 +55,8 @@ public class TestUsuario {
         bl.merge(usu);
     }
     
+     public static Usuario findIdUsuario(Integer key){ 
+        UsuarioBL bl = new UsuarioBL();
+       return bl.findByID(key);
+    }
 }

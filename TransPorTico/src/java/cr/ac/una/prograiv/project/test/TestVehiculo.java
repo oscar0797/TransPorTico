@@ -5,6 +5,7 @@
  */
 package cr.ac.una.prograiv.project.test;
 
+
 import cr.ac.una.prograiv.project.bl.VehiculoBL;
 import cr.ac.una.prograiv.project.domain.Vehiculo;
 import cr.ac.una.prograiv.project.domain.Vehiculo;
@@ -18,9 +19,11 @@ import java.util.List;
  */
 public class TestVehiculo {
    public static void main(String []args){
-       saveVehiculo();
+       //saveVehiculo();
        //mergeVehiculo(1);
        //deleteVehiculo(1);
+       //findAllVehiculo();
+       //findIdVehiculo(1);
    }
     public static void saveVehiculo(){
         Vehiculo ve = new Vehiculo(1,3000,"modelo2","placa","negro",true,true,new Date(),"Nadie");
@@ -48,6 +51,10 @@ public class TestVehiculo {
         bl.merge(ve);
     }
          
+     public static Vehiculo findIdVehiculo(Integer key){ 
+        VehiculoBL bl = new VehiculoBL();
+       return bl.findByID(key);
+    }
     }
     
    

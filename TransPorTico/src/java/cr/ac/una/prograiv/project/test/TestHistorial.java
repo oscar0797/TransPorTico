@@ -5,7 +5,9 @@
  */
 package cr.ac.una.prograiv.project.test;
 
+import cr.ac.una.prograiv.project.bl.ChoferBL;
 import cr.ac.una.prograiv.project.bl.HistorialBL;
+import cr.ac.una.prograiv.project.domain.Chofer;
 import cr.ac.una.prograiv.project.domain.Historial;
 import java.io.Serializable;
 import java.util.Date;
@@ -18,13 +20,15 @@ import java.util.List;
 public class TestHistorial {
 
     public static void main(String[] args) {
-        saveHistorial();
+        //saveHistorial();
         //mergeHistorial(1);
         //deleteHistorial(1);
+        //findAllHistorial
+        //findIdHostorial(1);
     }
 
     public static void saveHistorial() {
-        Historial his = new Historial(1,1,1,null,null,3000,30,"Excelente Viaje", new Date(), "Nadie");
+        Historial his = new Historial(1, 1, 1, null, null, 3000, 30, "Excelente Viaje", new Date(), "Nadie");
         HistorialBL bl = new HistorialBL();
         bl.save(his);
         System.out.println("Historial guardado con exito");
@@ -47,8 +51,13 @@ public class TestHistorial {
     }
 
     public static void mergeHistorial(Integer key) {
-        Historial his = new Historial(key,1,1,3,null,null,3000,30,"Pura Vida", new Date(), "Nadie");
+        Historial his = new Historial(key, 1, 1, 3, null, null, 3000, 30, "Pura Vida", new Date(), "Nadie");
         HistorialBL bl = new HistorialBL();
         bl.merge(his);
+    }
+
+    public static Historial findIdHostorial(Integer key) {
+        HistorialBL bl = new HistorialBL();
+        return bl.findByID(key);
     }
 }

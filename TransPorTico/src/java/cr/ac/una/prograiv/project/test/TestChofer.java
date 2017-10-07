@@ -17,10 +17,11 @@ import java.util.List;
 public class TestChofer {
     
      public static void main(String []args){
-        saveChofer();
+        //saveChofer();
         //mergeChofer(1);
         //deleteChofer(1);
         //findAllChofer();
+        //findIdChofer(1);
          
     }
     
