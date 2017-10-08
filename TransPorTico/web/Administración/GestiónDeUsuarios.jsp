@@ -68,8 +68,8 @@
                             </a>
                         </h5>
                     </div>
-                    <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
-                        <div class="card-body">
+                    <div id="collapseOne" class="collapse modal fade" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div id="imagenFondos" class="card-body">
                             <form>
                                 <div class="form-row col-sm-12"> 
                                     <div class="form-group col-sm-4" id="groupUsuario">

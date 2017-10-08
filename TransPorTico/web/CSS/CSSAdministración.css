@@ -14,6 +14,15 @@
     font-size: 20px;
     color: white;
 }
+#imagenFondos{    
+    background-image: url(../Imágenes/Fondos/azul.jpg);
+    background-position: center center;	  
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-size: 20px;
+    color: white;
+}
 #imagenFondoo{    
     background-image: url(../Imágenes/Fondos/fondoAdmin.jpg);
     background-position: center center;	  
