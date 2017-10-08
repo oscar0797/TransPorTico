@@ -14,10 +14,12 @@
         <!------------- LIBRERIAS BOOTSTRAP----------------------------------------->
         <!------------------------------------------------------------------------------------------>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
         
-                
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>       
+
         <!------------------------------------------------------------------------------------------>
         <!------------- ARCHIVOS CSS----------------------------------------->
         <!------------------------------------------------------------------------------------------>
@@ -26,20 +28,20 @@
         <!------------------------------------------------------------------------------------------>
         <!------------- ARCHIVOS JS----------------------------------------->
         <!------------------------------------------------------------------------------------------>
-        
+
         <script src="../JS/datetimepicker.js" type="text/javascript"></script>
         <script src="../JS/utils.js" type="text/javascript"></script>
         <script src="../JS/Publico.js" type="text/javascript"></script>
         <script src="../JS/UsuarioJS.js" type="text/javascript"></script>
-        
+
     </head>
-    <body class="bg-success">
+    <body class="bg-muted">
         <div class="container-fluid"><br>
             <!-- ********************************************************** -->
             <!-- MODAL PARA MOSTRAR MENSAJES  -->
             <!-- ********************************************************** -->
 
-            <div  class="modal fade" id="myModal" role="dialog">
+            <div class="modal fade" id="myModal" role="dialog">
                 <div class="modal-dialog modal-sm">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -58,11 +60,11 @@
             <!------------------------------------------------------------------------------------------>
 
             <div id="accordion" role="tablist">
-                <div class="card">
+                <div id="imagenFondo" class="card ">
                     <div class="card-header" role="tab" id="headingOne">
-                        <h5 class="mb-0">
-                            <a onclick="desactivaForm();" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                <b>Insertar un nuevo usuario</b>
+                        <h5 class="mb-0" >
+                            <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <b class="estilo2 center-block">Formulario de registro</b>
                             </a>
                         </h5>
                     </div>
@@ -107,17 +109,17 @@
                                         <input type="text" class="form-control" id="inputTelefono" autofocus="autofocus" placeholder="Teléfono">
                                     </div>
                                     <div class="form-group col-sm-3" id="groupFechaNacimiento">
-                                    <label for="inputFechaNacimiento">Fecha de Nacimiento:</label>
-                                    <div id="fechaNacimiento" class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="dtp_input2" data-link-format="dd/mm/yyyy">
-                                        <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="inputFechaNacimiento">
-                                        <span class="input-group-addon">
-                                            <span class="glyphicon glyphicon-calendar"></span>
-                                        </span>
-                                    </div>
-                                </div>     
-                                    <div class="form-group col-md-3">
-                                        <label for="inputTipo" class="col-form-label">Tipo de Usuario</label>
-                                        <select id="inputTipo" class="form-control">
+                                        <label for="inputFechaNacimiento">Fecha de Nacimiento:</label>
+                                        <div id="fechaNacimiento" class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="dtp_input2" data-link-format="dd/mm/yyyy">
+                                            <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="inputFechaNacimiento">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>     
+                                    <div class="form-group col-md-3" >
+                                        <label for="inputTipo" class="col-form-label" >Tipo de Usuario</label>
+                                        <select id="inputTipo" class="form-control" style="height: 50%;">
                                             <option value="1">Administrador</option>
                                             <option value="2">Chofer</option>
                                             <option value="3">Cliente</option>
@@ -128,10 +130,10 @@
                                     <label for="imputDireccion">Direccion</label>
                                     <input type="text" class="form-control" id="imputDireccion" autofocus="autofocus" placeholder="Dirección">
                                 </div>
-                                <div form-group  >                                                   
-                                    <button type="submit" class="btn btn-primary" onclick="registraUsuario()">Guardar</button>
-                                    <button type="submit" class="btn btn-success">Limpiar</button>
+                                <div class="form-group estilo2 container" >                                                   
+                                    <button type="submit" class="btn btn-primary" onclick="registraUsuario()">Guardar</button>                                    
                                     <button type="submit" class="btn btn-danger" data-toggle="collapse" href="#collapseOne">Cancelar</button>
+                                    <button type="submit" class="btn btn-success">Limpiar</button>
                                 </div>
                             </form>
                         </div>
@@ -143,33 +145,33 @@
             <!------------- TABLA DATOS  USUARIO----------------------------------------->
             <!------------------------------------------------------------------------------------------>
 
-            <div class="bg-success" class="card bg-light mb-3" style="max-width: 100%;">
+            <div class="card bg-light mb-3" style="max-width: 100%;">
                 <div class="card-header">
                     <div class="form-row">
-                        <div class="col-md-3">
-                            <p>Buscar por nombre de la Persona:</p>
+                        <div class="col-md-4">
+                            <p><b>Buscar por nombre de la persona:</b></p>
                         </div>
                         <div class="col-md-4">
                             <div class="">
                                 <input type="text" class="form-control" id="buscar" placeholder="Digite el nombre de la persona">
                             </div>
                         </div>
-                        <button type="button" onclick="busquedaPersonas()" class="btn btn-info centered"  id="btMostarForm">
-                            Buscar <span class="glyphicon glyphicon-search"></span>
-                        </button>
+                        <div class=col-md-4">
+                            <button type="button" onclick="busquedaPersonas()" class="btn btn-info center-block"  id="btMostarForm">
+                                Buscar <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="card-body" style="background: white;">
-                    <table class="table table-hover table-condensed" id="tablaUsuarios">
-
-                    </table>
+                <div class="card-body" id="imagenFondoo">
+                    <table class="table table-hover table-condensed table-responsive table-bordered" id="tablaUsuarios"></table>
                 </div>
                 <div class="card-footer">
-                    <ul class="justify-content-center" id="paginacionOpc"></ul>
+                    <li class="pagination justify-content-center pagination-sm center-block"  align-content: center" id="paginacionOpc"></ul>
                 </div>
             </div>       
         </div>
-        <div class="container-fluid bg-muted"></div>
+        <div class="container-fluid"></div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>

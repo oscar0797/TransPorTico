@@ -4,11 +4,12 @@
  * and open the template in the editor.
  */
 
-$(document).ready(function(){
+$(document).ready(function () {
     consultarUsuarios(1);
+    paginador(1);
 });
 
-function registraUsuario(){
+function registraUsuario() {
     mostrarModal("myModal", "Espere por favor..", "Cargando información de Usuario");
     $.ajax({
         url: '../UsuarioServlet',
@@ -20,22 +21,22 @@ function registraUsuario(){
             apellido1: $("#inputApellido1").val(),
             apellido2: $("#inputApellido2").val(),
             correo: $("#inputCorreo").val(),
-            fechaNacimiento: $("#inputFechaNacimiento").data('date'),                      
+            fechaNacimiento: $("#inputFechaNacimiento").data('date'),
             telefono: $("#inputTelefono").val(),
-            direccion: $("#imputDireccion").val(),            
+            direccion: $("#imputDireccion").val(),
             tipo: $("#inputTipo").val()
         },
-        error: function() {
+        error: function () {
             mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
         },
-        success: function(data) {
+        success: function (data) {
             var respuestaTxt = data.substring(2);
             var tipoRespuesta = data.substring(0, 2);
             if (tipoRespuesta === "E~") {
                 mostrarModal("myModal", "Se genero un error", respuestaTxt);
-            }else{
-                mostrarModal("myModal","Registro de Usuarios",$("#inputNombre").val() +" agregado con exito");
-           }
+            } else {
+                mostrarModal("myModal", "Registro de Usuarios", $("#inputNombre").val() + " agregado con exito");
+            }
         },
         type: "POST",
         dataType: "text"
@@ -54,7 +55,7 @@ function consultarUsuarios(numpag) {
             mostrarModal("myModal", "Error al cargar en la base de datos");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            dibujarTabla(numpag,data);
+            dibujarTabla(numpag, data);
             // se oculta el modal esta funcion se encuentra en el utils.js
         },
         type: 'POST',
@@ -62,15 +63,13 @@ function consultarUsuarios(numpag) {
     });
 }
 
-function dibujarTabla(numpag,dataJson) {
-    //limpia la información que tiene la tabla
-    $("#tablaUsuarios").html(""); 
-    
+function dibujarTabla(numpag, dataJson) {
+    $("#tablaUsuarios").html("");
     //muestra el enzabezado de la tabla
     var head = $("<thead />");
     var row = $("<tr />");
     head.append(row);
-    $("#tablaUsuarios").append(head); 
+    $("#tablaUsuarios").append(head);
     row.append($("<th><b>NombreUsuario</b></th>"));
     row.append($("<th><b>Nombre</b></th>"));
     row.append($("<th><b>Apellido1</b></th>"));
@@ -81,11 +80,11 @@ function dibujarTabla(numpag,dataJson) {
     row.append($("<th><b>Acción</b></th>"));
     //carga la tabla con el json devuelto
     var cont = 0;
-    var i = 4 * (numpag-1);
-    for (; i < dataJson.length && (cont<4); i++, cont++) {
+    var i = 10 * (numpag - 1);
+    for (; i < dataJson.length && (cont < 10); i++, cont++) {
         dibujarFila(dataJson[i]);
     }
-    
+
 }
 
 function dibujarFila(rowData) {
@@ -100,15 +99,15 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.fechaNacimiento + "</td>"));
     row.append($("<td>" + rowData.telefono + "</td>"));
     row.append($("<td>" + rowData.direccion + "</td>"));
-    row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="modificarUsuario(' +rowData.pkIdUsuario + ')">'+
-                        '<i class="fa fa-pencil" aria-hidden="true"></i>'+
-                    '</button>'+
-                    '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="validaEliminacion('+ "'"+ rowData.nombre + "'" +','+rowData.pkIdUsuario+')" data-target="#confirm-delete" data-toggle="modal">'+
-                        '<i class="fa fa-times" aria-hidden="true"></i>'+
-                    '</button></td>'));
+    row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="center Align" onclick="modificarUsuario(' + rowData.pkIdUsuario + ')">' +
+            '<i class="fa fa-pencil" aria-hidden="true"></i>' +
+            '</button>' +
+            '<button type="button" class="btn btn-default btn-xs" aria-label="center Align" onclick="validaEliminacion(' + "'" + rowData.nombre + "'" + ',' + rowData.pkIdUsuario + ')" data-target="#confirm-delete" data-toggle="modal">' +
+            '<i class="fa fa-times" aria-hidden="true"></i>' +
+            '</button></td>'));
 }
 
-function mostrarMensaje(name,classCss, msg, neg) {
+function mostrarMensaje(name, classCss, msg, neg) {
     //se le eliminan los estilos al mensaje
     $("#" + name).removeClass();
 
@@ -121,21 +120,22 @@ function mostrarMensaje(name,classCss, msg, neg) {
     $(".mesajeResultText").html(msg);
     $(".mesajeResultText").html(msg);
 }
-function paginador(pagAct){
+function paginador(pagAct) {
     var ini = 1;
-     $("#paginacionOpc").html("");
-    if(pagAct>5){
+    $("#paginacionOpc").html("");
+    if (pagAct > 5) {
         ini = pagAct - 5;
-        $("#paginacionOpc").append('<li class="page-item" onclick="paginador('+(ini-1)+')"><a class="page-link">&laquo;</a></li>');
-    }else{
-        $("#paginacionOpc").append('<li class="page-item" onclick="paginador('+ini+')" ><a class="page-link">&laquo;</a></li>');
+        $("#paginacionOpc").append('<li onclick="paginador(' + (ini - 1) + ')"><a>&laquo;</a></li>');
+    } else {
+        $("#paginacionOpc").append('<li onclick="paginador(' + ini + ')" ><a>&laquo;</a></li>');
     }
-    for(var i=0;i<=10;i++,ini++){
-        if(ini===pagAct){
-            $("#paginacionOpc").append('<li class="active page-item" onclick="consultarEmpresas('+ini+'),paginador('+ini+')"><a class="page-link">'+ini+'</a></li> ');
-        }else{
-        $("#paginacionOpc").append('<li class="page-item"  onclick="consultarEmpresas('+ini+'),paginador('+ini+')"><a class="page-link">'+ini+'</a></li>');
+    for (var i = 0; i <= 10; i++, ini++) {
+        if (ini === pagAct) {
+            $("#paginacionOpc").append('<li class="active" onclick="consultarUsuarios(' + ini + '),paginador(' + ini + ')"><a>' + ini + '</a></li> ');
+        } else {
+            $("#paginacionOpc").append('<li onclick="consultarUsuarios(' + ini + '),paginador(' + ini + ')"><a>' + ini + '</a></li>');
         }
     }
-    $("#paginacionOpc").append('<li class="page-item"  onclick="paginador('+(ini + 1)+')"><a class="page-link">&raquo;</a></li>');
+    $("#paginacionOpc").append('<li onclick="paginador(' + (ini + 1) + ')"><a>&raquo;</a></li>');
+
 }

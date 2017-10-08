@@ -5,18 +5,33 @@
   src: local('Lato Regular'), local('Lato-Regular'), url(http://themes.googleusercontent.com/static/fonts/lato/v7/qIIYRU-oROkIk8vfvxw6QvesZW2xOQ-xsNqO47m55DA.woff) format('woff');
 }
 
-body {
-	background: #132353;
-	font-family: "Lato" ;
-}
-#imagenFondo{
-
+#imagenFondo{    
     background-image: url(../Imágenes/Fondos/fondoAdmin.jpg);
     background-position: center center;	  
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    font-size: 20px;
+    color: white;
 }
+#imagenFondoo{    
+    background-image: url(../Imágenes/Fondos/fondoAdmin.jpg);
+    background-position: center center;	  
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;    
+    color: white;
+}
+.estilo1{
+    font-family: 'Satisfy', cursive;
+}
+.estilo2{
+    align-content: center;
+    text-align: center;
+    font-family: fantasy;
+    font-size: 20px;
+    }
+
 aum{
     font-size: 38px;
 }
@@ -33,9 +48,7 @@ footer{
     background-size: cover;
     color: grey;
 }
-.btn-primary{
-    background: #132353;
-}
+
 #mesajeResult{
     margin-top: 10px;
 }
@@ -134,8 +147,8 @@ footer{
 
 .image{
     position: absolute;
-    top: 87%;
-    left: 50%;
+    top: 120%;
+    left: 56%;
     width: 100px;
     height: 100px;
     margin:-60px 0 0 -60px;
@@ -162,7 +175,7 @@ ul {
     height: 100%;
     margin: 0;
     padding: 0;
-    background: #132353;
+    background: #185B0E;
 }
 
 li a {
@@ -170,7 +183,9 @@ li a {
     color: white;
     padding: 8px 16px;
     text-decoration: none;
-    background: #132353;
+    background: #185B0E;
+    font-size: 25px;
+    text-align: left;
 }
 
 /* Change the link color on hover */
@@ -187,7 +202,12 @@ li a:hover {
     color: white;
 }
 .FondoTB{
-    background: #132353;
+    background: #185B0E;
+}
+.FondoTB img{
+    position: absolute; top: 0.5%; right: 5%;
+    width: 5%;
+    height: 10%;
 }
 .padding-0{
     padding-right:0;
@@ -197,98 +217,21 @@ li a:hover {
     margin: 0;
 }
 .TB{
+    text-align: center;
+    font-family: fantasy;
+    font-size: 40px;
     color: white;
 }
-.body {
-	background: #132353;
-	font-family: "Lato" ;
-}
-.body2{
-	background: #AADCE3;
-	font-family: "Lato" ;
+.TB1{
+    text-align: center;
+    font-family: fantasy;
+    font-size: 25px;
+    color: #384BFA; 
+    position: absolute;
+    top: 111%;
+    left: 8%;
 }
 .fondo {
-	background: #132353;
-	font-family: "Lato" ;
-}
-.wrap {
-	width:250px;
-	height: auto;
-	margin: auto;
-	margin-top: 10%;
-}
-.avatar {
-	width: 100%;
-	margin: auto;
-	width: 65px;
-	border-radius: 100px;
-	height: 65px;
-	background: #448ed3 ;
-	position: relative;
-	bottom: -15px;
-}
-.avatar img {
-	width: 55px;
-	height: 55px;
-	border-radius: 100px;
-	margin: auto;
-	border:3px solid #fff;
-	display: block;
-}
-.wrap input {
-	border: none;
-	background: #fff;
-  font-family:Lato ;
-  font-weight:700 ;
-	display: block;
-	height: 40px;
-	outline: none;
-	width: calc(100% - 24px) ;
-	margin: auto;
-	padding: 6px 12px 6px 12px;
-}
-#borde{
-    border: 2px solid black;
-}
-.bar {
-	width: 100%;
-	height: 1px;
-	background: #fff ;
-}
-.bar i {
-	width: 95%;
-	margin: auto;
-	height: 1px ;
-	display: block;
-	background: #d1d1d1;
-}
-.wrap input[type="text"] {
-	border-radius: 7px 7px 0px 0px ;
-}
-.wrap input[type="password"] {
-	border-radius: 0px 0px 7px 7px ;
-}
-.forgot_link {
-	color: #83afdf ;
-	color: #83afdf;
-	text-decoration: none;
-	font-size: 11px;
-	position: relative;
-	left: 193px;
-	top: -36px;
-}
-.wrap button {
-	width: 100%;
-	border-radius: 7px;
-	background: #b6ee65;
-	text-decoration: center;
-	border: none;
-	color: #51771a;
-        margin-top:-5px;
-	padding-top: 14px;
-	padding-bottom: 14px;
-	outline: none;
-	font-size: 13px;	
-	border-bottom: 3px solid #307d63;
-	cursor: pointer;
+	background: #185B0E;
+	font-family: fantasy;
 }

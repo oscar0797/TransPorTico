@@ -308,7 +308,7 @@
                     <p class="text-center aum2">SÍGUENOS TAMBIÉN AQUÍ</p>
                     <p class="text-center aum"><i class="fa">&#xf230;</i> <i class="fa">&#xf081;</i> <i class="fa">&#xf16d;</i> <i class="fa">&#xf2c6;</i> <i class="fa">&#xf0d5;</i></p>
                     <p class="text-center">Copyright <i class="fa">&#xf1f9;</i> 2017 Trans~Por~Tico, aviso legal y política de privacidad y de aflición</p>
-                    <p class="text-center">Estamos a su disposicion, contactenos al 8998-9889 ó ingrese a www.TransPortTico.com</p>
+                    <p class="text-center">Estamos a su disposición, contáctenos al 8998-9889 ó ingrese a www.TransPortTico.com</p>
                 </div>
             </div>
         </footer>

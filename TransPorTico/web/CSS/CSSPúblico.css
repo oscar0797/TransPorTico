@@ -177,7 +177,6 @@ and open the template in the editor.
     color: #3B38F8;
 }
 #imagenFondo{
-
     background-image: url(../Imágenes/Fondos/fondoInicio.jpg);
     background-position: center center;	  
     background-repeat: no-repeat;
