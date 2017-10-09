@@ -12,7 +12,7 @@ $(document).ready(function () {
 function registraUsuario() {
     mostrarModal("myModal", "Espere por favor..", "Cargando información de Usuario");
     $.ajax({
-        url: '../UsuarioServlet',
+        url: '../../UsuarioServlet',        
         data: {
             accion: "agregarUsuario",
             nombreUsuario: $("#inputNombreUsuario").val(),
@@ -27,7 +27,7 @@ function registraUsuario() {
             tipo: $("#inputTipo").val()
         },
         error: function () {
-            mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
+            mostrarMensaje("alert alert-danger", "Se generó un error, contacte al administrador (Error del ajax)", "Error!");
         },
         success: function (data) {
             var respuestaTxt = data.substring(2);
@@ -36,6 +36,7 @@ function registraUsuario() {
                 mostrarModal("myModal", "Se genero un error", respuestaTxt);
             } else {
                 mostrarModal("myModal", "Registro de Usuarios", $("#inputNombre").val() + " agregado con exito");
+                limpiarForm();
             }
         },
         type: "POST",
@@ -138,4 +139,8 @@ function paginador(pagAct) {
     }
     $("#paginacionOpc").append('<li onclick="paginador(' + (ini + 1) + ')"><a>&raquo;</a></li>');
 
+}
+
+function limpiarForm() {
+    $('#formularioUsuario').trigger("reset");
 }

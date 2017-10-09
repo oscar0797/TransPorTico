@@ -16,8 +16,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
-        
-        
+
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>       
 
         <!------------------------------------------------------------------------------------------>
@@ -70,6 +70,7 @@
                     </div>
                     <div id="collapseOne" class="collapse modal fade" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
                         <div id="imagenFondos" class="card-body">
+                            <button style="color: #FF0101;" data-toggle="collapse" href="#collapseOne" class="close btn-danger" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
                             <form>
                                 <div class="form-row col-sm-12"> 
                                     <div class="form-group col-sm-4" id="groupUsuario">
@@ -131,9 +132,8 @@
                                     <input type="text" class="form-control" id="imputDireccion" autofocus="autofocus" placeholder="Dirección">
                                 </div>
                                 <div class="form-group estilo2 container" >                                                   
-                                    <button type="submit" class="btn btn-primary" onclick="registraUsuario()">Guardar</button>                                    
+                                    <button type="submit" class="btn btn-success" onclick="registraUsuario()">Guardar</button>                                    
                                     <button type="submit" class="btn btn-danger" data-toggle="collapse" href="#collapseOne">Cancelar</button>
-                                    <button type="submit" class="btn btn-success">Limpiar</button>
                                 </div>
                             </form>
                         </div>
