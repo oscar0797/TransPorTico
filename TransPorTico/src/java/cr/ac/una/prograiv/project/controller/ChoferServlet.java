@@ -50,7 +50,6 @@ public class ChoferServlet extends HttpServlet {
             switch (accion) {
                 case "agregarChofer":
                 case "modificarChofer":
-                   
                     chofer.setCedula(request.getParameter("cedula"));
                     chofer.setNombre(request.getParameter("nombre"));
                     String fechaNacimiento = request.getParameter("fechaNacimiento");
@@ -61,8 +60,6 @@ public class ChoferServlet extends HttpServlet {
                     String fechaVencimiento = request.getParameter("vencimientoLicencia");
                     Date fecha = format.parse(fechaVencimiento);
                     chofer.setVencimientoLicencia(fecha);
-                    chofer.setUltimoUsuario(request.getParameter("ultimoUsuario"));
-
                     if (accion.equals("modificarChofer")) {
                         chofer.setPkIdChofer(Integer.parseInt(request.getParameter("idChofer")));
                         choferBL.merge(chofer);

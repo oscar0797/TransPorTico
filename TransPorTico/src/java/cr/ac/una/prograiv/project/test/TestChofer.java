@@ -20,15 +20,24 @@ public class TestChofer {
         //saveChofer();
         //mergeChofer(1);
         //deleteChofer(1);
-        //findAllChofer();
+        findAllChofer();
         //findIdChofer(1);
          
     }
     
     public static void saveChofer(){
-        Chofer cho = new Chofer("67","Cho1",new Date(),"B1",new Date(),new Date(),"anybody");
-        ChoferBL bl = new ChoferBL();
-        bl.save(cho);
+        Chofer cho1 = new Chofer("2","Cho10",new Date(),"B1",new Date(),new Date(),"anybody");
+        ChoferBL bl1 = new ChoferBL();
+        bl1.save(cho1);
+        Chofer cho2 = new Chofer("3","Cho11",new Date(),"B1",new Date(),new Date(),"anybody");
+        ChoferBL bl2 = new ChoferBL();
+        bl2.save(cho2);
+        Chofer cho3 = new Chofer("4","Cho12",new Date(),"B1",new Date(),new Date(),"anybody");
+        ChoferBL bl3 = new ChoferBL();
+        bl3.save(cho3);
+        Chofer cho4 = new Chofer("5","Cho13",new Date(),"B1",new Date(),new Date(),"anybody");
+        ChoferBL bl4 = new ChoferBL();
+        bl4.save(cho4);
         System.out.println("Chofer guardado con exito");
     }
     

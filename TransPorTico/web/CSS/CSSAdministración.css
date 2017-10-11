@@ -244,3 +244,9 @@ li a:hover {
 	background: #185B0E;
 	font-family: fantasy;
 }
+#centrar{
+    position: center;
+    align-content: center;
+    text-align: center;
+    margin-left: 50%;
+}

@@ -64,7 +64,7 @@
                     <div class="card-header" role="tab" id="headingOne">
                         <h5 class="mb-0" >
                             <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                <b class="estilo2 center-block">Formulario de registro</b>
+                                <b class="estilo2 center-block">Formulario para el registro de usuarios</b>
                             </a>
                         </h5>
                     </div>
@@ -72,44 +72,44 @@
                         <div id="imagenFondos" class="card-body">
                             <button style="color: #FF0101;" data-toggle="collapse" href="#collapseOne" class="close btn-danger" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
                             <form>
-                                <div class="form-row col-sm-12"> 
-                                    <div class="form-group col-sm-4" id="groupUsuario">
+                                <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12"> 
+                                    <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4" id="groupUsuario">
                                         <label for="inputNombreUsuario">Nombre de Usuario:</label>
                                         <input type="text" class="form-control" id="inputNombreUsuario" autofocus="autofocus" placeholder="Nombre de Usuario">
                                     </div>
-                                    <div class="form-group col-sm-4" id="groupPassword">
+                                    <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4" id="groupPassword">
                                         <label for="inputContrasena">Contraseña:</label>
                                         <input type="password" class="form-control" id="inputContrasena" autofocus="autofocus" placeholder="Contraseña">
                                     </div>                                
-                                    <div class="form-group col-sm-4" id="groupPasswordConfirm">
+                                    <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4" id="groupPasswordConfirm">
                                         <label for="inputContrasena">Confirmar Contraseña:</label>
                                         <input type="password" class="form-control" id="inputContrasenaConfirm" autofocus="autofocus" placeholder="Contraseña">
                                     </div>   
                                 </div>
-                                <div class="form-row col-sm-12">
-                                    <div class="form-group col-sm-4" id="groupNombre">
+                                <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4" id="groupNombre">
                                         <label for="inputNombre">Nombre:</label>
                                         <input type="text" class="form-control" id="inputNombre" placeholder="Nombre" >
                                     </div>
-                                    <div class="form-group col-sm-4" id="groupApellido1">
+                                    <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4" id="groupApellido1">
                                         <label for="inputApellido1">Apellido1:</label>
                                         <input type="text" class="form-control" id="inputApellido1" placeholder="Apellido1">
                                     </div>
-                                    <div class="form-group col-sm-4" id="groupApellido2">
+                                    <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4" id="groupApellido2">
                                         <label for="inputApellido1">Apellido2:</label>
                                         <input type="text" class="form-control" id="inputApellido2" placeholder="Apellido2">
                                     </div>
                                 </div>
-                                <div class="form-row col-sm-12">
-                                    <div class="form-group col-sm-4" id="groupCorreo">
+                                <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="form-group col-xs-12 col-sm-3 col-md-3 col-lg-3" id="groupCorreo">
                                         <label for="inputCorreo">Correo</label>
                                         <input type="email" class="form-control" id="inputCorreo" autofocus="autofocus" placeholder="Correo">
                                     </div>
-                                    <div class="form-group col-sm-2" id="groupTelefono">
+                                    <div class="form-group col-xs-12 col-sm-3 col-md-3 col-lg-3" id="groupTelefono">
                                         <label for="inputTelefono">Teléfono:</label>
                                         <input type="text" class="form-control" id="inputTelefono" autofocus="autofocus" placeholder="Teléfono">
                                     </div>
-                                    <div class="form-group col-sm-3" id="groupFechaNacimiento">
+                                    <div class="form-group col-xs-12 col-sm-3 col-md-3 col-lg-3" id="groupFechaNacimiento">
                                         <label for="inputFechaNacimiento">Fecha de Nacimiento:</label>
                                         <div id="fechaNacimiento" class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="dtp_input2" data-link-format="dd/mm/yyyy">
                                             <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="inputFechaNacimiento">
@@ -118,7 +118,7 @@
                                             </span>
                                         </div>
                                     </div>     
-                                    <div class="form-group col-md-3" >
+                                    <div class="form-group col-xs-12 col-sm-3 col-md-3 col-lg-3" >
                                         <label for="inputTipo" class="col-form-label" >Tipo de Usuario</label>
                                         <select id="inputTipo" class="form-control" style="height: 50%;">
                                             <option value="1">Administrador</option>
@@ -127,11 +127,11 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group col-md-12" id="groupdireccion">
+                                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" id="groupdireccion">
                                     <label for="imputDireccion">Direccion</label>
                                     <input type="text" class="form-control" id="imputDireccion" autofocus="autofocus" placeholder="Dirección">
-                                </div>
-                                <div class="form-group estilo2 container" >                                                   
+                                </div>                                
+                                <div class="form-group estilo2">                                     
                                     <button type="submit" class="btn btn-success" onclick="registraUsuario()">Guardar</button>                                    
                                     <button type="submit" class="btn btn-danger" data-toggle="collapse" href="#collapseOne">Cancelar</button>
                                 </div>
@@ -157,7 +157,7 @@
                             </div>
                         </div>
                         <div class=col-md-4">
-                            <button type="button" onclick="busquedaPersonas()" class="btn btn-info center-block"  id="btMostarForm">
+                            <button type="button" onclick="busquedaUsuarios()" class="btn btn-info center-block"  id="btMostarForm">
                                 Buscar <span class="glyphicon glyphicon-search"></span>
                             </button>
                         </div>
@@ -167,12 +167,11 @@
                     <table class="table table-hover table-condensed table-responsive table-bordered" id="tablaUsuarios"></table>
                 </div>
                 <div class="card-footer">
-                    <li class="pagination justify-content-center pagination-sm center-block"  align-content: center" id="paginacionOpc"></ul>
+                    <li class="pagination pagination-sm"  align-content="center" id="paginacionOpc"></ul>
                 </div>
             </div>       
         </div>
-        <div class="container-fluid"></div>
-
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
     </body>

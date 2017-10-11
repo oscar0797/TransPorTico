@@ -47,9 +47,8 @@ public class UsuarioServlet extends HttpServlet {
             UsuarioBL usuBL = new UsuarioBL();
             HttpSession sesion = request.getSession();
             String accion = request.getParameter("accion");
-
             switch (accion) {
-                case "agregarUsuario":  case "modificarUsuario":
+                case "agregarUsuario": case "modificarUsuario":
                     usuario.setNombreUsuario(request.getParameter("nombreUsuario"));
                     usuario.setContrasena(request.getParameter("contrasena"));
                     usuario.setNombre(request.getParameter("nombre"));
@@ -58,12 +57,12 @@ public class UsuarioServlet extends HttpServlet {
                     usuario.setCorreo(request.getParameter("correo"));
                     String fechatxt = request.getParameter("fechaNacimiento");
                     DateFormat format = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
-                    Date date = format.parse(fechatxt);                    
-                    usuario.setFechaNacimiento(date);                    
+                    Date date = format.parse(fechatxt);
+                    usuario.setFechaNacimiento(date);
                     usuario.setTelefono(request.getParameter("telefono"));
                     usuario.setDireccion(request.getParameter("direccion"));
                     usuario.setTipo(Integer.parseInt(request.getParameter("tipo")));
-                                       
+
                     if (accion.equals("modificarUsuario")) {
                         usuario.setPkIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
                         usuBL.merge(usuario);
@@ -72,9 +71,9 @@ public class UsuarioServlet extends HttpServlet {
                         usuBL.save(usuario);
                         out.print("C~Usuario agregado con exito");
                     }
-            break;       
-    
-    case "eliminarUsuario":
+                    break;
+
+                case "eliminarUsuario":
                     usuario.setPkIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
                     usuBL.delete(usuario);
                     out.print("C~Usuario Eliminado con exito");
@@ -93,29 +92,24 @@ public class UsuarioServlet extends HttpServlet {
                     out.print("E~No se indico la acción que se desea realizar");
                     break;
             }
-        } catch (NumberFormatException e    
-        ) {
+        } catch (NumberFormatException e) {
             out.print("E~" + e.getMessage());
-    }
-    catch (Exception e
-
-    
-        ) {
+        } catch (Exception e) {
             out.print("E~" + e.getMessage());
+        }
     }
-}
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-/**
- * Handles the HTTP <code>GET</code> method.
- *
- * @param request servlet request
- * @param response servlet response
- * @throws ServletException if a servlet-specific error occurs
- * @throws IOException if an I/O error occurs
- */
-@Override
-        protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -129,7 +123,7 @@ public class UsuarioServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-        protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -140,7 +134,7 @@ public class UsuarioServlet extends HttpServlet {
      * @return a String containing servlet description
      */
     @Override
-        public String getServletInfo() {
+    public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 
