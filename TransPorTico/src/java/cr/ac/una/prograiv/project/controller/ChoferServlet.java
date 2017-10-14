@@ -52,14 +52,20 @@ public class ChoferServlet extends HttpServlet {
                 case "modificarChofer":
                     chofer.setCedula(request.getParameter("cedula"));
                     chofer.setNombre(request.getParameter("nombre"));
-                    String fechaNacimiento = request.getParameter("fechaNacimiento");
-                    DateFormat format = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
-                    Date date = format.parse(fechaNacimiento);
+                    
+                    String fechaNac = request.getParameter("fechaNacimiento");
+                    DateFormat format1 = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
+                    Date date = format1.parse(fechaNac); 
+                    //chofer.setFechaNacimiento(new Date());
                     chofer.setFechaNacimiento(date);
+                    
                     chofer.setTipoLicencia(request.getParameter("tipoLicencia"));
+                    
                     String fechaVencimiento = request.getParameter("vencimientoLicencia");
-                    Date fecha = format.parse(fechaVencimiento);
+                    DateFormat format2 = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
+                    Date fecha = format2.parse(fechaVencimiento);                    
                     chofer.setVencimientoLicencia(fecha);
+                    
                     if (accion.equals("modificarChofer")) {
                         chofer.setPkIdChofer(Integer.parseInt(request.getParameter("idChofer")));
                         choferBL.merge(chofer);
