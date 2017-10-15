@@ -5,8 +5,8 @@
   src: local('Lato Regular'), local('Lato-Regular'), url(http://themes.googleusercontent.com/static/fonts/lato/v7/qIIYRU-oROkIk8vfvxw6QvesZW2xOQ-xsNqO47m55DA.woff) format('woff');
 }
 
-#imagenFondo{    
-    background-image: url(../Imágenes/Fondos/fondoAdmin.jpg);
+#imagenFondo{        
+    background-image: url(../Imágenes/Fondos/bg1.jpg);
     background-position: center center;	  
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -15,7 +15,7 @@
     color: white;
 }
 #imagenFondos{    
-    background-image: url(../Imágenes/Fondos/azul.jpg);
+    background-image: url(../Imágenes/Fondos/bg1.jpg);
     background-position: center center;	  
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -24,7 +24,7 @@
     color: white;
 }
 #imagenFondoo{    
-    background-image: url(../Imágenes/Fondos/fondoAdmin.jpg);
+    background-image: url(../Imágenes/Fondos/fondos.jpg);
     background-position: center center;	  
     background-repeat: no-repeat;
     background-attachment: fixed;

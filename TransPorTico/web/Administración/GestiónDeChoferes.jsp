@@ -94,7 +94,7 @@
                                     <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupFechaNacimiento">
                                         <label for="inputFechaNacimiento">Fecha de Nacimiento:</label>
                                         <div id="fechaNacimiento" class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="dtp_input2" data-link-format="dd/mm/yyyy">
-                                            <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="inputFechaNacimiento">
+                                            <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="imputFechaNacimiento">
                                             <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-calendar"></span>
                                             </span>

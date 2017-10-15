@@ -50,28 +50,21 @@ public class ChoferServlet extends HttpServlet {
             switch (accion) {
                 case "agregarChofer":
                 case "modificarChofer":
-                    chofer.setCedula(request.getParameter("cedula"));
-                    chofer.setNombre(request.getParameter("nombre"));
-                    
+                                      
                     String fechaNac = request.getParameter("fechaNacimiento");
-                    DateFormat format1 = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
-                    Date date = format1.parse(fechaNac); 
-                    //chofer.setFechaNacimiento(new Date());
-                    chofer.setFechaNacimiento(date);
-                    
-                    chofer.setTipoLicencia(request.getParameter("tipoLicencia"));
-                    
+                    DateFormat format1 = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+                    Date date1 = format1.parse(fechaNac);                    
+                                      
                     String fechaVencimiento = request.getParameter("vencimientoLicencia");
-                    DateFormat format2 = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
-                    Date fecha = format2.parse(fechaVencimiento);                    
-                    chofer.setVencimientoLicencia(fecha);
-                    
+                    DateFormat format2 = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+                    Date date2 = format2.parse(fechaVencimiento);                    
+                                        
                     if (accion.equals("modificarChofer")) {
                         chofer.setPkIdChofer(Integer.parseInt(request.getParameter("idChofer")));
                         choferBL.merge(chofer);
                         out.print("C~Chofer modificado con exito");
                     } else {
-                        choferBL.save(chofer);
+                        choferBL.save(new Chofer(request.getParameter("cedula"),request.getParameter("nombre"),date1,request.getParameter("tipoLicencia"),date2,new Date(),"anybody"));
                         out.print("C~Chofer agregado con exito");
                     }
                     break;

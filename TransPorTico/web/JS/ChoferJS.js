@@ -18,9 +18,9 @@ function registraChofer() {
                 accion: "agregarChofer",
                 cedula: $("#inputCedula").val(),
                 nombre: $("#inputNombre").val(),
-                fechaNacimiento: $("#fechaNacimiento").data('date'),
+                fechaNacimiento: $("#imputFechaNacimiento").val(),
                 tipoLicencia: $("#inputTipoLicencia").val(),
-                vencimientoLicencia: $("#inputFechaVencimiento").data('date')
+                vencimientoLicencia: $("#inputFechaVencimiento").val()
             },
             error: function () {
                 mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
