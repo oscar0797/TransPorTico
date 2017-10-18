@@ -22,6 +22,7 @@
         <script src="../JS/datetimepicker.js" type="text/javascript"></script>
         <script src="../JS/utils.js" type="text/javascript"></script>
         <script src="../JS/Publico.js" type="text/javascript"></script>
+        <script src="../JS/Mapa_version_2.js" type="text/javascript"></script>
 
     </head>
     <body  id="imagenFondo">
@@ -174,7 +175,14 @@
                                 </div>                                 
                                 <div class="form-group col-sm-6" id="groupdireccion">
                                     <label for="password">Direccion</label>
-                                    <input type="text" class="form-control" id="direccion_sign" autofocus="autofocus" placeholder="Dirección">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="direccion_sign" autofocus="autofocus" placeholder="Dirección">
+                                        <span id="Obtener_ubicacion" class="input-group-addon">
+                                            <span class="glyphicon glyphicon-screenshot" onclick="Obtener_ubicacion( )">
+
+                                            </span>
+                                        </span>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <input type="hidden" value="registroAdmin" id="personasAction"/>                       
