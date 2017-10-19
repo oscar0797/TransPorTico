@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBe7lRExeChAWuRiEpRkE-l8aldatSkkAw&libraries=places"></script>
         <link href="../CSS/CSSPúblico.css" rel="stylesheet" type="text/css"/>
         <link href="../CSS/datetimepicker.min.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -22,6 +23,7 @@
         <script src="../JS/datetimepicker.js" type="text/javascript"></script>
         <script src="../JS/utils.js" type="text/javascript"></script>
         <script src="../JS/Publico.js" type="text/javascript"></script>
+        <script src="../JS/Geolocalizacion.js" type="text/javascript"></script>
         <script src="../JS/Mapa_version_2.js" type="text/javascript"></script>
 
     </head>
@@ -183,6 +185,9 @@
                                             </span>
                                         </span>
                                     </div>
+                                </div>
+                                <div class="col-sm-12" id="Mi_mapa">
+                                    
                                 </div>
                                 <div class="form-group">
                                     <input type="hidden" value="registroAdmin" id="personasAction"/>                       
