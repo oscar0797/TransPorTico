@@ -29,7 +29,16 @@ function Obtener_ubicacion ( )
             
             const Mapa_de_Google = new google.maps.Map ( mapa, Objeto_de_configuracion_del_mapa ) ;
         
-            
+            const Marcador_del_mapa_de_Google = new google.maps.Marker (
+            {
+                position:
+                {
+                    lat: Ubicacion.latitude,
+                    lng: Ubicacion.longitude
+                },
+                map: Mapa_de_Google,
+                title: 'Ubicación actual'
+            } ) ;
         } ) ;
     // } ) ;
 }
