@@ -80,6 +80,11 @@ public class ChoferServlet extends HttpServlet {
                     json = new Gson().toJson(chofer);
                     out.print(json);
                     break;
+                case "buscarChofer":
+                    chofer = choferBL.findByID(Integer.parseInt(request.getParameter("idChofer")));
+                    json = new Gson().toJson(chofer);
+                    out.print(json);
+                    break;
                 case "consultarChoferes":
                     json = new Gson().toJson(choferBL.findAll());
                     out.print(json);

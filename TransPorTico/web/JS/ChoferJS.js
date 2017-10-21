@@ -10,7 +10,7 @@ $(document).ready(function () {
 });
 
 function registraChofer() {
-    mostrarModal("myModal", "Espere por favor..", "Cargando información de Chofer");
+    mostrarModal("myModal", "Espere por favor..", "Cargando información de la base de datos");
     if (validar()) {
         $.ajax({
             url: '../ChoferServlet',
@@ -20,7 +20,8 @@ function registraChofer() {
                 nombre: $("#inputNombre").val(),
                 fechaNacimiento: $("#imputFechaNacimiento").val(),
                 tipoLicencia: $("#inputTipoLicencia").val(),
-                vencimientoLicencia: $("#inputFechaVencimiento").val()
+                vencimientoLicencia: $("#inputFechaVencimiento").val(),
+                idChofer: $("#choferAux").val()
             },
             error: function () {
                 mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
@@ -32,7 +33,7 @@ function registraChofer() {
                     mostrarModal("myModal", "Se genero un error", respuestaTxt);
                 } else {
                     consultarChoferes(1);
-                    mostrarModal("myModal", "Registro de Chofers", $("#inputNombre").val() + " agregado con exito");
+                    mostrarModal("myModal", "Registro de Chofer", $("#inputNombre").val() + " agregado con exito");
                     limpiarForm();
                 }
             },
@@ -122,6 +123,7 @@ function registraChofer() {
         $(".mesajeResultText").html(msg);
         $(".mesajeResultText").html(msg);
     }
+    
     function paginador(pagAct) {
         var ini = 1;
         $("#paginacionOpc").html("");
@@ -210,7 +212,30 @@ function eliminarChofer(idChofer) {
     });
 }
 
-function modificarChofer(idChofer) {
+function modificarChofer(pkIdChofer){
+    $("#choferAction").val("buscarChofer");
+    //mostrarModal("myModal", "Espere por favor..", "Buscando en la base de datos");
+    //Se envia la información por ajax
+    $.ajax({
+        url: '../ChoferServlet',
+        data: {
+            accion: $("#choferAction").val(),
+            idChofer: pkIdChofer
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            alert("Se presento un error a la hora de buscar el chofer en la base de datos");
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+            cargaChofer(data);
+            $("#choferAction").val("modificarChofer");
+            $("#choferAction").val("modificarChofer");
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+}
+/*
+function modificar(idChofer) {
     $("#personasAction").val("modificarChofer");
     mostrarModal("myModal", "Espere por favor..", "Buscando nombre en la base de datos");
     //Se envia la información por ajax
@@ -232,20 +257,16 @@ function modificarChofer(idChofer) {
         type: 'GET',
         dataType: "json"
     });
-}
-/*
+} */
+
 function cargaChofer(chofer){
-           $("#choferid_sign").val(chofer.idUsuario);
-           $("#chofer_sign").val(chofer.nombreUsuario);
-           $("#password_sign").val(chofer.contrasena);
-           $("#email_sign").val(chofer.email);
-           $("#primer_ap_sign").val(chofer.apellido1);
-           $("#segundo_ap_sign").val(chofer.apellido2);
-           $("#nombre_sign").val(chofer.nombre);
-           $("#fechaNac").val(chofer.fechaNacimiento);
-           $("#telefono").val(chofer.numTel);
-           $("#correo_sign").val(chofer.email);
-           $("#direccion_sign").val(chofer.direccion);
+           $("#choferAux").val(chofer.pkIdChofer);           
+           $("#inputCedula").val(chofer.cedula);
+           $("#inputNombre").val(chofer.nombre);
+           $("#inputFechaNacimiento").val(chofer.fechaNacimiento);
+           $("#inputTipoLicencia").val(chofer.tipoLicencia);
+           $("#inputFechaVencimiento").val(chofer.vencimientoLicencia);
            $("#myModalFormulario").modal();
+           $("#choferAction").val("modificarChofer");
+           
 }
-*/

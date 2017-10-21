@@ -69,7 +69,9 @@
                         </h5>
                     </div>
                     <div id="collapseOne" class="collapse modal fade" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+
                         <div id="imagenFondos" class="card-body">
+
                             <button style="color: #FF0101;" data-toggle="collapse" href="#collapseOne" class="close btn-danger" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
                             <form>
                                 <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12"> 
@@ -84,9 +86,9 @@
                                     <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4" id="groupTipoLicencia">
                                         <label for="inputTipoLicencia">Tipo Lincencia:</label>
                                         <select id="inputTipoLicencia" class="form-control" style="height: 50%;">
-                                            <option value="1">B-1</option>
-                                            <option value="2">B-2</option>
-                                            <option value="3">B-3</option>
+                                            <option value="B1">B-1</option>
+                                            <option value="B2">B-2</option>
+                                            <option value="B3">B-3</option>
                                         </select>
                                     </div> 
                                 </div>
@@ -111,6 +113,8 @@
                                     </div>
                                 </div>
                                 <div class="form-group estilo2" >
+                                    <input type="hidden" value="agregarChofer" id="choferAction"/> 
+                                    <input type="hidden"  id="choferAux"/>
                                     <button type="submit" class="btn btn-success" onclick="registraChofer()">Guardar</button>                                    
                                     <button type="submit" class="btn btn-danger" data-toggle="collapse" href="#collapseOne">Cancelar</button>
                                 </div>                        
