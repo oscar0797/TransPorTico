@@ -18,18 +18,18 @@ public class TestChofer {
 
     public static void main(String[] args) {
         //saveChofer();
-        //mergeChofer(1);
-        deleteChofer();
+        //mergeChofer(16);
+        //deleteChofer();
         //findAllChofer();
-        //findIdChofer(2);
+        findIdChofer(1);
 
     }
 
     public static void saveChofer() {
-        Chofer cho1 = new Chofer("2", "Cho10", new Date(), "B1", new Date(), new Date(), "anybody");
+        Chofer cho1 = new Chofer("2", "eeeeeee", new Date(), "B1", new Date(), new Date(), "anybody");
         ChoferBL bl1 = new ChoferBL();
         bl1.save(cho1);
-        Chofer cho2 = new Chofer("3", "Cho11", new Date(), "B1", new Date(), new Date(), "anybody");
+       /* Chofer cho2 = new Chofer("3", "Cho11", new Date(), "B1", new Date(), new Date(), "anybody");
         ChoferBL bl2 = new ChoferBL();
         bl2.save(cho2);
         Chofer cho3 = new Chofer("4", "Cho12", new Date(), "B1", new Date(), new Date(), "anybody");
@@ -37,7 +37,7 @@ public class TestChofer {
         bl3.save(cho3);
         Chofer cho4 = new Chofer("5", "Cho13", new Date(), "B1", new Date(), new Date(), "anybody");
         ChoferBL bl4 = new ChoferBL();
-        bl4.save(cho4);
+        bl4.save(cho4);*/
         System.out.println("Chofer guardado con exito");
     }
 
@@ -51,37 +51,37 @@ public class TestChofer {
     }
 
     public static void mergeChofer(Integer Key) {
-        Chofer cho = new Chofer(Key, "999999", "eeeeeee", new Date(), "B1", new Date(), new Date(), "Nadie");
+        Chofer cho = new Chofer(Key, "99", "hola", new Date(), "B1", new Date(), new Date(), "Nadie");
         ChoferBL bl = new ChoferBL();
         bl.merge(cho);
     }
 
     public static void deleteChofer() {
         Chofer cho1 = new Chofer();
-        cho1.setPkIdChofer(1);
+        cho1.setPkIdChofer(11);
         ChoferBL bl1 = new ChoferBL();
         bl1.delete(cho1);
-/*
+
         Chofer cho2 = new Chofer();
-        cho2.setPkIdChofer(2);
+        cho2.setPkIdChofer(12);
         ChoferBL bl2 = new ChoferBL();
         bl2.delete(cho2);
 
         Chofer cho3 = new Chofer();
-        cho3.setPkIdChofer(3);
+        cho3.setPkIdChofer(13);
         ChoferBL bl3 = new ChoferBL();
         bl3.delete(cho3);
 
         Chofer cho4 = new Chofer();
-        cho4.setPkIdChofer(4);
+        cho4.setPkIdChofer(14);
         ChoferBL bl4 = new ChoferBL();
         bl4.delete(cho4);
 
         Chofer cho5 = new Chofer();
-        cho5.setPkIdChofer(5);
+        cho5.setPkIdChofer(15);
         ChoferBL bl5 = new ChoferBL();
         bl5.delete(cho5);
-*/
+
     }
 
     public static void findIdChofer(Integer key) {

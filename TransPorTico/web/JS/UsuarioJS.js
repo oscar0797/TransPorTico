@@ -11,8 +11,9 @@ $(document).ready(function () {
 
 function registraUsuario() {
     mostrarModal("myModal", "Espere por favor..", "Cargando información de Usuario");
+    if (validar()) {
     $.ajax({
-        url: '../../UsuarioServlet',        
+        url: '../UsuarioServlet',        
         data: {
             accion: "agregarUsuario",
             nombreUsuario: $("#inputNombreUsuario").val(),
@@ -21,10 +22,11 @@ function registraUsuario() {
             apellido1: $("#inputApellido1").val(),
             apellido2: $("#inputApellido2").val(),
             correo: $("#inputCorreo").val(),
-            fechaNacimiento: $("#inputFechaNacimiento").data('date'),
+            fechaNacimiento: $("#inputFechaNacimiento").val(),
             telefono: $("#inputTelefono").val(),
             direccion: $("#imputDireccion").val(),
-            tipo: $("#inputTipo").val()
+            tipo: $("#inputTipo").val(),
+            idUsuario: $("#usuarioAux").val()
         },
         error: function () {
             mostrarMensaje("alert alert-danger", "Se generó un error, contacte al administrador (Error del ajax)", "Error!");
@@ -35,6 +37,7 @@ function registraUsuario() {
             if (tipoRespuesta === "E~") {
                 mostrarModal("myModal", "Se genero un error", respuestaTxt);
             } else {
+                consultarUsuarios(1);
                 mostrarModal("myModal", "Registro de Usuarios", $("#inputNombre").val() + " agregado con exito");
                 limpiarForm();
             }
@@ -42,6 +45,10 @@ function registraUsuario() {
         type: "POST",
         dataType: "text"
     });
+    } else {
+        mostrarMensaje("mesageRegistro", "alert alert-danger", "Debe digitar los campos del formulario", "Error!");
+    }
+    $("#usuarioAction").val("#agregarUsuario");
 }
 
 function consultarUsuarios(numpag) {
@@ -52,7 +59,7 @@ function consultarUsuarios(numpag) {
             accion: "consultarUsuarios"
         },
         error: function () { //si existe un error en la respuesta del ajax
-            alert("Se presento un error a la hora de cargar la información de los Usuarios en la base de datos");
+            //alert("Se presento un error a la hora de cargar la información de los Usuarios en la base de datos");
             mostrarModal("myModal", "Error al cargar en la base de datos");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
@@ -143,4 +150,147 @@ function paginador(pagAct) {
 
 function limpiarForm() {
     $('#formularioUsuario').trigger("reset");
+}
+
+function validar() {
+    var validacion = true;
+
+    //Elimina estilo de error en los css
+    //notese que es sobre el grupo que contienen el input
+    $("#groupUsuario").removeClass("has-error");
+    $("#groupPassword").removeClass("has-error");
+    $("#groupPasswordConfirm").removeClass("has-error");
+    $("#groupNombre").removeClass("has-error");
+    $("#groupApellido1").removeClass("has-error");
+    $("#groupApellido2").removeClass("has-error");
+    $("#groupCorreo").removeClass("has-error");
+    $("#groupTelefono").removeClass("has-error");
+    $("#groupFechaNacimiento").removeClass("has-error");
+    $("#groupTipo").removeClass("has-error");
+   // $("#groupDireccion").removeClass("has-error");
+    //valida cada uno de los campos del formulario
+    //Nota: Solo si fueron digitadoslse;
+    if ($("#inputNombreUsuario").val() === "") {
+        $("#groupUsuario").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#inputContrasena").val() === "") {
+        $("#groupPassword").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#inputContrasenaConfirm").val() === "") {
+        $("#groupPasswordConfirm").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#inputNombre").val() === "") {
+        $("#groupNombre").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#inputApellido1").val() === "") {
+        $("#groupApellido1").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#inputApellido2").val() === "") {
+        $("#groupApellido2").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#inputCorreo").val() === "") {
+        $("#groupCorreo").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#inputTelefono").val() === "") {
+        $("#groupTelefono").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#inputFechaNacimiento").val() === "") {
+        $("#groupFechaNacimiento").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#inputTipo").val() === "") {
+        $("#groupTipo").addClass("has-error");
+        validacion = false;
+    }
+    /* if ($("#inputDireccion").val() === "") {
+        $("#groupDireccion").addClass("has-error");
+        validacion = false;
+    }*/
+    return validacion;
+}
+
+function validaEliminacion(nom, idUsuario) {
+    $('#nombreEliminar').text(nom);
+    $('#eliminar').click(function () {
+        eliminarUsuario(idUsuario);
+    });
+}
+
+function eliminarUsuario(idUsuario) {
+    //mostrarModal("myModal", "Espere por favor..", "Se esta eliminando al usuario seleccionado");
+    //Se envia la información por ajax
+    $.ajax({
+        url: '../UsuarioServlet',
+        data: {
+            accion: "eliminarUsuario",
+            idUsuario: idUsuario
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            cambiarMensajeModal("myModal", "Resultado acción", "Se presento un error, contactar al administador");
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+            // se cambia el mensaje del modal por la respuesta del ajax
+            var respuestaTxt = data.substring(2);
+            var tipoRespuesta = data.substring(0, 2);
+            if (tipoRespuesta === "E~") {
+                cambiarMensajeModal("myModal", "Resultado acción", respuestaTxt);
+            } else {
+                $("#myModal").hide();
+                setTimeout(consultarUsuarios(1), 1000);// hace una pausa y consulta la información de la base de datos
+            }
+        },
+        type: 'POST',
+        dataType: "text"
+    });
+    $("#myModal").hide();
+}
+
+function modificarUsuario(pkIdUsuario) {
+    $("#usuarioAction").val("buscarUsuario");
+    //mostrarModal("myModal", "Espere por favor..", "Buscando en la base de datos");
+    //Se envia la información por ajax
+    $.ajax({
+        url: '../UsuarioServlet',
+        data: {
+            accion: $("#usuarioAction").val(),
+            idUsuario: pkIdUsuario
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            alert("Se presento un error a la hora de buscar el usuario en la base de datos");
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+            cargaUsuario(data);
+            $("#usuarioAction").val("modificarUsuario");
+            $("#collapseOne").addClass('show');
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+}
+
+function cargaUsuario(usuario) {
+    $("#usuarioAux").val(usuario.pkIdUsuario);
+    $("#inputNombreUsuario").val(usuario.nombreUsuario);    
+    $("#inputContrasena").val(usuario.contrasena);
+    $("#inputNombre").val(usuario.nombre);
+    $("#inputApellido1").val(usuario.apellido1);
+    $("#inputApellido2").val(usuario.apellido2);
+    $("#inputCorreo").val(usuario.correo);       
+    var fecha1 = new Date(usuario.fechaNacimiento);
+    var fechatxt = fecha1.getDate() + "/" + fecha1.getMonth() + 1 + "/" + fecha1.getFullYear();
+    $("#fechaNacimiento").data({date: fechatxt});
+    $("#inputFechaNacimiento").val(fechatxt);    
+    $("#inputTelefono").val(usuario.telefono);
+    $("#inputDireccion").val(usuario.direccion);   
+    $("#inputTipo").val(usuario.tipo);
+    //$("#myModalFormulario").modal();
+    $("#usuarioAction").val("modificarUsuario");
 }

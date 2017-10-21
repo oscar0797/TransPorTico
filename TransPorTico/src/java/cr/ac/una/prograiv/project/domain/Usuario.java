@@ -44,13 +44,14 @@ public class Usuario  implements java.io.Serializable {
     }
 
 	
-    public Usuario(String nombreUsuario, String contrasena, String nombre, String apellido1, String apellido2, String correo, String telefono, int tipo, Date ultimaFecha, String ultimoUsuario) {
+    public Usuario(String nombreUsuario, String contrasena, String nombre, String apellido1, String apellido2, String correo,Date fechaNacimiento, String telefono, int tipo, Date ultimaFecha, String ultimoUsuario) {
         this.nombreUsuario = nombreUsuario;
         this.contrasena = contrasena;
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
         this.correo = correo;
+        this.fechaNacimiento = fechaNacimiento;
         this.telefono = telefono;
         this.tipo = tipo;
         this.ultimaFecha = ultimaFecha;

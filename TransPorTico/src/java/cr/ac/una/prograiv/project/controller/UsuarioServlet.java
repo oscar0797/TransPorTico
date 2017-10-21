@@ -48,28 +48,41 @@ public class UsuarioServlet extends HttpServlet {
             HttpSession sesion = request.getSession();
             String accion = request.getParameter("accion");
             switch (accion) {
-                case "agregarUsuario": case "modificarUsuario":
-                    usuario.setNombreUsuario(request.getParameter("nombreUsuario"));
-                    usuario.setContrasena(request.getParameter("contrasena"));
-                    usuario.setNombre(request.getParameter("nombre"));
-                    usuario.setApellido1(request.getParameter("apellido1"));
-                    usuario.setApellido2(request.getParameter("apellido2"));
-                    usuario.setCorreo(request.getParameter("correo"));
-                    String fechatxt = request.getParameter("fechaNacimiento");
-                    DateFormat format = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
-                    Date date = format.parse(fechatxt);
-                    usuario.setFechaNacimiento(date);
-                    usuario.setTelefono(request.getParameter("telefono"));
-                    usuario.setDireccion(request.getParameter("direccion"));
-                    usuario.setTipo(Integer.parseInt(request.getParameter("tipo")));
+                case "agregarUsuario":  case "modificarUsuario":
+                    String fechaNac = request.getParameter("fechaNacimiento");
+                    DateFormat format1 = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+                    Date date1 = format1.parse(fechaNac);
 
                     if (accion.equals("modificarUsuario")) {
+                        usuario = new Usuario(request.getParameter("nombreUsuario"),
+                                request.getParameter("contrasena"),
+                                request.getParameter("nombre"),
+                                request.getParameter("apellido1"),
+                                request.getParameter("apellido2"),
+                                request.getParameter("correo"),
+                                date1,
+                                request.getParameter("telefono"),
+                                Integer.parseInt(request.getParameter("tipo")),
+                                new Date(),
+                                "anybody");
+                        
                         usuario.setPkIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
                         usuBL.merge(usuario);
                         out.print("C~Usuario modificado con exito");
                     } else {
-                        usuBL.save(usuario);
+                        usuBL.save(new Usuario(request.getParameter("nombreUsuario"),
+                                request.getParameter("contrasena"),
+                                request.getParameter("nombre"),
+                                request.getParameter("apellido1"),
+                                request.getParameter("apellido2"),
+                                request.getParameter("correo"),
+                                date1,
+                                request.getParameter("telefono"),
+                                Integer.parseInt(request.getParameter("tipo")),
+                                new Date(),
+                                "anybody"));
                         out.print("C~Usuario agregado con exito");
+
                     }
                     break;
 
@@ -81,6 +94,11 @@ public class UsuarioServlet extends HttpServlet {
                 case "consultarUsuarioByID":
                     idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
                     usuario = usuBL.findByID(idUsuario);
+                    json = new Gson().toJson(usuario);
+                    out.print(json);
+                    break;
+                case "buscarUsuario":
+                    usuario = usuBL.findByID(Integer.parseInt(request.getParameter("idUsuario")));
                     json = new Gson().toJson(usuario);
                     out.print(json);
                     break;

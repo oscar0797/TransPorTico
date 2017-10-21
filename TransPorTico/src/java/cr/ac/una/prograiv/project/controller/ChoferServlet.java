@@ -48,9 +48,7 @@ public class ChoferServlet extends HttpServlet {
             String accion = request.getParameter("accion");
 
             switch (accion) {
-                case "agregarChofer":
-                case "modificarChofer":
-                                      
+                case "agregarChofer": case "modificarChofer":                                      
                     String fechaNac = request.getParameter("fechaNacimiento");
                     DateFormat format1 = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
                     Date date1 = format1.parse(fechaNac);                    
@@ -60,6 +58,7 @@ public class ChoferServlet extends HttpServlet {
                     Date date2 = format2.parse(fechaVencimiento);                    
                                         
                     if (accion.equals("modificarChofer")) {
+                        chofer = new Chofer(request.getParameter("cedula"),request.getParameter("nombre"),date1,request.getParameter("tipoLicencia"),date2,new Date(),"anybody");
                         chofer.setPkIdChofer(Integer.parseInt(request.getParameter("idChofer")));
                         choferBL.merge(chofer);
                         out.print("C~Chofer modificado con exito");

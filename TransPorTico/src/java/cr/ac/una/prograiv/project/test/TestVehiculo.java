@@ -21,12 +21,12 @@ public class TestVehiculo {
    public static void main(String []args){
        //saveVehiculo();
        //mergeVehiculo(1);
-       //deleteVehiculo(1);
+       deleteVehiculo(1);
        //findAllVehiculo();
        //findIdVehiculo(1);
    }
     public static void saveVehiculo(){
-        Vehiculo ve = new Vehiculo(1,3000,"modelo2","placa","negro",true,true,new Date(),"Nadie");
+        Vehiculo ve = new Vehiculo(1,3000,"modeloooooo","placa","negro",true,true,new Date(),"Nadie");
         VehiculoBL bl = new VehiculoBL();
         bl.save(ve);
         System.out.println("Vehiculo guardado con exito");

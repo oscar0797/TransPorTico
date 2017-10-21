@@ -96,7 +96,7 @@
                                     <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupFechaNacimiento">
                                         <label for="inputFechaNacimiento">Fecha de Nacimiento:</label>
                                         <div id="fechaNacimiento" class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="dtp_input2" data-link-format="dd/mm/yyyy">
-                                            <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="imputFechaNacimiento">
+                                            <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="inputFechaNacimiento">
                                             <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-calendar"></span>
                                             </span>
@@ -152,7 +152,40 @@
                 <div class="card-footer">
                     <li class="pagination pagination-sm"  align-content="center" id="paginacionOpc"></ul>
                 </div>
-            </div>      
+            </div> 
+            
+        <!-- ********************************************************** -->
+        <!-- MODAL CONFIRMACIÓN ELIMINAR UN USUARIO -->
+        <!-- ********************************************************** -->
+        <div id="topModal">
+        <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        
+                        <h4><b>Confirmación de borrado</b><h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Si confirma la acción la información no
+                            <br>
+                            podrá ser recuperada.
+                            <br><br>
+                            Desea confirmar la eliminación de 
+                            <span id="nombreEliminar">
+
+                            </span>
+                            ?
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <button class="btn btn-danger btn-ok" id="eliminar" value="" data-dismiss="modal">Eliminar</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
     </div>
 

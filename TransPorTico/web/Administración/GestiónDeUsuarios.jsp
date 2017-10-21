@@ -118,7 +118,7 @@
                                             </span>
                                         </div>
                                     </div>     
-                                    <div class="form-group col-xs-12 col-sm-3 col-md-3 col-lg-3" >
+                                    <div class="form-group col-xs-12 col-sm-3 col-md-3 col-lg-3" id="groupTipo">
                                         <label for="inputTipo" class="col-form-label" >Tipo de Usuario</label>
                                         <select id="inputTipo" class="form-control" style="height: 50%;">
                                             <option value="1">Administrador</option>
@@ -127,11 +127,13 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" id="groupdireccion">
+                                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" id="groupDireccion">
                                     <label for="imputDireccion">Direccion</label>
                                     <input type="text" class="form-control" id="imputDireccion" autofocus="autofocus" placeholder="Dirección">
                                 </div>                                
-                                <div class="form-group estilo2">                                     
+                                <div class="form-group estilo2">      
+                                    <input type="hidden" value="agregarUsuario" id="usuarioAction"/> 
+                                    <input type="hidden"  id="usuarioAux"/>
                                     <button type="submit" class="btn btn-success" onclick="registraUsuario()">Guardar</button>                                    
                                     <button type="submit" class="btn btn-danger" data-toggle="collapse" href="#collapseOne">Cancelar</button>
                                 </div>
@@ -169,6 +171,39 @@
                 <div class="card-footer">
                     <li class="pagination pagination-sm"  align-content="center" id="paginacionOpc"></ul>
                 </div>
+                
+                <!-- ********************************************************** -->
+        <!-- MODAL CONFIRMACIÓN ELIMINAR UN USUARIO -->
+        <!-- ********************************************************** -->
+        <div id="topModal">
+        <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        
+                        <h4><b>Confirmación de borrado</b><h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Si confirma la acción la información no
+                            <br>
+                            podrá ser recuperada.
+                            <br><br>
+                            Desea confirmar la eliminación de 
+                            <span id="nombreEliminar">
+
+                            </span>
+                            ?
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <button class="btn btn-danger btn-ok" id="eliminar" value="" data-dismiss="modal">Eliminar</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
             </div>       
         </div>
         
