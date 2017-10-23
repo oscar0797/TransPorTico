@@ -19,7 +19,7 @@ and open the template in the editor.
     height: 300px;
     
     border-radius: 25px;
-    background-color: white;
+    background-color: aquamarine;
     
     margin-top: 2.5%;
     /* margin-left: auto; */
@@ -27,8 +27,6 @@ and open the template in the editor.
     margin-bottom: 2.5%;
     
     /* text-align: center; */
-    
-    display:none;
 }
 
 #encabezado{
