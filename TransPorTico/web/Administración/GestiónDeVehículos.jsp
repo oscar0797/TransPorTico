@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Gestión Cehículos</title>
+        <title>Gestión Vehículos</title>
         <!------------------------------------------------------------------------------------------>
         <!------------- LIBRERIAS BOOTSTRAP----------------------------------------->
         <!------------------------------------------------------------------------------------------>
@@ -64,7 +64,7 @@
                     <div class="card-header" role="tab" id="headingOne">
                         <h5 class="mb-0" >
                             <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                <b class="estilo2 center-block">Formulario para el registro de Vehículos</b>
+                                <b class="estilo2 center-block">Formulario para el registro de vehículos</b>
                             </a>
                         </h5>
                     </div>
