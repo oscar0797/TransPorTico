@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 05/10/2017 12:43:11 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 21/10/2017 03:51:33 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="cr.ac.una.prograiv.project.domain.Historial" table="historial" catalog="transporte" optimistic-lock="version">
         <id name="pkIdHistorial" type="java.lang.Integer">
@@ -17,11 +17,17 @@
         <property name="vehiculo" type="java.lang.Integer">
             <column name="FK_idVehiculo" not-null="true" />
         </property>
-        <property name="origen" type="serializable">
-            <column name="origen" />
+        <property name="origenX" type="double">
+            <column name="origenX" precision="22" scale="0" not-null="true" />
         </property>
-        <property name="destino" type="serializable">
-            <column name="destino" />
+        <property name="origenY" type="double">
+            <column name="origenY" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="destinoX" type="java.lang.Double">
+            <column name="destinoX" precision="22" scale="0" />
+        </property>
+        <property name="destinoY" type="double">
+            <column name="destinoY" precision="22" scale="0" not-null="true" />
         </property>
         <property name="monto" type="double">
             <column name="monto" precision="22" scale="0" not-null="true" />

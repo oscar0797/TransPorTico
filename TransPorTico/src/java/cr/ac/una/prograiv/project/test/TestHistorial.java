@@ -21,14 +21,14 @@ public class TestHistorial {
 
     public static void main(String[] args) {
         //saveHistorial();
-        //mergeHistorial(1);
+        mergeHistorial(1);
         //deleteHistorial(1);
         //findAllHistorial
         //findIdHostorial(1);
     }
 
     public static void saveHistorial() {
-        Historial his = new Historial(1, 1, 1, null, null, 3000, 30, "Excelente Viaje", new Date(), "Nadie");
+        Historial his = new Historial(1, 1, 1, 11, 22, 33, 44, 5250, 30, "Excelente Viaje", new Date(), "Nadie");
         HistorialBL bl = new HistorialBL();
         bl.save(his);
         System.out.println("Historial guardado con exito");
@@ -51,7 +51,7 @@ public class TestHistorial {
     }
 
     public static void mergeHistorial(Integer key) {
-        Historial his = new Historial(key, 1, 1, 3, null, null, 3000, 30, "Pura Vida", new Date(), "Nadie");
+        Historial his = new Historial(key, 1, 1, 1, 22, 33, 44, 55, 4500, 30, "Pura Vida", new Date(), "Nadie");
         HistorialBL bl = new HistorialBL();
         bl.merge(his);
     }

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 05/10/2017 12:43:11 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 21/10/2017 03:51:33 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="cr.ac.una.prograiv.project.domain.Chofer" table="chofer" catalog="transporte" optimistic-lock="version">
         <id name="pkIdChofer" type="java.lang.Integer">
@@ -9,7 +9,7 @@
             <generator class="identity" />
         </id>
         <property name="cedula" type="string">
-            <column name="cedula" length="15" not-null="true" />
+            <column name="cedula" length="15" not-null="true" unique="true" />
         </property>
         <property name="nombre" type="string">
             <column name="nombre" length="45" not-null="true" />
@@ -29,5 +29,6 @@
         <property name="ultimoUsuario" type="string">
             <column name="ultimoUsuario" length="45" not-null="true" />
         </property>
+        
     </class>
 </hibernate-mapping>

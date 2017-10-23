@@ -54,30 +54,35 @@ public class UsuarioServlet extends HttpServlet {
                     Date date1 = format1.parse(fechaNac);
 
                     if (accion.equals("modificarUsuario")) {
-                        usuario = new Usuario(request.getParameter("nombreUsuario"),
-                                request.getParameter("contrasena"),
+                    usuario = new Usuario(
+                                request.getParameter("nombreUsuario"),
+                                request.getParameter("contrasena1"),
+                                request.getParameter("contrasena2"),
                                 request.getParameter("nombre"),
                                 request.getParameter("apellido1"),
                                 request.getParameter("apellido2"),
                                 request.getParameter("correo"),
                                 date1,
                                 request.getParameter("telefono"),
+                                request.getParameter("direccion"),
                                 Integer.parseInt(request.getParameter("tipo")),
                                 new Date(),
                                 "anybody");
-                        
+                         
                         usuario.setPkIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
                         usuBL.merge(usuario);
                         out.print("C~Usuario modificado con exito");
                     } else {
                         usuBL.save(new Usuario(request.getParameter("nombreUsuario"),
-                                request.getParameter("contrasena"),
+                                request.getParameter("contrasena1"),
+                                request.getParameter("contrasena2"),
                                 request.getParameter("nombre"),
                                 request.getParameter("apellido1"),
                                 request.getParameter("apellido2"),
                                 request.getParameter("correo"),
                                 date1,
                                 request.getParameter("telefono"),
+                                request.getParameter("direccion"),
                                 Integer.parseInt(request.getParameter("tipo")),
                                 new Date(),
                                 "anybody"));

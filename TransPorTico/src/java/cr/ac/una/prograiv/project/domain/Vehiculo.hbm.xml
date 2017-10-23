@@ -1,16 +1,13 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 05/10/2017 12:43:11 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 21/10/2017 03:51:33 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="cr.ac.una.prograiv.project.domain.Vehiculo" table="vehiculo" catalog="transporte" optimistic-lock="version">
         <id name="pkIdVehiculo" type="java.lang.Integer">
             <column name="PK_idVehiculo" />
             <generator class="identity" />
         </id>
-        <property name="usuario" type="java.lang.Integer">
-            <column name="FK_idUsuario" not-null="true" />
-        </property>
         <property name="ano" type="int">
             <column name="ano" not-null="true" />
         </property>
@@ -23,8 +20,11 @@
         <property name="color" type="string">
             <column name="color" length="45" not-null="true" />
         </property>
-        <property name="ubicacion" type="serializable">
-            <column name="ubicacion" />
+        <property name="ubicacionX" type="double">
+            <column name="ubicacionX" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="ubicacionY" type="double">
+            <column name="ubicacionY" precision="22" scale="0" not-null="true" />
         </property>
         <property name="activo" type="boolean">
             <column name="activo" not-null="true" />
@@ -38,6 +38,5 @@
         <property name="ultimoUsuario" type="string">
             <column name="ultimoUsuario" length="45" not-null="true" />
         </property>
-        
     </class>
 </hibernate-mapping>

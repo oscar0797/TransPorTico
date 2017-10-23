@@ -1,8 +1,7 @@
 package cr.ac.una.prograiv.project.domain;
-// Generated 05/10/2017 12:43:10 AM by Hibernate Tools 4.3.1
+// Generated 21/10/2017 03:51:32 PM by Hibernate Tools 4.3.1
 
 
-import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,12 +24,15 @@ import javax.persistence.TemporalType;
 )
 public class Historial  implements java.io.Serializable {
 
+
      private Integer pkIdHistorial;
      private Integer chofer;
      private Integer usuario;
      private Integer vehiculo;
-     private Serializable origen;
-     private Serializable destino;
+     private double origenX;
+     private double origenY;
+     private double destinoX;
+     private double destinoY;
      private double monto;
      private int tiempo;
      private String retroalimentacion;
@@ -40,25 +42,30 @@ public class Historial  implements java.io.Serializable {
     public Historial() {
     }
 
-    public Historial(Integer chofer, Integer usuario, Integer vehiculo, Serializable origen, Serializable destino, double monto, int tiempo, String retroalimentacion, Date ultimaFecha, String ultimoUsuario) {
-       this.chofer = chofer;
-       this.usuario = usuario;
-       this.vehiculo = vehiculo;
-       this.origen = origen;
-       this.destino = destino;
-       this.monto = monto;
-       this.tiempo = tiempo;
-       this.retroalimentacion = retroalimentacion;
-       this.ultimaFecha = ultimaFecha;
-       this.ultimoUsuario = ultimoUsuario;
+	
+    public Historial(Integer chofer, Integer usuario, Integer vehiculo, double origenX, double origenY, double destinoX, double destinoY, double monto, int tiempo, String retroalimentacion, Date ultimaFecha, String ultimoUsuario) {
+        this.chofer = chofer;
+        this.usuario = usuario;
+        this.vehiculo = vehiculo;
+        this.origenX = origenX;
+        this.origenY = origenY;
+        this.destinoX=destinoX;
+        this.destinoY = destinoY;
+        this.monto = monto;
+        this.tiempo = tiempo;
+        this.retroalimentacion = retroalimentacion;
+        this.ultimaFecha = ultimaFecha;
+        this.ultimoUsuario = ultimoUsuario;
     }
-    public Historial(Integer pkIdHistorial,Integer chofer, Integer usuario, Integer vehiculo, Serializable origen, Serializable destino, double monto, int tiempo, String retroalimentacion, Date ultimaFecha, String ultimoUsuario) {
+    public Historial(Integer pkIdHistorial, Integer chofer, Integer usuario, Integer vehiculo, double origenX, double origenY, double destinoX, double destinoY, double monto, int tiempo, String retroalimentacion, Date ultimaFecha, String ultimoUsuario) {
        this.pkIdHistorial=pkIdHistorial;
        this.chofer = chofer;
        this.usuario = usuario;
        this.vehiculo = vehiculo;
-       this.origen = origen;
-       this.destino = destino;
+       this.origenX = origenX;
+       this.origenY = origenY;
+       this.destinoX = destinoX;
+       this.destinoY = destinoY;
        this.monto = monto;
        this.tiempo = tiempo;
        this.retroalimentacion = retroalimentacion;
@@ -106,23 +113,43 @@ public class Historial  implements java.io.Serializable {
     }
 
     
-    @Column(name="origen")
-    public Serializable getOrigen() {
-        return this.origen;
+    @Column(name="origenX", nullable=false, precision=22, scale=0)
+    public double getOrigenX() {
+        return this.origenX;
     }
     
-    public void setOrigen(Serializable origen) {
-        this.origen = origen;
+    public void setOrigenX(double origenX) {
+        this.origenX = origenX;
     }
 
     
-    @Column(name="destino")
-    public Serializable getDestino() {
-        return this.destino;
+    @Column(name="origenY", nullable=false, precision=22, scale=0)
+    public double getOrigenY() {
+        return this.origenY;
     }
     
-    public void setDestino(Serializable destino) {
-        this.destino = destino;
+    public void setOrigenY(double origenY) {
+        this.origenY = origenY;
+    }
+
+    
+    @Column(name="destinoX", precision=22, scale=0)
+    public Double getDestinoX() {
+        return this.destinoX;
+    }
+    
+    public void setDestinoX(Double destinoX) {
+        this.destinoX = destinoX;
+    }
+
+    
+    @Column(name="destinoY", nullable=false, precision=22, scale=0)
+    public double getDestinoY() {
+        return this.destinoY;
+    }
+    
+    public void setDestinoY(double destinoY) {
+        this.destinoY = destinoY;
     }
 
     
@@ -174,6 +201,10 @@ public class Historial  implements java.io.Serializable {
     public void setUltimoUsuario(String ultimoUsuario) {
         this.ultimoUsuario = ultimoUsuario;
     }
+
+
+
+
 }
 
 

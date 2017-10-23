@@ -17,7 +17,8 @@ function registraUsuario() {
         data: {
             accion: "agregarUsuario",
             nombreUsuario: $("#inputNombreUsuario").val(),
-            contrasena: $("#inputContrasena").val(),
+            contrasena1: $("#inputContrasena1").val(),
+            contrasena2: $("#inputContrasena2").val(),
             nombre: $("#inputNombre").val(),
             apellido1: $("#inputApellido1").val(),
             apellido2: $("#inputApellido2").val(),
@@ -158,7 +159,8 @@ function validar() {
     //Elimina estilo de error en los css
     //notese que es sobre el grupo que contienen el input
     $("#groupUsuario").removeClass("has-error");
-    $("#groupPassword").removeClass("has-error");
+    $("#groupContrasena1").removeClass("has-error");
+    $("#groupContrasena2").removeClass("has-error");
     $("#groupPasswordConfirm").removeClass("has-error");
     $("#groupNombre").removeClass("has-error");
     $("#groupApellido1").removeClass("has-error");
@@ -174,12 +176,12 @@ function validar() {
         $("#groupUsuario").addClass("has-error");
         validacion = false;
     }
-    if ($("#inputContrasena").val() === "") {
-        $("#groupPassword").addClass("has-error");
+    if ($("#inputContrasena1").val() === "") {
+        $("#groupContrasena1").addClass("has-error");
         validacion = false;
     }
-    if ($("#inputContrasenaConfirm").val() === "") {
-        $("#groupPasswordConfirm").addClass("has-error");
+    if ($("#inputContrasena2").val() === "") {
+        $("#groupContrasena2").addClass("has-error");
         validacion = false;
     }
     if ($("#inputNombre").val() === "") {
@@ -255,6 +257,7 @@ function eliminarUsuario(idUsuario) {
 
 function modificarUsuario(pkIdUsuario) {
     $("#usuarioAction").val("buscarUsuario");
+    
     //mostrarModal("myModal", "Espere por favor..", "Buscando en la base de datos");
     //Se envia la información por ajax
     $.ajax({
@@ -279,7 +282,8 @@ function modificarUsuario(pkIdUsuario) {
 function cargaUsuario(usuario) {
     $("#usuarioAux").val(usuario.pkIdUsuario);
     $("#inputNombreUsuario").val(usuario.nombreUsuario);    
-    $("#inputContrasena").val(usuario.contrasena);
+    $("#inputContrasena1").val(usuario.contrasena1);
+    $("#inputContrasena2").val(usuario.contrasena2);
     $("#inputNombre").val(usuario.nombre);
     $("#inputApellido1").val(usuario.apellido1);
     $("#inputApellido2").val(usuario.apellido2);

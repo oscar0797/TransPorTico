@@ -77,13 +77,13 @@
                                         <label for="inputNombreUsuario">Nombre de Usuario:</label>
                                         <input type="text" class="form-control" id="inputNombreUsuario" autofocus="autofocus" placeholder="Nombre de Usuario">
                                     </div>
-                                    <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4" id="groupPassword">
-                                        <label for="inputContrasena">Contraseña:</label>
-                                        <input type="password" class="form-control" id="inputContrasena" autofocus="autofocus" placeholder="Contraseña">
+                                    <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4" id="groupContrasena1">
+                                        <label for="inputContrasena1">Contraseña:</label>
+                                        <input type="password" class="form-control" id="inputContrasena1" autofocus="autofocus" placeholder="Contraseña">
                                     </div>                                
-                                    <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4" id="groupPasswordConfirm">
-                                        <label for="inputContrasena">Confirmar Contraseña:</label>
-                                        <input type="password" class="form-control" id="inputContrasenaConfirm" autofocus="autofocus" placeholder="Contraseña">
+                                    <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4" id="groupContrasena2">
+                                        <label for="inputContrasena2">Confirmar Contraseña:</label>
+                                        <input type="password" class="form-control" id="inputContrasena2" autofocus="autofocus" placeholder="Contraseña">
                                     </div>   
                                 </div>
                                 <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">

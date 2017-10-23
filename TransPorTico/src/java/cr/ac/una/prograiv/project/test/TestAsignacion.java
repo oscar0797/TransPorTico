@@ -17,7 +17,7 @@ import java.util.List;
 public class TestAsignacion {
     
      public static void main(String []args){
-        //saveAsignacion();
+        saveAsignacion();
         //mergeAsignacion(1);
         //deleteAsignacion(1);
         //findAllAsignacion();

@@ -20,13 +20,13 @@ import java.util.List;
 public class TestVehiculo {
    public static void main(String []args){
        //saveVehiculo();
-       //mergeVehiculo(1);
-       deleteVehiculo(1);
+       mergeVehiculo(1);
+       //deleteVehiculo(1);
        //findAllVehiculo();
        //findIdVehiculo(1);
    }
     public static void saveVehiculo(){
-        Vehiculo ve = new Vehiculo(1,3000,"modeloooooo","placa","negro",true,true,new Date(),"Nadie");
+        Vehiculo ve = new Vehiculo(2000,"modelo1","placa1","negro",10,10,true,true,new Date(),"Nadie");
         VehiculoBL bl = new VehiculoBL();
         bl.save(ve);
         System.out.println("Vehiculo guardado con exito");
@@ -46,7 +46,7 @@ public class TestVehiculo {
     }
     
     public static void mergeVehiculo(Integer key){
-        Vehiculo ve = new Vehiculo(key,2,2000,"modelo","placa","negro",null,true,true,new Date(),"Nadie");
+        Vehiculo ve = new Vehiculo(key,2000,"modelo","placa","negro",10,10,true,true,new Date(),"Nadie");
         VehiculoBL bl = new VehiculoBL();
         bl.merge(ve);
     }

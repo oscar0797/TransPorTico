@@ -1,5 +1,5 @@
 package cr.ac.una.prograiv.project.domain;
-// Generated 05/10/2017 12:43:10 AM by Hibernate Tools 4.3.1
+// Generated 21/10/2017 03:51:32 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
@@ -33,12 +33,12 @@ public class Asignacion  implements java.io.Serializable {
        this.chofer = chofer;
        this.vehiculo = vehiculo;
     }
-   
-     public Asignacion(Integer pkIdAsignacion,Integer chofer, Integer vehiculo) {
+    public Asignacion(Integer pkIdAsignacion, Integer chofer, Integer vehiculo) {
        this.pkIdAsignacion=pkIdAsignacion;
        this.chofer = chofer;
        this.vehiculo = vehiculo;
     }
+   
      @Id @GeneratedValue(strategy=IDENTITY)
 
     
@@ -51,8 +51,7 @@ public class Asignacion  implements java.io.Serializable {
         this.pkIdAsignacion = pkIdAsignacion;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="FK_idChofer", nullable=false)
+    @Column(name="FK_idChofer", nullable=false)
     public Integer getChofer() {
         return this.chofer;
     }
@@ -61,8 +60,7 @@ public class Asignacion  implements java.io.Serializable {
         this.chofer = chofer;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="FK_idVehiculo", nullable=false)
+    @Column(name="FK_idVehiculo", nullable=false)
     public Integer getVehiculo() {
         return this.vehiculo;
     }

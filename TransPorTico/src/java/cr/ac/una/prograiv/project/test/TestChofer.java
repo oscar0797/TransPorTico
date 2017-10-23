@@ -17,27 +17,28 @@ import java.util.List;
 public class TestChofer {
 
     public static void main(String[] args) {
-        //saveChofer();
+        saveChofer();
         //mergeChofer(16);
         //deleteChofer();
         //findAllChofer();
-        findIdChofer(1);
+        //findIdChofer(1);
 
     }
 
     public static void saveChofer() {
-        Chofer cho1 = new Chofer("2", "eeeeeee", new Date(), "B1", new Date(), new Date(), "anybody");
+        Chofer cho1 = new Chofer("116810872", "Chofer1", new Date(), "B1", new Date(), new Date(), "anybody");
         ChoferBL bl1 = new ChoferBL();
         bl1.save(cho1);
-       /* Chofer cho2 = new Chofer("3", "Cho11", new Date(), "B1", new Date(), new Date(), "anybody");
+        /*
+        Chofer cho2 = new Chofer("3", "Chofer22", new Date(), "B1", new Date(), new Date(), "anybody");
         ChoferBL bl2 = new ChoferBL();
         bl2.save(cho2);
-        Chofer cho3 = new Chofer("4", "Cho12", new Date(), "B1", new Date(), new Date(), "anybody");
+        Chofer cho3 = new Chofer("4", "Chofer23", new Date(), "B1", new Date(), new Date(), "anybody");
         ChoferBL bl3 = new ChoferBL();
         bl3.save(cho3);
-        Chofer cho4 = new Chofer("5", "Cho13", new Date(), "B1", new Date(), new Date(), "anybody");
+        Chofer cho4 = new Chofer("5", "Chofer24", new Date(), "B1", new Date(), new Date(), "anybody");
         ChoferBL bl4 = new ChoferBL();
-        bl4.save(cho4);*/
+        bl4.save(cho4)*/
         System.out.println("Chofer guardado con exito");
     }
 

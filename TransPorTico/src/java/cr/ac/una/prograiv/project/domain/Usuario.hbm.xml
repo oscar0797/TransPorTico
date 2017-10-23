@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 05/10/2017 12:43:11 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 21/10/2017 03:51:33 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="cr.ac.una.prograiv.project.domain.Usuario" table="usuario" catalog="transporte" optimistic-lock="version">
         <id name="pkIdUsuario" type="java.lang.Integer">
@@ -9,10 +9,13 @@
             <generator class="identity" />
         </id>
         <property name="nombreUsuario" type="string">
-            <column name="nombreUsuario" length="45" not-null="true" />
+            <column name="nombreUsuario" length="45" not-null="true" unique="true" />
         </property>
-        <property name="contrasena" type="string">
-            <column name="contrasena" length="45" not-null="true" />
+        <property name="contrasena1" type="string">
+            <column name="contrasena1" length="45" not-null="true" />
+        </property>
+        <property name="contrasena2" type="string">
+            <column name="contrasena2" length="45" not-null="true" />
         </property>
         <property name="nombre" type="string">
             <column name="nombre" length="45" not-null="true" />
@@ -24,16 +27,16 @@
             <column name="apellido2" length="45" not-null="true" />
         </property>
         <property name="correo" type="string">
-            <column name="correo" length="45" not-null="true" />
+            <column name="correo" length="60" not-null="true" />
         </property>
         <property name="fechaNacimiento" type="date">
-            <column name="fechaNacimiento" length="10" />
+            <column name="fechaNacimiento" length="10" not-null="true" />
         </property>
         <property name="telefono" type="string">
-            <column name="telefono" length="45" not-null="true" />
+            <column name="telefono" length="10" not-null="true" />
         </property>
-        <property name="direccion" type="serializable">
-            <column name="direccion" />
+        <property name="direccion" type="string">
+            <column name="direccion" length="100" not-null="true" />
         </property>
         <property name="tipo" type="int">
             <column name="tipo" not-null="true" />
@@ -44,6 +47,5 @@
         <property name="ultimoUsuario" type="string">
             <column name="ultimoUsuario" length="45" not-null="true" />
         </property>
-        
     </class>
 </hibernate-mapping>
