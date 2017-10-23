@@ -38,6 +38,8 @@ $(document).ready(function () {
     });
 });
 
+
+
  function mostrarModal(idDiv ,titulo, mensaje){
      $("#"+idDiv+"Title").html(titulo);
      $("#"+idDiv+"Message").html(mensaje);

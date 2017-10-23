@@ -38,7 +38,7 @@
             </div>
         </div>
 
-        <div id="encabezado">
+        <div id="encabezado" >
             <h1>Trans~Por~Tico</h1>           
             <img class="img-circle" src="../Imágenes/Inicio/mundo.gif" alt=""/>            
         </div>
