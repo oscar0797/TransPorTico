@@ -15,7 +15,7 @@ function registraUsuario() {
     $.ajax({
         url: '../UsuarioServlet',        
         data: {
-            accion: "agregarUsuario",
+            accion: $("#usuarioAction").val(),
             nombreUsuario: $("#inputNombreUsuario").val(),
             contrasena1: $("#inputContrasena1").val(),
             contrasena2: $("#inputContrasena2").val(),
