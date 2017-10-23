@@ -25,7 +25,7 @@ function registraUsuario() {
             correo: $("#inputCorreo").val(),
             fechaNacimiento: $("#inputFechaNacimiento").val(),
             telefono: $("#inputTelefono").val(),
-            direccion: $("#imputDireccion").val(),
+            direccion: $("#inputDireccion").val(),
             tipo: $("#inputTipo").val(),
             idUsuario: $("#usuarioAux").val()
         },
@@ -167,6 +167,7 @@ function validar() {
     $("#groupApellido2").removeClass("has-error");
     $("#groupCorreo").removeClass("has-error");
     $("#groupTelefono").removeClass("has-error");
+    $("#groupDireccion").removeClass("has-error");
     $("#groupFechaNacimiento").removeClass("has-error");
     $("#groupTipo").removeClass("has-error");
    // $("#groupDireccion").removeClass("has-error");
@@ -202,6 +203,10 @@ function validar() {
     }
     if ($("#inputTelefono").val() === "") {
         $("#groupTelefono").addClass("has-error");
+        validacion = false;
+    }
+     if ($("#inputDireccion").val() === "") {
+        $("#groupDireccion").addClass("has-error");
         validacion = false;
     }
     if ($("#inputFechaNacimiento").val() === "") {

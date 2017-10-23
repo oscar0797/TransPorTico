@@ -128,8 +128,8 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" id="groupDireccion">
-                                    <label for="imputDireccion">Direccion</label>
-                                    <input type="text" class="form-control" id="imputDireccion" autofocus="autofocus" placeholder="Dirección">
+                                    <label for="inputDireccion">Direccion</label>
+                                    <input type="text" class="form-control" id="inputDireccion" autofocus="autofocus" placeholder="Dirección">
                                 </div>                                
                                 <div class="form-group estilo2">      
                                     <input type="hidden" value="agregarUsuario" id="usuarioAction"/> 
