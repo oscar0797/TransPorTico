@@ -44,7 +44,7 @@ function registraUsuario() {
             }
         },
         type: "POST",
-        dataType: "text"
+        dataType: "texT"
     });
     } else {
         mostrarMensaje("mesageRegistro", "alert alert-danger", "Debe digitar los campos del formulario", "Error!");
