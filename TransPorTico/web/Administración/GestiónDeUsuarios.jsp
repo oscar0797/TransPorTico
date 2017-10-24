@@ -73,11 +73,11 @@
                             <button style="color: #FF0101;" data-toggle="collapse" href="#collapseOne" class="close btn-danger" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
                             <form>
                                 <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12"> 
-                                    <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4" id="groupUsuario">
+                                    <div class="form-group col-xs-12 col-sm-3 col-md-3 col-lg-3" id="groupUsuario">
                                         <label for="inputNombreUsuario">Nombre de Usuario:</label>
                                         <input type="text" class="form-control" id="inputNombreUsuario" autofocus="autofocus" placeholder="Nombre de Usuario">
                                     </div>
-                                    <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4" id="groupContrasena1">
+                                    <div class="form-group col-xs-12 col-sm-3 col-md-3 col-lg-3" id="groupContrasena1">
                                         <label for="inputContrasena1">Contraseña:</label>
                                         <input type="password" class="form-control" id="inputContrasena1" autofocus="autofocus" placeholder="Contraseña">
                                     </div>                                
