@@ -3,7 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+$ ( document ).ready ( function ( )
+{
+    $ ( "#Obtener_ubicacion" ).click ( function ( )
+    {
+        $ ( "#Auxiliar" ).show ( ) ;
+    } ) ;
+} ) ;
 
 function Obtener_ubicacion ( )
 {
