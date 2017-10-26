@@ -84,7 +84,7 @@ function dibujarTabla(numpag, dataJson) {
     row.append($("<th><b>Apellido1</b></th>"));
     row.append($("<th><b>Correo</b></th>"));
     row.append($("<th><b>FechaNacimiento</b></th>"));
-    row.append($("<th><b>Telefono</b></th>"));
+    row.append($("<th><b>Teléfono</b></th>"));
     row.append($("<th><b>Dirección</b></th>"));
     row.append($("<th><b>Acción</b></th>"));
     //carga la tabla con el json devuelto

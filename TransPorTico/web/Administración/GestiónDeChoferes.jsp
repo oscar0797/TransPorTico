@@ -84,7 +84,6 @@
                                 <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                     <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4" id="groupCedula">
                                         <label for="inputCedula">Cédula*</label>
-                                        <a href="GestiónDeChoferes.jsp"></a>
                                         <input type="text" class="form-control" id="inputCedula" autofocus="autofocus" placeholder="Cedula" onpaste="return false" onkeyup="validaNum('inputCedula'), validaTamMax('inputCedula', 10, 'La cantidad máxima de dígitos es 10')" >
                                     </div>
                                     <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4" id="groupNombre">
