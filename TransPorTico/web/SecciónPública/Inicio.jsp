@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-   <head>
+    <head>
         <title>Inicio</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +19,7 @@
         <link href="../CSS/CSSPúblico.css" rel="stylesheet" type="text/css"/>
         <link href="../CSS/datetimepicker.min.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        
+
         <script src="../JS/datetimepicker.js" type="text/javascript"></script>
         <script src="../JS/utils.js" type="text/javascript"></script>
         <script src="../JS/Publico.js" type="text/javascript"></script>
@@ -180,14 +180,12 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control" id="direccion_sign" autofocus="autofocus" placeholder="Dirección">
                                         <span id="Obtener_ubicacion" class="input-group-addon">
-                                            <span class="glyphicon glyphicon-screenshot" onclick="Obtener_ubicacion( )">
-
-                                            </span>
+                                            <span class="glyphicon glyphicon-screenshot" onclick="Obtener_ubicacion( )">  </span>                                        </span>
                                         </span>
                                     </div>
                                 </div>
                                 <div class="col-sm-12" id="Mi_mapa">
-                                    
+
                                 </div>
                                 <div class="form-group">
                                     <input type="hidden" value="registroAdmin" id="personasAction"/>                       
