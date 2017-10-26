@@ -75,16 +75,11 @@
                                 <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                 <div class="form-row col-xs-12 col-sm-8 col-md-8 col-lg-8">
                                 <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12"> 
-                                    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" id="groupUsuario">
+                                    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupUsuario">
                                         <label for="inputNombreUsuario">Nombre de Usuario:</label>
                                         <input type="text" class="form-control" id="inputNombreUsuario" autofocus="autofocus" placeholder="Nombre de Usuario">
                                     </div>
-                                    <div id="Mi_mapa_2">
-                                        
-                                    </div>
-                                </div>
-                                <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" id="groupNombre">
+                                    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupNombre">
                                         <label for="inputNombre">Nombre:</label>
                                         <input type="text" class="form-control" id="inputNombre" placeholder="Nombre" >
                                     </div>
@@ -140,10 +135,12 @@
                                 </div>
                                 </div>
                                 <div class="form-row col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                    
                                     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" id="groupDireccion">
                                         <label for="inputDireccion">Direccion</label>
-                                        <input type="text" class="form-control" id="inputDireccion" autofocus="autofocus" placeholder="Dirección">
+                                        <div id="Mi_mapa_2">
+                                            
+                                        </div>
+                                        <input type="text" class="form-control" id="inputDireccion" autofocus="autofocus" placeholder="Dirección" size="100%">
                                     </div>
                                 </div>
                                 </div>
