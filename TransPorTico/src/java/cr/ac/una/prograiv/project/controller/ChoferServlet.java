@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import cr.ac.una.prograiv.project.Validaciones.Validaciones;
 
 /**
  *
@@ -44,26 +45,28 @@ public class ChoferServlet extends HttpServlet {
             int idChofer;
             Chofer chofer = new Chofer();
             ChoferBL choferBL = new ChoferBL();
+            Validaciones val = new Validaciones();
             HttpSession sesion = request.getSession();
             String accion = request.getParameter("accion");
 
             switch (accion) {
-                case "agregarChofer": case "modificarChofer":                                      
+                case "agregarChofer":
+                case "modificarChofer":
                     String fechaNac = request.getParameter("fechaNacimiento");
                     DateFormat format1 = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
-                    Date date1 = format1.parse(fechaNac);                    
-                                      
+                    Date date1 = format1.parse(fechaNac);
+
                     String fechaVencimiento = request.getParameter("vencimientoLicencia");
                     DateFormat format2 = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
-                    Date date2 = format2.parse(fechaVencimiento);                    
-                                        
+                    Date date2 = format2.parse(fechaVencimiento);
+
                     if (accion.equals("modificarChofer")) {
-                        chofer = new Chofer(request.getParameter("cedula"),request.getParameter("nombre"),date1,request.getParameter("tipoLicencia"),date2,new Date(),"anybody");
+                        chofer = new Chofer(request.getParameter("cedula"), request.getParameter("nombre"), date1, request.getParameter("tipoLicencia"), date2, new Date(), "anybody");
                         chofer.setPkIdChofer(Integer.parseInt(request.getParameter("idChofer")));
                         choferBL.merge(chofer);
                         out.print("C~Chofer modificado con exito");
                     } else {
-                        choferBL.save(new Chofer(request.getParameter("cedula"),request.getParameter("nombre"),date1,request.getParameter("tipoLicencia"),date2,new Date(),"anybody"));
+                        choferBL.save(new Chofer(request.getParameter("cedula"), request.getParameter("nombre"), date1, request.getParameter("tipoLicencia"), date2, new Date(), "anybody"));
                         out.print("C~Chofer agregado con exito");
                     }
                     break;
@@ -90,6 +93,14 @@ public class ChoferServlet extends HttpServlet {
                     break;
                 default:
                     out.print("E~No se indico la acción que se desea realizar");
+                    break;
+                case "verificarCedula":
+                    boolean existe = val.existeCedula(request.getParameter("cedula"));
+                    if (existe) {
+                        out.print("E~La cédula digitada ya existe");
+                    } else {
+                        out.print("C~La cédula digitada no existe");
+                    }
                     break;
             }
         } catch (NumberFormatException e) {

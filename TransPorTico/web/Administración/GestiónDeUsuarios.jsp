@@ -212,9 +212,9 @@
                             ?
                         </p>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                        <button class="btn btn-danger btn-ok" id="eliminar" value="" data-dismiss="modal">Eliminar</button>
+                    <div class="modal-footer form-group estilo2">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
+                        <button class="btn btn-danger btn-ok" id="eliminar" value="" data-dismiss="modal">Confirmar</button>
                     </div>
                     </div>
                 </div>

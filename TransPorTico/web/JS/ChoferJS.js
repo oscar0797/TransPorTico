@@ -7,6 +7,9 @@
 $(document).ready(function () {
     consultarChoferes(1);
     paginador(1);
+    desactivaForm();
+    $("#inputCedula").click(ayuda("inputCedula", 'Sólo números'));
+    $("#inputNombre").click(ayuda("inputNombre", 'Sólo texto'));
 });
 
 function registraChofer() {
@@ -33,7 +36,7 @@ function registraChofer() {
                     mostrarModal("myModal", "Se genero un error", respuestaTxt);
                 } else {
                     consultarChoferes(1);
-                    mostrarModal("myModal", "Registro de Chofer", $("#inputNombre").val() + " agregado con exito");
+                    alert( $("#inputNombre").val() + " ha sido guardado con éxito.");
                     limpiarForm();
                 }
             },
@@ -42,8 +45,11 @@ function registraChofer() {
         });
     } else {
         mostrarMensaje("mesageRegistro", "alert alert-danger", "Debe digitar los campos del formulario", "Error!");
+        $("#collapseOne").addClass('show');
     }
-    $("#choferAction").val("#agregarChofer");
+    //$("#choferAction").val("#agregarChofer");
+    $("#collapseOne").addClass('show');
+    
 }
 
 function limpiarForm() {
@@ -157,24 +163,27 @@ function validar() {
     //valida cada uno de los campos del formulario
     //Nota: Solo si fueron digitadoslse;
     if ($("#inputCedula").val() === "") {
-        $("#groupCedula").addClass("has-error");
+        $("#inputCedula").addClass("error");
         validacion = false;
     }
     if ($("#inputNombre").val() === "") {
-        $("#groupNombre").addClass("has-error");
+        $("#inputNombre").addClass("error");
         validacion = false;
     }
     if ($("#inputTipoLicencia").val() === "") {
-        $("#groupTipoLicencia").addClass("has-error");
+        $("##inputTipoLicencia").addClass("error");
         validacion = false;
     }
     if ($("#inputFechaNacimiento").val() === "") {
-        $("#groupFechaNacimiento").addClass("has-error");
+        $("#inputFechaNacimiento").addClass("error");
         validacion = false;
     }
     if ($("#inputFechaVencimiento").val() === "") {
-        $("#groupFechaVencimiento").addClass("has-error");
+        $("#inputFechaVencimiento").addClass("error");
         validacion = false;
+    }
+    if(validacion === false){
+        alert("No pueden quedar campos vacios");        
     }
     return validacion;
 }
@@ -232,6 +241,7 @@ function modificarChofer(pkIdChofer) {
             cargaChofer(data);
             $("#choferAction").val("modificarChofer");
             $("#collapseOne").addClass('show');
+            verificaCedulaEdicion(data);
         },
         type: 'POST',
         dataType: "json"
@@ -253,4 +263,68 @@ function cargaChofer(chofer) {
     $("#inputFechaVencimiento").val(fechatxt);
     //$("#myModalFormulario").modal();
     $("#choferAction").val("modificarChofer");
+}
+
+
+function verificaCedulaEdicion(chofer) {
+    var cedulaa = $("#inputCedula").val();
+    $.ajax({
+        url: '../ChoferServlet',
+        data: {
+            accion: "verificarCedula",
+            cedula: cedulaa
+        },
+        error: function () {
+            mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
+        },
+        success: function (data) {
+            var respuestaTxt = data.substring(2);
+            var tipoRespuesta = data.substring(0, 2);
+            if (tipoRespuesta !== "E~" || cedulaa === chofer.cedula) { 
+                $("#inputCedula").val(cedulaa);
+                $("#inputCedula").addClass("correcto");
+                $("#collapseOne").addClass('show');
+                alert("La cédula no se modifica, si la cédula es incorrecta, elimine el registro e ingrese uno nuevo");
+                activaForm();
+            } else {
+                $("#inputCedula").addClass("error");
+                activaForm();
+            }
+        },
+        type: "POST",
+        dataType: "text"
+    });
+}
+
+function activaForm() {
+    $("#inputCedula").attr("disabled", "true");
+    $("#inputNombre").removeAttr("disabled");
+    $("#inputFechaNacimiento").removeAttr("disabled");
+    $("#inputTipoLicencia").removeAttr("disabled");
+    $("#inputFechaVencimiento").removeAttr("disabled");
+}
+function desactivaForm() {
+    $("#inputCedula").removeAttr("disabled");
+    $("#inputNombre").attr("disabled", "true");
+    $("#inputFechaNacimiento").attr("disabled", "true");
+    $("#inputTipoLicencia").attr("disabled", "true");
+    $("#inputFechaVencimiento").attr("disabled", "true");
+}
+
+function validaSoloTexto(e){
+       key = e.keyCode || e.which;
+       tecla = String.fromCharCode(key).toLowerCase();
+       letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+       especiales = "8-37-39-46";
+
+       tecla_especial = false
+       for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+        if(letras.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }
 }
