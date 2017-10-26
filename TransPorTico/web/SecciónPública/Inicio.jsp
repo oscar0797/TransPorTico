@@ -184,8 +184,10 @@
                                         </span>
                                     </div>
                                 </div>
-                                <div class="col-sm-12" id="Mi_mapa">
+                                <div id="Auxiliar" class="col-sm-12">
+                                    <div id="Mi_mapa">
 
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <input type="hidden" value="registroAdmin" id="personasAction"/>                       
