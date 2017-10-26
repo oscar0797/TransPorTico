@@ -36,8 +36,12 @@ function registraChofer() {
                     mostrarModal("myModal", "Se genero un error", respuestaTxt);
                 } else {
                     consultarChoferes(1);
+                    if($("#choferAction").val() === "agregarChofer"){
                     alert( $("#inputNombre").val() + " ha sido guardado con éxito.");
                     limpiarForm();
+                }else{
+                    alert( $("#inputNombre").val() + " ha sido editado con éxito.");
+                }
                 }
             },
             type: "POST",
