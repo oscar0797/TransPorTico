@@ -13,74 +13,64 @@ $ ( document ).ready ( function ( )
 
 function Obtener_ubicacion ( )
 {
-    // alert ( 'Hola mundo!!!' ) ;
+    const Ubicacion = new Geolocalizacion ( ( ) =>
+    {
+        var mapa = document.getElementById ( 'Mi_mapa' ) ;
 
-    // google.maps.event.addDomListener ( window, "load", function ( )
-    // {
-        const Ubicacion = new Geolocalizacion ( ( ) =>
+        const Objeto_de_configuracion_del_mapa =
         {
-            var mapa = document.getElementById ( 'Mi_mapa' ) ;
-
-            // alert ( Ubicacion.latitude + ',' + Ubicacion.longitude ) ;
-
-            const Objeto_de_configuracion_del_mapa =
+            center:
             {
-                center:
-                {
-                    lat: Ubicacion.latitude,
-                    lng: Ubicacion.longitude
-                },
-                zoom: 15
-            }
+                lat: Ubicacion.latitude,
+                lng: Ubicacion.longitude
+            },
+            zoom: 15
+        }
             
-            const Mapa_de_Google = new google.maps.Map ( mapa, Objeto_de_configuracion_del_mapa ) ;
+        const Mapa_de_Google = new google.maps.Map ( mapa, Objeto_de_configuracion_del_mapa ) ;
         
-            const Marcador_del_mapa_de_Google = new google.maps.Marker (
+        const Marcador_del_mapa_de_Google = new google.maps.Marker (
+        {
+            position:
             {
-                position:
-                {
-                    lat: Ubicacion.latitude,
-                    lng: Ubicacion.longitude
-                },
-                map: Mapa_de_Google,
-                title: 'Ubicación actual'
-            } ) ;
+                lat: Ubicacion.latitude,
+                lng: Ubicacion.longitude
+            },
+            map: Mapa_de_Google,
+            title: 'Ubicación actual'
+        } ) ;
 
-            var Geocodificador = new google.maps.Geocoder ;
-            
-            // function funcion_geocodificadora ( )
-            // {
-                var coordenadas_geograficas =
-                {
-                    lat: Ubicacion.latitude,
-                    lng: Ubicacion.longitude
-                }
+        var Geocodificador = new google.maps.Geocoder ;
+        
+        var coordenadas_geograficas =
+        {
+            lat: Ubicacion.latitude,
+            lng: Ubicacion.longitude
+        }
                 
-                Geocodificador.geocode ( 
+        Geocodificador.geocode
+        ( 
+            {
+                'location': coordenadas_geograficas
+            },
+            function ( results, status )
+            {
+                if ( status === 'OK' )
                 {
-                    'location': coordenadas_geograficas
-                },
-                function ( results, status )
-                {
-                    if ( status === 'OK' )
+                    if ( results[1] )
                     {
-                        if ( results[1] )
-                        {
-                            document.getElementById ( 'direccion_sign' ).value = results[1].formatted_address ;
-                        }
-                        else
-                        {
-                            alert ( 'No results found' ) ;
-                        }
+                        document.getElementById ( 'direccion_sign' ).value = results[1].formatted_address ;
                     }
                     else
                     {
-                        alert ( 'Geocoder failed due to: ' + status ) ;
+                        alert ( 'No results found' ) ;
                     }
                 }
-                ) ;
-            // }
-            
-        } ) ;
-    // } ) ;
+                else
+                {
+                    alert ( 'Geocoder failed due to: ' + status ) ;
+                }
+            }
+        ) ;
+    } ) ;
 }
