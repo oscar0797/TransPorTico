@@ -72,5 +72,39 @@ function Obtener_ubicacion ( )
                 }
             }
         ) ;
+
+        // Colocar marcadores.
+        
+        Mapa_de_Google.addListener ( 'click', function ( event )
+        {
+            Marcador_del_mapa_de_Google.setPosition ( event.latLng ) ;
+            
+            Mapa_de_Google.setCenter ( event.latLng ) ;
+            
+            Geocodificador.geocode
+            (
+                {
+                    'location': event.latLng
+                },
+                function ( results, status )
+                {
+                    if ( status === 'OK' )
+                    {
+                        if ( results[1] )
+                        {
+                            document.getElementById ( 'direccion_sign' ).value = results[1].formatted_address ;
+                        }
+                        else
+                        {
+                            alert ( 'No results found' ) ;
+                        }
+                    }
+                    else
+                    {
+                        alert ( 'Geocoder failed due to: ' + status ) ;
+                    }
+                }
+            ) ;
+        } ) ;
     } ) ;
 }
