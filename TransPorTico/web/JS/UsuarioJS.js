@@ -303,3 +303,18 @@ function cargaUsuario(usuario) {
     //$("#myModalFormulario").modal();
     $("#usuarioAction").val("modificarUsuario");
 }
+
+function activaForm() {
+    $("#inputCedula").attr("disabled", "true");
+    $("#inputNombre").removeAttr("disabled");
+    $("#inputFechaNacimiento").removeAttr("disabled");
+    $("#inputTipoLicencia").removeAttr("disabled");
+    $("#inputFechaVencimiento").removeAttr("disabled");
+}
+function desactivaForm() {
+    $("#inputCedula").removeAttr("disabled");
+    $("#inputNombre").attr("disabled", "true");
+    $("#inputFechaNacimiento").attr("disabled", "true");
+    $("#inputTipoLicencia").attr("disabled", "true");
+    $("#inputFechaVencimiento").attr("disabled", "true");
+}
