@@ -80,7 +80,7 @@
                         <div id="imagenFondos" class="card-body">
 
                             <button style="color: #FF0101;" data-toggle="collapse" href="#collapseOne" class="close btn-danger" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
-                            <form>
+                            <form id="formulario" action = "javascript:registraChofer()">
                                 <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                     <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4" id="groupCedula">
                                         <label for="inputCedula">Cédula*</label>
@@ -137,7 +137,7 @@
                                 <div class="form-group estilo2" >
                                     <input type="hidden" value="agregarChofer" id="choferAction"/>
                                     <input type="hidden"  id="choferAux"/>
-                                    <button type="submit" class="btn btn-success" onclick="registraChofer()">Guardar</button>
+                                    <button type="submit" class="btn btn-success">Guardar</button>
                                     <button type="submit" class="btn btn-danger" data-toggle="collapse" href="#collapseOne">Cancelar</button>
                                 </div>
                             </form>

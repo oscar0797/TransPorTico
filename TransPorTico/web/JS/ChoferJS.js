@@ -6,7 +6,7 @@
 
 $(document).ready(function () {
     consultarChoferes(1);
-    paginador(1);
+    //paginador(1);
     desactivaForm();
     $("#inputCedula").click(ayuda("inputCedula", 'Sólo números'));
     $("#inputNombre").click(ayuda("inputNombre", 'Sólo texto'));
@@ -39,6 +39,7 @@ function registraChofer() {
                     if($("#choferAction").val() === "agregarChofer"){
                     alert( $("#inputNombre").val() + " ha sido guardado con éxito.");
                     limpiarForm();
+                    $("#formulario").hide();
                 }else{
                     alert( $("#inputNombre").val() + " ha sido editado con éxito.");
                 }
@@ -72,6 +73,7 @@ function consultarChoferes(numpag) {
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             dibujarTabla(numpag, data);
+            paginador(1, data.length / 10);
             // se oculta el modal esta funcion se encuentra en el utils.js
         },
         type: 'POST',
@@ -135,7 +137,7 @@ function mostrarMensaje(name, classCss, msg, neg) {
     $(".mesajeResultText").html(msg);
 }
 
-function paginador(pagAct) {
+function paginador(pagAct, tam) {
     var ini = 1;
     $("#paginacionOpc").html("");
     if (pagAct > 5) {
@@ -144,9 +146,9 @@ function paginador(pagAct) {
     } else {
         $("#paginacionOpc").append('<li onclick="paginador(' + ini + ')" ><a>&laquo;</a></li>');
     }
-    for (var i = 0; i <= 10; i++, ini++) {
+    for (var i = 0; i < tam; i++, ini++) {
         if (ini === pagAct) {
-            $("#paginacionOpc").append('<li class="active" onclick="consultarChoferes(' + ini + '),paginador(' + ini + ')"><a>' + ini + '</a></li> ');
+            $("#paginacionOpc").append('<li class="active" onclick="consultarChoferes(' + ini + '),paginador(' + ini + '), class="active" "><a>' + ini + '</a></li> ');
         } else {
             $("#paginacionOpc").append('<li onclick="consultarChoferes(' + ini + '),paginador(' + ini + ')"><a>' + ini + '</a></li>');
         }
