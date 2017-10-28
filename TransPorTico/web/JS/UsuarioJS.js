@@ -7,45 +7,48 @@
 $(document).ready(function () {
     consultarUsuarios(1);
     paginador(1);
+    desactivaForm();
+    //$("#inputCedula").click(ayuda("inputCedula", 'Sólo números'));
+    $("#inputNombreUsuario").click(ayuda("inputNombreUsuario", 'Sólo texto'));
 });
 
 function registraUsuario() {
     mostrarModal("myModal", "Espere por favor..", "Cargando información de Usuario");
     if (validar()) {
-    $.ajax({
-        url: '../UsuarioServlet',        
-        data: {
-            accion: $("#usuarioAction").val(),
-            nombreUsuario: $("#inputNombreUsuario").val(),
-            contrasena1: $("#inputContrasena1").val(),
-            contrasena2: $("#inputContrasena2").val(),
-            nombre: $("#inputNombre").val(),
-            apellido1: $("#inputApellido1").val(),
-            apellido2: $("#inputApellido2").val(),
-            correo: $("#inputCorreo").val(),
-            fechaNacimiento: $("#inputFechaNacimiento").val(),
-            telefono: $("#inputTelefono").val(),
-            direccion: $("#inputDireccion").val(),
-            tipo: $("#inputTipo").val(),
-            idUsuario: $("#usuarioAux").val()
-        },
-        error: function () {
-            mostrarMensaje("alert alert-danger", "Se generó un error, contacte al administrador (Error del ajax)", "Error!");
-        },
-        success: function (data) {
-            var respuestaTxt = data.substring(2);
-            var tipoRespuesta = data.substring(0, 2);
-            if (tipoRespuesta === "E~") {
-                mostrarModal("myModal", "Se genero un error", respuestaTxt);
-            } else {
-                consultarUsuarios(1);
-                mostrarModal("myModal", "Registro de Usuarios", $("#inputNombre").val() + " agregado con exito");
-                limpiarForm();
-            }
-        },
-        type: "POST",
-        dataType: "texT"
-    });
+        $.ajax({
+            url: '../UsuarioServlet',
+            data: {
+                accion: $("#usuarioAction").val(),
+                nombreUsuario: $("#inputNombreUsuario").val(),
+                contrasena1: $("#inputContrasena1").val(),
+                contrasena2: $("#inputContrasena2").val(),
+                nombre: $("#inputNombre").val(),
+                apellido1: $("#inputApellido1").val(),
+                apellido2: $("#inputApellido2").val(),
+                correo: $("#inputCorreo").val(),
+                fechaNacimiento: $("#inputFechaNacimiento").val(),
+                telefono: $("#inputTelefono").val(),
+                direccion: $("#inputDireccion").val(),
+                tipo: $("#inputTipo").val(),
+                idUsuario: $("#usuarioAux").val()
+            },
+            error: function () {
+                mostrarMensaje("alert alert-danger", "Se generó un error, contacte al administrador (Error del ajax)", "Error!");
+            },
+            success: function (data) {
+                var respuestaTxt = data.substring(2);
+                var tipoRespuesta = data.substring(0, 2);
+                if (tipoRespuesta === "E~") {
+                    mostrarModal("myModal", "Se genero un error", respuestaTxt);
+                } else {
+                    consultarUsuarios(1);
+                    mostrarModal("myModal", "Registro de Usuarios", $("#inputNombre").val() + " agregado con exito");
+                    limpiarForm();
+                }
+            },
+            type: "POST",
+            dataType: "texT"
+        });
     } else {
         mostrarMensaje("mesageRegistro", "alert alert-danger", "Debe digitar los campos del formulario", "Error!");
     }
@@ -170,7 +173,7 @@ function validar() {
     $("#groupDireccion").removeClass("has-error");
     $("#groupFechaNacimiento").removeClass("has-error");
     $("#groupTipo").removeClass("has-error");
-   // $("#groupDireccion").removeClass("has-error");
+    // $("#groupDireccion").removeClass("has-error");
     //valida cada uno de los campos del formulario
     //Nota: Solo si fueron digitadoslse;
     if ($("#inputNombreUsuario").val() === "") {
@@ -205,7 +208,7 @@ function validar() {
         $("#groupTelefono").addClass("has-error");
         validacion = false;
     }
-     if ($("#inputDireccion").val() === "") {
+    if ($("#inputDireccion").val() === "") {
         $("#groupDireccion").addClass("has-error");
         validacion = false;
     }
@@ -218,9 +221,9 @@ function validar() {
         validacion = false;
     }
     /* if ($("#inputDireccion").val() === "") {
-        $("#groupDireccion").addClass("has-error");
-        validacion = false;
-    }*/
+     $("#groupDireccion").addClass("has-error");
+     validacion = false;
+     }*/
     return validacion;
 }
 
@@ -260,9 +263,9 @@ function eliminarUsuario(idUsuario) {
     $("#myModal").hide();
 }
 
-function modificarUsuario(pkIdUsuario) {
+function modificarUsuario(pkIdUsuario) { 
     $("#usuarioAction").val("buscarUsuario");
-    
+
     //mostrarModal("myModal", "Espere por favor..", "Buscando en la base de datos");
     //Se envia la información por ajax
     $.ajax({
@@ -276,8 +279,11 @@ function modificarUsuario(pkIdUsuario) {
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             cargaUsuario(data);
-            $("#usuarioAction").val("modificarUsuario");
+            $("#usuarioAction").val("modificarUsuario");            
             $("#collapseOne").addClass('show');
+            $("#encabezado").addClass('show');
+            verificaNombreUsuarioEdicion(data);
+            aux(data);
         },
         type: 'POST',
         dataType: "json"
@@ -286,35 +292,120 @@ function modificarUsuario(pkIdUsuario) {
 
 function cargaUsuario(usuario) {
     $("#usuarioAux").val(usuario.pkIdUsuario);
-    $("#inputNombreUsuario").val(usuario.nombreUsuario);    
+    $("#inputNombreUsuario").val(usuario.nombreUsuario);
     $("#inputContrasena1").val(usuario.contrasena1);
     $("#inputContrasena2").val(usuario.contrasena2);
     $("#inputNombre").val(usuario.nombre);
     $("#inputApellido1").val(usuario.apellido1);
     $("#inputApellido2").val(usuario.apellido2);
-    $("#inputCorreo").val(usuario.correo);       
+    $("#inputCorreo").val(usuario.correo);
     var fecha1 = new Date(usuario.fechaNacimiento);
     var fechatxt = fecha1.getDate() + "/" + fecha1.getMonth() + 1 + "/" + fecha1.getFullYear();
     $("#fechaNacimiento").data({date: fechatxt});
-    $("#inputFechaNacimiento").val(fechatxt);    
+    $("#inputFechaNacimiento").val(fechatxt);
     $("#inputTelefono").val(usuario.telefono);
-    $("#inputDireccion").val(usuario.direccion);   
+    $("#inputDireccion").val(usuario.direccion);
     $("#inputTipo").val(usuario.tipo);
     //$("#myModalFormulario").modal();
     $("#usuarioAction").val("modificarUsuario");
 }
 
 function activaForm() {
-    $("#inputCedula").attr("disabled", "true");
+    $("#inputNombreUsuario").attr("disabled", "true");
+    $("#inputContrasena1").removeAttr("disabled");
+    $("#inputContrasena2").removeAttr("disabled");
     $("#inputNombre").removeAttr("disabled");
+    $("#inputApellido1").removeAttr("disabled");
+    $("#inputApellido2").removeAttr("disabled");
+    $("#inputCorreo").removeAttr("disabled");
     $("#inputFechaNacimiento").removeAttr("disabled");
-    $("#inputTipoLicencia").removeAttr("disabled");
-    $("#inputFechaVencimiento").removeAttr("disabled");
+    $("#inputTelefono").removeAttr("disabled");
+    $("#inputDireccion").removeAttr("disabled");
+    $("#inputTipo").removeAttr("disabled");
 }
 function desactivaForm() {
-    $("#inputCedula").removeAttr("disabled");
+    $("#inputNombreUsuario").removeAttr("disabled");
+    $("#inputContrasena1").attr("disabled", "true");
+    $("#inputContrasena2").attr("disabled", "true");
     $("#inputNombre").attr("disabled", "true");
+    $("#inputApellido1").attr("disabled", "true");
+    $("#inputApellido2").attr("disabled", "true");
+    $("#inputCorreo").attr("disabled", "true");
     $("#inputFechaNacimiento").attr("disabled", "true");
-    $("#inputTipoLicencia").attr("disabled", "true");
-    $("#inputFechaVencimiento").attr("disabled", "true");
+    $("#inputTelefono").attr("disabled", "true");
+    $("#inputDireccion").attr("disabled", "true");
+    $("#inputTipo").attr("disabled", "true");
+}
+
+function verificaNombreUsuarioEdicion(usuario) {
+    var nombree = $("#inputNombreUsuario").val();
+    $.ajax({
+        url: '../UsuarioServlet',
+        data: {
+            accion: "verificarNombreUsuario",
+            nombreUsuario: nombree
+        },
+        error: function () {
+            mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
+        },
+        success: function (data) {
+            var respuestaTxt = data.substring(2);
+            var tipoRespuesta = data.substring(0, 2);
+            if (tipoRespuesta !== "E~" || nombree === usuario.nombreUsuario) {
+                $("#inputNombreUsuario").val(nombree);
+                $("#inputNombreUsuario").addClass("correcto");
+                $("#collapseOne").addClass('show');
+                desactivaForm();
+                //activaForm();
+            } else {
+                $("#inputNombreUsuario").addClass("error");
+                desactivaForm();
+
+            }
+        },
+        type: "POST",
+        dataType: "text"
+    });
+}
+
+function aux(usuario){
+    var unica = usuario.nombreUsuario;     
+}
+var unica = "";
+
+function verificaNombreUsuario(id, tam, mensaje) {
+    var nombree = $("#inputNombreUsuario").val();
+    $.ajax({
+        url: '../UsuarioServlet',
+        data: {
+            accion: "verificarNombreUsuario",
+            nombreUsuario: nombree
+        },
+        error: function () {
+            mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
+        },
+        success: function (data) {
+            var respuestaTxt = data.substring(2);
+            var tipoRespuesta = data.substring(0, 2);
+            if (tipoRespuesta !== "E~") {
+                if (validaTamMin(id, tam, mensaje)) {
+                    $("#inputNombreUsuario").val(nombree);
+                    $("#inputNombreUsuario").addClass("correcto");
+                    $("#collapseOne").addClass('show');
+                    alert("Nombre de usuario verificado correctamente, proceda a llenar los demás campos");
+                    activaForm();
+                }
+            } else {
+                $("#inputNombreUsuario").addClass("error");
+                if ( $("#usuarioAction").val() === "modificarUsuario" && $("#inputNombreUsuario").val() === "...." ) { //????
+                    alert("Nombre de usuario verificado correctamente, proceda a llenar los demás campos");
+                    activaForm();
+                } else {
+                    alert("El nombre de usuario que digitó ya existe, por favor digite uno nuevo");
+                }
+            }
+        },
+        type: "POST",
+        dataType: "text"
+    });
 }

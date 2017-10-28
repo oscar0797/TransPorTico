@@ -83,6 +83,7 @@ function verificaCedulaRegistro(id, tam, mensaje) {
     });
 }
 
+
 function validaSoloTexto(e){
        key = e.keyCode || e.which;
        tecla = String.fromCharCode(key).toLowerCase();
@@ -100,3 +101,4 @@ function validaSoloTexto(e){
             return false;
         }
 }
+

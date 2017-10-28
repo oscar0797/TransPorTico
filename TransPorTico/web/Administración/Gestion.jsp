@@ -23,7 +23,7 @@
     </head>
     <body >
         <div  class="container-fluid FondoTB">
-            <h2 class="TB hidden-xs">Administración</h2> 
+            <h2 class="TB hidden-xs">ADMINISTRACIÓN</h2> 
             <img class="img-circle" src="../Imágenes/Inicio/mundo.gif" alt=""/> 
         </div>
         <div class="container-fluid fondo">
@@ -52,8 +52,8 @@
                             </div>
                         </div>
                     </div>
-                    <img class="image hidden-xs img-responsive" src="../Imágenes/Inicio/llanta.PNG" alt="" /> 
-                    <p class="hidden-xs TB1 img-responsive"><b>Trans~Por~Tico</b></p> 
+                    <img class=" float-left padding-0 nav navbar-nav row image hidden-xs img-responsive" src="../Imágenes/Inicio/llanta.PNG" alt="" /> 
+                    <p class=" float-left padding-0 nav navbar-nav col-xs-1 col-sm-1 col-md-2 col-lg-2 row hidden-xs TB1 img-responsive"><b>Trans~Por~Tico</b></p> 
                 </div>
                 <div class="col-sm-10 padding-0 ">  
                     <iframe class="embed-responsive-item" scrolling="yes" frameBorder="2" name="frame" src= "GestiónDeUsuarios.jsp" style=" width: 100%; height: 800px;  overflow: hidden;"> </iframe>

@@ -49,8 +49,16 @@
 .estilo2{
     align-content: center;
     text-align: center;
-    font-family: fantasy;
+    font-family: arial;
     font-size: 20px;
+    color: #00BFFF;
+}
+.estilo3{
+    align-content: center;
+    text-align: center;
+    font-family: arial;
+    font-size: 90%;
+    color: #00BFFF;
 }
 #btnVerificar{
     height: 50%;
@@ -246,22 +254,25 @@ li a:hover {
 }
 .TB{
     text-align: center;
-    font-family: fantasy;
+    font-family: arial;
     font-size: 40px;
     color: white;
+    
 }
 .TB1{
     text-align: center;
     font-family: fantasy;
     font-size: 25px;
-    color: #384BFA; 
+    color: white; 
     position: absolute;
     top: 111%;
     left: 8%;
+   
+    -webkit-text-stroke: 2px blue;
 }
 .fondo {
     background: #185B0E;
-    font-family: fantasy;
+    font-family: arial;
 }
 #centrar{
     position: center;

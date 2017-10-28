@@ -34,6 +34,7 @@
         <script src="../JS/utils.js" type="text/javascript"></script>
         <script src="../JS/Publico.js" type="text/javascript"></script>
         <script src="../JS/UsuarioJS.js" type="text/javascript"></script>
+        <script src="../JS/Validaciones.js" type="text/javascript"></script>
         <script src="../JS/Geolocalizacion.js" type="text/javascript"></script>
         <script src="../JS/Mapa_version_3.js" type="text/javascript"></script>
 
@@ -74,43 +75,54 @@
                     <div id="collapseOne" class="collapse modal fade" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
                         <div id="imagenFondos" class="card-body">
                             <button style="color: #FF0101;" data-toggle="collapse" href="#collapseOne" class="close btn-danger" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
+                            <heap id="encabezado">
+                                <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="form-group col-xs-12 col-sm-11 col-md-11 col-lg-11">
+                                        <label class="estilo3" ><b>Nota: Es obligatorio que primero verifique su nombre de usuario. Campos de caracter obligatorio ( * ).</b></label>
+                                    </div>
+                                    <div class="form-group col-xs-12 col-sm-1 col-md-1 col-lg-1">
+                                        <button data-toggle="collapse" href="#encabezado" class="btn-xs btn-primary" data-dismiss="modal" aria-label="Close">OK</button>
+                                    </div>
+                                </div>
+                            </heap>
                             <form>
                                 <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                     <div class="form-row col-xs-12 col-sm-8 col-md-8 col-lg-8">
                                         <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12"> 
-                                           
-                                                <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                                    <label for="inputNombreUsuario">Nombre de Usuario*</label>
-                                                    <input type="text" class="form-control" id="inputNombreUsuario" autofocus="autofocus" placeholder="Nombre de Usuario">
-                                                </div>
-                                                <div class="form-group col-xs-12 col-sm-2 col-md-2 col-lg-2">
-                                                    <label style="height: 77%;"></label>
-                                                    <button id="btnVerificar" type="button" class="btn btn-info " onclick="verificaCedulaRegistro('inputCedula', 9, 'La cantidad mínima de dígitos es 9')">Verificar</button>
-                                                </div>
-                                            
+                                            <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                                <label for="inputNombreUsuario">Nombre de Usuario*</label>
+                                                <input type="text" class="form-control" id="inputNombreUsuario" autofocus="autofocus" placeholder="Ingrese un nombre de usuario" onpaste="return false" onkeyup="validaTamMax('inputNombreUsuario', 20, 'La cantidad máxima de dígitos es 20')" onkeypress="return validaSoloTexto(event)">
+                                            </div>
+                                            <div class="form-group col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                                                <label style="height: 77%;"></label>
+                                                <button id="btnVerificar" type="button" class="btn btn-info " onclick="verificaNombreUsuario('inputNombreUsuario', 3, 'La cantidad mínima de dígitos es 3')">Verificar</button>
+                                            </div>
+
                                             <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupTipo">
                                                 <label for="inputTipo" class="col-form-label" >Tipo de Usuario*</label>
                                                 <select id="inputTipo" class="form-control" style="height: 50%;">
                                                     <option value="1">Administrador</option>
-                                                    <option value="2">Chofer</option>
-                                                    <option value="3">Cliente</option>
+                                                    <option value="2">Cliente</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                             <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupContrasena1">
                                                 <label for="inputContrasena1">Contraseña*</label>
-                                                <input type="password" class="form-control" id="inputContrasena1" autofocus="autofocus" placeholder="Contraseña">
+                                                <input type="password" class="form-control" id="inputContrasena1" autofocus="autofocus" placeholder="Ingrese una contraseña" onpaste="return false"
+                                                       onkeyup="validaTamMax('inputContrasena1', 40, 'La cantidad máxima de dígitos es 40')">
                                             </div>
                                             <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupContrasena2">
                                                 <label for="inputContrasena2">Confirmar Contraseña*</label>
-                                                <input type="password" class="form-control" id="inputContrasena2" autofocus="autofocus" placeholder="Repita la contraseña">
+                                                <input type="password" class="form-control" id="inputContrasena2" autofocus="autofocus" placeholder="Repita la contraseña" onpaste="return false"
+                                                       onkeyup="validaTamMax('inputContrasena2', 40, 'La cantidad máxima de dígitos es 40')">
                                             </div>
                                         </div>
                                         <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                             <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupNombre">
                                                 <label for="inputNombre">Nombre*</label>
-                                                <input type="text" class="form-control" id="inputNombre" placeholder="Nombre" >
+                                                <input type="text" class="form-control" id="inputNombre" placeholder="Nombre" onpaste="return false" 
+                                                       onkeyup="validaTamMax('inputNombre', 25, 'La cantidad máxima de dígitos es 25')" onkeypress="return validaSoloTexto(event)">
                                             </div>                                
                                             <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupFechaNacimiento">
                                                 <label for="inputFechaNacimiento">Fecha de Nacimiento*</label>
@@ -125,32 +137,36 @@
                                         <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                             <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupApellido1">
                                                 <label for="inputApellido1">Apellido1*</label>
-                                                <input type="text" class="form-control" id="inputApellido1" placeholder="Apellido1">  
+                                                <input type="text" class="form-control" id="inputApellido1" placeholder="Primer apellido" onpaste="return false" 
+                                                       onkeyup="validaTamMax('inputApellido1', 25, 'La cantidad máxima de dígitos es 25')" onkeypress="return validaSoloTexto(event)">  
                                             </div>
                                             <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupTelefono">
                                                 <label for="inputTelefono">Teléfono*</label>
-                                                <input type="text" class="form-control" id="inputTelefono" autofocus="autofocus" placeholder="Teléfono">
+                                                <input type="text" class="form-control" id="inputTelefono" autofocus="autofocus" placeholder="Teléfono" onpaste="return false" 
+                                                       onkeyup="validaNum('inputTelefono'), validaTamMax('inputTelefono', 8, 'La cantidad máxima de dígitos es 8')">
                                             </div>
                                         </div>
                                         <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                             <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupApellido2">
                                                 <label for="inputApellido1">Apellido2*</label>
-                                                <input type="text" class="form-control" id="inputApellido2" placeholder="Apellido2">
+                                                <input type="text" class="form-control" id="inputApellido2" placeholder="Segundo apellido" onpaste="return false" 
+                                                       onkeyup="validaTamMax('inputApellido2', 25, 'La cantidad máxima de dígitos es 25')" onkeypress="return validaSoloTexto(event)">
                                             </div>     
                                             <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupCorreo">
                                                 <label for="inputCorreo">Correo*</label>
-                                                <input type="email" class="form-control" id="inputCorreo" autofocus="autofocus" placeholder="Correo">
+                                                <input type="email" class="form-control" id="inputCorreo" autofocus="autofocus" placeholder="Ingrese su correo" onkeyup="validaTamMax('inputApellido2', 50, 'La cantidad máxima de dígitos es 50')">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-row col-xs-12 col-sm-4 col-md-4 col-lg-4">
                                         <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" id="groupDireccion">
-                                            <label for="inputDireccion">Direccion*</label>
+                                            <label for="inputDireccion">Dirección*</label>
                                             <div id="Mi_mapa_2"></div>
                                             <div class="input-group">                                               
-                                                <input type="text" class="form-control" id="inputDireccion" autofocus="autofocus" placeholder="Dirección" size="100%">
+                                                <input type="text" class="form-control" id="inputDireccion" autofocus="autofocus" placeholder="Presione el botón para seleccionar su dirección → " size="100%" 
+                                                       onkeyup="validaTamMax('inputApellido2', 100, 'La cantidad máxima de dígitos es 100')" onkeypress="return validaSoloTexto(event)">
                                                 <span id="Obtener_ubicacion" class="input-group-addon">
-                                                    <span class="glyphicon glyphicon-screenshot" onclick="Obtener_ubicacion( )">  </span>                                        </span>
+                                                    <span class="glyphicon glyphicon-screenshot" onclick="Obtener_ubicacion( )"></span>
                                                 </span>
                                             </div>
                                         </div>

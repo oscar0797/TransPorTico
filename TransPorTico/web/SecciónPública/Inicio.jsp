@@ -134,18 +134,20 @@
                         </div>
                         <div class="modal-body" id="myModalMessage">
                             <form role="form" onsubmit="return false;" id="formRegistro">
-                                <div class="form-group col-sm-12" id="groupUsuario">
-                                    <label for="usuario">Nombre de Usuario:</label>
-                                    <input type="text" class="form-control" id="usuarioSign" autofocus="autofocus" placeholder="Nombre de Usuario">
+                                <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4" id="groupUsuario">
+                                        <label for="usuario">Nombre de Usuario:</label>
+                                        <input type="text" class="form-control" id="usuarioSign" autofocus="autofocus" placeholder="Nombre de Usuario">
+                                    </div>
+                                    <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4"" id="groupPassword">
+                                        <label for="password">Contraseña:</label>
+                                        <input type="text" class="form-control" id="passwordSign" autofocus="autofocus" placeholder="Contraseña">
+                                    </div>                                
+                                    <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4"" id="groupPasswordConfirm">
+                                        <label for="password">Confirmar Contraseña:</label>
+                                        <input type="password" class="form-control" id="passwordConfirmSign" autofocus="autofocus" placeholder="Contrasena">
+                                    </div> 
                                 </div>
-                                <div class="form-group col-sm-6" id="groupPassword">
-                                    <label for="password">Contraseña:</label>
-                                    <input type="text" class="form-control" id="passwordSign" autofocus="autofocus" placeholder="Contraseña">
-                                </div>                                
-                                <div class="form-group col-sm-6" id="groupPasswordConfirm">
-                                    <label for="password">Confirmar Contraseña:</label>
-                                    <input type="password" class="form-control" id="passwordConfirmSign" autofocus="autofocus" placeholder="Contrasena">
-                                </div>                                
                                 <div class="form-group col-sm-4" id="groupNombre">
                                     <label for="usuario">Nombre:</label>
                                     <input type="text" class="form-control" id="nombreSign" placeholder="Nombre" >

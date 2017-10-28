@@ -6,6 +6,7 @@
 package cr.ac.una.prograiv.project.controller;
 
 import com.google.gson.Gson;
+import cr.ac.una.prograiv.project.Validaciones.Validaciones;
 import cr.ac.una.prograiv.project.bl.UsuarioBL;
 import cr.ac.una.prograiv.project.domain.Usuario;
 import java.io.IOException;
@@ -20,6 +21,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import cr.ac.una.prograiv.project.Validaciones.Validaciones;
 
 /**
  *
@@ -45,16 +47,18 @@ public class UsuarioServlet extends HttpServlet {
             int idUsuario;
             Usuario usuario = new Usuario();
             UsuarioBL usuBL = new UsuarioBL();
+            Validaciones val = new Validaciones();
             HttpSession sesion = request.getSession();
             String accion = request.getParameter("accion");
             switch (accion) {
-                case "agregarUsuario":  case "modificarUsuario":
+                case "agregarUsuario":
+                case "modificarUsuario":
                     String fechaNac = request.getParameter("fechaNacimiento");
                     DateFormat format1 = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
                     Date date1 = format1.parse(fechaNac);
 
                     if (accion.equals("modificarUsuario")) {
-                    usuario = new Usuario(
+                        usuario = new Usuario(
                                 request.getParameter("nombreUsuario"),
                                 request.getParameter("contrasena1"),
                                 request.getParameter("contrasena2"),
@@ -68,7 +72,7 @@ public class UsuarioServlet extends HttpServlet {
                                 Integer.parseInt(request.getParameter("tipo")),
                                 new Date(),
                                 "anybody");
-                         
+
                         usuario.setPkIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
                         usuBL.merge(usuario);
                         out.print("C~Usuario modificado con exito");
@@ -110,6 +114,14 @@ public class UsuarioServlet extends HttpServlet {
                 case "consultarUsuarios":
                     json = new Gson().toJson(usuBL.findAll());
                     out.print(json);
+                    break;
+                case "verificarNombreUsuario":
+                    boolean existe = val.existeNombreUsuario(request.getParameter("nombreUsuario"));
+                    if (existe) {
+                        out.print("E~ El nombre de usuario digitado ya existe");
+                    } else {
+                        out.print("C~ El nombre de usuario digitado no existe");
+                    }
                     break;
                 default:
                     out.print("E~No se indico la acción que se desea realizar");

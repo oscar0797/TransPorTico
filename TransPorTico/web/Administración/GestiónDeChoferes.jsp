@@ -80,6 +80,16 @@
                         <div id="imagenFondos" class="card-body">
 
                             <button style="color: #FF0101;" data-toggle="collapse" href="#collapseOne" class="close btn-danger" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
+                           <heap id="encabezado">
+                                <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="form-group col-xs-12 col-sm-11 col-md-11 col-lg-11">
+                                        <label class="estilo3" ><b>Nota: Es obligatorio que primero verifique su cédula. Campos de caracter obligatorio ( * ).</b></label>
+                                    </div>
+                                    <div class="form-group col-xs-12 col-sm-1 col-md-1 col-lg-1">
+                                        <button data-toggle="collapse" href="#encabezado" class="btn-xs btn-primary" data-dismiss="modal" aria-label="Close">OK</button>
+                                    </div>
+                                </div>
+                            </heap>
                             <form>
                                 <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                     <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4" id="groupCedula">

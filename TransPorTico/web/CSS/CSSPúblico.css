@@ -106,13 +106,16 @@ and open the template in the editor.
 .fondoForm{
     background: #185B0E;
     color: white;
-    font-family: 'Satisfy', cursive;
+    font-family: arial;
     text-align: center;
     border-radius: 5px 5px 0px 0px;
 }
 .modal-body{
     text-align: center;
     color: #00394d;
+}
+#myModalTitle{
+    height: 10%
 }
 
 #myModalIngreso{
