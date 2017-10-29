@@ -163,7 +163,7 @@
                                             <label for="inputDireccion">Dirección*</label>
                                             <div id="Mi_mapa_2"></div>
                                             <div class="input-group">                                               
-                                                <input type="text" class="form-control" id="inputDireccion" autofocus="autofocus" placeholder="Presione el botón para seleccionar su dirección → " size="100%" 
+                                                <input type="text" class="form-control" id="inputDireccion" autofocus="autofocus" placeholder="Presione el botón → " size="100%" 
                                                        onkeyup="validaTamMax('inputApellido2', 100, 'La cantidad máxima de dígitos es 100')" onkeypress="return validaSoloTexto(event)">
                                                 <span id="Obtener_ubicacion" class="input-group-addon">
                                                     <span class="glyphicon glyphicon-screenshot" onclick="Obtener_ubicacion( )"></span>

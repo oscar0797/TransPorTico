@@ -260,12 +260,12 @@ function cargaChofer(chofer) {
     $("#inputNombre").val(chofer.nombre);
     var fecha1 = new Date(chofer.fechaNacimiento);
     var fechatxt = fecha1.getDate() + "/" + fecha1.getMonth() + 1 + "/" + fecha1.getFullYear();
-    $("#fechaNacimiento").data({date: fechatxt});
+    $("#fechaNacimiento").data({date: chofer.fechaNacimiento});
     $("#inputFechaNacimiento").val(fechatxt);
     $("#inputTipoLicencia").val(chofer.tipoLicencia);
     fecha1 = new Date(chofer.vencimientoLicencia);
     fechatxt = fecha1.getDate() + "/" + fecha1.getMonth() + 1 + "/" + fecha1.getFullYear();
-    $("#fechaVencimiento").data({date: fechatxt});
+    $("#fechaVencimiento").data({date: chofer.vencimientoLicencia});
     $("#inputFechaVencimiento").val(fechatxt);
     //$("#myModalFormulario").modal();
     $("#choferAction").val("modificarChofer");

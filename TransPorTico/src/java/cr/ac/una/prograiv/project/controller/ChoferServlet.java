@@ -6,6 +6,7 @@
 package cr.ac.una.prograiv.project.controller;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import cr.ac.una.prograiv.project.bl.ChoferBL;
 import cr.ac.una.prograiv.project.domain.Chofer;
 import java.io.IOException;
@@ -42,6 +43,7 @@ public class ChoferServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             String json;
+            Gson gson = new GsonBuilder().setDateFormat("dd/MM/yyyy").create();
             int idChofer;
             Chofer chofer = new Chofer();
             ChoferBL choferBL = new ChoferBL();
@@ -84,11 +86,11 @@ public class ChoferServlet extends HttpServlet {
                     break;
                 case "buscarChofer":
                     chofer = choferBL.findByID(Integer.parseInt(request.getParameter("idChofer")));
-                    json = new Gson().toJson(chofer);
+                    json = gson.toJson(chofer);
                     out.print(json);
                     break;
                 case "consultarChoferes":
-                    json = new Gson().toJson(choferBL.findAll());
+                    json = gson.toJson(choferBL.findAll());
                     out.print(json);
                     break;
                 default:

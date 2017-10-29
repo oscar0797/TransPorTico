@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
+var unica = "";
+
 $(document).ready(function () {
     consultarUsuarios(1);
     paginador(1);
@@ -371,7 +373,6 @@ function verificaNombreUsuarioEdicion(usuario) {
 function aux(usuario){
     var unica = usuario.nombreUsuario;     
 }
-var unica = "";
 
 function verificaNombreUsuario(id, tam, mensaje) {
     var nombree = $("#inputNombreUsuario").val();
@@ -397,7 +398,8 @@ function verificaNombreUsuario(id, tam, mensaje) {
                 }
             } else {
                 $("#inputNombreUsuario").addClass("error");
-                if ( $("#usuarioAction").val() === "modificarUsuario" && $("#inputNombreUsuario").val() === "...." ) { //????
+                var ff = unica;
+                if ( $("#usuarioAction").val() === "modificarUsuario" && $("#inputNombreUsuario").val() === ff ) { //????
                     alert("Nombre de usuario verificado correctamente, proceda a llenar los demás campos");
                     activaForm();
                 } else {

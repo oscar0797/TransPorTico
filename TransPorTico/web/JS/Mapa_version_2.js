@@ -105,6 +105,8 @@ function Obtener_ubicacion ( )
                     }
                 }
             ) ;
+    
+            // alert ( Marcador_del_mapa_de_Google.getPosition ( ) ) ;
         } ) ;
     } ) ;
 }
