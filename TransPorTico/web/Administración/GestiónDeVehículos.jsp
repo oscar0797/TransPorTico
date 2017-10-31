@@ -113,7 +113,10 @@
                                         </div>
 
                                     </div>
-                                    <diV class="form-row col-xs-12 col-sm-1 col-md-1 col-lg-1"></diV>
+                                    <diV class="form-row col-xs-12 col-sm-1 col-md-1 col-lg-1">
+                                        <input type="hidden" id="UbicacionX" value="1">
+                                        <input type="hidden" id="UbicacionY" value="1">
+                                    </diV>
                                     <diV class="form-row col-xs-12 col-sm-1 col-md-1 col-lg-1"></diV>
                                     
                                     <div class="form-row col-xs-12 col-sm-5 col-md-5 col-lg-5">
@@ -166,7 +169,7 @@
                     </div>
                 </div>
                 <div class="card-body" id="imagenFondoo">
-                    <table class="table table-hover table-condensed table-responsive table-bordered" id="tablaChoferes"></table>
+                    <table class="table table-hover table-condensed table-responsive table-bordered" id="tablaVehiculos"></table>
                 </div>
                 <div class="card-footer">
                     <li class="pagination pagination-sm"  align-content="center" id="paginacionOpc"></ul>
