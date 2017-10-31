@@ -10,19 +10,19 @@ $(document).ready(function () {
     paginador(1);
 });
 
-function registraChofer() {
+function registrarVehiculo() {
     mostrarModal("myModal", "Espere por favor..", "Cargando información de la base de datos");
     if (validar()) {
         $.ajax({
-            url: '../ChoferServlet',
+            url: '../VehiculoServlet',
             data: {
-                accion: $("#choferAction").val(),
-                cedula: $("#inputCedula").val(),
-                nombre: $("#inputNombre").val(),
-                fechaNacimiento: $("#inputFechaNacimiento").val(),
-                tipoLicencia: $("#inputTipoLicencia").val(),
-                vencimientoLicencia: $("#inputFechaVencimiento").val(),
-                idChofer: $("#choferAux").val()
+                accion: $("#vehiculoAction").val(),
+                placa: $( "#inputPlaca" ).val ( ),
+                modelo: $( "#inputModelo" ).val ( ),
+                ano: $( "#inputAno" ).val ( ),
+                color: $( "#inputColor" ).val ( ),
+                ubicacionX: $( "#UbicacionX" ).val ( ),
+                ubicacionY: $( "#UbicacionY" ).val ( )
             },
             error: function () {
                 mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
@@ -34,7 +34,7 @@ function registraChofer() {
                     mostrarModal("myModal", "Se genero un error", respuestaTxt);
                 } else {
                     consultarChoferes(1);
-                    mostrarModal("myModal", "Registro de Chofer", $("#inputNombre").val() + " agregado con exito");
+                    mostrarModal("myModal", "Registro de Vehiculos", $("#inputPlaca").val() + " agregado con exito");
                     limpiarForm();
                 }
             },
@@ -44,7 +44,7 @@ function registraChofer() {
     } else {
         mostrarMensaje("mesageRegistro", "alert alert-danger", "Debe digitar los campos del formulario", "Error!");
     }
-    $("#choferAction").val("#agregarChofer");
+    $("#vehiculoAction").val("#agregarVehiculo");
 }
 
 function limpiarForm() {

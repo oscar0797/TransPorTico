@@ -113,7 +113,10 @@
                                         </div>
 
                                     </div>
-                                    <diV class="form-row col-xs-12 col-sm-1 col-md-1 col-lg-1"></diV>
+                                    <diV class="form-row col-xs-12 col-sm-1 col-md-1 col-lg-1">
+                                        <input type="hidden" id="UbicacionX" value="1">
+                                        <input type="hidden" id="UbicacionY" value="1">
+                                    </diV>
                                     <diV class="form-row col-xs-12 col-sm-1 col-md-1 col-lg-1"></diV>
                                     
                                     <div class="form-row col-xs-12 col-sm-5 col-md-5 col-lg-5">

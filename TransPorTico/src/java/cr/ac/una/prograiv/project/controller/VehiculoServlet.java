@@ -5,12 +5,17 @@
  */
 package cr.ac.una.prograiv.project.controller;
 
+import cr.ac.una.prograiv.project.Validaciones.Validaciones;
+import cr.ac.una.prograiv.project.bl.VehiculoBL;
+import cr.ac.una.prograiv.project.domain.Vehiculo;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -30,17 +35,33 @@ public class VehiculoServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet VehiculoServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet VehiculoServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        try
+        {
+            String json ;
+            int idVehiculo ;
+            Vehiculo vehiculo = new Vehiculo ( ) ;
+            VehiculoBL vehBL = new VehiculoBL ( ) ;
+            Validaciones val = new Validaciones ( ) ;
+            HttpSession sesion = request.getSession ( ) ;
+            String accion = request.getParameter ( "accion" ) ;
+            switch ( accion )
+            {
+                case "agregarUsuario":
+                case "modificarUsuario":
+
+                    if ( accion.equals ( "modificarVehiculo" ) )
+                    {
+
+                    }
+            }
+        }
+        catch ( NumberFormatException e )
+        {
+            out.print ( "E~" + e.getMessage ( ) ) ;
+        }
+        catch ( Exception e )
+        {
+            out.print ( "E~" + e.getMessage ( ) ) ;
         }
     }
 
