@@ -68,7 +68,7 @@
                     <div class="card-header" role="tab" id="headingOne">
                         <h5 class="mb-0" >
                             <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                <b class="estilo2 center-block">Formulario para el registro de usuarios</b>
+                                <b class="estilo2 center-block">Registrar un nuevo usuario</b>
                             </a>
                         </h5>
                     </div>
@@ -164,7 +164,7 @@
                                             <div id="Mi_mapa_2"></div>
                                             <div class="input-group">                                               
                                                 <input type="text" class="form-control" id="inputDireccion" autofocus="autofocus" placeholder="Presione el botón → " size="100%" 
-                                                       onkeyup="validaTamMax('inputApellido2', 100, 'La cantidad máxima de dígitos es 100')" onkeypress="return validaSoloTexto(event)">
+                                                       onkeyup="validaTamMax('inputDireccion', 100, 'La cantidad máxima de dígitos es 100')" onkeypress="return validaSoloTexto(event)">
                                                 <span id="Obtener_ubicacion" class="input-group-addon">
                                                     <span class="glyphicon glyphicon-screenshot" onclick="Obtener_ubicacion( )"></span>
                                                 </span>
@@ -192,11 +192,11 @@
                 <div class="card-header">
                     <div class="form-row">
                         <div class="col-md-4">
-                            <p><b>Buscar por nombre de la persona:</b></p>
+                            <p><b>Buscar por nombre de usuario</b></p>
                         </div>
                         <div class="col-md-4">
                             <div class="">
-                                <input type="text" class="form-control" id="buscar" placeholder="Digite el nombre de la persona">
+                                <input type="text" class="form-control" id="buscar" placeholder="Por favor, digite el nombre de usuario">
                             </div>
                         </div>
                         <div class=col-md-4">

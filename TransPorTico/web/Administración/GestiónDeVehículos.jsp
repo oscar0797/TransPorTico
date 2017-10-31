@@ -66,7 +66,7 @@
                     <div class="card-header" role="tab" id="headingOne">
                         <h5 class="mb-0" >
                             <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                <b class="estilo2 center-block">Formulario para el registro de vehículos</b>
+                                <b class="estilo2 center-block">Registrar un nuevo vehículo</b>
                             </a>
                         </h5>
                     </div>
@@ -76,7 +76,7 @@
                             <heap id="encabezado">
                                 <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                     <div class="form-group col-xs-12 col-sm-11 col-md-11 col-lg-11">
-                                        <label class="estilo3" ><b>Nota: Es obligatorio que primero verifique su nombre de usuario. Campos de caracter obligatorio ( * ).</b></label>
+                                        <label class="estilo3" ><b>Nota: Es obligatorio que primero verifique la placa del vehículo. Campos de caracter obligatorio ( * ).</b></label>
                                     </div>
                                     <div class="form-group col-xs-12 col-sm-1 col-md-1 col-lg-1">
                                         <button data-toggle="collapse" href="#encabezado" class="btn-xs btn-primary" data-dismiss="modal" aria-label="Close">OK</button>
@@ -117,12 +117,12 @@
                                     <diV class="form-row col-xs-12 col-sm-1 col-md-1 col-lg-1"></diV>
                                     
                                     <div class="form-row col-xs-12 col-sm-5 col-md-5 col-lg-5">
-                                        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" id="groupDireccion">
-                                            <label for="inputDireccion">Dirección*</label>
+                                        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" id="groupUbicacion">
+                                            <label for="inputUbicacion">Ubicación*</label>
                                             <div id="Mi_mapa_4"></div>
                                             <div class="input-group">                                               
-                                                <input type="text" class="form-control" id="inputDireccion" autofocus="autofocus" placeholder="Presione el botón → " size="100%" 
-                                                       onkeyup="validaTamMax('inputDireccion', 100, 'La cantidad máxima de dígitos es 100')" onkeypress="return validaSoloTexto(event)">
+                                                <input type="text" class="form-control" id="inputUbicacion" autofocus="autofocus" placeholder="Presione el botón → " size="100%" 
+                                                       onkeyup="validaTamMax('inputUbicacion', 100, 'La cantidad máxima de dígitos es 100')" onkeypress="return validaSoloTexto(event)">
                                                 <span id="Obtener_ubicacion" class="input-group-addon">
                                                     <span class="glyphicon glyphicon-screenshot" onclick="Obtener_ubicacion( )"></span>
                                                 </span>
@@ -151,11 +151,11 @@
                 <div class="card-header">
                     <div class="form-row">
                         <div class="col-md-4">
-                            <p><b>Buscar por nombre de la persona:</b></p>
+                            <p><b>Buscar por placa del vehículo:</b></p>
                         </div>
                         <div class="col-md-4">
                             <div class="">
-                                <input type="text" class="form-control" id="buscar" placeholder="Digite el nombre de la persona">
+                                <input type="text" class="form-control" id="buscar" placeholder="Por favor, digite la placa del vehículo">
                             </div>
                         </div>
                         <div class=col-md-4">
