@@ -169,7 +169,7 @@
                     </div>
                 </div>
                 <div class="card-body" id="imagenFondoo">
-                    <table class="table table-hover table-condensed table-responsive table-bordered" id="tablaChoferes"></table>
+                    <table class="table table-hover table-condensed table-responsive table-bordered" id="tablaVehiculos"></table>
                 </div>
                 <div class="card-footer">
                     <li class="pagination pagination-sm"  align-content="center" id="paginacionOpc"></ul>

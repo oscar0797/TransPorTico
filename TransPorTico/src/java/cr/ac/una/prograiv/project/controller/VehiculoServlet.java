@@ -5,12 +5,12 @@
  */
 package cr.ac.una.prograiv.project.controller;
 
+import com.google.gson.Gson;
 import cr.ac.una.prograiv.project.Validaciones.Validaciones;
 import cr.ac.una.prograiv.project.bl.VehiculoBL;
 import cr.ac.una.prograiv.project.domain.Vehiculo;
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.System.out;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,6 +35,7 @@ public class VehiculoServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter ( ) ;
         try
         {
             String json ;
@@ -46,13 +47,19 @@ public class VehiculoServlet extends HttpServlet {
             String accion = request.getParameter ( "accion" ) ;
             switch ( accion )
             {
-                case "agregarUsuario":
-                case "modificarUsuario":
+                case "agregarVehiculo":
+                case "modificarVehiculo":
 
                     if ( accion.equals ( "modificarVehiculo" ) )
                     {
 
                     }
+                break ;
+
+                case "consultarVehiculos":
+                    json = new Gson ( ).toJson ( vehBL.findAll ( ) ) ;
+                    out.print ( json ) ;
+                break ;
             }
         }
         catch ( NumberFormatException e )

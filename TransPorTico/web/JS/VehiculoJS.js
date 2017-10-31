@@ -6,7 +6,7 @@
 
 
 $(document).ready(function () {
-    consultarChoferes(1);
+    consultarVehiculos(1);
     paginador(1);
 });
 
@@ -50,18 +50,19 @@ function registrarVehiculo() {
 function limpiarForm() {
     $('#formularioChofer').trigger("reset");
 }
-function consultarChoferes(numpag) {
+function consultarVehiculos(numpag) {
     //Se envia la información por ajax
     $.ajax({
-        url: '../ChoferServlet',
+        url: '../VehiculoServlet',
         data: {
-            accion: "consultarChoferes"
+            accion: "consultarVehiculos"
         },
         error: function () { //si existe un error en la respuesta del ajax
             //alert("Se presento un error a la hora de cargar la información de los Chofers en la base de datos");
             mostrarModal("myModal", "Error al cargar en la base de datos");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+            // mostrarModal ( "myModal", "Exito al cargar en la base de datos" ) ;
             dibujarTabla(numpag, data);
             // se oculta el modal esta funcion se encuentra en el utils.js
         },
@@ -72,19 +73,17 @@ function consultarChoferes(numpag) {
 
 function dibujarTabla(numpag, dataJson) {
     //limpia la información que tiene la tabla
-    $("#tablaChoferes").html("");
+    $("#tablaVehiculos").html("");
 
     //muestra el enzabezado de la tabla
     var head = $("<thead />");
     var row = $("<tr />");
     head.append(row);
-    $("#tablaChoferes").append(head);
-    row.append($("<th><b>Cedula</b></th>"));
-    row.append($("<th><b>Nombre</b></th>"));
-    row.append($("<th><b>Fecha Nacimiento</b></th>"));
-    row.append($("<th><b>Tipo  de Licencia</b></th>"));
-    row.append($("<th><b>Vencimiento de la Licencia</b></th>"));
-    row.append($("<th><b>Acción</b></th>"));
+    $("#tablaVehiculos").append(head);
+    row.append($("<th><b>Número de placa</b></th>"));
+    row.append($("<th><b>Modelo</b></th>"));
+    row.append($("<th><b>Año</b></th>"));
+    row.append($("<th><b>Color</b></th>"));
     //carga la tabla con el json devuelto
     var cont = 0;
     var i = 10 * (numpag - 1);
@@ -98,12 +97,11 @@ function dibujarFila(rowData) {
     //Cuando dibuja la tabla en cada boton se le agrega la funcionalidad de cargar o eliminar la informacion
     //de una persona    
     var row = $('<tr />');
-    $("#tablaChoferes").append(row);
-    row.append($("<td>" + rowData.cedula + "</td>"));
-    row.append($("<td>" + rowData.nombre + "</td>"));
-    row.append($("<td>" + rowData.fechaNacimiento + "</td>"));
-    row.append($("<td>" + rowData.tipoLicencia + "</td>"));
-    row.append($("<td>" + rowData.vencimientoLicencia + "</td>"));
+    $("#tablaVehiculos").append(row);
+    row.append($("<td>" + rowData.placa + "</td>"));
+    row.append($("<td>" + rowData.modelo + "</td>"));
+    row.append($("<td>" + rowData.ano + "</td>"));
+    row.append($("<td>" + rowData.color + "</td>"));
     row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="modificarChofer(' + rowData.pkIdChofer + ')">' +
             '<i class="fa fa-pencil" aria-hidden="true"></i>' +
             '</button>' +
