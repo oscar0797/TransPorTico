@@ -11,6 +11,7 @@ import cr.ac.una.prograiv.project.bl.VehiculoBL;
 import cr.ac.una.prograiv.project.domain.Vehiculo;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -52,7 +53,42 @@ public class VehiculoServlet extends HttpServlet {
 
                     if ( accion.equals ( "modificarVehiculo" ) )
                     {
-
+                        vehiculo = new Vehiculo
+                        (
+                            Integer.parseInt ( request.getParameter ( "ano" ) ),
+                            request.getParameter ( "modelo" ),
+                            request.getParameter ( "placa" ),
+                            request.getParameter ( "color" ),
+                            Double.parseDouble ( request.getParameter ( "ubicacionX" ) ),
+                            Double.parseDouble ( request.getParameter ( "ubicacionY" ) ),
+                            true,
+                            false,
+                            new Date ( ),
+                            "anybody"
+                        ) ;
+                        vehiculo.setPkIdVehiculo ( Integer.parseInt ( request.getParameter ( "idVehiculo" ) ) ) ;
+                        vehBL.merge ( vehiculo ) ;
+                        out.print ( "C~Vehiculo modificado con exito" ) ;
+                    }
+                    else
+                    {
+                        vehBL.save
+                        (
+                            new Vehiculo
+                            (
+                                Integer.parseInt ( request.getParameter ( "ano" ) ),
+                                request.getParameter ( "modelo" ),
+                                request.getParameter ( "placa" ),
+                                request.getParameter ( "color" ),
+                                Double.parseDouble ( request.getParameter ( "ubicacionX" ) ),
+                                Double.parseDouble ( request.getParameter ( "ubicacionY" ) ),
+                                true,
+                                false,
+                                new Date ( ),
+                                "anybody"
+                            )
+                        ) ;
+                        out.print ( "C~Vehiculo agregado con exito" ) ;
                     }
                 break ;
 

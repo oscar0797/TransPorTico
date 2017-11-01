@@ -13,16 +13,17 @@ $(document).ready(function () {
 function registrarVehiculo() {
     mostrarModal("myModal", "Espere por favor..", "Cargando información de la base de datos");
     if (validar()) {
+        alert ( $( "#inputPlaca" ).val ( ) ) ;
         $.ajax({
             url: '../VehiculoServlet',
             data: {
                 accion: $("#vehiculoAction").val(),
-                placa: $( "#inputPlaca" ).val ( ),
-                modelo: $( "#inputModelo" ).val ( ),
-                ano: $( "#inputAno" ).val ( ),
-                color: $( "#inputColor" ).val ( ),
-                ubicacionX: $( "#UbicacionX" ).val ( ),
-                ubicacionY: $( "#UbicacionY" ).val ( )
+                ano: $( "#inputAno" ),
+                modelo: $( "#inputModelo" ),
+                placa: $( "#inputPlaca" ),
+                color: $( "#inputColor" ),
+                ubicacionX: $( "#UbicacionX" ),
+                ubicacionY: $( "#UbicacionY" )
             },
             error: function () {
                 mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
@@ -33,7 +34,7 @@ function registrarVehiculo() {
                 if (tipoRespuesta === "E~") {
                     mostrarModal("myModal", "Se genero un error", respuestaTxt);
                 } else {
-                    consultarChoferes(1);
+                    consultarVehiculos(1);
                     mostrarModal("myModal", "Registro de Vehiculos", $("#inputPlaca").val() + " agregado con exito");
                     limpiarForm();
                 }
@@ -48,7 +49,7 @@ function registrarVehiculo() {
 }
 
 function limpiarForm() {
-    $('#formularioChofer').trigger("reset");
+    $('#formularioVehiculo').trigger("reset");
 }
 function consultarVehiculos(numpag) {
     //Se envia la información por ajax
