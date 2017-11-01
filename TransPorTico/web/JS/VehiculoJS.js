@@ -7,7 +7,7 @@
 
 $(document).ready(function () {
     consultarVehiculos(1);
-    paginador(1);
+   // paginador(1);
 });
 
 function registrarVehiculo() {
@@ -106,6 +106,7 @@ function consultarVehiculos(numpag) {
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             // mostrarModal ( "myModal", "Exito al cargar en la base de datos" ) ;
             dibujarTabla(numpag, data);
+             paginador(numpag, data.length / 10);
             // se oculta el modal esta funcion se encuentra en el utils.js
         },
         type: 'POST',
@@ -165,23 +166,23 @@ function mostrarMensaje(name, classCss, msg, neg) {
     $(".mesajeResultText").html(msg);
 }
 
-function paginador(pagAct) {
+function paginador(pagAct, tam) {
     var ini = 1;
     $("#paginacionOpc").html("");
     if (pagAct > 5) {
         ini = pagAct - 5;
-        $("#paginacionOpc").append('<li onclick="paginador(' + (ini - 1) + ')"><a>&laquo;</a></li>');
+        $("#paginacionOpc").append('<li onclick="consultarVehiculos(' + ini + '),paginador(' + (pagAct - 1) + ',' + tam + ')"><a>&laquo;</a></li>');
     } else {
-        $("#paginacionOpc").append('<li onclick="paginador(' + ini + ')" ><a>&laquo;</a></li>');
+        $("#paginacionOpc").append('<li onclick="consultarVehiculos(' + ini + '), paginador(' + (pagAct - 1) + ',' + tam + ')" ><a>&laquo;</a></li>');
     }
-    for (var i = 0; i <= 10; i++, ini++) {
+    for (var i = 0; i < tam; i++, ini++) {
         if (ini === pagAct) {
-            $("#paginacionOpc").append('<li class="active" onclick="consultarChoferes(' + ini + '),paginador(' + ini + ')"><a>' + ini + '</a></li> ');
+            $("#paginacionOpc").append('<li class="active" onclick="consultarVehiculos(' + ini + '),paginador(' + ini + ',' + tam + ') "><a>' + ini + '</a></li> ');
         } else {
-            $("#paginacionOpc").append('<li onclick="consultarChoferes(' + ini + '),paginador(' + ini + ')"><a>' + ini + '</a></li>');
+            $("#paginacionOpc").append('<li onclick="consultarVehiculos(' + ini + '),paginador(' + ini + ',' + tam + ') "><a>' + ini + '</a></li>');
         }
     }
-    $("#paginacionOpc").append('<li onclick="paginador(' + (ini + 1) + ')"><a>&raquo;</a></li>');
+    $("#paginacionOpc").append('<li onclick="consultarVehiculos(' + (ini - 1) + '), paginador(' + (ini -1) + ',' + tam +')"><a>&raquo;</a></li>');
 }
 
 function validar() {

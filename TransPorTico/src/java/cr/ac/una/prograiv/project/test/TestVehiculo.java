@@ -19,16 +19,18 @@ import java.util.List;
  */
 public class TestVehiculo {
    public static void main(String []args){
-       //saveVehiculo();
+       saveVehiculo();
        //mergeVehiculo(1);
        //deleteVehiculo(1);
        //findAllVehiculo();
        //findIdVehiculo(1);
    }
     public static void saveVehiculo(){
-        Vehiculo ve = new Vehiculo(2000,"modelo1","placa1","negro",10,10,true,true,new Date(),"Nadie");
+        for(int i =1; i<30; i++){
+        Vehiculo ve = new Vehiculo(i,"modelo1","placa1","negro",10,10,true,true,new Date(),"Nadie");
         VehiculoBL bl = new VehiculoBL();
         bl.save(ve);
+        }
         System.out.println("Vehiculo guardado con exito");
     }
      public static void deleteVehiculo(Integer key){ 
