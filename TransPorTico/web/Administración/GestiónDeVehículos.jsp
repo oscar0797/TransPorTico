@@ -137,7 +137,7 @@
                                 <div class="form-group estilo2" >
                                     <input type="hidden" value="agregarVehiculo" id="vehiculoAction"/> 
                                     <input type="hidden"  id="vehiculoAux"/>
-                                    <button type="submit" class="btn btn-success" onclick="registraVehiculo()">Guardar</button>                                    
+                                    <button type="submit" class="btn btn-success" onclick="registrarVehiculo()">Guardar</button>                                    
                                     <button type="submit" class="btn btn-danger" data-toggle="collapse" href="#collapseOne">Cancelar</button>
                                 </div>                        
                             </form>
