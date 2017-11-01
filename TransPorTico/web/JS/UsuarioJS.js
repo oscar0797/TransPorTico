@@ -8,7 +8,7 @@ var unica = "";
 
 $(document).ready(function () {
     consultarUsuarios(1);
-    paginador(1);
+   // paginador(1);
     desactivaForm();
     $("#inputNombreUsuario").click(ayuda("inputNombreUsuario", 'Sólo texto'));
     $("#inputNombre").click(ayuda("inputNombre", 'Sólo texto'));
@@ -74,6 +74,7 @@ function consultarUsuarios(numpag) {
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             dibujarTabla(numpag, data);
             doSearch(data);
+            paginador(numpag, data.length / 10);
             // se oculta el modal esta funcion se encuentra en el utils.js
         },
         type: 'POST',
@@ -138,24 +139,23 @@ function mostrarMensaje(name, classCss, msg, neg) {
     $(".mesajeResultText").html(msg);
     $(".mesajeResultText").html(msg);
 }
-function paginador(pagAct) {
+function paginador(pagAct, tam) {
     var ini = 1;
     $("#paginacionOpc").html("");
     if (pagAct > 5) {
         ini = pagAct - 5;
-        $("#paginacionOpc").append('<li onclick="paginador(' + (ini - 1) + ')"><a>&laquo;</a></li>');
+        $("#paginacionOpc").append('<li onclick="consultarChoferes(' + ini + '),paginador(' + (pagAct - 1) + ',' + tam + ')"><a>&laquo;</a></li>');
     } else {
-        $("#paginacionOpc").append('<li onclick="paginador(' + ini + ')" ><a>&laquo;</a></li>');
+        $("#paginacionOpc").append('<li onclick="consultarChoferes(' + ini + '), paginador(' + (pagAct - 1) + ',' + tam + ')" ><a>&laquo;</a></li>');
     }
-    for (var i = 0; i <= 10; i++, ini++) {
+    for (var i = 0; i < tam; i++, ini++) {
         if (ini === pagAct) {
-            $("#paginacionOpc").append('<li class="active" onclick="consultarUsuarios(' + ini + '),paginador(' + ini + ')"><a>' + ini + '</a></li> ');
+            $("#paginacionOpc").append('<li class="active" onclick="consultarChoferes(' + ini + '),paginador(' + ini + ',' + tam + ') "><a>' + ini + '</a></li> ');
         } else {
-            $("#paginacionOpc").append('<li onclick="consultarUsuarios(' + ini + '),paginador(' + ini + ')"><a>' + ini + '</a></li>');
+            $("#paginacionOpc").append('<li onclick="consultarChoferes(' + ini + '),paginador(' + ini + ',' + tam + ') "><a>' + ini + '</a></li>');
         }
     }
-    $("#paginacionOpc").append('<li onclick="paginador(' + (ini + 1) + ')"><a>&raquo;</a></li>');
-
+    $("#paginacionOpc").append('<li onclick="consultarChoferes(' + (ini - 1) + '), paginador(' + (ini -1) + ',' + tam +')"><a>&raquo;</a></li>');
 }
 
 function limpiarForm() {
