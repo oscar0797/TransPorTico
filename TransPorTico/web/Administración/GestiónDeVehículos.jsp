@@ -114,8 +114,8 @@
 
                                     </div>
                                     <diV class="form-row col-xs-12 col-sm-1 col-md-1 col-lg-1">
-                                        <input type="hidden" id="UbicacionX" value="1">
-                                        <input type="hidden" id="UbicacionY" value="1">
+                                        <input type="hidden" id="inputUbicacionX" value="1">
+                                        <input type="hidden" id="inputUbicacionY" value="2">
                                     </diV>
                                     <diV class="form-row col-xs-12 col-sm-1 col-md-1 col-lg-1"></diV>
                                     
