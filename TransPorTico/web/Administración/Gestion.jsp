@@ -24,7 +24,7 @@
     <body >
         <div  class="container-fluid FondoTB">
             <h2 class="TB hidden-xs">ADMINISTRACIÓN</h2> 
-            <img class="img-circle" src="../Imágenes/Inicio/mundo.gif" alt=""/> 
+            <!--<img class="img-circle" src="../Imágenes/Inicio/mundo.gif" alt=""/> -->
         </div>
         <div class="container-fluid fondo">
             <div class="row">

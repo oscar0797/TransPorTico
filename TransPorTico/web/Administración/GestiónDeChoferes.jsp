@@ -71,7 +71,7 @@
                     <div class="card-header" role="tab" id="headingOne">
                         <h5 class="mb-0" >
                             <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                <div class="estilo2 center-block" ><b>Registrar un nuevo chofer</b></div>                                
+                                <div class="estilo2 center-block btn-primary" ><b>Registrar un nuevo chofer</b></div>                                
                             </a>
 
                         </h5>

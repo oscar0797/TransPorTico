@@ -9,8 +9,7 @@
 
     background-color: aquamarine;
 }
-.estilo2:hover
-{
+.estilo2:hover{
     width: 100%;
     text-decoration: underline;
     color: white;
@@ -36,7 +35,7 @@
 }
 
 #imagenFondo{        
-    background-image: url(../Imágenes/Fondos/bg1.jpg);
+    background-image: url(../Imágenes/Fondos/fondoform.jpg);
     background-position: center center;	  
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -45,7 +44,7 @@
     color: white;
 }
 #imagenFondos{    
-    background-image: url(../Imágenes/Fondos/bg1.jpg);
+    background-image: url(../Imágenes/Fondos/fondoform.jpg);
     background-position: center center;	  
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -54,7 +53,7 @@
     color: white;
 }
 #imagenFondoo{    
-    background-image: url(../Imágenes/Fondos/fondos.jpg);
+    background-image: url(../Imágenes/Fondos/fondoAzul.jpg);
     background-position: center center;	  
     background-repeat: no-repeat;
     background-attachment: fixed;
