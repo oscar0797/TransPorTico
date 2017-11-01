@@ -36,75 +36,63 @@ public class VehiculoServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter ( ) ;
-        try
-        {
-            String json ;
-            int idVehiculo ;
-            Vehiculo vehiculo = new Vehiculo ( ) ;
-            VehiculoBL vehBL = new VehiculoBL ( ) ;
-            Validaciones val = new Validaciones ( ) ;
-            HttpSession sesion = request.getSession ( ) ;
-            String accion = request.getParameter ( "accion" ) ;
-            switch ( accion )
-            {
+        PrintWriter out = response.getWriter();
+        try {
+            String json;
+            int idVehiculo;
+            Vehiculo vehiculo = new Vehiculo();
+            VehiculoBL vehBL = new VehiculoBL();
+            Validaciones val = new Validaciones();
+            HttpSession sesion = request.getSession();
+            String accion = request.getParameter("accion");
+            switch (accion) {
                 case "agregarVehiculo":
                 case "modificarVehiculo":
 
-                    if ( accion.equals ( "modificarVehiculo" ) )
-                    {
-                        vehiculo = new Vehiculo
-                        (
-                            Integer.parseInt ( request.getParameter ( "ano" ) ),
-                            request.getParameter ( "modelo" ),
-                            request.getParameter ( "placa" ),
-                            request.getParameter ( "color" ),
-                            Double.parseDouble ( request.getParameter ( "ubicacionX" ) ),
-                            Double.parseDouble ( request.getParameter ( "ubicacionY" ) ),
-                            true,
-                            false,
-                            new Date ( ),
-                            "anybody"
-                        ) ;
-                        vehiculo.setPkIdVehiculo ( Integer.parseInt ( request.getParameter ( "idVehiculo" ) ) ) ;
-                        vehBL.merge ( vehiculo ) ;
-                        out.print ( "C~Vehiculo modificado con exito" ) ;
-                    }
-                    else
-                    {
-                        vehBL.save
-                        (
-                            new Vehiculo
-                            (
-                                Integer.parseInt ( request.getParameter ( "ano" ) ),
-                                request.getParameter ( "modelo" ),
-                                request.getParameter ( "placa" ),
-                                request.getParameter ( "color" ),
-                                Double.parseDouble ( request.getParameter ( "ubicacionX" ) ),
-                                Double.parseDouble ( request.getParameter ( "ubicacionY" ) ),
+                    if (accion.equals("modificarVehiculo")) {
+                        vehiculo = new Vehiculo(
+                                Integer.parseInt(request.getParameter("ano")),
+                                request.getParameter("modelo"),
+                                request.getParameter("placa"),
+                                request.getParameter("color"),
+                                Double.parseDouble(request.getParameter("ubicacionX")),
+                                Double.parseDouble(request.getParameter("ubicacionY")),
                                 true,
                                 false,
-                                new Date ( ),
+                                new Date(),
                                 "anybody"
-                            )
-                        ) ;
-                        out.print ( "C~Vehiculo agregado con exito" ) ;
+                        );
+                        vehiculo.setPkIdVehiculo(Integer.parseInt(request.getParameter("idVehiculo")));
+                        vehBL.merge(vehiculo);
+                        out.print("C~Vehículo modificado con exito");
+                    } else {
+                        vehBL.save(
+                                new Vehiculo(
+                                        Integer.parseInt(request.getParameter("ano")),
+                                        request.getParameter("modelo"),
+                                        request.getParameter("placa"),
+                                        request.getParameter("color"),
+                                        Double.parseDouble(request.getParameter("ubicacionX")),
+                                        Double.parseDouble(request.getParameter("ubicacionY")),
+                                        true,
+                                        false,
+                                        new Date(),
+                                        "anybody"
+                                )
+                        );
+                        out.print("C~Vehiculo agregado con exito");
                     }
-                break ;
+                    break;
 
                 case "consultarVehiculos":
-                    json = new Gson ( ).toJson ( vehBL.findAll ( ) ) ;
-                    out.print ( json ) ;
-                break ;
+                    json = new Gson().toJson(vehBL.findAll());
+                    out.print(json);
+                    break;
             }
-        }
-        catch ( NumberFormatException e )
-        {
-            out.print ( "E~" + e.getMessage ( ) ) ;
-        }
-        catch ( Exception e )
-        {
-            out.print ( "E~" + e.getMessage ( ) ) ;
+        } catch (NumberFormatException e) {
+            out.print("E~" + e.getMessage());
+        } catch (Exception e) {
+            out.print("E~" + e.getMessage());
         }
     }
 

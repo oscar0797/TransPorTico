@@ -109,7 +109,7 @@
                                         <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" id="groupColor">
                                             <label for="inputColor">Color*</label>
                                             <input type="text" class="form-control" id="inputColor" autofocus="autofocus" placeholder="Color del vehículo" onpaste="return false"
-                                                   onkeyup="validaTamMax('inputContrasena2', 40, 'La cantidad máxima de dígitos es 40')" onkeypress="return validaSoloTexto(event)">
+                                                   onkeyup="validaTamMax('inputColor', 40, 'La cantidad máxima de dígitos es 40')" onkeypress="return validaSoloTexto(event)">
                                         </div>
 
                                     </div>
