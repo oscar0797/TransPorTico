@@ -13,17 +13,18 @@ $(document).ready(function () {
 function registrarVehiculo() {
     mostrarModal("myModal", "Espere por favor..", "Cargando información de la base de datos");
     if (validar()) {
-        alert ( $( "#inputPlaca" ).val ( ) ) ;
+        alert ( $( "#UbicacionX" ).val ( ) ) ;
+        
         $.ajax({
             url: '../VehiculoServlet',
             data: {
                 accion: $("#vehiculoAction").val(),
-                ano: $( "#inputAno" ),
-                modelo: $( "#inputModelo" ),
-                placa: $( "#inputPlaca" ),
-                color: $( "#inputColor" ),
-                ubicacionX: $( "#UbicacionX" ),
-                ubicacionY: $( "#UbicacionY" )
+                ano: $( "#inputAno" ).val ( ),
+                modelo: $( "#inputModelo" ).val ( ),
+                placa: $( "#inputPlaca" ).val ( ),
+                color: $( "#inputColor" ).val ( ),
+                ubicacionX: $( "#UbicacionX" ).val ( ),
+                ubicacionY: $( "#UbicacionY" ).val ( )
             },
             error: function () {
                 mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
@@ -85,6 +86,7 @@ function dibujarTabla(numpag, dataJson) {
     row.append($("<th><b>Modelo</b></th>"));
     row.append($("<th><b>Año</b></th>"));
     row.append($("<th><b>Color</b></th>"));
+    row.append ( $( "<th><b>Acción</b></th>" ) ) ;
     //carga la tabla con el json devuelto
     var cont = 0;
     var i = 10 * (numpag - 1);
