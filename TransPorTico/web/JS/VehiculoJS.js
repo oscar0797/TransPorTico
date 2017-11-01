@@ -108,7 +108,7 @@ function dibujarFila(rowData) {
     row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="modificarChofer(' + rowData.pkIdChofer + ')">' +
             '<i class="fa fa-pencil" aria-hidden="true"></i>' +
             '</button>' +
-            '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="validaEliminacion(' + "'" + rowData.nombre + "'" + ',' + rowData.pkIdChofer + ')" data-target="#confirm-delete" data-toggle="modal">' +
+            '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="validaEliminacion(' + "'" + rowData.modelo + "'" + ',' + rowData.pkIdVehiculo + ')" data-target="#confirm-delete" data-toggle="modal">' +
             '<i class="fa fa-times" aria-hidden="true"></i>' +
             '</button></td>'));
 }
@@ -181,21 +181,23 @@ function validar() {
     return validacion;
 }
 
-function validaEliminacion(nom, idChofer) {
-    $('#nombreEliminar').text(nom);
+function validaEliminacion(mod, idVehiculo) {
+    $('#vehiculoEliminar').text(mod);
     $('#eliminar').click(function () {
-        eliminarChofer(idChofer);
+        // alert ( idVehiculo ) ;
+        eliminarVehiculo(idVehiculo);
     });
 }
 
-function eliminarChofer(idChofer) {
+function eliminarVehiculo(idVehiculo) {
+    // alert ( "Eliminando vehículo" ) ;
     //mostrarModal("myModal", "Espere por favor..", "Se esta eliminando al chofer seleccionado");
     //Se envia la información por ajax
     $.ajax({
-        url: '../ChoferServlet',
+        url: '../VehiculoServlet',
         data: {
-            accion: "eliminarChofer",
-            idChofer: idChofer
+            accion: "eliminarVehiculo",
+            idVehiculo: idVehiculo
         },
         error: function () { //si existe un error en la respuesta del ajax
             cambiarMensajeModal("myModal", "Resultado acción", "Se presento un error, contactar al administador");
@@ -208,7 +210,7 @@ function eliminarChofer(idChofer) {
                 cambiarMensajeModal("myModal", "Resultado acción", respuestaTxt);
             } else {
                 $("#myModal").hide();
-                setTimeout(consultarChoferes(1), 1000);// hace una pausa y consulta la información de la base de datos
+                setTimeout(consultarVehiculos(1), 1000);// hace una pausa y consulta la información de la base de datos
             }
         },
         type: 'POST',

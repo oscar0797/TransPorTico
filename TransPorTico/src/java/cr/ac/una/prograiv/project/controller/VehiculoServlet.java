@@ -88,6 +88,14 @@ public class VehiculoServlet extends HttpServlet {
                     json = new Gson().toJson(vehBL.findAll());
                     out.print(json);
                     break;
+
+                case "eliminarVehiculo":
+                {
+                    vehiculo.setPkIdVehiculo ( Integer.parseInt ( request.getParameter ( "idUsuario" ) ) ) ;
+                    vehBL.delete ( vehiculo ) ;
+                    out.print ( "C~Vehículo eliminado con exito" ) ;
+                    break ;
+                }
             }
         } catch (NumberFormatException e) {
             out.print("E~" + e.getMessage());
