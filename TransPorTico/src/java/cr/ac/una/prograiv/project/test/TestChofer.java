@@ -17,7 +17,7 @@ import java.util.List;
 public class TestChofer {
 
     public static void main(String[] args) {
-        saveChofer();
+      //  saveChofer();
         //mergeChofer(16);
         //deleteChofer();
         //findAllChofer();
@@ -26,9 +26,11 @@ public class TestChofer {
     }
 
     public static void saveChofer() {
-        Chofer cho1 = new Chofer("116810872", "Chofer1", new Date(), "B1", new Date(), new Date(), "anybody");
+        for(int i =1; i<30; i++){
+        Chofer cho1 = new Chofer(Integer.toString(i), "Chofer1", new Date(), "B1", new Date(), new Date(), "anybody");
         ChoferBL bl1 = new ChoferBL();
         bl1.save(cho1);
+    }
         /*
         Chofer cho2 = new Chofer("3", "Chofer22", new Date(), "B1", new Date(), new Date(), "anybody");
         ChoferBL bl2 = new ChoferBL();

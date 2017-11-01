@@ -73,13 +73,14 @@ function consultarChoferes(numpag) {
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             dibujarTabla(numpag, data);
-            paginador(1, data.length / 10);
+            paginador(numpag, data.length / 10);
             // se oculta el modal esta funcion se encuentra en el utils.js
         },
         type: 'POST',
         dataType: "json"
     });
 }
+
 
 function dibujarTabla(numpag, dataJson) {
     //limpia la información que tiene la tabla
@@ -142,18 +143,18 @@ function paginador(pagAct, tam) {
     $("#paginacionOpc").html("");
     if (pagAct > 5) {
         ini = pagAct - 5;
-        $("#paginacionOpc").append('<li onclick="paginador(' + (ini - 1) + ')"><a>&laquo;</a></li>');
+        $("#paginacionOpc").append('<li onclick="consultarChoferes(' + ini + '),paginador(' + (pagAct - 1) + ',' + tam + ')"><a>&laquo;</a></li>');
     } else {
-        $("#paginacionOpc").append('<li onclick="paginador(' + ini + ')" ><a>&laquo;</a></li>');
+        $("#paginacionOpc").append('<li onclick="consultarChoferes(' + ini + '), paginador(' + (pagAct - 1) + ',' + tam + ')" ><a>&laquo;</a></li>');
     }
     for (var i = 0; i < tam; i++, ini++) {
         if (ini === pagAct) {
-            $("#paginacionOpc").append('<li class="active" onclick="consultarChoferes(' + ini + '),paginador(' + ini + '), class="active" "><a>' + ini + '</a></li> ');
+            $("#paginacionOpc").append('<li class="active" onclick="consultarChoferes(' + ini + '),paginador(' + ini + ',' + tam + ') "><a>' + ini + '</a></li> ');
         } else {
-            $("#paginacionOpc").append('<li onclick="consultarChoferes(' + ini + '),paginador(' + ini + ')"><a>' + ini + '</a></li>');
+            $("#paginacionOpc").append('<li onclick="consultarChoferes(' + ini + '),paginador(' + ini + ',' + tam + ') "><a>' + ini + '</a></li>');
         }
     }
-    $("#paginacionOpc").append('<li onclick="paginador(' + (ini + 1) + ')"><a>&raquo;</a></li>');
+    $("#paginacionOpc").append('<li onclick="consultarChoferes(' + (ini - 1) + '), paginador(' + (ini -1) + ',' + tam +')"><a>&raquo;</a></li>');
 }
 
 function validar() {
