@@ -1,4 +1,4 @@
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -84,21 +84,52 @@ function verificaCedulaRegistro(id, tam, mensaje) {
 }
 
 
-function validaSoloTexto(e){
-       key = e.keyCode || e.which;
-       tecla = String.fromCharCode(key).toLowerCase();
-       letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
-       especiales = "8-9-37-38-39-46-164";
+function validaSoloTexto(e) {
+    key = e.keyCode || e.which;
+    tecla = String.fromCharCode(key).toLowerCase();
+    letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+    especiales = "8-9-37-38-39-46-164";
 
-       tecla_especial = false;
-       for(var i in especiales){
-            if(key == especiales[i]){
-                tecla_especial = true;
-                break;
-            }
+    tecla_especial = false;
+    for (var i in especiales) {
+        if (key == especiales[i]) {
+            tecla_especial = true;
+            break;
         }
-        if(letras.indexOf(tecla)== -1 && !tecla_especial){
-            return false;
-        }
+    }
+    if (letras.indexOf(tecla) == -1 && !tecla_especial) {
+        alert("Debe digitar sólo texto")
+        return false;
+
+    }
 }
 
+function busquedaPalabraClave(idTabla, idInput) {
+    var tableReg = document.getElementById(idTabla);
+    var searchText = document.getElementById(idInput).value.toLowerCase();
+    var cellsOfRow = "";
+    var found = false;
+    var compareWith = "";
+
+    // Recorremos todas las filas con contenido de la tabla
+    for (var i = 1; i < tableReg.rows.length; i++) {
+        cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
+        found = false;
+        // Recorremos todas las celdas
+        for (var j = 0; j < cellsOfRow.length && !found; j++) {
+            compareWith = cellsOfRow[j].innerHTML.toLowerCase();
+            // Buscamos el texto en el contenido de la celda
+            if (searchText.length == 0 || (compareWith.indexOf(searchText) > -1))
+            {
+                found = true;
+            }
+        }
+        if (found) {
+            tableReg.rows[i].style.display = '';
+        } else {
+            // si no ha encontrado ninguna coincidencia, esconde la
+            // fila de la tabla
+            tableReg.rows[i].style.display = 'none';
+        }
+    }
+}

@@ -7,24 +7,64 @@
 
 $(document).ready(function () {
     consultarVehiculos(1);
-    paginador(1);
+   // paginador(1);
 });
 
 function registrarVehiculo() {
     mostrarModal("myModal", "Espere por favor..", "Cargando información de la base de datos");
     if (validar()) {
-        alert ( $( "#UbicacionX" ).val ( ) ) ;
-        
+        alert($("#UbicacionX").val( ));
+
         $.ajax({
             url: '../VehiculoServlet',
             data: {
                 accion: $("#vehiculoAction").val(),
-                ano: $( "#inputAno" ).val ( ),
-                modelo: $( "#inputModelo" ).val ( ),
-                placa: $( "#inputPlaca" ).val ( ),
-                color: $( "#inputColor" ).val ( ),
-                ubicacionX: $( "#UbicacionX" ).val ( ),
-                ubicacionY: $( "#UbicacionY" ).val ( )
+                ano: $("#inputAno").val( ),
+                modelo: $("#inputModelo").val( ),
+                placa: $("#inputPlaca").val( ),
+                color: $("#inputColor").val( ),
+                ubicacionX: $("#UbicacionX").val( ),
+                ubicacionY: $("#UbicacionY").val( )
+            },
+            error: function () {
+                mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
+            },
+            success: function (data) {
+                var respuestaTxt = data.substring(2);
+                var tipoRespuesta = data.substring(0, 2);
+                if (tipoRespuesta === "E~") {
+                    mostrarModal("myModal", "Se genero un error", respuestaTxt);
+                } else {
+                    consultarVehiculos(1);
+                    mostrarModal("myModal", "Registro de Vehiculos", $("#inputPlaca").val() + " agregado con exito");
+                    limpiarForm();
+                }
+            },
+            type: "POST",
+            dataType: "text"
+        });
+    } else {
+        mostrarMensaje("mesageRegistro", "alert alert-danger", "Debe digitar los campos del formulario", "Error!");
+        $("#collapseOne").addClass('show');
+    }
+    //$("#choferAction").val("#agregarChofer");
+    $("#collapseOne").addClass('show');
+
+}
+function registrarVehiculo() {
+    mostrarModal("myModal", "Espere por favor..", "Cargando información de la base de datos");
+    if (validar()) {
+        var rr = $("#inputUbicacionX").val();
+        $.ajax({
+            url: '../VehiculoServlet',
+            data: {
+                accion: $("#vehiculoAction").val(),
+                ano: $("#inputAno"),
+                modelo: $("#inputModelo"),
+                placa: $("#inputPlaca"),
+                color: $("#inputColor"),
+                ubicacionX: $("#inputUbicacionX"),
+                ubicacionY: $("#inputUbicacionY")
             },
             error: function () {
                 mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
@@ -53,7 +93,7 @@ function limpiarForm() {
     $('#formularioVehiculo').trigger("reset");
 }
 function consultarVehiculos(numpag) {
-    //Se envia la información por ajax
+//Se envia la información por ajax
     $.ajax({
         url: '../VehiculoServlet',
         data: {
@@ -66,6 +106,7 @@ function consultarVehiculos(numpag) {
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             // mostrarModal ( "myModal", "Exito al cargar en la base de datos" ) ;
             dibujarTabla(numpag, data);
+             paginador(numpag, data.length / 10);
             // se oculta el modal esta funcion se encuentra en el utils.js
         },
         type: 'POST',
@@ -86,7 +127,7 @@ function dibujarTabla(numpag, dataJson) {
     row.append($("<th><b>Modelo</b></th>"));
     row.append($("<th><b>Año</b></th>"));
     row.append($("<th><b>Color</b></th>"));
-    row.append ( $( "<th><b>Acción</b></th>" ) ) ;
+    row.append($("<th><b>Acción</b></th>"));
     //carga la tabla con el json devuelto
     var cont = 0;
     var i = 10 * (numpag - 1);
@@ -97,8 +138,8 @@ function dibujarTabla(numpag, dataJson) {
 }
 
 function dibujarFila(rowData) {
-    //Cuando dibuja la tabla en cada boton se le agrega la funcionalidad de cargar o eliminar la informacion
-    //de una persona    
+//Cuando dibuja la tabla en cada boton se le agrega la funcionalidad de cargar o eliminar la informacion
+//de una persona    
     var row = $('<tr />');
     $("#tablaVehiculos").append(row);
     row.append($("<td>" + rowData.placa + "</td>"));
@@ -114,12 +155,10 @@ function dibujarFila(rowData) {
 }
 
 function mostrarMensaje(name, classCss, msg, neg) {
-    //se le eliminan los estilos al mensaje
+//se le eliminan los estilos al mensaje
     $("#" + name).removeClass();
-
     //se setean los estilos
     $("#" + name).addClass(classCss);
-
     //se muestra la capa del mensaje con los parametros del metodo
     $("#" + name).fadeIn("slow");
     $(".mesajeResultNeg").html(neg);
@@ -127,28 +166,27 @@ function mostrarMensaje(name, classCss, msg, neg) {
     $(".mesajeResultText").html(msg);
 }
 
-function paginador(pagAct) {
+function paginador(pagAct, tam) {
     var ini = 1;
     $("#paginacionOpc").html("");
     if (pagAct > 5) {
         ini = pagAct - 5;
-        $("#paginacionOpc").append('<li onclick="paginador(' + (ini - 1) + ')"><a>&laquo;</a></li>');
+        $("#paginacionOpc").append('<li onclick="consultarVehiculos(' + ini + '),paginador(' + (pagAct - 1) + ',' + tam + ')"><a>&laquo;</a></li>');
     } else {
-        $("#paginacionOpc").append('<li onclick="paginador(' + ini + ')" ><a>&laquo;</a></li>');
+        $("#paginacionOpc").append('<li onclick="consultarVehiculos(' + ini + '), paginador(' + (pagAct - 1) + ',' + tam + ')" ><a>&laquo;</a></li>');
     }
-    for (var i = 0; i <= 10; i++, ini++) {
+    for (var i = 0; i < tam; i++, ini++) {
         if (ini === pagAct) {
-            $("#paginacionOpc").append('<li class="active" onclick="consultarChoferes(' + ini + '),paginador(' + ini + ')"><a>' + ini + '</a></li> ');
+            $("#paginacionOpc").append('<li class="active" onclick="consultarVehiculos(' + ini + '),paginador(' + ini + ',' + tam + ') "><a>' + ini + '</a></li> ');
         } else {
-            $("#paginacionOpc").append('<li onclick="consultarChoferes(' + ini + '),paginador(' + ini + ')"><a>' + ini + '</a></li>');
+            $("#paginacionOpc").append('<li onclick="consultarVehiculos(' + ini + '),paginador(' + ini + ',' + tam + ') "><a>' + ini + '</a></li>');
         }
     }
-    $("#paginacionOpc").append('<li onclick="paginador(' + (ini + 1) + ')"><a>&raquo;</a></li>');
+    $("#paginacionOpc").append('<li onclick="consultarVehiculos(' + (ini - 1) + '), paginador(' + (ini -1) + ',' + tam +')"><a>&raquo;</a></li>');
 }
 
 function validar() {
     var validacion = true;
-
     //Elimina estilo de error en los css
     //notese que es sobre el grupo que contienen el input
     $("#groupCedula").removeClass("has-error");
@@ -189,10 +227,16 @@ function validaEliminacion(mod, idVehiculo) {
     });
 }
 
+<<<<<<< HEAD
 function eliminarVehiculo(idVehiculo) {
     // alert ( "Eliminando vehículo" ) ;
     //mostrarModal("myModal", "Espere por favor..", "Se esta eliminando al chofer seleccionado");
     //Se envia la información por ajax
+=======
+function eliminarChofer(idChofer) {
+//mostrarModal("myModal", "Espere por favor..", "Se esta eliminando al chofer seleccionado");
+//Se envia la información por ajax
+>>>>>>> 390cb52717c945dbe2ac766c5336f0a4f34ff2b7
     $.ajax({
         url: '../VehiculoServlet',
         data: {
@@ -210,7 +254,11 @@ function eliminarVehiculo(idVehiculo) {
                 cambiarMensajeModal("myModal", "Resultado acción", respuestaTxt);
             } else {
                 $("#myModal").hide();
+<<<<<<< HEAD
                 setTimeout(consultarVehiculos(1), 1000);// hace una pausa y consulta la información de la base de datos
+=======
+                setTimeout(consultarChoferes(1), 1000); // hace una pausa y consulta la información de la base de datos
+>>>>>>> 390cb52717c945dbe2ac766c5336f0a4f34ff2b7
             }
         },
         type: 'POST',
@@ -258,3 +306,4 @@ function cargaChofer(chofer) {
     //$("#myModalFormulario").modal();
     $("#choferAction").val("modificarChofer");
 }
+  

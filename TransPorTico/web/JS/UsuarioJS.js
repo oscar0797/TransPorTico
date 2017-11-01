@@ -1,4 +1,4 @@
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -8,10 +8,13 @@ var unica = "";
 
 $(document).ready(function () {
     consultarUsuarios(1);
-    paginador(1);
+   // paginador(1);
     desactivaForm();
-    //$("#inputCedula").click(ayuda("inputCedula", 'Sólo números'));
     $("#inputNombreUsuario").click(ayuda("inputNombreUsuario", 'Sólo texto'));
+    $("#inputNombre").click(ayuda("inputNombre", 'Sólo texto'));
+    $("#inputApellido1").click(ayuda("inputApellido1", 'Sólo texto'));
+    $("#inputApellido2").click(ayuda("inputApellido2", 'Sólo texto'));
+    $("#inputDireccion").click(ayuda("inputDireccion", 'Sólo texto'));
 });
 
 function registraUsuario() {
@@ -70,6 +73,8 @@ function consultarUsuarios(numpag) {
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             dibujarTabla(numpag, data);
+            paginador(numpag, data.length / 10);
+            doSearch(data);
             // se oculta el modal esta funcion se encuentra en el utils.js
         },
         type: 'POST',
@@ -103,7 +108,7 @@ function dibujarTabla(numpag, dataJson) {
 
 function dibujarFila(rowData) {
     //Cuando dibuja la tabla en cada boton se le agrega la funcionalidad de cargar o eliminar la informacion
-    //de una persona    
+    //de una persona
     var row = $('<tr />');
     $("#tablaUsuarios").append(row);
     row.append($("<td>" + rowData.nombreUsuario + "</td>"));
@@ -134,24 +139,23 @@ function mostrarMensaje(name, classCss, msg, neg) {
     $(".mesajeResultText").html(msg);
     $(".mesajeResultText").html(msg);
 }
-function paginador(pagAct) {
+function paginador(pagAct, tam) {
     var ini = 1;
     $("#paginacionOpc").html("");
     if (pagAct > 5) {
         ini = pagAct - 5;
-        $("#paginacionOpc").append('<li onclick="paginador(' + (ini - 1) + ')"><a>&laquo;</a></li>');
+        $("#paginacionOpc").append('<li onclick="consultarUsuarios(' + ini + '),paginador(' + (pagAct - 1) + ',' + tam + ')"><a>&laquo;</a></li>');
     } else {
-        $("#paginacionOpc").append('<li onclick="paginador(' + ini + ')" ><a>&laquo;</a></li>');
+        $("#paginacionOpc").append('<li onclick="consultarUsuarios(' + ini + '), paginador(' + (pagAct - 1) + ',' + tam + ')" ><a>&laquo;</a></li>');
     }
-    for (var i = 0; i <= 10; i++, ini++) {
+    for (var i = 0; i < tam; i++, ini++) {
         if (ini === pagAct) {
-            $("#paginacionOpc").append('<li class="active" onclick="consultarUsuarios(' + ini + '),paginador(' + ini + ')"><a>' + ini + '</a></li> ');
+            $("#paginacionOpc").append('<li class="active" onclick="consultarUsuarios(' + ini + '),paginador(' + ini + ',' + tam + ') "><a>' + ini + '</a></li> ');
         } else {
-            $("#paginacionOpc").append('<li onclick="consultarUsuarios(' + ini + '),paginador(' + ini + ')"><a>' + ini + '</a></li>');
+            $("#paginacionOpc").append('<li onclick="consultarUsuarios(' + ini + '),paginador(' + ini + ',' + tam + ') "><a>' + ini + '</a></li>');
         }
     }
-    $("#paginacionOpc").append('<li onclick="paginador(' + (ini + 1) + ')"><a>&raquo;</a></li>');
-
+    $("#paginacionOpc").append('<li onclick="consultarUsuarios(' + (ini - 1) + '), paginador(' + (ini -1) + ',' + tam +')"><a>&raquo;</a></li>');
 }
 
 function limpiarForm() {
@@ -265,7 +269,7 @@ function eliminarUsuario(idUsuario) {
     $("#myModal").hide();
 }
 
-function modificarUsuario(pkIdUsuario) { 
+function modificarUsuario(pkIdUsuario) {
     $("#usuarioAction").val("buscarUsuario");
 
     //mostrarModal("myModal", "Espere por favor..", "Buscando en la base de datos");
@@ -281,7 +285,7 @@ function modificarUsuario(pkIdUsuario) {
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             cargaUsuario(data);
-            $("#usuarioAction").val("modificarUsuario");            
+            $("#usuarioAction").val("modificarUsuario");
             $("#collapseOne").addClass('show');
             $("#encabezado").addClass('show');
             verificaNombreUsuarioEdicion(data);
@@ -370,8 +374,8 @@ function verificaNombreUsuarioEdicion(usuario) {
     });
 }
 
-function aux(usuario){
-    var unica = usuario.nombreUsuario;     
+function aux(usuario) {
+    var unica = usuario.nombreUsuario;
 }
 
 function verificaNombreUsuario(id, tam, mensaje) {
@@ -399,12 +403,125 @@ function verificaNombreUsuario(id, tam, mensaje) {
             } else {
                 $("#inputNombreUsuario").addClass("error");
                 var ff = unica;
-                if ( $("#usuarioAction").val() === "modificarUsuario" && $("#inputNombreUsuario").val() === ff ) { //????
+                if ($("#usuarioAction").val() === "modificarUsuario" && $("#inputNombreUsuario").val() === ff) { //????
                     alert("Nombre de usuario verificado correctamente, proceda a llenar los demás campos");
                     activaForm();
                 } else {
                     alert("El nombre de usuario que digitó ya existe, por favor digite uno nuevo");
                 }
+            }
+        },
+        type: "POST",
+        dataType: "text"
+    });
+}
+
+function as() {
+    $.ajax({
+        url: '../UsuarioServlet',
+        data: {
+            accion: "consultarUsuarios"
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            //alert("Se presento un error a la hora de cargar la información de los Usuarios en la base de datos");
+            mostrarModal("myModal", "Error al cargar en la base de datos");
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data            
+            var tableReg = document.getElementById('tablaUsuarios');
+            var searchText = document.getElementById('buscar').value.toLowerCase();
+            var cellsOfRow = "";
+            var found = false;
+            var compareWith = "";
+            var tt = $("#buscar").val();
+            //var cc = document.getElementById("#buscar").val();
+      
+            // Recorremos todas las filas con contenido de la tabla
+            for (var i = 1; i < data.length; i++) {
+                if(tt === data.nombreUsuario){
+                     tableReg.rows[i].style.display = '';
+                 }
+                /*
+                cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
+                found = false;
+                // Recorremos todas las celdas
+                for (var j = 0; j < cellsOfRow.length && !found; j++) {
+                    compareWith = cellsOfRow[j].innerHTML.toLowerCase();
+                    // Buscamos el texto en el contenido de la celda
+                    if (searchText.length == 0 || (compareWith.indexOf(searchText) > -1))
+                    {
+                        found = true;
+                    }
+                }
+                if (found) {
+                    tableReg.rows[i].style.display = '';
+                } else {
+                    // si no ha encontrado ninguna coincidencia, esconde la
+                    // fila de la tabla
+                    tableReg.rows[i].style.display = 'none';
+                }
+                */
+            }
+
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+}
+
+function doSearch(data) {
+    var tableReg = document.getElementById('tablaUsuarios');
+    var searchText = document.getElementById('buscar').value.toLowerCase();
+    var cellsOfRow = "";
+    var found = false;
+    var compareWith = "";
+
+    // Recorremos todas las filas con contenido de la tabla
+    for (var i = 1; i < data.length; i++) {
+        cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
+        found = false;
+        // Recorremos todas las celdas
+        for (var j = 0; j < cellsOfRow.length && !found; j++) {
+            compareWith = cellsOfRow[j].innerHTML.toLowerCase();
+            // Buscamos el texto en el contenido de la celda
+            if (searchText.length == 0 || (compareWith.indexOf(searchText) > -1))
+            {
+                found = true;
+            }
+        }
+        if (found) {
+            tableReg.rows[i].style.display = '';
+        } else {
+            // si no ha encontrado ninguna coincidencia, esconde la
+            // fila de la tabla
+            tableReg.rows[i].style.display = 'none';
+        }
+    }
+}
+
+function buscarUsuario(){
+    var nombree = $("#buscar").val();
+    $.ajax({
+        url: '../UsuarioServlet',
+        data: {
+            accion: "verificarNombreUsuario",
+            nombreUsuario: nombree
+        },
+        error: function () {
+            mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
+        },
+        success: function (data) {
+            var respuestaTxt = data.substring(2);
+            var tipoRespuesta = data.substring(0, 2);
+            if (tipoRespuesta !== "E~" || nombree === usuario.nombreUsuario) {
+                $("#inputNombreUsuario").val(nombree);
+                $("#inputNombreUsuario").addClass("correcto");
+                $("#collapseOne").addClass('show');
+                desactivaForm();
+                //activaForm();
+            } else {
+                $("#inputNombreUsuario").addClass("error");
+                desactivaForm();
+
             }
         },
         type: "POST",

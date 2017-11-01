@@ -32,6 +32,10 @@ public class UsuarioBL extends BaseBL implements IBaseBL<Usuario, Integer> {
         }
         return null;
     }
+    
+     public Usuario findByName(String name) {
+        return (Usuario) this.getDAO(Usuario.class.getName()).findByID(name);
+    }
 
     @Override
     public void merge(Usuario obj) {
