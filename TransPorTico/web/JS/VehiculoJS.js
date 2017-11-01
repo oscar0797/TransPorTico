@@ -227,16 +227,9 @@ function validaEliminacion(mod, idVehiculo) {
     });
 }
 
-<<<<<<< HEAD
-function eliminarVehiculo(idVehiculo) {
-    // alert ( "Eliminando vehículo" ) ;
-    //mostrarModal("myModal", "Espere por favor..", "Se esta eliminando al chofer seleccionado");
-    //Se envia la información por ajax
-=======
 function eliminarChofer(idChofer) {
 //mostrarModal("myModal", "Espere por favor..", "Se esta eliminando al chofer seleccionado");
 //Se envia la información por ajax
->>>>>>> 390cb52717c945dbe2ac766c5336f0a4f34ff2b7
     $.ajax({
         url: '../VehiculoServlet',
         data: {
@@ -254,11 +247,7 @@ function eliminarChofer(idChofer) {
                 cambiarMensajeModal("myModal", "Resultado acción", respuestaTxt);
             } else {
                 $("#myModal").hide();
-<<<<<<< HEAD
                 setTimeout(consultarVehiculos(1), 1000);// hace una pausa y consulta la información de la base de datos
-=======
-                setTimeout(consultarChoferes(1), 1000); // hace una pausa y consulta la información de la base de datos
->>>>>>> 390cb52717c945dbe2ac766c5336f0a4f34ff2b7
             }
         },
         type: 'POST',
