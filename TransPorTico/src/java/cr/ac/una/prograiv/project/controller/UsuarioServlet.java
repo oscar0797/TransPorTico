@@ -123,6 +123,9 @@ public class UsuarioServlet extends HttpServlet {
                         out.print("C~ El nombre de usuario digitado no existe");
                     }
                     break;
+                case "buscarNombreUsuario":
+                    val.existeNombreUsuario(request.getParameter("nombreUsuario"));
+                    break;
                 default:
                     out.print("E~No se indico la acción que se desea realizar");
                     break;

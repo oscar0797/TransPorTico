@@ -71,7 +71,7 @@
                     <div class="card-header" role="tab" id="headingOne">
                         <h5 class="mb-0" >
                             <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                <div class="estilo2 center-block btn-primary" ><b>Registrar un nuevo chofer</b></div>                                
+                                <div class="estilo2 center-block" ><b>Registrar un nuevo chofer</b></div>                                
                             </a>
 
                         </h5>
@@ -97,7 +97,7 @@
                                     <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                         <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4" id="groupCedula">
                                             <label for="inputCedula">Cédula*</label>
-                                            <input type="text" class="form-control" id="inputCedula" autofocus="autofocus" placeholder="Cedula" onpaste="return false" onkeyup="validaNum('inputCedula'), validaTamMax('inputCedula', 10, 'La cantidad máxima de dígitos es 10')" >
+                                            <input type="text" class="form-control" id="inputCedula" autofocus="autofocus" placeholder="Cédula" onpaste="return false" onkeyup="validaNum('inputCedula'), validaTamMax('inputCedula', 10, 'La cantidad máxima de dígitos es 10')" >
                                         </div>
                                         <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4" id="groupNombre">
                                             <label for="inputNombre">Nombre*</label>
@@ -167,15 +167,15 @@
                 <div class="card-header">
                     <div class="form-row">
                         <div class="col-md-4">
-                            <p><b>Buscar por cédula del chofer:</b></p>
+                            <p><b>Buscar por palabra clave:</b></p>
                         </div>
                         <div class="col-md-4">
                             <div class="">
-                                <input type="text" class="form-control" id="buscar" placeholder="Por favor, digite la cédula del chofer">
+                                <input type="text" class="form-control" id="buscar" placeholder="Por favor, digite una palabra" onkeyup="busquedaPalabraClave('tablaChoferes','buscar')">
                             </div>
                         </div>
                         <div class=col-md-4">
-                            <button type="button" onclick="busquedaChoferes()" class="btn btn-info center-block"  id="btMostarForm">
+                            <button type="button" class="btn btn-info center-block"  id="btMostarForm">
                                 Buscar <span class="glyphicon glyphicon-search"></span>
                             </button>
                         </div>

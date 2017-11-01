@@ -110,12 +110,12 @@
                                             <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupContrasena1">
                                                 <label for="inputContrasena1">Contraseña*</label>
                                                 <input type="password" class="form-control" id="inputContrasena1" autofocus="autofocus" placeholder="Ingrese una contraseña" onpaste="return false"
-                                                       onkeyup="validaTamMax('inputContrasena1', 40, 'La cantidad máxima de dígitos es 40')">
+                                                       onkeyup="validaTamMax('inputContrasena1', 30, 'La cantidad máxima de dígitos es 30')">
                                             </div>
                                             <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupContrasena2">
                                                 <label for="inputContrasena2">Confirmar Contraseña*</label>
                                                 <input type="password" class="form-control" id="inputContrasena2" autofocus="autofocus" placeholder="Repita la contraseña" onpaste="return false"
-                                                       onkeyup="validaTamMax('inputContrasena2', 40, 'La cantidad máxima de dígitos es 40')">
+                                                       onkeyup="validaTamMax('inputContrasena2', 30, 'La cantidad máxima de dígitos es 30')">
                                             </div>
                                         </div>
                                         <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -192,15 +192,15 @@
                 <div class="card-header">
                     <div class="form-row">
                         <div class="col-md-4">
-                            <p><b>Buscar por nombre de usuario</b></p>
+                            <p><b>Buscar por palabra clave</b></p>
                         </div>
                         <div class="col-md-4">
                             <div class="">
-                                <input type="text" class="form-control" id="buscar" placeholder="Por favor, digite el nombre de usuario">
+                                <input type="text" class="form-control" id="buscar" placeholder="Por favor, digite una palabra" >
                             </div>
                         </div>
                         <div class=col-md-4">
-                            <button type="button" onclick="busquedaUsuarios()" class="btn btn-info center-block"  id="btMostarForm">
+                            <button type="button"  class="btn btn-info center-block"  id="btMostarForm" onclick="as()">
                                 Buscar <span class="glyphicon glyphicon-search"></span>
                             </button>
                         </div>

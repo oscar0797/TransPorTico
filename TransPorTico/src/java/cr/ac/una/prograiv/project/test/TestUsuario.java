@@ -21,8 +21,8 @@ import java.awt.Polygon;
 public class TestUsuario {
 
     public static void main(String[] args) {
-        //saveUsuario();
-        mergeUsuario(1);
+        saveUsuario();
+        //mergeUsuario(1);
         //deleteUsuario();
         //findAllUsuario();
         //findIdUsuario(17);
@@ -30,9 +30,21 @@ public class TestUsuario {
     }
 
     public static void saveUsuario() {        
-        Usuario usu = new Usuario("Usuario1", "123","123","Oscar", "Carmona", "Mora", "Nadie@gmail.com", new Date(), "8888888","Dirección",1, new Date(), "Nadie");
-        UsuarioBL bl = new UsuarioBL();
-        bl.save(usu);
+        Usuario usu1 = new Usuario("jjf", "123","123","Oscar", "Carmona", "Mora", "Nadie@gmail.com", new Date(), "8888888","Dirección",1, new Date(), "Nadie");
+        UsuarioBL bl1 = new UsuarioBL();
+        bl1.save(usu1);
+        
+        Usuario usu2 = new Usuario("jjf", "123","123","Oscar", "Carmona", "Mora", "Nadie@gmail.com", new Date(), "8888888","Dirección",1, new Date(), "Nadie");
+        UsuarioBL bl2= new UsuarioBL();
+        bl2.save(usu2);
+        
+        Usuario usu3 = new Usuario("ujjuh", "123","123","Oscar", "Carmona", "Mora", "Nadie@gmail.com", new Date(), "8888888","Dirección",1, new Date(), "Nadie");
+        UsuarioBL bl3 = new UsuarioBL();
+        bl3.save(usu3);
+        
+        Usuario usu4 = new Usuario("yjjw", "123","123","Oscar", "Carmona", "Mora", "Nadie@gmail.com", new Date(), "8888888","Dirección",1, new Date(), "Nadie");
+        UsuarioBL bl4 = new UsuarioBL();
+        bl4.save(usu4);
         
         System.out.println("Usuario guardado con exito");
     }

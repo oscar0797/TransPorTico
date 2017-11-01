@@ -154,15 +154,15 @@
                 <div class="card-header">
                     <div class="form-row">
                         <div class="col-md-4">
-                            <p><b>Buscar por placa del vehículo:</b></p>
+                            <p><b>Buscar por palabra clave:</b></p>
                         </div>
                         <div class="col-md-4">
                             <div class="">
-                                <input type="text" class="form-control" id="buscar" placeholder="Por favor, digite la placa del vehículo">
+                                <input type="text" class="form-control" id="buscar" placeholder="Por favor, digite una palabra" onkeyup="busquedaPalabraClave('tablaVehiculos','buscar')">
                             </div>
                         </div>
                         <div class=col-md-4">
-                            <button type="button" onclick="busquedaChoferes()" class="btn btn-info center-block"  id="btMostarForm">
+                            <button type="button"  class="btn btn-info center-block"  id="btMostarForm">
                                 Buscar <span class="glyphicon glyphicon-search"></span>
                             </button>
                         </div>
