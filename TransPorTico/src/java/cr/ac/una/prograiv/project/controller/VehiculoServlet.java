@@ -91,7 +91,7 @@ public class VehiculoServlet extends HttpServlet {
 
                 case "eliminarVehiculo":
                 {
-                    vehiculo.setPkIdVehiculo ( Integer.parseInt ( request.getParameter ( "idUsuario" ) ) ) ;
+                    vehiculo.setPkIdVehiculo ( Integer.parseInt ( request.getParameter ( "idVehiculo" ) ) ) ;
                     vehBL.delete ( vehiculo ) ;
                     out.print ( "C~Vehículo eliminado con exito" ) ;
                     break ;

@@ -227,7 +227,7 @@ function validaEliminacion(mod, idVehiculo) {
     });
 }
 
-function eliminarChofer(idChofer) {
+function eliminarVehiculo(idVehiculo) {
 //mostrarModal("myModal", "Espere por favor..", "Se esta eliminando al chofer seleccionado");
 //Se envia la información por ajax
     $.ajax({
