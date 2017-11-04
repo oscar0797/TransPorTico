@@ -8,6 +8,11 @@
 $(document).ready(function () {
     consultarVehiculos(1);
    // paginador(1);
+   $("form").submit(function (event) {
+        if (validar() === false) {
+            event.preventDefault();
+        }
+    });
 });
 
 function registrarVehiculo() {
@@ -50,43 +55,6 @@ function registrarVehiculo() {
     //$("#choferAction").val("#agregarChofer");
     $("#collapseOne").addClass('show');
 
-}
-function registrarVehiculo() {
-    mostrarModal("myModal", "Espere por favor..", "Cargando información de la base de datos");
-    if (validar()) {
-        var rr = $("#inputUbicacionX").val();
-        $.ajax({
-            url: '../VehiculoServlet',
-            data: {
-                accion: $("#vehiculoAction").val(),
-                ano: $("#inputAno"),
-                modelo: $("#inputModelo"),
-                placa: $("#inputPlaca"),
-                color: $("#inputColor"),
-                ubicacionX: $("#inputUbicacionX"),
-                ubicacionY: $("#inputUbicacionY")
-            },
-            error: function () {
-                mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
-            },
-            success: function (data) {
-                var respuestaTxt = data.substring(2);
-                var tipoRespuesta = data.substring(0, 2);
-                if (tipoRespuesta === "E~") {
-                    mostrarModal("myModal", "Se genero un error", respuestaTxt);
-                } else {
-                    consultarVehiculos(1);
-                    mostrarModal("myModal", "Registro de Vehiculos", $("#inputPlaca").val() + " agregado con exito");
-                    limpiarForm();
-                }
-            },
-            type: "POST",
-            dataType: "text"
-        });
-    } else {
-        mostrarMensaje("mesageRegistro", "alert alert-danger", "Debe digitar los campos del formulario", "Error!");
-    }
-    $("#vehiculoAction").val("#agregarVehiculo");
 }
 
 function limpiarForm() {
@@ -189,31 +157,31 @@ function validar() {
     var validacion = true;
     //Elimina estilo de error en los css
     //notese que es sobre el grupo que contienen el input
-    $("#groupCedula").removeClass("has-error");
-    $("#groupNombre").removeClass("has-error");
-    $("#groupTipoLicencia").removeClass("has-error");
-    $("#groupFechaNacimiento").removeClass("has-error");
-    $("#groupFechaVencimiento").removeClass("has-error");
+    $("#inputPlaca").removeClass("error");
+    $("#inputModelo").removeClass("error");
+    $("#inputAno").removeClass("error");
+    $("#inputColor").removeClass("error");
+    $("#inputUbicacion").removeClass("error");
     //valida cada uno de los campos del formulario
     //Nota: Solo si fueron digitadoslse;
-    if ($("#inputCedula").val() === "") {
-        $("#groupCedula").addClass("has-error");
+    if ($("#inputPlaca").val() === "") {
+        $("#inputPlaca").addClass("error");
         validacion = false;
     }
-    if ($("#inputNombre").val() === "") {
-        $("#groupNombre").addClass("has-error");
+    if ($("#inputModelo").val() === "") {
+        $("#inputModelo").addClass("error");
         validacion = false;
     }
-    if ($("#inputTipoLicencia").val() === "") {
-        $("#groupTipoLicencia").addClass("has-error");
+    if ($("#inputAno").val() === "") {
+        $("#inputAno").addClass("error");
         validacion = false;
     }
-    if ($("#inputFechaNacimiento").val() === "") {
-        $("#groupFechaNacimiento").addClass("has-error");
+    if ($("#inputColor").val() === "") {
+        $("#inputColor").addClass("error");
         validacion = false;
     }
-    if ($("#inputFechaVencimiento").val() === "") {
-        $("#groupFechaVencimiento").addClass("has-error");
+    if ($("#inputFechaUbicacion").val() === "") {
+        $("#inputFechaUbicacion").addClass("error");
         validacion = false;
     }
     return validacion;

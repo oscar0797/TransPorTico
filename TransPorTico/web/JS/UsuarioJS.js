@@ -8,7 +8,14 @@ var unica = "";
 
 $(document).ready(function () {
     consultarUsuarios(1);
-   // paginador(1);
+    // paginador(1);
+
+    $("form").submit(function (event) {
+        if (validar() === false) {
+            event.preventDefault();
+        }
+    });
+    
     desactivaForm();
     $("#inputNombreUsuario").click(ayuda("inputNombreUsuario", 'Sólo texto'));
     $("#inputNombre").click(ayuda("inputNombre", 'Sólo texto'));
@@ -56,6 +63,7 @@ function registraUsuario() {
         });
     } else {
         mostrarMensaje("mesageRegistro", "alert alert-danger", "Debe digitar los campos del formulario", "Error!");
+        $("#collapseOne").addClass('show');
     }
     $("#usuarioAction").val("#agregarUsuario");
 }
@@ -155,7 +163,7 @@ function paginador(pagAct, tam) {
             $("#paginacionOpc").append('<li onclick="consultarUsuarios(' + ini + '),paginador(' + ini + ',' + tam + ') "><a>' + ini + '</a></li>');
         }
     }
-    $("#paginacionOpc").append('<li onclick="consultarUsuarios(' + (ini - 1) + '), paginador(' + (ini -1) + ',' + tam +')"><a>&raquo;</a></li>');
+    $("#paginacionOpc").append('<li onclick="consultarUsuarios(' + (ini - 1) + '), paginador(' + (ini - 1) + ',' + tam + ')"><a>&raquo;</a></li>');
 }
 
 function limpiarForm() {
@@ -167,67 +175,67 @@ function validar() {
 
     //Elimina estilo de error en los css
     //notese que es sobre el grupo que contienen el input
-    $("#groupUsuario").removeClass("has-error");
-    $("#groupContrasena1").removeClass("has-error");
-    $("#groupContrasena2").removeClass("has-error");
-    $("#groupPasswordConfirm").removeClass("has-error");
-    $("#groupNombre").removeClass("has-error");
-    $("#groupApellido1").removeClass("has-error");
-    $("#groupApellido2").removeClass("has-error");
-    $("#groupCorreo").removeClass("has-error");
-    $("#groupTelefono").removeClass("has-error");
-    $("#groupDireccion").removeClass("has-error");
-    $("#groupFechaNacimiento").removeClass("has-error");
-    $("#groupTipo").removeClass("has-error");
-    // $("#groupDireccion").removeClass("has-error");
+    $("#inputNombreUsuario").removeClass("error");
+    $("#inputContrasena1").removeClass("error");
+    $("#inputContrasena2").removeClass("error");
+    $("#inputPasswordConfirm").removeClass("error");
+    $("#inputNombre").removeClass("error");
+    $("#inputApellido1").removeClass("error");
+    $("#inputApellido2").removeClass("error");
+    $("#inputCorreo").removeClass("error");
+    $("#inputTelefono").removeClass("error");
+    $("#inputDireccion").removeClass("error");
+    $("#inputFechaNacimiento").removeClass("error");
+    $("#inputTipo").removeClass("error");
+    // $("#inputDireccion").removeClass("error");
     //valida cada uno de los campos del formulario
     //Nota: Solo si fueron digitadoslse;
     if ($("#inputNombreUsuario").val() === "") {
-        $("#groupUsuario").addClass("has-error");
+        $("#inputNombreUsuario").addClass("error");
         validacion = false;
     }
     if ($("#inputContrasena1").val() === "") {
-        $("#groupContrasena1").addClass("has-error");
+        $("#inputContrasena1").addClass("error");
         validacion = false;
     }
     if ($("#inputContrasena2").val() === "") {
-        $("#groupContrasena2").addClass("has-error");
+        $("#inputContrasena2").addClass("error");
         validacion = false;
     }
     if ($("#inputNombre").val() === "") {
-        $("#groupNombre").addClass("has-error");
+        $("#inputNombre").addClass("error");
         validacion = false;
     }
     if ($("#inputApellido1").val() === "") {
-        $("#groupApellido1").addClass("has-error");
+        $("#inputApellido1").addClass("error");
         validacion = false;
     }
     if ($("#inputApellido2").val() === "") {
-        $("#groupApellido2").addClass("has-error");
+        $("#inputApellido2").addClass("error");
         validacion = false;
     }
     if ($("#inputCorreo").val() === "") {
-        $("#groupCorreo").addClass("has-error");
+        $("#inputCorreo").addClass("error");
         validacion = false;
     }
     if ($("#inputTelefono").val() === "") {
-        $("#groupTelefono").addClass("has-error");
+        $("#inputTelefono").addClass("error");
         validacion = false;
     }
     if ($("#inputDireccion").val() === "") {
-        $("#groupDireccion").addClass("has-error");
+        $("#inputDireccion").addClass("error");
         validacion = false;
     }
     if ($("#inputFechaNacimiento").val() === "") {
-        $("#groupFechaNacimiento").addClass("has-error");
+        $("#inputFechaNacimiento").addClass("error");
         validacion = false;
     }
     if ($("#inputTipo").val() === "") {
-        $("#groupTipo").addClass("has-error");
+        $("#inputTipo").addClass("error");
         validacion = false;
     }
     /* if ($("#inputDireccion").val() === "") {
-     $("#groupDireccion").addClass("has-error");
+     $("#inputDireccion").addClass("error");
      validacion = false;
      }*/
     return validacion;
@@ -434,32 +442,32 @@ function as() {
             var compareWith = "";
             var tt = $("#buscar").val();
             //var cc = document.getElementById("#buscar").val();
-      
+
             // Recorremos todas las filas con contenido de la tabla
             for (var i = 1; i < data.length; i++) {
-                if(tt === data.nombreUsuario){
-                     tableReg.rows[i].style.display = '';
-                 }
-                /*
-                cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
-                found = false;
-                // Recorremos todas las celdas
-                for (var j = 0; j < cellsOfRow.length && !found; j++) {
-                    compareWith = cellsOfRow[j].innerHTML.toLowerCase();
-                    // Buscamos el texto en el contenido de la celda
-                    if (searchText.length == 0 || (compareWith.indexOf(searchText) > -1))
-                    {
-                        found = true;
-                    }
-                }
-                if (found) {
+                if (tt === data.nombreUsuario) {
                     tableReg.rows[i].style.display = '';
-                } else {
-                    // si no ha encontrado ninguna coincidencia, esconde la
-                    // fila de la tabla
-                    tableReg.rows[i].style.display = 'none';
                 }
-                */
+                /*
+                 cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
+                 found = false;
+                 // Recorremos todas las celdas
+                 for (var j = 0; j < cellsOfRow.length && !found; j++) {
+                 compareWith = cellsOfRow[j].innerHTML.toLowerCase();
+                 // Buscamos el texto en el contenido de la celda
+                 if (searchText.length == 0 || (compareWith.indexOf(searchText) > -1))
+                 {
+                 found = true;
+                 }
+                 }
+                 if (found) {
+                 tableReg.rows[i].style.display = '';
+                 } else {
+                 // si no ha encontrado ninguna coincidencia, esconde la
+                 // fila de la tabla
+                 tableReg.rows[i].style.display = 'none';
+                 }
+                 */
             }
 
         },
@@ -498,7 +506,7 @@ function doSearch(data) {
     }
 }
 
-function buscarUsuario(){
+function buscarUsuario() {
     var nombree = $("#buscar").val();
     $.ajax({
         url: '../UsuarioServlet',
