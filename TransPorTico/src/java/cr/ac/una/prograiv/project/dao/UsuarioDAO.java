@@ -15,46 +15,46 @@ import org.hibernate.HibernateException;
  *
  * @author Oscar
  */
-public class UsuarioDAO extends HibernateUtil implements IBaseDAO <Usuario,Integer>{
+public class UsuarioDAO extends HibernateUtil implements IBaseDAO<Usuario, Integer> {
 
     @Override
     public void save(Usuario obj) {
-        try{
+        try {
             iniciarOperacion();
             getSesion().save(obj);
             getTransac().commit();
-        }catch(HibernateException he){
+        } catch (HibernateException he) {
             manejarException(he);
             throw he;
-        }finally{
+        } finally {
             getSesion().close();
         }
-        
+
     }
 
     @Override
     public void merge(Usuario obj) {
-        try{
+        try {
             iniciarOperacion();
             getSesion().merge(obj);
             getTransac().commit();
-        }catch(HibernateException he){
+        } catch (HibernateException he) {
             manejarException(he);
             throw he;
-        }finally{
+        } finally {
             getSesion().close();
         }
     }
 
     @Override
     public Usuario findByID(Integer key) {
-        try{
+        try {
             Usuario usu;
             iniciarOperacion();
             usu = (Usuario) getSesion().get(Usuario.class, key);
             //usu = (Usuario) getSesion().createQuery("SELECT * FROM Usuario WHERE pk_idUsuario = " + key);
             return usu;
-        }catch(HibernateException he){
+        } catch (HibernateException he) {
             manejarException(he);
             throw he;
         }
@@ -62,46 +62,46 @@ public class UsuarioDAO extends HibernateUtil implements IBaseDAO <Usuario,Integ
 
     @Override
     public void delete(Usuario obj) {
-        try{
+        try {
             iniciarOperacion();
             getSesion().delete(obj);
             getTransac().commit();
-        }catch(HibernateException he){
+        } catch (HibernateException he) {
             manejarException(he);
             throw he;
-        }finally{
+        } finally {
             getSesion().close();
         }
     }
 
     @Override
     public List<Usuario> findAll() {
-        try{
+        try {
             List<Usuario> usuarios;
             iniciarOperacion();
             usuarios = (List<Usuario>) getSesion().createQuery("FROM Usuario").list();
             return usuarios;
-        }catch(HibernateException he){
+        } catch (HibernateException he) {
             manejarException(he);
             throw he;
-        }finally{
+        } finally {
             getSesion().close();
         }
     }
 
     @Override
     public List findByQuery(String query) {
-        try{
+        try {
             List<Usuario> usuarios;
             iniciarOperacion();
             usuarios = (List<Usuario>) getSesion().createQuery(query).list();
             return usuarios;
-        }catch(HibernateException he){
+        } catch (HibernateException he) {
             manejarException(he);
             throw he;
-        }finally{
+        } finally {
             getSesion().close();
         }
     }
-    
+
 }

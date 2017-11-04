@@ -89,7 +89,7 @@
                                 <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                     <div class="form-row col-xs-12 col-sm-8 col-md-8 col-lg-8">
                                         <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12"> 
-                                            <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                            <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4" id="groupNombreUsuario">
                                                 <label for="inputNombreUsuario">Nombre de Usuario*</label>
                                                 <input type="text" class="form-control" id="inputNombreUsuario" autofocus="autofocus" placeholder="Ingrese un nombre de usuario" onpaste="return false" onkeyup="validaTamMax('inputNombreUsuario', 20, 'La cantidad máxima de dígitos es 20')" onkeypress="return validaSoloTexto(event)">
                                             </div>
@@ -200,7 +200,7 @@
                             </div>
                         </div>
                         <div class=col-md-4">
-                            <button type="button"  class="btn btn-info center-block"  id="btMostarForm" onclick="as()">
+                            <button type="button"  class="btn btn-info center-block"  id="btMostarForm" onclick="buscarUsuario()">
                                 Buscar <span class="glyphicon glyphicon-search"></span>
                             </button>
                         </div>

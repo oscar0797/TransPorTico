@@ -5,7 +5,23 @@
     Author     : Oscar
 --%>
 
+<%@page import="cr.ac.una.prograiv.project.domain.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+    HttpSession sesion = request.getSession(true);
+        Integer tipoUsuario = 0;
+    Usuario usuario = null;
+    if(sesion!=null){
+        if (sesion.getAttribute("usuario")  == null) {
+        }else{
+            tipoUsuario = (Integer)sesion.getAttribute("tipoUsuario");
+            usuario = (Usuario)sesion.getAttribute("usuario");
+        }
+    }else{        
+        response.sendRedirect("../SecciónPública/Inicio.jsp");
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
     <head>

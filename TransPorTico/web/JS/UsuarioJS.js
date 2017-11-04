@@ -234,10 +234,6 @@ function validar() {
         $("#inputTipo").addClass("error");
         validacion = false;
     }
-    /* if ($("#inputDireccion").val() === "") {
-     $("#inputDireccion").addClass("error");
-     validacion = false;
-     }*/
     return validacion;
 }
 
@@ -511,26 +507,19 @@ function buscarUsuario() {
     $.ajax({
         url: '../UsuarioServlet',
         data: {
-            accion: "verificarNombreUsuario",
+            accion: "buscarNombreUsuario",
             nombreUsuario: nombree
         },
         error: function () {
             mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
+            $("#buscar").addClass("error");
+            alert("No se encontró al usuario, digite una nueva busqueda");
         },
         success: function (data) {
+            
             var respuestaTxt = data.substring(2);
             var tipoRespuesta = data.substring(0, 2);
-            if (tipoRespuesta !== "E~" || nombree === usuario.nombreUsuario) {
-                $("#inputNombreUsuario").val(nombree);
-                $("#inputNombreUsuario").addClass("correcto");
-                $("#collapseOne").addClass('show');
-                desactivaForm();
-                //activaForm();
-            } else {
-                $("#inputNombreUsuario").addClass("error");
-                desactivaForm();
-
-            }
+            dibujarTabla(1, data);
         },
         type: "POST",
         dataType: "text"

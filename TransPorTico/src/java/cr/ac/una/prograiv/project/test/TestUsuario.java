@@ -21,11 +21,12 @@ import java.awt.Polygon;
 public class TestUsuario {
 
     public static void main(String[] args) {
-        saveUsuario();
+        //saveUsuario();
         //mergeUsuario(1);
         //deleteUsuario();
         //findAllUsuario();
         //findIdUsuario(17);
+        findByName("ASAS");
 
     }
 
@@ -99,5 +100,12 @@ public class TestUsuario {
         u = bl.findByID(key);
         System.out.println(u.getNombre());
 
+    }
+    
+    public static void findByName(String name){
+        UsuarioBL bl = new UsuarioBL();
+        Usuario u;
+        u = bl.findByName(name);
+        System.out.println(u.getPkIdUsuario());
     }
 }
