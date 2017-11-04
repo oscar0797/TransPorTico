@@ -39,11 +39,8 @@ public class VehiculoServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             String json;
-            int idVehiculo;
             Vehiculo vehiculo = new Vehiculo();
             VehiculoBL vehBL = new VehiculoBL();
-            Validaciones val = new Validaciones();
-            HttpSession sesion = request.getSession();
             String accion = request.getParameter("accion");
             switch (accion) {
                 case "agregarVehiculo":

@@ -9,6 +9,13 @@ var unica = "";
 $(document).ready(function () {
     consultarUsuarios(1);
     // paginador(1);
+
+    $("form").submit(function (event) {
+        if (validar() === false) {
+            event.preventDefault();
+        }
+    });
+    
     desactivaForm();
     $("#inputNombreUsuario").click(ayuda("inputNombreUsuario", 'Sólo texto'));
     $("#inputNombre").click(ayuda("inputNombre", 'Sólo texto'));
@@ -56,6 +63,7 @@ function registraUsuario() {
         });
     } else {
         mostrarMensaje("mesageRegistro", "alert alert-danger", "Debe digitar los campos del formulario", "Error!");
+        $("#collapseOne").addClass('show');
     }
     $("#usuarioAction").val("#agregarUsuario");
 }
@@ -167,63 +175,63 @@ function validar() {
 
     //Elimina estilo de error en los css
     //notese que es sobre el grupo que contienen el input
-    $("#groupNombreUsuario").removeClass("has-error");
-    $("#groupContrasena1").removeClass("has-error");
-    $("#groupContrasena2").removeClass("has-error");
-    $("#groupPasswordConfirm").removeClass("has-error");
-    $("#groupNombre").removeClass("has-error");
-    $("#groupApellido1").removeClass("has-error");
-    $("#groupApellido2").removeClass("has-error");
-    $("#groupCorreo").removeClass("has-error");
-    $("#groupTelefono").removeClass("has-error");
-    $("#groupDireccion").removeClass("has-error");
-    $("#groupFechaNacimiento").removeClass("has-error");
-    $("#groupTipo").removeClass("has-error");
-    // $("#groupDireccion").removeClass("has-error");
+    $("#inputNombreUsuario").removeClass("error");
+    $("#inputContrasena1").removeClass("error");
+    $("#inputContrasena2").removeClass("error");
+    $("#inputPasswordConfirm").removeClass("error");
+    $("#inputNombre").removeClass("error");
+    $("#inputApellido1").removeClass("error");
+    $("#inputApellido2").removeClass("error");
+    $("#inputCorreo").removeClass("error");
+    $("#inputTelefono").removeClass("error");
+    $("#inputDireccion").removeClass("error");
+    $("#inputFechaNacimiento").removeClass("error");
+    $("#inputTipo").removeClass("error");
+    // $("#inputDireccion").removeClass("error");
     //valida cada uno de los campos del formulario
     //Nota: Solo si fueron digitadoslse;
     if ($("#inputNombreUsuario").val() === "") {
-        $("#groupNombreUsuario").addClass("has-error");
+        $("#inputNombreUsuario").addClass("error");
         validacion = false;
     }
     if ($("#inputContrasena1").val() === "") {
-        $("#groupContrasena1").addClass("has-error");
+        $("#inputContrasena1").addClass("error");
         validacion = false;
     }
     if ($("#inputContrasena2").val() === "") {
-        $("#groupContrasena2").addClass("has-error");
+        $("#inputContrasena2").addClass("error");
         validacion = false;
     }
     if ($("#inputNombre").val() === "") {
-        $("#groupNombre").addClass("has-error");
+        $("#inputNombre").addClass("error");
         validacion = false;
     }
     if ($("#inputApellido1").val() === "") {
-        $("#groupApellido1").addClass("has-error");
+        $("#inputApellido1").addClass("error");
         validacion = false;
     }
     if ($("#inputApellido2").val() === "") {
-        $("#groupApellido2").addClass("has-error");
+        $("#inputApellido2").addClass("error");
         validacion = false;
     }
     if ($("#inputCorreo").val() === "") {
-        $("#groupCorreo").addClass("has-error");
+        $("#inputCorreo").addClass("error");
         validacion = false;
     }
     if ($("#inputTelefono").val() === "") {
-        $("#groupTelefono").addClass("has-error");
+        $("#inputTelefono").addClass("error");
         validacion = false;
     }
     if ($("#inputDireccion").val() === "") {
-        $("#groupDireccion").addClass("has-error");
+        $("#inputDireccion").addClass("error");
         validacion = false;
     }
     if ($("#inputFechaNacimiento").val() === "") {
-        $("#groupFechaNacimiento").addClass("has-error");
+        $("#inputFechaNacimiento").addClass("error");
         validacion = false;
     }
     if ($("#inputTipo").val() === "") {
-        $("#groupTipo").addClass("has-error");
+        $("#inputTipo").addClass("error");
         validacion = false;
     }
     return validacion;

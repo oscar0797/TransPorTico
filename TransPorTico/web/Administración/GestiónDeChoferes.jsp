@@ -91,8 +91,7 @@
                                     </div>
                                 </div>
                             </heap>
-                            <form>
-                                <form>
+                            <form >
 
                                     <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                         <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4" id="groupCedula">
@@ -198,7 +197,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
 
-                                <h4><b>Confirmación de borrado</b><h4>
+                                <h4><b>Confirmación de borrado</b></h4>
                                         </div>
                                         <div class="modal-body">
                                             <p>

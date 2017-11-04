@@ -5,6 +5,10 @@
  */
 package cr.ac.una.prograiv.project.controller;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import cr.ac.una.prograiv.project.bl.AsignacionBL;
+import cr.ac.una.prograiv.project.domain.Asignacion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -28,19 +32,60 @@ public class AsignacionServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+           throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AsignacionServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AsignacionServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        PrintWriter out = response.getWriter();
+        try {
+            String json;
+            Gson gson = new GsonBuilder().setDateFormat("dd/MM/yyyy").create();
+            int idAsignacion;
+            Asignacion asig = new Asignacion();
+            AsignacionBL asigBL = new AsignacionBL();
+            String accion = request.getParameter("accion");
+
+            switch (accion) {
+                case "agregarAsignacion":
+                case "modificarAsignacion":
+
+                    if (accion.equals("modificarAsignacion")) {
+                        asig = new Asignacion(Integer.parseInt(request.getParameter("chofer")), Integer.parseInt(request.getParameter("vehiculo")));
+                        asig.setPkIdAsignacion(Integer.parseInt(request.getParameter("idAsignacion")));
+                        asigBL.merge(asig);
+                        out.print("C~Asignacion modificado con exito");
+                    } else {
+                        asigBL.save(new Asignacion(Integer.parseInt(request.getParameter("chofer")), Integer.parseInt(request.getParameter("vehiculo"))));
+                        out.print("C~Asignacion agregado con exito");
+                    }
+                    break;
+
+                case "eliminarAsignacion":
+                    asig.setPkIdAsignacion(Integer.parseInt(request.getParameter("idAsignacion")));
+                    asigBL.delete(asig);
+                    out.print("C~Asignacion Eliminado con exito");
+                    break;
+                case "consultarAsignacionByID":
+                    idAsignacion = Integer.parseInt(request.getParameter("idAsignacion"));
+                    asig = asigBL.findByID(idAsignacion);
+                    json = new Gson().toJson(asig);
+                    out.print(json);
+                    break;
+                case "buscarAsignacion":
+                    asig = asigBL.findByID(Integer.parseInt(request.getParameter("idAsignacion")));
+                    json = gson.toJson(asig);
+                    out.print(json);
+                    break;
+                case "consultarAsignaciones":
+                    json = gson.toJson(asigBL.findAll());
+                    out.print(json);
+                    break;
+                default:
+                    out.print("E~No se indico la acción que se desea realizar");
+                    break;
+            }
+        } catch (NumberFormatException e) {
+            out.print("E~" + e.getMessage());
+        } catch (Exception e) {
+            out.print("E~" + e.getMessage());
         }
     }
 

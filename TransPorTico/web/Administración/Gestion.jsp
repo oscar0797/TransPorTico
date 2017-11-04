@@ -76,17 +76,6 @@
                 </div>
             </div>
         </div>
-    </body>
-</html>
-
-
-
-
-
-
-
-
-
 
 <footer>
     <div class="container-fluid pie">

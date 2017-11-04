@@ -7,6 +7,12 @@
 $(document).ready(function () {
     consultarChoferes(1);
     //paginador(1);
+    	
+    $("form").submit(function (event) {
+        if (validar() === false) {
+            event.preventDefault();
+        }
+    });
     desactivaForm();
     $("#inputCedula").click(ayuda("inputCedula", 'Sólo números'));
     $("#inputNombre").click(ayuda("inputNombre", 'Sólo texto'));
@@ -39,7 +45,6 @@ function registraChofer() {
                     if($("#choferAction").val() === "agregarChofer"){
                     alert( $("#inputNombre").val() + " ha sido guardado con éxito.");
                     limpiarForm();
-                    $("#formulario").hide();
                 }else{
                     alert( $("#inputNombre").val() + " ha sido editado con éxito.");
                 }
@@ -124,6 +129,7 @@ function dibujarFila(rowData) {
             '</button></td>'));
 }
 
+
 function mostrarMensaje(name, classCss, msg, neg) {
     //se le eliminan los estilos al mensaje
     $("#" + name).removeClass();
@@ -162,11 +168,11 @@ function validar() {
 
     //Elimina estilo de error en los css
     //notese que es sobre el grupo que contienen el input
-    $("#groupCedula").removeClass("has-error");
-    $("#groupNombre").removeClass("has-error");
-    $("#groupTipoLicencia").removeClass("has-error");
-    $("#groupFechaNacimiento").removeClass("has-error");
-    $("#groupFechaVencimiento").removeClass("has-error");
+    $("#inputCedula").removeClass("error");
+    $("#inputNombre").removeClass("error");
+    $("#inputTipoLicencia").removeClass("error");
+    $("#inputFechaNacimiento").removeClass("error");
+    $("#inputFechaVencimiento").removeClass("error");
     //valida cada uno de los campos del formulario
     //Nota: Solo si fueron digitadoslse;
     if ($("#inputCedula").val() === "") {
