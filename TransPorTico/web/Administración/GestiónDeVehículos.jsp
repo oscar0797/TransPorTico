@@ -194,7 +194,7 @@
                                                 podrá ser recuperada.
                                                 <br><br>
                                                 Desea confirmar la eliminación de 
-                                                <span id="nombreEliminar">
+                                                <span id="vehiculoEliminar">
 
                                                 </span>
                                                 ?

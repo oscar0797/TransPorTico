@@ -26,16 +26,18 @@ public class TestUsuario {
         //deleteUsuario();
         //findAllUsuario();
         //findIdUsuario(17);
-        findByName("Usu1");
+        findByName("ASAS");
 
     }
 
-    public static void saveUsuario() {        
-        Usuario usu1 = new Usuario("jjf", "123","123","Oscar", "Carmona", "Mora", "Nadie@gmail.com", new Date(), "8888888","Dirección",1, new Date(), "Nadie");
+    public static void saveUsuario() {
+        for(int i =1; i<30; i++){
+        Usuario usu1 = new Usuario(Integer.toString(i), "123","123","Oscar", "Carmona", "Mora", "Nadie@gmail.com", new Date(), "8888888","Dirección",1, new Date(), "Nadie");
         UsuarioBL bl1 = new UsuarioBL();
         bl1.save(usu1);
+    }
         
-        Usuario usu2 = new Usuario("jjf", "123","123","Oscar", "Carmona", "Mora", "Nadie@gmail.com", new Date(), "8888888","Dirección",1, new Date(), "Nadie");
+       /* Usuario usu2 = new Usuario("jjf", "123","123","Oscar", "Carmona", "Mora", "Nadie@gmail.com", new Date(), "8888888","Dirección",1, new Date(), "Nadie");
         UsuarioBL bl2= new UsuarioBL();
         bl2.save(usu2);
         
@@ -45,7 +47,7 @@ public class TestUsuario {
         
         Usuario usu4 = new Usuario("yjjw", "123","123","Oscar", "Carmona", "Mora", "Nadie@gmail.com", new Date(), "8888888","Dirección",1, new Date(), "Nadie");
         UsuarioBL bl4 = new UsuarioBL();
-        bl4.save(usu4);
+        bl4.save(usu4);*/
         
         System.out.println("Usuario guardado con exito");
     }

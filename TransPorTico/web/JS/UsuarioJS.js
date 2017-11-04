@@ -73,8 +73,8 @@ function consultarUsuarios(numpag) {
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             dibujarTabla(numpag, data);
-            doSearch(data);
             paginador(numpag, data.length / 10);
+            doSearch(data);
             // se oculta el modal esta funcion se encuentra en el utils.js
         },
         type: 'POST',
@@ -144,18 +144,18 @@ function paginador(pagAct, tam) {
     $("#paginacionOpc").html("");
     if (pagAct > 5) {
         ini = pagAct - 5;
-        $("#paginacionOpc").append('<li onclick="consultarChoferes(' + ini + '),paginador(' + (pagAct - 1) + ',' + tam + ')"><a>&laquo;</a></li>');
+        $("#paginacionOpc").append('<li onclick="consultarUsuarios(' + ini + '),paginador(' + (pagAct - 1) + ',' + tam + ')"><a>&laquo;</a></li>');
     } else {
-        $("#paginacionOpc").append('<li onclick="consultarChoferes(' + ini + '), paginador(' + (pagAct - 1) + ',' + tam + ')" ><a>&laquo;</a></li>');
+        $("#paginacionOpc").append('<li onclick="consultarUsuarios(' + ini + '), paginador(' + (pagAct - 1) + ',' + tam + ')" ><a>&laquo;</a></li>');
     }
     for (var i = 0; i < tam; i++, ini++) {
         if (ini === pagAct) {
-            $("#paginacionOpc").append('<li class="active" onclick="consultarChoferes(' + ini + '),paginador(' + ini + ',' + tam + ') "><a>' + ini + '</a></li> ');
+            $("#paginacionOpc").append('<li class="active" onclick="consultarUsuarios(' + ini + '),paginador(' + ini + ',' + tam + ') "><a>' + ini + '</a></li> ');
         } else {
-            $("#paginacionOpc").append('<li onclick="consultarChoferes(' + ini + '),paginador(' + ini + ',' + tam + ') "><a>' + ini + '</a></li>');
+            $("#paginacionOpc").append('<li onclick="consultarUsuarios(' + ini + '),paginador(' + ini + ',' + tam + ') "><a>' + ini + '</a></li>');
         }
     }
-    $("#paginacionOpc").append('<li onclick="consultarChoferes(' + (ini - 1) + '), paginador(' + (ini - 1) + ',' + tam + ')"><a>&raquo;</a></li>');
+    $("#paginacionOpc").append('<li onclick="consultarUsuarios(' + (ini - 1) + '), paginador(' + (ini - 1) + ',' + tam + ')"><a>&raquo;</a></li>');
 }
 
 function limpiarForm() {
@@ -167,7 +167,7 @@ function validar() {
 
     //Elimina estilo de error en los css
     //notese que es sobre el grupo que contienen el input
-    $("#groupUsuario").removeClass("has-error");
+    $("#groupNombreUsuario").removeClass("has-error");
     $("#groupContrasena1").removeClass("has-error");
     $("#groupContrasena2").removeClass("has-error");
     $("#groupPasswordConfirm").removeClass("has-error");
@@ -183,7 +183,7 @@ function validar() {
     //valida cada uno de los campos del formulario
     //Nota: Solo si fueron digitadoslse;
     if ($("#inputNombreUsuario").val() === "") {
-        $("#groupUsuario").addClass("has-error");
+        $("#groupNombreUsuario").addClass("has-error");
         validacion = false;
     }
     if ($("#inputContrasena1").val() === "") {
@@ -226,10 +226,6 @@ function validar() {
         $("#groupTipo").addClass("has-error");
         validacion = false;
     }
-    /* if ($("#inputDireccion").val() === "") {
-     $("#groupDireccion").addClass("has-error");
-     validacion = false;
-     }*/
     return validacion;
 }
 
@@ -512,9 +508,10 @@ function buscarUsuario() {
             alert("No se encontró al usuario, digite una nueva busqueda");
         },
         success: function (data) {
+            
             var respuestaTxt = data.substring(2);
-            var tipoRespuesta = data.substring(0, 2);           
-            dibujarTabla(1,data);
+            var tipoRespuesta = data.substring(0, 2);
+            dibujarTabla(1, data);
         },
         type: "POST",
         dataType: "text"

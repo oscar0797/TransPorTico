@@ -230,23 +230,23 @@
                             <div>
                                 <div class="row">   
                                     <div class="col-sm-2"></div>
-                                    <div class="input-group form-group col-sm-8">
+                                    <div class="input-group form-group col-sm-8" id="groupNombreUsuario">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input type="text" id="usuario_login" class="form-control" placeholder="Nombre de Usuario">
+                                        <input type="text" id="inputNombreUsuario" class="form-control" placeholder="Nombre de Usuario">
                                     </div>
                                     <div class="col-sm-4"></div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-2"></div>
-                                    <div class="input-group form-group col-sm-8">
+                                    <div class="input-group form-group col-sm-8" id="groupContrasena">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                        <input id="password_login" type="password" id="password_login" class="form-control" name="password" placeholder="Contraseña">
+                                        <input id="inputContrasena" type="password" class="form-control" name="password" placeholder="Contraseña">
                                     </div>
                                     <div class="col-sm-4"></div>
                                 </div>
                             </div>
                             <div class="form-group login" >
-                                <button type="button" class="btn btn-primary" onclick="logueo()" data-dismiss="modal">Ingresar</button>
+                                <button type="button" class="btn btn-primary" onclick="enviar()" data-dismiss="modal">Ingresar</button>
                                 <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="limpiarForm()">Cancelar</button>
                             </div>
                             <div class="form-group" >
