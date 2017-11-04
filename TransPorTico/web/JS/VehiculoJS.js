@@ -95,6 +95,7 @@ function dibujarTabla(numpag, dataJson) {
     row.append($("<th><b>Modelo</b></th>"));
     row.append($("<th><b>Año</b></th>"));
     row.append($("<th><b>Color</b></th>"));
+    row.append($("<th><b>Chofer</b></th>"));
     row.append($("<th><b>Acción</b></th>"));
     //carga la tabla con el json devuelto
     var cont = 0;
@@ -102,7 +103,26 @@ function dibujarTabla(numpag, dataJson) {
     for (; i < dataJson.length && (cont < 10); i++, cont++) {
         dibujarFila(dataJson[i]);
     }
+}
 
+function dibujarTablaChofer(numpag, dataJson) {
+    //limpia la información que tiene la tabla
+    $("#tablaVehiculos").html("");
+
+    //muestra el enzabezado de la tabla
+    var head = $("<thead />");
+    var row = $("<tr />");
+    head.append(row);
+    $("#tablaVehiculos").append(head);
+    row.append($("<th><b>Cedula</b></th>"));
+    row.append($("<th><b>Nombre</b></th>"));
+    row.append($("<th><b>Tipo  de Licencia</b></th>"));
+    //carga la tabla con el json devuelto
+    var cont = 0;
+    var i = 10 * (numpag - 1);
+    for (; i < dataJson.length && (cont < 10); i++, cont++) {
+        dibujarFilaChofer(dataJson[i]);
+    }
 }
 
 function dibujarFila(rowData) {
@@ -115,11 +135,28 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.ano + "</td>"));
     row.append($("<td>" + rowData.color + "</td>"));
     row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="modificarChofer(' + rowData.pkIdChofer + ')">' +
+            '<i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>' +
+            '</button>' +
+            '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="muestraRegistraAsignacion(' + "'" + rowData.pkIdVehiculo + "'" + ',' + rowData.pkIdVehiculo + ')" data-target="#confirm-delete" data-toggle="modal">' +
+            '<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>' +
+            '</button></td>'));
+    
+    row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="modificarChofer(' + rowData.pkIdChofer + ')">' +
             '<i class="fa fa-pencil" aria-hidden="true"></i>' +
             '</button>' +
             '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="validaEliminacion(' + "'" + rowData.modelo + "'" + ',' + rowData.pkIdVehiculo + ')" data-target="#confirm-delete" data-toggle="modal">' +
             '<i class="fa fa-times" aria-hidden="true"></i>' +
             '</button></td>'));
+}
+
+function dibujarFilaChofer(rowData) {
+    //Cuando dibuja la tabla en cada boton se le agrega la funcionalidad de cargar o eliminar la informacion
+    //de una persona    
+    var row = $('<tr />');
+    $("#tablaChoferes").append(row);
+    row.append($("<td>" + rowData.cedula + "</td>"));
+    row.append($("<td>" + rowData.nombre + "</td>"));
+    row.append($("<td>" + rowData.tipoLicencia + "</td>")); 
 }
 
 function mostrarMensaje(name, classCss, msg, neg) {

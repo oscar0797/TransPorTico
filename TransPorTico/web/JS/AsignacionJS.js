@@ -9,7 +9,12 @@ $(document).ready(function () {
    // paginador(1);
 });
 
-function registrarAsignacion() {
+function muestraRegistraAsignacion(vehiculo){
+    $("#collapseTwo").addClass('show');
+    registrarAsignacion(vehiculo);
+}
+
+function registrarAsignacion(vehiculo) {
     mostrarModal("myModal", "Espere por favor..", "Cargando información de la base de datos");
     if (validar()) {
         $.ajax({
@@ -17,7 +22,7 @@ function registrarAsignacion() {
             data: {
                 accion: $("#asignacionAction").val(),
                 chofer: $("#inputChofer").val( ),
-                vehiculo: $("#inputVehiculo").val( )
+                vehiculo: vehiculo
             },
             error: function () {
                 mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
