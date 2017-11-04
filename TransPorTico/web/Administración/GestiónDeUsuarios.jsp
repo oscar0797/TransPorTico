@@ -200,7 +200,7 @@
                             </div>
                         </div>
                         <div class=col-md-4">
-                            <button type="button"  class="btn btn-info center-block"  id="btMostarForm" onclick="as()">
+                            <button type="button"  class="btn btn-info center-block"  id="btMostarForm" onclick="buscarUsuario()">
                                 Buscar <span class="glyphicon glyphicon-search"></span>
                             </button>
                         </div>

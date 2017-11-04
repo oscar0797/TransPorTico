@@ -124,7 +124,9 @@ public class UsuarioServlet extends HttpServlet {
                     }
                     break;
                 case "buscarNombreUsuario":
-                    val.existeNombreUsuario(request.getParameter("nombreUsuario"));
+                    usuario = usuBL.findByName(request.getParameter("nombreUsuario"));
+                    json = new Gson().toJson(usuario);
+                    out.print(json);
                     break;
                 default:
                     out.print("E~No se indico la acción que se desea realizar");

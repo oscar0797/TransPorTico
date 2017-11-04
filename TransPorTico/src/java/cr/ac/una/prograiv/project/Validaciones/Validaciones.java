@@ -27,17 +27,27 @@ public class Validaciones {
 
     public boolean existeCedula(String cedula) {
         List<Chofer> chofer = choBL.findAll();
-        for (Chofer cho : chofer ) {
+        for (Chofer cho : chofer) {
             if (cho.getCedula().equals(cedula)) {
                 return true;
             }
         }
         return false;
     }
-    
+
     public boolean existeNombreUsuario(String nombreUsuario) {
         List<Usuario> usuario = usuBL.findAll();
-        for (Usuario usu : usuario ) {
+        for (Usuario usu : usuario) {
+            if (usu.getNombreUsuario().equals(nombreUsuario)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean findByName(String nombreUsuario) {
+        List<Usuario> usuario = usuBL.findAll();
+        for (Usuario usu : usuario) {
             if (usu.getNombreUsuario().equals(nombreUsuario)) {
                 return true;
             }

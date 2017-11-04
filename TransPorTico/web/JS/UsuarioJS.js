@@ -8,7 +8,7 @@ var unica = "";
 
 $(document).ready(function () {
     consultarUsuarios(1);
-   // paginador(1);
+    // paginador(1);
     desactivaForm();
     $("#inputNombreUsuario").click(ayuda("inputNombreUsuario", 'Sólo texto'));
     $("#inputNombre").click(ayuda("inputNombre", 'Sólo texto'));
@@ -155,7 +155,7 @@ function paginador(pagAct, tam) {
             $("#paginacionOpc").append('<li onclick="consultarChoferes(' + ini + '),paginador(' + ini + ',' + tam + ') "><a>' + ini + '</a></li>');
         }
     }
-    $("#paginacionOpc").append('<li onclick="consultarChoferes(' + (ini - 1) + '), paginador(' + (ini -1) + ',' + tam +')"><a>&raquo;</a></li>');
+    $("#paginacionOpc").append('<li onclick="consultarChoferes(' + (ini - 1) + '), paginador(' + (ini - 1) + ',' + tam + ')"><a>&raquo;</a></li>');
 }
 
 function limpiarForm() {
@@ -434,32 +434,32 @@ function as() {
             var compareWith = "";
             var tt = $("#buscar").val();
             //var cc = document.getElementById("#buscar").val();
-      
+
             // Recorremos todas las filas con contenido de la tabla
             for (var i = 1; i < data.length; i++) {
-                if(tt === data.nombreUsuario){
-                     tableReg.rows[i].style.display = '';
-                 }
-                /*
-                cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
-                found = false;
-                // Recorremos todas las celdas
-                for (var j = 0; j < cellsOfRow.length && !found; j++) {
-                    compareWith = cellsOfRow[j].innerHTML.toLowerCase();
-                    // Buscamos el texto en el contenido de la celda
-                    if (searchText.length == 0 || (compareWith.indexOf(searchText) > -1))
-                    {
-                        found = true;
-                    }
-                }
-                if (found) {
+                if (tt === data.nombreUsuario) {
                     tableReg.rows[i].style.display = '';
-                } else {
-                    // si no ha encontrado ninguna coincidencia, esconde la
-                    // fila de la tabla
-                    tableReg.rows[i].style.display = 'none';
                 }
-                */
+                /*
+                 cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
+                 found = false;
+                 // Recorremos todas las celdas
+                 for (var j = 0; j < cellsOfRow.length && !found; j++) {
+                 compareWith = cellsOfRow[j].innerHTML.toLowerCase();
+                 // Buscamos el texto en el contenido de la celda
+                 if (searchText.length == 0 || (compareWith.indexOf(searchText) > -1))
+                 {
+                 found = true;
+                 }
+                 }
+                 if (found) {
+                 tableReg.rows[i].style.display = '';
+                 } else {
+                 // si no ha encontrado ninguna coincidencia, esconde la
+                 // fila de la tabla
+                 tableReg.rows[i].style.display = 'none';
+                 }
+                 */
             }
 
         },
@@ -498,31 +498,23 @@ function doSearch(data) {
     }
 }
 
-function buscarUsuario(){
+function buscarUsuario() {
     var nombree = $("#buscar").val();
     $.ajax({
         url: '../UsuarioServlet',
         data: {
-            accion: "verificarNombreUsuario",
+            accion: "buscarNombreUsuario",
             nombreUsuario: nombree
         },
         error: function () {
             mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
+            $("#buscar").addClass("error");
+            alert("No se encontró al usuario, digite una nueva busqueda");
         },
         success: function (data) {
             var respuestaTxt = data.substring(2);
-            var tipoRespuesta = data.substring(0, 2);
-            if (tipoRespuesta !== "E~" || nombree === usuario.nombreUsuario) {
-                $("#inputNombreUsuario").val(nombree);
-                $("#inputNombreUsuario").addClass("correcto");
-                $("#collapseOne").addClass('show');
-                desactivaForm();
-                //activaForm();
-            } else {
-                $("#inputNombreUsuario").addClass("error");
-                desactivaForm();
-
-            }
+            var tipoRespuesta = data.substring(0, 2);           
+            dibujarTabla(1,data);
         },
         type: "POST",
         dataType: "text"
