@@ -7,8 +7,8 @@
 
 $(document).ready(function () {
     consultarVehiculos(1);
-   // paginador(1);
-   $("form").submit(function (event) {
+    // paginador(1);
+    $("form").submit(function (event) {
         if (validar() === false) {
             event.preventDefault();
         }
@@ -18,8 +18,6 @@ $(document).ready(function () {
 function registrarVehiculo() {
     mostrarModal("myModal", "Espere por favor..", "Cargando información de la base de datos");
     if (validar()) {
-        alert($("#UbicacionX").val( ));
-
         $.ajax({
             url: '../VehiculoServlet',
             data: {
@@ -74,7 +72,7 @@ function consultarVehiculos(numpag) {
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             // mostrarModal ( "myModal", "Exito al cargar en la base de datos" ) ;
             dibujarTabla(numpag, data);
-             paginador(numpag, data.length / 10);
+            paginador(numpag, data.length / 10);
             // se oculta el modal esta funcion se encuentra en el utils.js
         },
         type: 'POST',
@@ -140,7 +138,7 @@ function dibujarFila(rowData) {
             '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="muestraRegistraAsignacion(' + "'" + rowData.pkIdVehiculo + "'" + ',' + rowData.pkIdVehiculo + ')" data-target="#confirm-delete" data-toggle="modal">' +
             '<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>' +
             '</button></td>'));
-    
+
     row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="modificarChofer(' + rowData.pkIdChofer + ')">' +
             '<i class="fa fa-pencil" aria-hidden="true"></i>' +
             '</button>' +
@@ -156,7 +154,7 @@ function dibujarFilaChofer(rowData) {
     $("#tablaChoferes").append(row);
     row.append($("<td>" + rowData.cedula + "</td>"));
     row.append($("<td>" + rowData.nombre + "</td>"));
-    row.append($("<td>" + rowData.tipoLicencia + "</td>")); 
+    row.append($("<td>" + rowData.tipoLicencia + "</td>"));
 }
 
 function mostrarMensaje(name, classCss, msg, neg) {
@@ -187,7 +185,7 @@ function paginador(pagAct, tam) {
             $("#paginacionOpc").append('<li onclick="consultarVehiculos(' + ini + '),paginador(' + ini + ',' + tam + ') "><a>' + ini + '</a></li>');
         }
     }
-    $("#paginacionOpc").append('<li onclick="consultarVehiculos(' + (ini - 1) + '), paginador(' + (ini -1) + ',' + tam +')"><a>&raquo;</a></li>');
+    $("#paginacionOpc").append('<li onclick="consultarVehiculos(' + (ini - 1) + '), paginador(' + (ini - 1) + ',' + tam + ')"><a>&raquo;</a></li>');
 }
 
 function validar() {
@@ -217,9 +215,12 @@ function validar() {
         $("#inputColor").addClass("error");
         validacion = false;
     }
-    if ($("#inputFechaUbicacion").val() === "") {
-        $("#inputFechaUbicacion").addClass("error");
+    if ($("#inputUbicacion").val() === "") {
+        $("#inputUbicacion").addClass("error");
         validacion = false;
+    }
+    if (validacion === false) {
+        alert("No pueden quedar campos vacios");
     }
     return validacion;
 }

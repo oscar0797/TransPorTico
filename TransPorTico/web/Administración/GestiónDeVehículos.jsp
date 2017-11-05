@@ -64,11 +64,24 @@
             <div id="accordion" role="tablist">
                 <div id="imagenFondo" class="card ">
                     <div class="card-header" role="tab" id="headingOne">
-                        <h5 class="mb-0" >
-                            <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                <b class="estilo2 center-block">Registrar un nuevo vehículo</b>
-                            </a>
-                        </h5>
+                        <div class="form-row align-top col-sm-12 col-md-12 col-lg-12">
+                            <div  class="col-sm-5 col-md-5 col-lg-5"> 
+                                <span class="glyphicon glyphicon-plus"></span>
+                                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <b class="estilo2 btn-success btn-sm ">Registrar un nuevo vehículo</b>                                    
+                                </a>       
+                            </div>
+                            <div  class=" text-right col-sm-3 col-md-3 col-lg-3">
+                                <p>Buscar por placa:</p>
+                            </div>
+                            <div class="col-sm-3 col-md-3 col-lg-3">                               
+                                <input style="width: 100%" type="text" class="form-control" id="buscar" placeholder="Placa del vehículo" >
+                            </div>
+                            <div class="col-md-1">
+                                <button type="button"  class="btn btn-info center-block"  id="btMostarForm" onclick="buscarVehiculo()">
+                                    <b>Buscar</b> <span class="glyphicon glyphicon-search"></span></button>
+                            </div>
+                        </div>
                     </div>
                     <div id="collapseOne" class="collapse modal fade" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
                         <div id="imagenFondos" class="card-body">

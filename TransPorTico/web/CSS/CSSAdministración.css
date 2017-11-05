@@ -10,9 +10,8 @@
     background-color: aquamarine;
 }
 .estilo2:hover{
-    width: 100%;
     text-decoration: underline;
-    color: white;
+    color: #185B0E;
 }
 
 #Mi_mapa_4
@@ -67,8 +66,8 @@
     align-content: center;
     text-align: center;
     font-family: arial;
-    font-size: 20px;
-    color: #00BFFF;
+    font-size: 100%;
+    color: white;
 }
 .estilo3{
     align-content: center;

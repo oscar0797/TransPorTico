@@ -62,15 +62,27 @@
             <!------------------------------------------------------------------------------------------>
             <!------------- ACORDION FORMULARIO  USUARIO----------------------------------------->
             <!------------------------------------------------------------------------------------------>
-
             <div id="accordion" role="tablist">
                 <div id="imagenFondo" class="card ">
                     <div class="card-header" role="tab" id="headingOne">
-                        <h5 class="mb-0" >
-                            <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                <b class="estilo2 center-block">Registrar un nuevo usuario</b>
-                            </a>
-                        </h5>
+                        <div class="form-row align-top col-sm-12 col-md-12 col-lg-12">
+                            <div  class="col-sm-4 col-md-4 col-lg-4"> 
+                                <span class="glyphicon glyphicon-plus"></span>
+                                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <b class="estilo2 btn-success btn-sm ">Registrar un nuevo usuario</b>                                    
+                                </a>       
+                            </div>
+                            <div  class=" text-right col-sm-4 col-md-4 col-lg-4">
+                                <p>Buscar por nombre de usuario:</p>
+                            </div>
+                            <div class="col-sm-3 col-md-3 col-lg-3">                               
+                                <input style="width: 100%" type="text" class="form-control" id="buscar" placeholder="Nombre de usuario" >
+                            </div>
+                            <div class="col-md-1">
+                                <button type="button"  class="btn btn-info center-block"  id="btMostarForm" onclick="buscarUsuario()">
+                                    <b>Buscar</b> <span class="glyphicon glyphicon-search"></span></button>
+                            </div>
+                        </div>
                     </div>
                     <div id="collapseOne" class="collapse modal fade" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
                         <div id="imagenFondos" class="card-body">
@@ -189,22 +201,8 @@
             <!------------------------------------------------------------------------------------------>
 
             <div class="card bg-light mb-3" style="max-width: 100%;">
-                <div class="card-header">
-                    <div class="form-row">
-                        <div class="col-md-4">
-                            <p><b>Buscar por palabra clave</b></p>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="">
-                                <input type="text" class="form-control" id="buscar" placeholder="Por favor, digite una palabra" >
-                            </div>
-                        </div>
-                        <div class=col-md-4">
-                            <button type="button"  class="btn btn-info center-block"  id="btMostarForm" onclick="buscarUsuario()">
-                                Buscar <span class="glyphicon glyphicon-search"></span>
-                            </button>
-                        </div>
-                    </div>
+                <div>
+                    <br>
                 </div>
                 <div class="card-body" id="imagenFondoo">
                     <table class="table table-hover table-condensed table-responsive table-bordered" id="tablaUsuarios"></table>
@@ -212,43 +210,42 @@
                 <div class="card-footer">
                     <li class="pagination pagination-sm"  align-content="center" id="paginacionOpc"></ul>
                 </div>
+            </div>
+            <!-- ********************************************************** -->
+            <!-- MODAL CONFIRMACIÓN ELIMINAR UN USUARIO -->
+            <!-- ********************************************************** -->
+            <div id="topModal">
+                <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
 
-                <!-- ********************************************************** -->
-                <!-- MODAL CONFIRMACIÓN ELIMINAR UN USUARIO -->
-                <!-- ********************************************************** -->
-                <div id="topModal">
-                    <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
+                                <h4><b>Confirmación de borrado</b><h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>
+                                                Si confirma la acción la información no
+                                                <br>
+                                                podrá ser recuperada.
+                                                <br><br>
+                                                Desea confirmar la eliminación de 
+                                                <span id="nombreEliminar">
 
-                                    <h4><b>Confirmación de borrado</b><h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>
-                                                    Si confirma la acción la información no
-                                                    <br>
-                                                    podrá ser recuperada.
-                                                    <br><br>
-                                                    Desea confirmar la eliminación de 
-                                                    <span id="nombreEliminar">
+                                                </span>
+                                                ?
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer form-group estilo2">
+                                            <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
+                                            <button class="btn btn-danger btn-ok" id="eliminar" value="" data-dismiss="modal">Confirmar</button>
+                                        </div>
+                                        </div>
+                                        </div>
+                                        </div>
+                                        </div>
+                                        </div>
 
-                                                    </span>
-                                                    ?
-                                                </p>
-                                            </div>
-                                            <div class="modal-footer form-group estilo2">
-                                                <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
-                                                <button class="btn btn-danger btn-ok" id="eliminar" value="" data-dismiss="modal">Confirmar</button>
-                                            </div>
-                                            </div>
-                                            </div>
-                                            </div>
-                                            </div>
-                                            </div>       
-                                            </div>
-
-                                            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-                                            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-                                            </body>
-                                            </html>
+                                        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+                                        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+                                        </body>
+                                        </html>

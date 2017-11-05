@@ -15,7 +15,7 @@ $(document).ready(function () {
             event.preventDefault();
         }
     });
-    
+
     desactivaForm();
     $("#inputNombreUsuario").click(ayuda("inputNombreUsuario", 'Sólo texto'));
     $("#inputNombre").click(ayuda("inputNombre", 'Sólo texto'));
@@ -234,6 +234,9 @@ function validar() {
         $("#inputTipo").addClass("error");
         validacion = false;
     }
+    if(validacion === false){
+        alert("No pueden quedar campos vacios");        
+    }    
     return validacion;
 }
 
@@ -516,10 +519,14 @@ function buscarUsuario() {
             alert("No se encontró al usuario, digite una nueva busqueda");
         },
         success: function (data) {
-            
+            var tt = data.nombreUsuario;
             var respuestaTxt = data.substring(2);
             var tipoRespuesta = data.substring(0, 2);
-            dibujarTabla(1, data);
+            if (nombree === data.nombreUsuario){
+                dibujarTabla(1, data);
+            } else {
+                alert("No se encontró al usuario, digite una nueva busqueda");
+            }
         },
         type: "POST",
         dataType: "text"
