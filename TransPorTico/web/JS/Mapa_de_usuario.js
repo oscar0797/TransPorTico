@@ -11,7 +11,7 @@ function Dibujar_un_mapa ( )
     (
         function ( )
         {    
-            var mapa = document.getElementById ( 'Mapa_de_vehiculo' ) ;
+            var mapa = document.getElementById ( 'Mapa_de_usuario' ) ;
 
             const Objeto_de_configuracion_del_mapa =
             {
@@ -33,7 +33,7 @@ function Obtener_ubicacion ( )
 {
     const Ubicacion = new Geolocalizacion ( ( ) =>
     {
-        var mapa = document.getElementById ( 'Mapa_de_vehiculo' ) ;
+        var mapa = document.getElementById ( 'Mapa_de_usuario' ) ;
 
         const Objeto_de_configuracion_del_mapa =
         {
@@ -77,7 +77,7 @@ function Obtener_ubicacion ( )
                 {
                     if ( results[1] )
                     {
-                        document.getElementById ( 'inputUbicacion' ).value = results[1].formatted_address ;
+                        document.getElementById ( 'inputDireccion' ).value = results[1].formatted_address ;
                     }
                     else
                     {
@@ -110,7 +110,7 @@ function Obtener_ubicacion ( )
                     {
                         if ( results[1] )
                         {
-                            document.getElementById ( 'inputUbicacion' ).value = results[1].formatted_address ;
+                            document.getElementById ( 'inputDireccion' ).value = results[1].formatted_address ;
                         }
                         else
                         {
