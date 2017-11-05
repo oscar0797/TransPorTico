@@ -16,12 +16,12 @@ and open the template in the editor.
 #Auxiliar
 {
     /* background-color: black; */
-    
+
     /* margin-left: 2.5%; */
     /* margin-right: 2.5%; */
-    
+
     text-align: center;
-    
+
     display: none;
 }
 
@@ -29,22 +29,22 @@ and open the template in the editor.
 {
     width: 100%;
     height: 300px;
-    
+
     border-radius: 25px;
     /* background-color: aquamarine; */
-    
+
     margin-top: 2.5%;
     /* margin-left: 2.5%; */
     /* margin-right: 2.5%; */
     margin-bottom: 2.5%;
-    
+
     /* text-align: center; */
 }
 
 #encabezado{
     position: relative; top: -20px;
     background-color: #185B0E;
-    
+    -webkit-text-stroke: 3px blue;
     height: 160px;
 }
 
@@ -54,7 +54,7 @@ and open the template in the editor.
     font-family: fantasy;
     font-size: 35px;
     color:#1E4356;
-    
+
 }
 
 #encabezado h1{
@@ -76,7 +76,7 @@ and open the template in the editor.
 #encabezado img{
     position: absolute; top: 10%; right: 1%;
     width: 8.5%;
-    height: 80%;
+    height: 80%;    
 }
 
 #navBar{
@@ -100,7 +100,7 @@ and open the template in the editor.
 }
 
 #myModalRegistro{
-    text-align: center;
+   
     color: white;
 }
 .fondoForm{
@@ -108,11 +108,12 @@ and open the template in the editor.
     color: white;
     font-family: arial;
     text-align: center;
-    border-radius: 5px 5px 0px 0px;
 }
 .modal-body{
+    margin: 0%;
+    margin-top: 0%;
     text-align: center;
-    color: #00394d;
+    background-image: url(../Imágenes/Fondos/fondoform.jpg);
 }
 #myModalTitle{
     height: 10%
@@ -222,8 +223,8 @@ and open the template in the editor.
     background-size: cover;
 }
 footer{
-   /* background-image: url(../Imágenes/Fondos/fondopie.png);*/
-   background: black;
+    /* background-image: url(../Imágenes/Fondos/fondopie.png);*/
+    background: black;
     background-position: center center;	  
     background-repeat: no-repeat;
     background-attachment: fixed;
