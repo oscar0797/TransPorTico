@@ -36,7 +36,7 @@
         <script src="../JS/UsuarioJS.js" type="text/javascript"></script>
         <script src="../JS/Validaciones.js" type="text/javascript"></script>
         <script src="../JS/Geolocalizacion.js" type="text/javascript"></script>
-        <script src="../JS/Mapa_version_3.js" type="text/javascript"></script>
+        <script src="../JS/Mapa_de_usuario.js" type="text/javascript"></script>
 
     </head>
     <body class="bg-muted">
@@ -68,7 +68,7 @@
                         <div class="form-row align-top col-sm-12 col-md-12 col-lg-12">
                             <div  class="col-sm-4 col-md-4 col-lg-4"> 
                                 <span class="glyphicon glyphicon-plus"></span>
-                                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onClick="Dibujar_un_mapa ( )">
                                     <b class="estilo2 btn-success btn-sm ">Registrar un nuevo usuario</b>                                    
                                 </a>       
                             </div>
@@ -173,7 +173,7 @@
                                     <div class="form-row col-xs-12 col-sm-4 col-md-4 col-lg-4">
                                         <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" id="groupDireccion">
                                             <label for="inputDireccion">Dirección*</label>
-                                            <div id="Mi_mapa_2"></div>
+                                            <div id="Mapa_de_usuario"></div>
                                             <div class="input-group">                                               
                                                 <input type="text" class="form-control" id="inputDireccion" autofocus="autofocus" placeholder="Presione el botón → " size="100%" 
                                                        onkeyup="validaTamMax('inputDireccion', 100, 'La cantidad máxima de dígitos es 100')" onkeypress="return validaSoloTexto(event)">
