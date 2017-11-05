@@ -58,7 +58,7 @@
             </div>
 
             <!------------------------------------------------------------------------------------------>
-            <!------------- ACORDION FORMULARIO  USUARIO----------------------------------------->
+            <!------------- ACORDION FORMULARIO  VEHÍCULO ---------------------------------------------->
             <!------------------------------------------------------------------------------------------>
 
             <div id="accordion" role="tablist">
@@ -67,7 +67,7 @@
                         <div class="form-row align-top col-sm-12 col-md-12 col-lg-12">
                             <div  class="col-sm-5 col-md-5 col-lg-5"> 
                                 <span class="glyphicon glyphicon-plus"></span>
-                                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onClick="Dibujar_un_mapa ( )">
+                                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onClick="Dibujar_un_mapa( )">
                                     <b class="estilo2 btn-success btn-sm ">Registrar un nuevo vehículo</b>                                    
                                 </a>       
                             </div>
@@ -86,7 +86,7 @@
                     <div id="collapseOne" class="collapse modal fade" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
                         <div id="imagenFondos" class="card-body">
                             <button style="color: #FF0101;" data-toggle="collapse" href="#collapseOne" class="close btn-danger" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
-                            <heap id="encabezado">
+                            <!--<heap id="encabezado">
                                 <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                     <div class="form-group col-xs-12 col-sm-11 col-md-11 col-lg-11">
                                         <label class="estilo3" ><b>Nota: Es obligatorio que primero verifique la placa del vehículo. Campos de caracter obligatorio ( * ).</b></label>
@@ -95,7 +95,7 @@
                                         <button data-toggle="collapse" href="#encabezado" class="btn-xs btn-primary" data-dismiss="modal" aria-label="Close">OK</button>
                                     </div>
                                 </div>
-                            </heap>
+                            </heap>-->
                             <form>
                                 <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                     <diV class="form-row col-xs-12 col-sm-1 col-md-1 col-lg-1"></diV>
@@ -152,113 +152,25 @@
                                     <input type="hidden"  id="vehiculoAux"/>
                                     <button type="submit" class="btn btn-success" onclick="registrarVehiculo()">Guardar</button>                                    
                                     <button type="submit" class="btn btn-danger" data-toggle="collapse" href="#collapseOne">Cancelar</button>
-                                </div>                        
+                                </div>
+                                <div class="form-group estiloAlertaPieForm" >
+                                    <div class="alert alert-success hiddenDiv" id="mensajeAlert">
+                                        <strong id="mesajeResultNeg">Info!</strong> 
+                                        <span  id="mesajeResultText">Este cuadro de alerta podría indicar un cambio informativo neutro o una acción.</span>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!------------------------------------------------------------------------------------------>
-            <!------------- Form 2----------------------------------------->
-            <!------------------------------------------------------------------------------------------>
-
-            <div id="collapseTwo" class="collapse modal fade" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
-                <div id="imagenFondos" class="card-body">
-                    <button style="color: #FF0101;" data-toggle="collapse" href="#collapseOne" class="close btn-danger" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
-                    <heap id="encabezado">
-                        <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <div class="form-group col-xs-12 col-sm-11 col-md-11 col-lg-11">
-                                <label class="estilo3" ><b>Seleccione la cedula del chofer</b></label>
-                            </div>
-                            <div class="form-group col-xs-12 col-sm-1 col-md-1 col-lg-1">
-                                <button data-toggle="collapse" href="#encabezado" class="btn-xs btn-primary" data-dismiss="modal" aria-label="Close">OK</button>
-                            </div>
-                        </div>
-                    </heap>
-                    <form>
-                        <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <diV class="form-row col-xs-12 col-sm-1 col-md-1 col-lg-1"></diV>
-                            <div class="form-row col-xs-4 col-sm-4 col-md-4 col-lg-4">                                       
-                                <div class="form-group col-xs-12 col-sm-9 col-md-9 col-lg-9" id="groupPlaca">
-                                    <label for="inputChofer">Chofer*</label>
-                                    <input type="text" class="form-control" id="inputPlaca" autofocus="autofocus" placeholder="Ingrese la placa" onpaste="return false"
-                                           onkeyup="validaTamMax('inputPlaca', 8, 'La cantidad máxima de dígitos es 8')">
-                                </div>
-                                <div class="form-group col-xs-12 col-sm-2 col-md-2 col-lg-2">
-                                    <label style="height: 30%; align-content: rigth;" ></label>
-                                    <button id="btnVerificar" type="button" class="btn btn-info " onclick="verificaPlaca('inputPlaca', 10, 'La cantidad mínima de dígitos es 10')">Verificar</button>
-                                </div>
-                                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" id="groupContrasena2">
-                                    <label for="inputModelo">Modelo*</label>
-                                    <input type="text" class="form-control" id="inputModelo" autofocus="autofocus" placeholder="Ingrese el modelo" onpaste="return false"
-                                           onkeyup="validaTamMax('inputModelo', 20, 'La cantidad máxima de dígitos es 20')">
-                                </div>                                                                                                                                              
-                                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" id="groupAno">
-                                    <label for="inputAno">Año*</label>
-                                    <input type="number" class="form-control" id="inputAno" autofocus="autofocus" placeholder="Año del vehículo" onpaste="return false"
-                                           onkeyup="validaNum('inputAno'), validaTamMax('inputContrasena1', 4, 'La cantidad máxima de dígitos es 4')">
-                                </div>
-                                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" id="groupColor">
-                                    <label for="inputColor">Color*</label>
-                                    <input type="text" class="form-control" id="inputColor" autofocus="autofocus" placeholder="Color del vehículo" onpaste="return false"
-                                           onkeyup="validaTamMax('inputColor', 40, 'La cantidad máxima de dígitos es 40')" onkeypress="return validaSoloTexto(event)">
-                                </div>
-
-                            </div>
-                            <diV class="form-row col-xs-12 col-sm-1 col-md-1 col-lg-1">
-                                <input type="hidden" id="inputUbicacionX" value="1">
-                                <input type="hidden" id="inputUbicacionY" value="2">
-                            </diV>
-                            <diV class="form-row col-xs-12 col-sm-1 col-md-1 col-lg-1"></diV>
-
-                            <div class="form-row col-xs-12 col-sm-5 col-md-5 col-lg-5">
-                                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" id="groupUbicacion">
-                                    <label for="inputUbicacion">Ubicación*</label>
-                                    <div id="Mi_mapa_4"></div>
-                                    <div class="input-group">                                               
-                                        <input type="text" class="form-control" id="inputUbicacion" autofocus="autofocus" placeholder="Presione el botón → " size="100%" 
-                                               onkeyup="validaTamMax('inputUbicacion', 100, 'La cantidad máxima de dígitos es 100')" onkeypress="return validaSoloTexto(event)">
-                                        <span id="Obtener_ubicacion" class="input-group-addon">
-                                            <span class="glyphicon glyphicon-screenshot" onclick="Obtener_ubicacion( )"></span>
-                                        </span>
-                                    </div>
-                                </div>
-
-                            </div>                                    
-                        </div>
-                        <div class="form-group estilo2" >
-                            <input type="hidden" value="agregarVehiculo" id="vehiculoAction"/> 
-                            <input type="hidden"  id="vehiculoAux"/>
-                            <button type="submit" class="btn btn-success" onclick="registrarVehiculo()">Guardar</button>                                    
-                            <button type="submit" class="btn btn-danger" data-toggle="collapse" href="#collapseOne">Cancelar</button>
-                        </div>                        
-                    </form>
-                </div>
-            </div>
         </div>
         <!------------------------------------------------------------------------------------------>
-        <!------------- TABLA DATOS  USUARIO----------------------------------------->
+        <!------------- TABLA DATOS  VEHÍCULO----------------------------------------->
         <!------------------------------------------------------------------------------------------>
 
         <div class="card bg-light mb-3" style="max-width: 100%;">
-            <div class="card-header">
-                <div class="form-row">
-                    <div class="col-md-4">
-                        <p><b>Buscar por palabra clave:</b></p>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="">
-                            <input type="text" class="form-control" id="buscar" placeholder="Por favor, digite una palabra" onkeyup="busquedaPalabraClave('tablaVehiculos', 'buscar')">
-                        </div>
-                    </div>
-                    <div class=col-md-4">
-                        <button type="button"  class="btn btn-info center-block"  id="btMostarForm">
-                            Buscar <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <div><br></div>
             <div class="card-body" id="imagenFondoo">
                 <table class="table table-hover table-condensed table-responsive table-bordered" id="tablaVehiculos"></table>
             </div>

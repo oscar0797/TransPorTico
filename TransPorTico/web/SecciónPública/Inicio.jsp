@@ -22,15 +22,15 @@
 
         <script src="../JS/datetimepicker.js" type="text/javascript"></script>
         <script src="../JS/Geolocalizacion.js" type="text/javascript"></script>
-        <script src="../JS/Mapa_version_2.js" type="text/javascript"></script>
+        <script src="../JS/Mapa_de_usuario.js" type="text/javascript"></script>
         <script src="../JS/utils.js" type="text/javascript"></script>
         <script src="../JS/Publico.js" type="text/javascript"></script>        
         <script src="../JS/UsuarioJS.js" type="text/javascript"></script>
         <script src="../JS/Validaciones.js" type="text/javascript"></script>
-        
+
 
     </head>
-    <body  id="imagenFondo">
+    <body  id="imagenFondo">       
 
         <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog modal-sm">
@@ -137,12 +137,13 @@
                         </div>
                         <div class="modal-body" id="myModalMessage">
                             <form role="form" onsubmit="return false;" id="formRegistro">
-                                <div class=" form-row text-left form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class=" form-row text-left form-row col-xs-12 col-sm-12 col-md-12 col-lg-12" id="contenidoForm">
                                     <div class="form-row col-xs-12 col-sm-8 col-md-8 col-lg-8">
                                         <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12"> 
                                             <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupNombreUsuario">
                                                 <label for="inputNombreUsuario">Nombre de Usuario*</label>
-                                                <input type="text" class="form-control" id="inputNombreUsuario" autofocus="autofocus" placeholder="Nombre de usuario" onpaste="return false" onkeyup="validaTamMax('inputNombreUsuario', 20, 'La cantidad máxima de dígitos es 20')" onkeypress="return validaSoloTexto(event)">
+                                                <input type="text" class="form-control" id="inputNombreUsuario" autofocus="autofocus" placeholder="Nombre de usuario" onpaste="return false"
+                                                       onkeyup="validaTamMax('inputNombreUsuario', 20, 'La cantidad máxima de dígitos es 20')" onkeypress="return validaSoloTexto(event)">
                                             </div>                                          
                                             <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupTipo">                                                                                                                               
                                                 <label class="col-form-label">Verifique el nombre de usuario*</label>
@@ -204,7 +205,7 @@
                                     <div class="form-row col-xs-12 col-sm-4 col-md-4 col-lg-4">
                                         <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" id="groupDireccion">
                                             <label for="inputDireccion">Dirección*</label>
-                                            <div id="Mi_mapa"></div>
+                                            <div id="Mapa_de_usuario"></div>
                                             <div class="input-group">                                               
                                                 <input type="text" class="form-control" id="inputDireccion" autofocus="autofocus" placeholder="Presione el botón → " size="100%" 
                                                        onkeyup="validaTamMax('inputDireccion', 100, 'La cantidad máxima de dígitos es 100')" onkeypress="return validaSoloTexto(event)">
@@ -221,11 +222,11 @@
                                     <input type="hidden"  id="usuarioAux"/>
                                     <button type="submit" class="btn btn-success" onclick="registraUsuario()">Guardar</button>                                   
                                     <button type="reset" class="btn btn-danger" id="cancelar" onclick="limpiarForm()" data-dismiss="modal">Cancelar</button>
-                                </div>
-                                <div class="form-group" >
-                                    <div class="alert alert-success hiddenDiv" id="mesajeResult">
-                                        <strong class="mesajeResultNeg">Info!</strong> 
-                                        <span class="mesajeResultText">Este cuadro de alerta podría indicar un cambio informativo neutro o una acción.</span>
+                                </div>                               
+                                <div class="form-group height25" >
+                                    <div class="alert alert-success hiddenDiv" id="mensajeAlert">
+                                        <strong id="mesajeResultNeg">Info!</strong> 
+                                        <span  id="mesajeResultText">Este cuadro de alerta podría indicar un cambio informativo neutro o una acción.</span>
                                     </div>
                                 </div>
                             </form>

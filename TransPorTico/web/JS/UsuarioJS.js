@@ -24,8 +24,7 @@ $(document).ready(function () {
     $("#inputDireccion").click(ayuda("inputDireccion", 'Sólo texto'));
 });
 
-function registraUsuario() {
-    mostrarModal("myModal", "Espere por favor..", "Cargando información de Usuario");
+function registraUsuario() {    
     if (validar()) {
         $.ajax({
             url: '../UsuarioServlet',
@@ -62,7 +61,7 @@ function registraUsuario() {
             dataType: "texT"
         });
     } else {
-        mostrarMensaje("mesageRegistro", "alert alert-danger", "Debe digitar los campos del formulario", "Error!");
+        mostrarMensaje("alert alert-danger", "Debe digitar los campos del formulario", "Error!");
         $("#collapseOne").addClass('show');
     }
     $("#usuarioAction").val("#agregarUsuario");
@@ -77,7 +76,7 @@ function consultarUsuarios(numpag) {
         },
         error: function () { //si existe un error en la respuesta del ajax
             //alert("Se presento un error a la hora de cargar la información de los Usuarios en la base de datos");
-            mostrarModal("myModal", "Error al cargar en la base de datos");
+            mostrarModal("mensajeAlert", "Error al cargar en la base de datos");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             dibujarTabla(numpag, data);
@@ -134,6 +133,22 @@ function dibujarFila(rowData) {
             '</button></td>'));
 }
 
+function mostrarMensaje(classCss, msg, neg) {
+    //se le eliminan los estilos al mensaje
+    $("#mensajeAlert").removeClass();
+
+    //se setean los estilos
+    $("#mensajeAlert").addClass(classCss);
+
+    //se muestra la capa del mensaje con los parametros del metodo
+    $("#mensajeAlert").fadeIn("slow");
+    $("#mesajeResultNeg").html(neg);
+    $("#mesajeResultText").html(msg);
+    $("#mesajeResultText").html(msg);
+}
+
+
+/*
 function mostrarMensaje(name, classCss, msg, neg) {
     //se le eliminan los estilos al mensaje
     $("#" + name).removeClass();
@@ -146,7 +161,8 @@ function mostrarMensaje(name, classCss, msg, neg) {
     $(".mesajeResultNeg").html(neg);
     $(".mesajeResultText").html(msg);
     $(".mesajeResultText").html(msg);
-}
+}*/
+
 function paginador(pagAct, tam) {
     var ini = 1;
     $("#paginacionOpc").html("");
@@ -233,10 +249,7 @@ function validar() {
     if ($("#inputTipo").val() === "") {
         $("#inputTipo").addClass("error");
         validacion = false;
-    }
-    if(validacion === false){
-        alert("No pueden quedar campos vacios");        
-    }    
+    }  
     return validacion;
 }
 

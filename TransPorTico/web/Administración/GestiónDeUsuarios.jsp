@@ -68,7 +68,7 @@
                         <div class="form-row align-top col-sm-12 col-md-12 col-lg-12">
                             <div  class="col-sm-4 col-md-4 col-lg-4"> 
                                 <span class="glyphicon glyphicon-plus"></span>
-                                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onClick="Dibujar_un_mapa ( )">
+                                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onClick="Dibujar_un_mapa( )">
                                     <b class="estilo2 btn-success btn-sm ">Registrar un nuevo usuario</b>                                    
                                 </a>       
                             </div>
@@ -87,7 +87,7 @@
                     <div id="collapseOne" class="collapse modal fade" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
                         <div id="imagenFondos" class="card-body">
                             <button style="color: #FF0101;" data-toggle="collapse" href="#collapseOne" class="close btn-danger" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
-                            <heap id="encabezado">
+                           <!-- <heap id="encabezado">
                                 <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                     <div class="form-group col-xs-12 col-sm-11 col-md-11 col-lg-11">
                                         <label class="estilo3" ><b>Nota: Es obligatorio que primero verifique su nombre de usuario. Campos de caracter obligatorio ( * ).</b></label>
@@ -96,8 +96,8 @@
                                         <button data-toggle="collapse" href="#encabezado" class="btn-xs btn-primary" data-dismiss="modal" aria-label="Close">OK</button>
                                     </div>
                                 </div>
-                            </heap>
-                            <form>
+                            </heap>-->
+                            <form>                                
                                 <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                     <div class="form-row col-xs-12 col-sm-8 col-md-8 col-lg-8">
                                         <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12"> 
@@ -106,12 +106,12 @@
                                                 <input type="text" class="form-control" id="inputNombreUsuario" autofocus="autofocus" placeholder="Ingrese un nombre de usuario" onpaste="return false" onkeyup="validaTamMax('inputNombreUsuario', 20, 'La cantidad máxima de dígitos es 20')" onkeypress="return validaSoloTexto(event)">
                                             </div>
                                             <div class="form-group col-xs-12 col-sm-2 col-md-2 col-lg-2">
-                                                <label style="height: 77%;"></label>
-                                                <button id="btnVerificar" type="button" class="btn btn-info " onclick="verificaNombreUsuario('inputNombreUsuario', 3, 'La cantidad mínima de dígitos es 3')">Verificar</button>
+                                                <label style="height: 70%;"></label>
+                                                <button id="btnVerificar" type="button" class="btnVerificar btn btn-info " onclick="verificaNombreUsuario('inputNombreUsuario', 3, 'La cantidad mínima de dígitos es 3')">Verificar</button>
                                             </div>
 
                                             <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupTipo">
-                                                <label for="inputTipo" class="col-form-label" >Tipo de Usuario*</label>
+                                                <label for="inputTipo" class="col-form-label" >Seleccione el Tipo de Usuario*</label>
                                                 <select id="inputTipo" class="form-control" style="height: 50%;">
                                                     <option value="1">Administrador</option>
                                                     <option value="2">Cliente</option>
@@ -190,6 +190,12 @@
                                     <button type="submit" class="btn btn-success" onclick="registraUsuario()">Guardar</button>                                    
                                     <button type="submit" class="btn btn-danger" data-toggle="collapse" href="#collapseOne">Cancelar</button>
                                 </div>
+                                <div class="form-group estiloAlertaPieForm" >
+                                    <div class="alert alert-success hiddenDiv" id="mensajeAlert">
+                                        <strong id="mesajeResultNeg">Info!</strong> 
+                                        <span  id="mesajeResultText">Este cuadro de alerta podría indicar un cambio informativo neutro o una acción.</span>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -201,9 +207,7 @@
             <!------------------------------------------------------------------------------------------>
 
             <div class="card bg-light mb-3" style="max-width: 100%;">
-                <div>
-                    <br>
-                </div>
+               <div><br></div>
                 <div class="card-body" id="imagenFondoo">
                     <table class="table table-hover table-condensed table-responsive table-bordered" id="tablaUsuarios"></table>
                 </div>

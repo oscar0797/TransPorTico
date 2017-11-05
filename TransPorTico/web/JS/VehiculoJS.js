@@ -16,7 +16,6 @@ $(document).ready(function () {
 });
 
 function registrarVehiculo() {
-    mostrarModal("myModal", "Espere por favor..", "Cargando información de la base de datos");
     if (validar()) {
         $.ajax({
             url: '../VehiculoServlet',
@@ -36,7 +35,7 @@ function registrarVehiculo() {
                 var respuestaTxt = data.substring(2);
                 var tipoRespuesta = data.substring(0, 2);
                 if (tipoRespuesta === "E~") {
-                    mostrarModal("myModal", "Se genero un error", respuestaTxt);
+                    mostrarModal("myModal", "Se generó un error", respuestaTxt);
                 } else {
                     consultarVehiculos(1);
                     mostrarModal("myModal", "Registro de Vehiculos", $("#inputPlaca").val() + " agregado con exito");
@@ -47,12 +46,10 @@ function registrarVehiculo() {
             dataType: "text"
         });
     } else {
-        mostrarMensaje("mesageRegistro", "alert alert-danger", "Debe digitar los campos del formulario", "Error!");
+        mostrarMensaje("alert alert-danger", "Debe digitar los campos del formulario", "Error!");
         $("#collapseOne").addClass('show');
     }
-    //$("#choferAction").val("#agregarChofer");
-    $("#collapseOne").addClass('show');
-
+    $("#choferAction").val("#agregarChofer");
 }
 
 function limpiarForm() {
@@ -157,17 +154,32 @@ function dibujarFilaChofer(rowData) {
     row.append($("<td>" + rowData.tipoLicencia + "</td>"));
 }
 
-function mostrarMensaje(name, classCss, msg, neg) {
-//se le eliminan los estilos al mensaje
-    $("#" + name).removeClass();
+function mostrarMensaje(classCss, msg, neg) {
+    //se le eliminan los estilos al mensaje
+    $("#mensajeAlert").removeClass();
+
     //se setean los estilos
-    $("#" + name).addClass(classCss);
+    $("#mensajeAlert").addClass(classCss);
+
     //se muestra la capa del mensaje con los parametros del metodo
-    $("#" + name).fadeIn("slow");
-    $(".mesajeResultNeg").html(neg);
-    $(".mesajeResultText").html(msg);
-    $(".mesajeResultText").html(msg);
+    $("#mensajeAlert").fadeIn("slow");
+    $("#mesajeResultNeg").html(neg);
+    $("#mesajeResultText").html(msg);
+    $("#mesajeResultText").html(msg);
 }
+
+/*
+ function mostrarMensaje(name, classCss, msg, neg) {
+ //se le eliminan los estilos al mensaje
+ $("#" + name).removeClass();
+ //se setean los estilos
+ $("#" + name).addClass(classCss);
+ //se muestra la capa del mensaje con los parametros del metodo
+ $("#" + name).fadeIn("slow");
+ $(".mesajeResultNeg").html(neg);
+ $(".mesajeResultText").html(msg);
+ $(".mesajeResultText").html(msg);
+ }*/
 
 function paginador(pagAct, tam) {
     var ini = 1;
@@ -218,9 +230,6 @@ function validar() {
     if ($("#inputUbicacion").val() === "") {
         $("#inputUbicacion").addClass("error");
         validacion = false;
-    }
-    if (validacion === false) {
-        alert("No pueden quedar campos vacios");
     }
     return validacion;
 }

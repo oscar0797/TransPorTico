@@ -19,8 +19,7 @@ $(document).ready(function () {
 });
 
 function registraChofer() {
-    mostrarModal("myModal", "Espere por favor..", "Cargando información de la base de datos");
-    if (validar()) {
+       if (validar()) {
         $.ajax({
             url: '../ChoferServlet',
             data: {
@@ -54,12 +53,10 @@ function registraChofer() {
             dataType: "text"
         });
     } else {
-        mostrarMensaje("mesageRegistro", "alert alert-danger", "Debe digitar los campos del formulario", "Error!");
+        mostrarMensaje("alert alert-danger", "Debe digitar los campos del formulario", "Error!");
         $("#collapseOne").addClass('show');
     }
-    //$("#choferAction").val("#agregarChofer");
-    $("#collapseOne").addClass('show');
-    
+    $("#choferAction").val("#agregarChofer");   
 }
 
 function limpiarForm() {
@@ -129,7 +126,21 @@ function dibujarFila(rowData) {
             '</button></td>'));
 }
 
+function mostrarMensaje(classCss, msg, neg) {
+    //se le eliminan los estilos al mensaje
+    $("#mensajeAlert").removeClass();
 
+    //se setean los estilos
+    $("#mensajeAlert").addClass(classCss);
+
+    //se muestra la capa del mensaje con los parametros del metodo
+    $("#mensajeAlert").fadeIn("slow");
+    $("#mesajeResultNeg").html(neg);
+    $("#mesajeResultText").html(msg);
+    $("#mesajeResultText").html(msg);
+}
+
+/*
 function mostrarMensaje(name, classCss, msg, neg) {
     //se le eliminan los estilos al mensaje
     $("#" + name).removeClass();
@@ -142,7 +153,7 @@ function mostrarMensaje(name, classCss, msg, neg) {
     $(".mesajeResultNeg").html(neg);
     $(".mesajeResultText").html(msg);
     $(".mesajeResultText").html(msg);
-}
+}*/
 
 function paginador(pagAct, tam) {
     var ini = 1;
@@ -194,9 +205,6 @@ function validar() {
     if ($("#inputFechaVencimiento").val() === "") {
         $("#inputFechaVencimiento").addClass("error");
         validacion = false;
-    }
-    if(validacion === false){
-        alert("No pueden quedar campos vacios");        
     }
     return validacion;
 }

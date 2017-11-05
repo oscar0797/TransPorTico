@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-   <head>
+    <head>
         <title>Contacto</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,14 +15,19 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBe7lRExeChAWuRiEpRkE-l8aldatSkkAw&libraries=places"></script>
         <link href="../CSS/CSSPúblico.css" rel="stylesheet" type="text/css"/>
         <link href="../CSS/datetimepicker.min.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        
+
         <script src="../JS/datetimepicker.js" type="text/javascript"></script>
+        <script src="../JS/Geolocalizacion.js" type="text/javascript"></script>
+        <script src="../JS/Mapa_de_usuario.js" type="text/javascript"></script>
         <script src="../JS/utils.js" type="text/javascript"></script>
         <script src="../JS/Publico.js" type="text/javascript"></script>
-        
+        <script src="../JS/UsuarioJS.js" type="text/javascript"></script>
+        <script src="../JS/Validaciones.js" type="text/javascript"></script>
+
     </head>
     <body id="imagenFondo">
 
@@ -73,13 +78,12 @@
                 </div>
             </nav> <!--Navbar-->
         </div>
-
-       <!-- ********************************************************** -->
+        <!-- ********************************************************** -->
         <!-- MODAL FORMULARIO REGISTRO -->
         <!-- ********************************************************** -->
         <div class="container">
-            <div class="modal fade" id="myModalRegistro" role="dialog">
-                <div class="modal-dialog modal-md">
+            <div class="modal fade" id="myModalRegistro"  role="dialog">
+                <div class="modal-dialog" style="width: 80%;">
                     <div class="modal-content">
                         <div class="modal-header fondoForm">
                             <button class="close btn-danger" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
@@ -87,60 +91,96 @@
                         </div>
                         <div class="modal-body" id="myModalMessage">
                             <form role="form" onsubmit="return false;" id="formRegistro">
-                                <div class="form-group col-sm-12" id="groupUsuario">
-                                    <label for="usuario">Nombre de Usuario:</label>
-                                    <input type="text" class="form-control" id="usuarioSign" autofocus="autofocus" placeholder="Nombre de Usuario">
-                                </div>
-                                <div class="form-group col-sm-6" id="groupPassword">
-                                    <label for="password">Contraseña:</label>
-                                    <input type="text" class="form-control" id="passwordSign" autofocus="autofocus" placeholder="Contraseña">
-                                </div>                                
-                                <div class="form-group col-sm-6" id="groupPasswordConfirm">
-                                    <label for="password">Confirmar Contraseña:</label>
-                                    <input type="password" class="form-control" id="passwordConfirmSign" autofocus="autofocus" placeholder="Contrasena">
-                                </div>                                
-                                <div class="form-group col-sm-4" id="groupNombre">
-                                    <label for="usuario">Nombre:</label>
-                                    <input type="text" class="form-control" id="nombreSign" placeholder="Nombre" >
-                                </div>
-                                <div class="form-group col-sm-4" id="groupApellido1">
-                                    <label for="usuario">Apellido1:</label>
-                                    <input type="text" class="form-control" id="apellido1Sign" placeholder="Apellido1">
-                                </div>
-                                <div class="form-group col-sm-4" id="groupApellido2">
-                                    <label for="apellido2">Apellido2:</label>
-                                    <input type="text" class="form-control" id="apellido2Sign" placeholder="Apellido2">
-                                </div>
-                                <div class="form-group col-sm-6" id="groupCorreo">
-                                    <label for="password">Email</label>
-                                    <input type="email" class="form-control" id="correoSign" autofocus="autofocus" placeholder="Email">
-                                </div>
-                                <div class="form-group col-sm-6" id="groupTelefono">
-                                    <label for="password">Teléfono:</label>
-                                    <input type="text" class="form-control" id="telefonoSing" autofocus="autofocus" placeholder="Teléfono">
-                                </div>
-                                <div class="form-group col-sm-6" id="groupFechaNacimiento">
-                                    <label for="nac">Fecha de Nacimiento:</label>
-                                    <div id="fechaNacimiento" class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="dtp_input2" data-link-format="dd/mm/yyyy">
-                                        <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="fechaNacimientoSing">
-                                        <span class="input-group-addon">
-                                            <span class="glyphicon glyphicon-calendar"></span>
-                                        </span>
+                                <div class=" form-row text-left form-row col-xs-12 col-sm-12 col-md-12 col-lg-12" id="contenidoForm">
+                                    <div class="form-row col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                        <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12"> 
+                                            <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupNombreUsuario">
+                                                <label for="inputNombreUsuario">Nombre de Usuario*</label>
+                                                <input type="text" class="form-control" id="inputNombreUsuario" autofocus="autofocus" placeholder="Nombre de usuario" onpaste="return false"
+                                                       onkeyup="validaTamMax('inputNombreUsuario', 20, 'La cantidad máxima de dígitos es 20')" onkeypress="return validaSoloTexto(event)">
+                                            </div>                                          
+                                            <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupTipo">                                                                                                                               
+                                                <label class="col-form-label">Verifique el nombre de usuario*</label>
+                                                <button id="btnVerificar" type="button" class="text-center btn btn-info " onclick="verificaNombreUsuario('inputNombreUsuario', 3, 'La cantidad mínima de dígitos es 3')">Verificar</button>                                                                                                                                            
+                                            </div>
+                                        </div>
+                                        <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupContrasena1">
+                                                <label for="inputContrasena1">Contraseña*</label>
+                                                <input type="password" class="form-control" id="inputContrasena1" autofocus="autofocus" placeholder="Ingrese una contraseña" onpaste="return false"
+                                                       onkeyup="validaTamMax('inputContrasena1', 30, 'La cantidad máxima de dígitos es 30')">
+                                            </div>
+                                            <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupContrasena2">
+                                                <label for="inputContrasena2">Confirmar Contraseña*</label>
+                                                <input type="password" class="form-control" id="inputContrasena2" autofocus="autofocus" placeholder="Repita la contraseña" onpaste="return false"
+                                                       onkeyup="validaTamMax('inputContrasena2', 30, 'La cantidad máxima de dígitos es 30')">
+                                            </div>
+                                        </div>
+                                        <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupNombre">
+                                                <label for="inputNombre">Nombre*</label>
+                                                <input type="text" class="form-control" id="inputNombre" placeholder="Nombre" onpaste="return false" 
+                                                       onkeyup="validaTamMax('inputNombre', 25, 'La cantidad máxima de dígitos es 25')" onkeypress="return validaSoloTexto(event)">
+                                            </div>                                
+                                            <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupFechaNacimiento">
+                                                <label for="inputFechaNacimiento">Fecha de Nacimiento*</label>
+                                                <div id="fechaNacimiento" class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="dtp_input2" data-link-format="dd/mm/yyyy">
+                                                    <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="inputFechaNacimiento">
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                                </div>                
+                                            </div>   
+                                        </div>
+                                        <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupApellido1">
+                                                <label for="inputApellido1">Apellido1*</label>
+                                                <input type="text" class="form-control" id="inputApellido1" placeholder="Primer apellido" onpaste="return false" 
+                                                       onkeyup="validaTamMax('inputApellido1', 25, 'La cantidad máxima de dígitos es 25')" onkeypress="return validaSoloTexto(event)">  
+                                            </div>
+                                            <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupTelefono">
+                                                <label for="inputTelefono">Teléfono*</label>
+                                                <input type="text" class="form-control" id="inputTelefono" autofocus="autofocus" placeholder="Teléfono" onpaste="return false" 
+                                                       onkeyup="validaNum('inputTelefono'), validaTamMax('inputTelefono', 8, 'La cantidad máxima de dígitos es 8')">
+                                            </div>
+                                        </div>
+                                        <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupApellido2">
+                                                <label for="inputApellido1">Apellido2*</label>
+                                                <input type="text" class="form-control" id="inputApellido2" placeholder="Segundo apellido" onpaste="return false" 
+                                                       onkeyup="validaTamMax('inputApellido2', 25, 'La cantidad máxima de dígitos es 25')" onkeypress="return validaSoloTexto(event)">
+                                            </div>     
+                                            <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupCorreo">
+                                                <label for="inputCorreo">Correo*</label>
+                                                <input type="email" class="form-control" id="inputCorreo" autofocus="autofocus" placeholder="Ingrese su correo" onkeyup="validaTamMax('inputApellido2', 50, 'La cantidad máxima de dígitos es 50')">
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>                                                                         
-                                <div class="form-group col-sm-6" id="groupdireccion">
-                                    <label for="password">Direccion</label>
-                                    <input type="text" class="form-control" id="direccion_sign" autofocus="autofocus" placeholder="Dirección">
+                                    <div class="form-row col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" id="groupDireccion">
+                                            <label for="inputDireccion">Dirección*</label>
+                                            <div id="Mapa_de_usuario"></div>
+                                            <div class="input-group">                                               
+                                                <input type="text" class="form-control" id="inputDireccion" autofocus="autofocus" placeholder="Presione el botón → " size="100%" 
+                                                       onkeyup="validaTamMax('inputDireccion', 100, 'La cantidad máxima de dígitos es 100')" onkeypress="return validaSoloTexto(event)">
+                                                <span id="Obtener_ubicacion" class=" input-group-addon">
+                                                    <span class="active glyphicon glyphicon-screenshot" onclick="Obtener_ubicacion( )"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="hidden" value="registroAdmin" id="personasAction"/>                       
-                                    <button type="submit" class="btn btn-primary" id="enviar" onclick="registro()">Guardar</button>
+                                    <input type="hidden" id="inputTipo" value="2"> 
+                                    <input type="hidden" value="agregarUsuario" id="usuarioAction"/> 
+                                    <input type="hidden"  id="usuarioAux"/>
+                                    <button type="submit" class="btn btn-success" onclick="registraUsuario()">Guardar</button>                                   
                                     <button type="reset" class="btn btn-danger" id="cancelar" onclick="limpiarForm()" data-dismiss="modal">Cancelar</button>
-                                </div>
-                                <div class="form-group" >
-                                    <div class="alert alert-success hiddenDiv" id="mesajeResult">
-                                        <strong class="mesajeResultNeg">Info!</strong> 
-                                        <span class="mesajeResultText">Este cuadro de alerta podría indicar un cambio informativo neutro o una acción.</span>
+                                </div>                               
+                                <div class="form-group height25" >
+                                    <div class="alert alert-success hiddenDiv" id="mensajeAlert">
+                                        <strong id="mesajeResultNeg">Info!</strong> 
+                                        <span  id="mesajeResultText">Este cuadro de alerta podría indicar un cambio informativo neutro o una acción.</span>
                                     </div>
                                 </div>
                             </form>
