@@ -69,12 +69,24 @@
             <div id="accordion" role="tablist">
                 <div id="imagenFondo" class="card ">
                     <div class="card-header" role="tab" id="headingOne">
-                        <h5 class="mb-0" >
-                            <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                <div class="estilo2 center-block" ><b>Registrar un nuevo chofer</b></div>                                
-                            </a>
-
-                        </h5>
+                        <div class="form-row align-top col-sm-12 col-md-12 col-lg-12">
+                            <div  class="col-sm-4 col-md-4 col-lg-4"> 
+                                <span class="glyphicon glyphicon-plus"></span>
+                                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <b class="estilo2 btn-success btn-sm ">Registrar un nuevo chofer</b>                                    
+                                </a>       
+                            </div>
+                            <div  class=" text-right col-sm-4 col-md-4 col-lg-4">
+                                <p>Buscar por cédula:</p>
+                            </div>
+                            <div class="col-sm-3 col-md-3 col-lg-3">                               
+                                <input style="width: 100%" type="text" class="form-control" id="buscar" placeholder="Cédula del chofer" >
+                            </div>
+                            <div class="col-md-1">
+                                <button type="button"  class="btn btn-info center-block"  id="btMostarForm" onclick="buscarChofer()">
+                                    <b>Buscar</b> <span class="glyphicon glyphicon-search"></span></button>
+                            </div>
+                        </div>
                     </div>
                     <div id="collapseOne" class="collapse modal fade" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
 

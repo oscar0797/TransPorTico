@@ -35,7 +35,7 @@
         <script src="../JS/VehiculoJS.js" type="text/javascript"></script>
         <script src="../JS/Validaciones.js" type="text/javascript"></script>
         <script src="../JS/Geolocalizacion.js" type="text/javascript"></script>
-        <script src="../JS/Mapa_version_4.js" type="text/javascript"></script>
+        <script src="../JS/Mapa_de_vehiculo.js" type="text/javascript"></script>
     </head>
     <body class="bg-muted">
         <div class="container-fluid"><br>
@@ -64,11 +64,24 @@
             <div id="accordion" role="tablist">
                 <div id="imagenFondo" class="card ">
                     <div class="card-header" role="tab" id="headingOne">
-                        <h5 class="mb-0" >
-                            <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                <b class="estilo2 center-block">Registrar un nuevo vehículo</b>
-                            </a>
-                        </h5>
+                        <div class="form-row align-top col-sm-12 col-md-12 col-lg-12">
+                            <div  class="col-sm-5 col-md-5 col-lg-5"> 
+                                <span class="glyphicon glyphicon-plus"></span>
+                                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onClick="Dibujar_un_mapa ( )">
+                                    <b class="estilo2 btn-success btn-sm ">Registrar un nuevo vehículo</b>                                    
+                                </a>       
+                            </div>
+                            <div  class=" text-right col-sm-3 col-md-3 col-lg-3">
+                                <p>Buscar por placa:</p>
+                            </div>
+                            <div class="col-sm-3 col-md-3 col-lg-3">                               
+                                <input style="width: 100%" type="text" class="form-control" id="buscar" placeholder="Placa del vehículo" >
+                            </div>
+                            <div class="col-md-1">
+                                <button type="button"  class="btn btn-info center-block"  id="btMostarForm" onclick="buscarVehiculo()">
+                                    <b>Buscar</b> <span class="glyphicon glyphicon-search"></span></button>
+                            </div>
+                        </div>
                     </div>
                     <div id="collapseOne" class="collapse modal fade" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
                         <div id="imagenFondos" class="card-body">
@@ -122,7 +135,7 @@
                                     <div class="form-row col-xs-12 col-sm-5 col-md-5 col-lg-5">
                                         <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" id="groupUbicacion">
                                             <label for="inputUbicacion">Ubicación*</label>
-                                            <div id="Mi_mapa_4"></div>
+                                            <div id="Mapa_de_vehiculo"></div>
                                             <div class="input-group">                                               
                                                 <input type="text" class="form-control" id="inputUbicacion" autofocus="autofocus" placeholder="Presione el botón → " size="100%" 
                                                        onkeyup="validaTamMax('inputUbicacion', 100, 'La cantidad máxima de dígitos es 100')" onkeypress="return validaSoloTexto(event)">

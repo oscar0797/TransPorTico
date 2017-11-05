@@ -6,12 +6,10 @@
 package cr.ac.una.prograiv.project.controller;
 
 import com.google.gson.Gson;
-import cr.ac.una.prograiv.project.Validaciones.Validaciones;
 import cr.ac.una.prograiv.project.bl.UsuarioBL;
 import cr.ac.una.prograiv.project.domain.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
