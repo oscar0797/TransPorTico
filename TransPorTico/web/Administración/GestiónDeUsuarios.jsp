@@ -65,20 +65,19 @@
             <div id="accordion" role="tablist">
                 <div id="imagenFondo" class="card ">
                     <div class="card-header" role="tab" id="headingOne">
-                        <div class="form-row align-top col-sm-12 col-md-12 col-lg-12">
-                            <div  class="col-sm-4 col-md-4 col-lg-4"> 
-                                <span class="glyphicon glyphicon-plus"></span>
+                        <div class="form-row align-top col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div  class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onClick="Dibujar_un_mapa( )">
-                                    <b class="estilo2 btn-success btn-sm ">Registrar un nuevo usuario</b>                                    
+                                    <p class="estilo2 btn-success btn-sm "><span class="glyphicon glyphicon-plus"></span>Registrar un nuevo usuario</p>                                    
                                 </a>       
                             </div>
-                            <div  class=" text-right col-sm-4 col-md-4 col-lg-4">
+                            <div  class=" text-right col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <p>Buscar por nombre de usuario:</p>
                             </div>
-                            <div class="col-sm-3 col-md-3 col-lg-3">                               
+                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">                               
                                 <input style="width: 100%" type="text" class="form-control" id="buscar" placeholder="Nombre de usuario" >
                             </div>
-                            <div class="col-md-1">
+                            <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1">
                                 <button type="button"  class="btn btn-info center-block"  id="btMostarForm" onclick="buscarUsuario()">
                                     <b>Buscar</b> <span class="glyphicon glyphicon-search"></span></button>
                             </div>
@@ -87,16 +86,16 @@
                     <div id="collapseOne" class="collapse modal fade" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
                         <div id="imagenFondos" class="card-body">
                             <button style="color: #FF0101;" data-toggle="collapse" href="#collapseOne" class="close btn-danger" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
-                           <!-- <heap id="encabezado">
-                                <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div class="form-group col-xs-12 col-sm-11 col-md-11 col-lg-11">
-                                        <label class="estilo3" ><b>Nota: Es obligatorio que primero verifique su nombre de usuario. Campos de caracter obligatorio ( * ).</b></label>
-                                    </div>
-                                    <div class="form-group col-xs-12 col-sm-1 col-md-1 col-lg-1">
-                                        <button data-toggle="collapse" href="#encabezado" class="btn-xs btn-primary" data-dismiss="modal" aria-label="Close">OK</button>
-                                    </div>
-                                </div>
-                            </heap>-->
+                            <!-- <heap id="encabezado">
+                                 <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                     <div class="form-group col-xs-12 col-sm-11 col-md-11 col-lg-11">
+                                         <label class="estilo3" ><b>Nota: Es obligatorio que primero verifique su nombre de usuario. Campos de caracter obligatorio ( * ).</b></label>
+                                     </div>
+                                     <div class="form-group col-xs-12 col-sm-1 col-md-1 col-lg-1">
+                                         <button data-toggle="collapse" href="#encabezado" class="btn-xs btn-primary" data-dismiss="modal" aria-label="Close">OK</button>
+                                     </div>
+                                 </div>
+                             </heap>-->
                             <form>                                
                                 <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                     <div class="form-row col-xs-12 col-sm-8 col-md-8 col-lg-8">
@@ -207,7 +206,7 @@
             <!------------------------------------------------------------------------------------------>
 
             <div class="card bg-light mb-3" style="max-width: 100%;">
-               <div><br></div>
+                <div><br></div>
                 <div class="card-body" id="imagenFondoo">
                     <table class="table table-hover table-condensed table-responsive table-bordered" id="tablaUsuarios"></table>
                 </div>
