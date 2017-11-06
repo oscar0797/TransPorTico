@@ -90,7 +90,7 @@ function dibujarTabla(numpag, dataJson) {
     row.append($("<th><b>Modelo</b></th>"));
     row.append($("<th><b>Año</b></th>"));
     row.append($("<th><b>Color</b></th>"));
-    row.append($("<th><b>Chofer</b></th>"));
+    row.append($("<th><b>Consultar ó Asignar Choferes</b></th>"));
     row.append($("<th><b>Acción</b></th>"));
     //carga la tabla con el json devuelto
     var cont = 0;
