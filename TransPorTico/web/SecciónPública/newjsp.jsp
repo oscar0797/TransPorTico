@@ -18,11 +18,35 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="../CSS/CSSPúblico.css" rel="stylesheet" type="text/css"/>
     </head>
-    <body>
-        <div id="imagenFondo">
+    <body id="imagenFondo">
+        <div id="encabezado">
             <h1>
                 Trans~Por~Tico
             </h1>
+            <img class="img-circle" src="../Imágenes/Inicio/mundo.gif" alt=""/>
+        </div>
+        <div id="navBar">
+            <nav class="navbar navbar-inverse" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-exl-collapse">
+                        <span class="sr-only">Desplegar navegación</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse navbar-exl-collapse img-responsive">
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="Inicio.jsp" class="btn-lg glyphicon glyphicon">
+                                <b>
+                                    Inicio
+                                </b>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         </div>
     </body>
 </html>
