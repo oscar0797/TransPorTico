@@ -17,6 +17,8 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBe7lRExeChAWuRiEpRkE-l8aldatSkkAw&libraries=places"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="../CSS/Estilos_de_newjsp.css" rel="stylesheet" type="text/css"/>
+        <script src="../JS/Geolocalizacion.js" type="text/javascript"></script>
+        <script src="../JS/Principal.js" type="text/javascript"></script>
     </head>
     <body id="imagenFondo">
         <div id="encabezado">
@@ -52,8 +54,22 @@
             <form role="form " onsubmit="return false" id="formRegistro">
                 <div id=contenidoForm" class="form-row text-left col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-left: 0px;">
                     <div class="form-row col-xs-12 col-sm-6 col-md-6 col-lg-6" style="padding-left: 0px;">
-                        <div id="Soy_el_mapa">
+                        <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-left: 0px;">
+                            <div id="Soy_el_mapa">
                             
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-left: 0px;">
+                            <label for="Autocompletado_de_origen">
+                                Origen
+                            </label>
+                            <input type="text" class="form-control" id="Autocompletado_de_origen"/>
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-left: 0px ;">
+                            <label for="Autocompletado_de_destino">
+                                Destino
+                            </label>
+                            <input id="Autocompletado_de_destino" type="text" class="form-control"/>
                         </div>
                     </div>
                 </div>
