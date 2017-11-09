@@ -16,7 +16,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBe7lRExeChAWuRiEpRkE-l8aldatSkkAw&libraries=places"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="../CSS/CSSPúblico.css" rel="stylesheet" type="text/css"/>
+        <link href="../CSS/Estilos_de_newjsp.css" rel="stylesheet" type="text/css"/>
     </head>
     <body id="imagenFondo">
         <div id="encabezado">
@@ -47,6 +47,17 @@
                     </ul>
                 </div>
             </nav>
+        </div>
+        <div class="container">
+            <form role="form " onsubmit="return false" id="formRegistro">
+                <div id=contenidoForm" class="form-row text-left col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-left: 0px;">
+                    <div class="form-row col-xs-12 col-sm-6 col-md-6 col-lg-6" style="padding-left: 0px;">
+                        <div id="Soy_el_mapa">
+                            
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </body>
 </html>
