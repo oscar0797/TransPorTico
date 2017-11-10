@@ -46,8 +46,8 @@
                 </div>
                 <div class="collapse navbar-collapse navbar-ex1-collapse img-responsive">
                     <ul class="nav navbar-nav">       
-                        <li class=" btn-lg active"><a href="SecciónCliente.jsp" class="btn-lg glyphicon glyphicon"><b>Servicio</b></a></li>
-                        <li><a class="btn-lg glyphicon" href="HistorialCliente.jsp">Historial</a></li>
+                        <li class="active"><a href="SecciónCliente.jsp" class="btn-lg glyphicon glyphicon"><b>Servicio</b></a></li>
+                        <li><a href="HistorialCliente.jsp" class="btn-lg glyphicon glyphicon"> Historial</a></li>
                     </ul>
                     <div class="nav navbar-nav navbar-right" id="menuLogSign">
                         <button type="button" class="btn-lg btn-primary glyphicon glyphicon-user" data-toggle="modal" data-target="#myModalRegistro"> Registrarse</button>
