@@ -71,7 +71,7 @@
                     <div class="card-header" role="tab" id="headingOne">
                         <div class="form-row align-top col-sm-12 col-md-12 col-lg-12">
                             <div  class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onClick="Dibujar_un_mapa( )">
+                                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                     <p class="estilo2 btn-success btn-sm "><span class="glyphicon glyphicon-plus"></span>Registrar un nuevo chofer</p>                                    
                                 </a>       
                             </div>

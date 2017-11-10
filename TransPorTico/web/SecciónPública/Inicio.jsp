@@ -310,8 +310,8 @@
                 <ul class="list-group" id="side-menu">
                     <li class="list-group-item dropdown-toggle">
                         <a href="#">
-                            <h3>BMW</h3>
-                            <img src="../Imágenes/Inicio/BMW.png" alt=""/>
+                            <h3>HONDA</h3>
+                            <img src="../Imágenes/Inicio/Honda.png" alt=""/>
                         </a>          
                     </li>
                     <li class="list-group-item dropdown-toggle">
