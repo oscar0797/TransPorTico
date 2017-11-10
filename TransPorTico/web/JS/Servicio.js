@@ -2,6 +2,8 @@
 // Fecha: 27 de septiembre de 2017.
 
 var Destino_seleccionado = false ;
+var DS = new google.maps.DirectionsService ;
+var DR = new google.maps.DirectionsRenderer ;
 
 google.maps.event.addDomListener ( window, "load", function ( )
 {
@@ -75,8 +77,8 @@ google.maps.event.addDomListener ( window, "load", function ( )
             
             if ( Destino_seleccionado === true )
             {
-                var DS = new google.maps.DirectionsService ;
-                var DR = new google.maps.DirectionsRenderer ;
+                // var DS = new google.maps.DirectionsService ;
+                // var DR = new google.maps.DirectionsRenderer ;
             
                 DR.setMap ( Mapa_de_Google ) ;
             
@@ -113,8 +115,8 @@ google.maps.event.addDomListener ( window, "load", function ( )
 			
             // Marcar ruta en el mapa
             
-            var DS = new google.maps.DirectionsService ;
-            var DR = new google.maps.DirectionsRenderer ;
+            // var DS = new google.maps.DirectionsService ;
+            // var DR = new google.maps.DirectionsRenderer ;
 			
             DR.setMap ( Mapa_de_Google ) ;
 			
