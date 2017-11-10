@@ -11,13 +11,15 @@ and open the template in the editor.
 *{
     margin: 0px;
     padding: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 #Soy_el_mapa
 {
     width: 600px ;
     height: 400px ;
-    
+
     border-radius: 25px ;
     background-color: aquamarine ;
 }
@@ -109,7 +111,7 @@ and open the template in the editor.
 }
 
 #myModalRegistro{
-   
+
     color: white;
 }
 .fondoForm{
@@ -154,9 +156,12 @@ and open the template in the editor.
 }
 
 #contenedorLugares{
+    text-align: center;
+    align-content: center;
+    color: white;
     font-family: fantasy;
-    margin-left: 6%;
-    color: whitesmoke;
+    text-align: center;
+    -webkit-text-stroke: 1px #185B0E;
 }
 
 #contenedorLugares li{
@@ -176,7 +181,7 @@ and open the template in the editor.
 }
 
 #contenedorLugares img{
-    width: 200px;
+    width: 170px;
     height: 150px;
 }
 
@@ -255,9 +260,10 @@ footer{
 }
 
 #bienvenida{
-    color: whitesmoke;
+    color: white;
     font-family: fantasy;
     text-align: center;
+    -webkit-text-stroke: 2px #185B0E;
 }
 #mensajeBienvenida{
     color: whitesmoke;
