@@ -30,8 +30,7 @@
 
 
     </head>
-    <body  id="imagenFondo">       
-
+    <body  id="imagenFondo">      
         <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
@@ -303,39 +302,39 @@
         </div>
         <br></br>
         <!-- ********************************************************** -->
-        <!-- INFO COUNTRIES -->
+        <!-- INFO -------------------------------------------------------->
         <!-- ********************************************************** -->
         <div class="custom">
-            <div id="contenedorLugares" >
-                <h2><u>Las marcas de vehículos más utilizadas</u></h2>
+            <div id="contenedorLugares" class="container" >
+                <h2><u>Las 5 Marcas de Vehículos Más Utilizadas</u></h2>
                 <ul class="list-group" id="side-menu">
                     <li class="list-group-item dropdown-toggle">
                         <a href="#">
-                            <h3>Focus</h3>
-                            <img src="../Imágenes/Inicio/Auto1.jpg" alt=""/>
+                            <h3>BMW</h3>
+                            <img src="../Imágenes/Inicio/BMW.png" alt=""/>
                         </a>          
                     </li>
                     <li class="list-group-item dropdown-toggle">
-                        <a href="#"><h3>Swift</h3>
-                            <img src="../Imágenes/Inicio/auto2.png" alt=""/>
+                        <a href="#"><h3>HYUNDAI</h3>
+                            <img src="../Imágenes/Inicio/Hyundai.png" alt=""/>
                         </a>
                     </li>
                     <li class="list-group-item dropdown-toggle">
                         <a href="#">
-                            <h3>Sportage</h3>
-                            <img src="../Imágenes/Inicio/auto3.jpg" alt=""/>
+                            <h3>SUZUKI</h3>
+                            <img src="../Imágenes/Inicio/Suzuki.png" alt=""/>
                         </a>
                     </li>
                     <li class="list-group-item dropdown-toggle">
                         <a href="#">
-                            <h3>Spark</h3>
-                            <img src="../Imágenes/Inicio/auto4.png" alt=""/>
+                            <h3>NISSAN</h3>
+                            <img src="../Imágenes/Inicio/Nissan.png" alt=""/>
                         </a>
                     </li>
                     <li class="list-group-item dropdown-toggle">
                         <a>
-                            <h3>Toyota</h3>
-                            <img src="../Imágenes/Inicio/auto5.jpg" alt=""/>
+                            <h3>TOYOTA</h3>
+                            <img src="../Imágenes/Inicio/Toyota.jpg" alt=""/>
                         </a>
                     </li>
                 </ul>
