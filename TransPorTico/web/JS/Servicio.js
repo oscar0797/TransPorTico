@@ -73,7 +73,7 @@ google.maps.event.addDomListener ( window, "load", function ( )
             {
                 Mapa_de_Google.setCenter ( Lugar_nuevo.geometry.location ) ;
             }
-            Marcador_del_mapa_de_Google.setPosition ( Lugar_nuevo.geometry.location ) ; // alert ( Destino_seleccionado ) ;
+            Marcador_del_mapa_de_Google.setPosition ( Lugar_nuevo.geometry.location ) ; alert ( Destino_seleccionado ) ;
             
             if ( Destino_seleccionado === true )
             {

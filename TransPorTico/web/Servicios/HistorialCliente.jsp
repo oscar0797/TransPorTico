@@ -1,6 +1,6 @@
 <%-- 
-    Document   : SecciónCliente
-    Created on : 03/10/2017, 10:51:43 PM
+    Document   : HistorialCliente
+    Created on : 09/11/2017, 09:32:22 PM
     Author     : Oscar
 --%>
 
@@ -46,8 +46,8 @@
                 </div>
                 <div class="collapse navbar-collapse navbar-ex1-collapse img-responsive">
                     <ul class="nav navbar-nav">       
-                        <li class=" btn-lg active"><a href="SecciónCliente.jsp" class="btn-lg glyphicon glyphicon"><b>Servicio</b></a></li>
-                        <li><a class="btn-lg glyphicon" href="HistorialCliente.jsp">Historial</a></li>
+                        <li class="btn-lg glyphicon"><a href="SecciónCliente.jsp" class="btn-lg glyphicon glyphicon"><b>Servicio</b></a></li>
+                        <li><a class="btn-lg active" href="HistorialCliente.jsp">Historial</a></li>
                     </ul>
                     <div class="nav navbar-nav navbar-right" id="menuLogSign">
                         <button type="button" class="btn-lg btn-primary glyphicon glyphicon-user" data-toggle="modal" data-target="#myModalRegistro"> Registrarse</button>
@@ -56,6 +56,38 @@
                 </div>
             </nav>
         </div>
+        <table class="table-bordered">
+            <lu>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </lu>
+            <lu>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </lu>
+            <lu>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </lu>
+            <lu>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </lu>
+            <lu>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </lu>
+        </table>
         <!-- ********************************************************** -->
         <!-- MODAL FORMULARIO REGISTRO -->
         <!-- ********************************************************** -->
@@ -219,34 +251,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="container">
-            <form role="form " onsubmit="return false" id="formRegistro">
-                <div id=contenidoForm" class="form-row text-left col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-left: 0px;">
-                    <div class="form-row col-xs-12 col-sm-6 col-md-6 col-lg-6" style="padding-left: 0px;">
-                        <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-left: 0px;">
-                            <div id="Soy_el_mapa"></div>
-                        </div>
-                        <div class="tamañoLetraInput form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-left: 0px;">
-                            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-                                <label for="Autocompletado_de_origen">Origen:</label>
-                            </div>
-                            <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
-                                <input type="text" class="form-control" id="Autocompletado_de_origen"/>
-                            </div>
-                        </div>
-                        <div class="tamañoLetraInput form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-left: 0px ;">
-                            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-                                <label for="Autocompletado_de_destino">Destino:</label>
-                            </div>
-                            <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
-                                <input id="Autocompletado_de_destino" type="text" class="form-control"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
         </div>
         <br></br>
         <footer>

@@ -294,3 +294,15 @@ footer{
 .normal{
     border: 1px solid gray;
 }
+
+#imagenFondoServicio{
+    background-image: url(../Imágenes/Fondos/aaa.png);
+    background-position: center center;	  
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.tamañoLetraInput{
+    font-size: 15px;
+    color: white;
+}
