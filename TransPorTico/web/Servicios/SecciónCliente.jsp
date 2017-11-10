@@ -1,5 +1,5 @@
 <%-- 
-    Document   : newjsp
+    Document   : SecciónCliente
     Created on : 03/10/2017, 10:51:43 PM
     Author     : Oscar
 --%>
