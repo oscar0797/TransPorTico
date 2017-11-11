@@ -192,14 +192,14 @@
         <!-- ********************************************************** -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                <p id="div_verde">Visión</p>                          
+                <p id="divSubtitulos">Visión</p>                          
                 <p class="textoo">
                     Ser lideres a nivel mundial en el servicio de transporte
                     ,además, ofrecer las mejores tarifas.
                 </p>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 ">
-                <p id="div_verde">Misión</p>
+                <p id="divSubtitulos">Misión</p>
                 <p class="textoo">
                     Transportar a las personas y contribuir a la integracion y al desarrollo
                     económico y social de los países.
@@ -213,7 +213,7 @@
                 <img class=" img-rounded img-responsive center-block" src="../Imágenes/Inicio/SJ.jpg" alt=""/>
             </div>          
             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                <p id="div_verde">Quiénes Somos</p>
+                <p id="divSubtitulos">Quiénes Somos</p>
                 <p class="textoo">
                     Trans~por~tico, nace con la clara vocación de dar el
                     mejor servicio a nuestros clientes. La gestación del proyecto
@@ -230,7 +230,7 @@
 
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                <p id="div_verde">De dónde venimos</p>            
+                <p id="divSubtitulos">De dónde venimos</p>            
                 <p class="textoo">
                     Nuestra experencia en el sector nos ha llevado a arrancar
                     este nuevo proyecto, en el cual, participamos profecionales
@@ -238,7 +238,7 @@
                 </p>
             </div>
             <div  class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                <p id="div_verde">A dónde vamos</p>
+                <p id="divSubtitulos">A dónde vamos</p>
                 <p class="textoo">
                     Nuestra meta es, conseguir que nuestros clientes 
                     adocten y se familiaricen con las nuevas tecnologías 
@@ -248,7 +248,7 @@
                 </p>
             </div>
             <div  class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
-                <p id="div_verde">Cómo lo hacemos</p>
+                <p id="divSubtitulos">Cómo lo hacemos</p>
                 <p class="textoo">
                     Contamos con un sistema que le permite al usuario pedir un 
                     auto, para que lo lleve a su destino de una forma segura y económica.

@@ -245,39 +245,37 @@
         <!-- ********************************************************** -->
         <!-- MAPA  -->
         <!-- ********************************************************** -->
-        <!----> <h3 class="oficinas">Central</h3>
+        <h3 class="oficinas">Central</h3>
+        <br>
         <div class="mapa">          
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3193.1255329388114!2d-84.07747663585977!3d9.933892892896505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e36150dfbc7b%3A0x4878d16173f7bd9a!2sBetween+7+%26+9+Street%2C+San+Jos%C3%A9%2C+P.O.+Box%3A+3344+-+1000+San+Jos%C3%A9%2C+Costa+Rica!5e1!3m2!1ses!2scr!4v1504839192333" width="570" height="350" allowfullscreen></iframe>       
         </div>
-        <div class="contacto">            
+        <div class="form-row contacto col-xs-12 col-sm-4 col-md-4 col-lg-4">            
             <form action="" method="POST" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label for="nombre">Nombre</label>
-                    <input name="action" type="text" class="form-control" id="exampleInputEmail1" placeholder="Nombre">
+                <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="Nombre">
+                    <label for="Nombre">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre" autofocus="autofocus" placeholder="Nombre" onpaste="return false" onkeyup="validaTamMax('nombre', 20, 'La cantidad máxima de dígitos es 20')" onkeypress="return validaSoloTexto(event)">
                 </div>
-                <div class="form-group">
-                    <label for="correo">Correo</label>
-                    <input name="name" type="text" class="form-control" id="correo" placeholder="Correo">
+               <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupEmail">
+                    <label for="correo">Correo:</label>
+                    <input type="email" class="form-control" id="email" autofocus="autofocus" placeholder="Correo" onkeyup="validaTamMax('email', 100, 'La cantidad máxima de dígitos es 100')">
                 </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox">Recordar
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label for="escríbanos">Escríbanos</label>
-                    <input type="text" id="escribanos" size="40">
-                    <p class="help-block">Solo texto.</p>
+                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <label for="escríbanos">Escríbanos:</label>
+                    <textarea id="areaText" name="comentarios" rows="3" cols="62" style="color: black;" placeholder="Escribe aquí tus comentarios..." onpaste="return false" onkeyup="validaTamMax('areaText', 200, 'La cantidad máxima de dígitos es 200')" ></textarea>
+
                 </div> 
+                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <button type="submit" value="Send email" class="btn btn-success enviar">Enviar</button>
+                </div>
+                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <label><b>Teléfonos:</b> 8998-9889  /  8888-8888</label>
+                </div>
+                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <label><b>Correo:</b> transportico@gmail.com 
+                </div>
             </form>
-            <button type="submit" value="Send email" class="btn btn-primary enviar">Enviar</button>
-            <br></br>
-            <b> Teléfonos:</b> <br>8998-9889<br>8888-8888 <br>
-            <b>Correos:</b> <br> transportico@gmail.com <br> viajetrans@hotmail.com <br>
         </div>
-        <br></br>
-        <br></br>
-        <div class="container-fluid bg-muted"></div>
         <br></br>
         <br></br>
         <footer>
