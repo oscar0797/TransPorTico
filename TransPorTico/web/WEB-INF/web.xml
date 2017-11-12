@@ -20,6 +20,11 @@
         <servlet-name>AsignacionServlet</servlet-name>
         <servlet-class>cr.ac.una.prograiv.project.controller.AsignacionServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PublicoServlet</servlet-name>
+        <servlet-class>cr.ac.una.prograiv.project.controller.PublicoServlet</servlet-class>
+    </servlet>
+    
     <servlet-mapping>
         <servlet-name>UsuarioServlet</servlet-name>
         <url-pattern>/UsuarioServlet</url-pattern>
@@ -39,6 +44,10 @@
     <servlet-mapping>
         <servlet-name>AsignacionServlet</servlet-name>
         <url-pattern>/AsignacionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PublicoServlet</servlet-name>
+        <url-pattern>/PublicoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

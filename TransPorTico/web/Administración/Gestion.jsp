@@ -10,15 +10,15 @@
 
 <%
     HttpSession sesion = request.getSession(true);
-        Integer tipoUsuario = 0;
+    Integer tipoUsuario = 0;
     Usuario usuario = null;
-    if(sesion!=null){
-        if (sesion.getAttribute("usuario")  == null) {
-        }else{
-            tipoUsuario = (Integer)sesion.getAttribute("tipoUsuario");
-            usuario = (Usuario)sesion.getAttribute("usuario");
+    if (sesion != null) {
+        if (sesion.getAttribute("usuario") == null) {
+        } else {
+            tipoUsuario = (Integer) sesion.getAttribute("tipoUsuario");
+            usuario = (Usuario) sesion.getAttribute("usuario");
         }
-    }else{        
+    } else {
         response.sendRedirect("../SecciónPública/Inicio.jsp");
     }
 %>
@@ -35,6 +35,7 @@
         <link href="../CSS/CSSAdministración.css" rel="stylesheet" type="text/css"/>
         <script src="../JS/Gestión.js" type="text/javascript"></script>
         <link href="../Imágenes/Inicio/mundo.gif" rel="icon">
+        <script src="../JS/Publico.js" type="text/javascript"></script>
         <meta charset="utf-8">
     </head>
     <body >
@@ -77,16 +78,16 @@
             </div>
         </div>
 
-<footer>
-    <div class="container-fluid pie">
-        <div class="row">
-            <br>
-            <p class="text-center aum2">SÍGUENOS TAMBIÉN AQUÍ</p>
-            <p class="text-center aum"><i class="fa">&#xf230;</i> <i class="fa">&#xf081;</i> <i class="fa">&#xf16d;</i> <i class="fa">&#xf2c6;</i> <i class="fa">&#xf0d5;</i></p>
-            <p class="text-center">Copyright <i class="fa">&#xf1f9;</i> 2017 Trans~Por~Tico, aviso legal y política de privacidad y de aflición</p>
-            <p class="text-center">Estamos a su disposición, contáctenos al 8998-9889 ó ingrese a www.TransPortTico.com</p>
-        </div>
-    </div>
-</footer>
-</body>
+        <footer>
+            <div class="container-fluid pie">
+                <div class="row">
+                    <br>
+                    <p class="text-center aum2">SÍGUENOS TAMBIÉN AQUÍ</p>
+                    <p class="text-center aum"><i class="fa">&#xf230;</i> <i class="fa">&#xf081;</i> <i class="fa">&#xf16d;</i> <i class="fa">&#xf2c6;</i> <i class="fa">&#xf0d5;</i></p>
+                    <p class="text-center">Copyright <i class="fa">&#xf1f9;</i> 2017 Trans~Por~Tico, aviso legal y política de privacidad y de aflición</p>
+                    <p class="text-center">Estamos a su disposición, contáctenos al 8998-9889 ó ingrese a www.TransPortTico.com</p>
+                </div>
+            </div>
+        </footer>
+    </body>
 </html>

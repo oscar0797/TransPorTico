@@ -258,7 +258,7 @@
                                     <div class="col-sm-2"></div>
                                     <div class="input-group form-group col-sm-8" id="groupNombreUsuario">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input type="text" id="inputNombreUsuario" class="form-control" placeholder="Nombre de Usuario">
+                                        <input type="text" id="inputNombreUsuarioo" class="form-control" placeholder="Nombre de Usuario">
                                     </div>
                                     <div class="col-sm-4"></div>
                                 </div>

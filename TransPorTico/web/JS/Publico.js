@@ -35,13 +35,12 @@ $(function () {
 //******************************************************************************
 
 function enviar() {
-    if (validar()) {
-        mostrarModal("myModal", "Espere por favor..", "Cargando información de Usuario");
+    if (validarlogin()) {
         $.ajax({
             url: '../PublicoServlet',
             data: {
                 accion: "loginUsuario",
-                nombreUsuario: $("#inputNombreUsuario").val(),
+                nombreUsuario: $("#inputNombreUsuarioo").val(),
                 contrasena: $("#inputContrasena").val()
             },
             error: function () { //si existe un error en la respuesta del ajax   
@@ -66,22 +65,22 @@ function enviar() {
     }
 }
 
-function validar() {
+function validarlogin() {
     var validacion = true;
 
     //Elimina estilo de error en los css
     //notese que es sobre el grupo que contienen el input
-    $("#groupNombreUsuario").removeClass("error");
-    $("#groupContrasena1").removeClass("error");
+    $("#groupNombreUsuarioo").removeClass("error");
+    $("#groupContrasena").removeClass("error");
 
     //valida cada uno de los campos del formulario
     //Nota: Solo si fueron digitados
-    if ($("#inputNombreUsuario").val() === "") {
-        $("#groupNombreUsuario").addClass("error");
+    if ($("#inputNombreUsuarioo").val() === "") {
+        $("#groupNombreUsuarioo").addClass("error");
         validacion = false;
     }
-    if ($("#inputContrasena1").val() === "") {
-        $("#groupContrasena1").addClass("error");
+    if ($("#inputContrasena").val() === "") {
+        $("#groupContrasena").addClass("error");
         validacion = false;
     }
     return validacion;

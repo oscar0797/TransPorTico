@@ -3,8 +3,22 @@
     Created on : 03/10/2017, 10:51:43 PM
     Author     : Oscar
 --%>
-
+<%@page import="cr.ac.una.prograiv.project.domain.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    HttpSession sesion = request.getSession(true);
+    Integer tipoUsuario = 0;
+    Usuario usuario = null;
+    if (sesion != null) {
+        if (sesion.getAttribute("usuario") == null) {
+        } else {
+            tipoUsuario = (Integer) sesion.getAttribute("tipoUsuario");
+            usuario = (Usuario) sesion.getAttribute("usuario");
+        }
+    } else {
+        response.sendRedirect("../Servicios/SecciónCliente.jsp");
+    }
+%>
 <!DOCTYPE html>
 <html>
     <head>
