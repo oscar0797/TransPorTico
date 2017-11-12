@@ -72,7 +72,7 @@
                         <li><a class="btn-lg glyphicon" href="Contacto.jsp">Contacto</a></li>
                     </ul>
                     <div class="nav navbar-nav navbar-right" id="menuLogSign">
-                        <button type="button" class="btn-lg btn-primary glyphicon glyphicon-user" data-toggle="modal" data-target="#myModalRegistro"> Registrarse</button>
+                        <button type="button" class="btn-lg btn-primary glyphicon glyphicon-user" data-toggle="modal" data-target="#myModalRegistro" onClick="Dibujar_un_mapa ( );"> Registrarse</button>
                         <button type="button" class="btn-lg btn-primary glyphicon glyphicon-log-in" data-toggle="modal" data-target="#myModalIngreso"> Entrar</button>
                     </div>
                 </div>
