@@ -37,6 +37,7 @@
         <script src="../JS/Mapa_de_usuario.js" type="text/javascript"></script>
         <script src="../JS/utils.js" type="text/javascript"></script>
         <script src="../JS/Servicio.js" type="text/javascript"></script>
+        <script src="../JS/Servicio_2.js" type="text/javascript"></script>
         <script src="../JS/Publico.js" type="text/javascript"></script>        
         <script src="../JS/UsuarioJS.js" type="text/javascript"></script>
         <script src="../JS/Validaciones.js" type="text/javascript"></script>
@@ -93,7 +94,7 @@
                                             </div>                                          
                                             <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupTipo">                                                                                                                               
                                                 <label class="col-form-label">Verifique el nombre de usuario*</label>
-                                                <button id="btnVerificar" type="button" class="text-center btn btn-info " onclick="verificaNombreUsuario('inputNombreUsuario', 3, 'La cantidad mínima de dígitos es 3')">Verificar</button>                                                                                                                                            
+                                                <button id="btnVerificar" type="button" class="text-center btn btn-info " onclick="verificaNombreUsuario('inputNombreUsuario', 3, 'La cantidad mínima de dígitos es 3')">Verificar</button>
                                             </div>
                                         </div>
                                         <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -256,6 +257,11 @@
                             </div>
                             <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
                                 <input id="Autocompletado_de_destino" type="text" class="form-control"/>
+                            </div>
+                            <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+                                <button id="Solicitar_viaje" type="button" class="text-center btn btn-info" onclick="desactivar_opciones_del_mapa ( ) ;">
+                                    Solicitar viaje
+                                </button>
                             </div>
                         </div>
                     </div>

@@ -13,6 +13,12 @@ and open the template in the editor.
     padding: 0px;
 }
 
+#Solicitar_viaje
+{
+    margin-left: 21% ;
+    margin-top: 5% ;
+}
+
 .container
 {
     width: 100% ;
