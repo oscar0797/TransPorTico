@@ -7,8 +7,34 @@
 
 function desactivar_opciones_del_mapa ( )
 {
-    // alert ( "desactivar_opciones_del_mapa ( ) ;" ) ;
+    if ( validar_origen_y_destino ( ) )
+    {
+        $( "#Autocompletado_de_origen" ).attr ( "disabled", "true" ) ;
+        $( "#Autocompletado_de_destino" ).attr ( "disabled", "true" ) ;
+    }
+    else
+    {
+        alert ( "Error :-(" ) ;
+    }
+}
 
-    $( "#Autocompletado_de_origen" ).attr ( "disabled", "true" ) ;
-    $( "#Autocompletado_de_destino" ).attr ( "disabled", "true" ) ;
+function validar_origen_y_destino ( )
+{
+    var validacion = true ;
+
+    $( "#Autocompletado_de_origen" ).removeClass ( "error" ) ;
+    $( "#Autocompletado_de_destino" ).removeClass ( "error" ) ;
+
+    if ( $( "#Autocompletado_de_origen" ).val ( ) === "" )
+    {
+        $( "#Autocompletado_de_origen" ).addClass ( "error" ) ;
+        validacion = false ;
+    }
+    if ( $( "#Autocompletado_de_destino" ).val ( ) === "" )
+    {
+        $( "#Autocompletado_de_destino" ).addClass ( "error" ) ;
+        validacion = false ;
+    }
+
+    return validacion ;
 }
