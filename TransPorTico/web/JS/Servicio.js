@@ -49,6 +49,41 @@ google.maps.event.addDomListener ( window, "load", function ( )
         
         Marcador_del_mapa_de_Google_2.setVisible ( false ) ;
         
+        // Geocodificador
+        
+        var Geocodificador_de_Google = new google.maps.Geocoder ;
+        
+        var coordenadas_geograficas =
+        {
+            lat: Ubicacion.latitude,
+            lng: Ubicacion.longitude
+        }
+        
+        Geocodificador_de_Google.geocode
+        (
+            {
+                'location': coordenadas_geograficas
+            },
+            function ( results, status )
+            {
+                if ( results, status )
+                {
+                    if ( results [1] )
+                    {
+                        document.getElementById ( 'Autocompletado_de_origen' ).value = results [1].formatted_address ;
+                    }
+                    else
+                    {
+                        alert ( 'No results found' ) ;
+                    }
+                }
+                else
+                {
+                    alert( 'Geocoder failed due to: ' + status ) ;
+                }
+            }
+        ) ;
+        
         // Autocompletado
         
         var Autocompletado_de_origen = document.getElementById ( 'Autocompletado_de_origen' ) ;
