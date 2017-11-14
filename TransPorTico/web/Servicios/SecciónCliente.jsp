@@ -259,7 +259,7 @@
                                 <input id="Autocompletado_de_destino" type="text" class="form-control"/>
                             </div>
                             <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
-                                <button id="Solicitar_viaje" type="button" class="text-center btn btn-info" onclick="desactivar_opciones_del_mapa ( ) ;">
+                                <button id="Solicitar_viaje" type="button" class="text-center btn btn-info" onclick="solicitar_viaje ( ) ;">
                                     Solicitar viaje
                                 </button>
                             </div>

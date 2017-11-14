@@ -5,7 +5,7 @@
  */
 
 
-function desactivar_opciones_del_mapa ( )
+function solicitar_viaje ( )
 {
     if ( validar_origen_y_destino ( ) )
     {

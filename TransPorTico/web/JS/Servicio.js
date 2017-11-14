@@ -2,8 +2,6 @@
 // Fecha: 27 de septiembre de 2017.
 
 var Destino_seleccionado = false ;
-var DS = new google.maps.DirectionsService ;
-var DR = new google.maps.DirectionsRenderer ;
 
 google.maps.event.addDomListener ( window, "load", function ( )
 {
@@ -85,6 +83,15 @@ google.maps.event.addDomListener ( window, "load", function ( )
         ) ;
         
         // Autocompletado
+
+        var objeto_de_configuracion_del_DirectionsService =
+        {
+            map: Mapa_de_Google,
+            suppressMarkers: true
+        }
+
+        var DS = new google.maps.DirectionsService ;
+        var DR = new google.maps.DirectionsRenderer ( objeto_de_configuracion_del_DirectionsService ) ;
         
         var Autocompletado_de_origen = document.getElementById ( 'Autocompletado_de_origen' ) ;
         
@@ -115,7 +122,7 @@ google.maps.event.addDomListener ( window, "load", function ( )
                 // var DS = new google.maps.DirectionsService ;
                 // var DR = new google.maps.DirectionsRenderer ;
             
-                DR.setMap ( Mapa_de_Google ) ;
+                // DR.setMap ( Mapa_de_Google ) ;
             
                 Dibujar_ruta ( DS, DR ) ;
             }
@@ -153,7 +160,7 @@ google.maps.event.addDomListener ( window, "load", function ( )
             // var DS = new google.maps.DirectionsService ;
             // var DR = new google.maps.DirectionsRenderer ;
 			
-            DR.setMap ( Mapa_de_Google ) ;
+            // DR.setMap ( Mapa_de_Google ) ;
 			
             Dibujar_ruta ( DS, DR ) ;
         } ) ;
