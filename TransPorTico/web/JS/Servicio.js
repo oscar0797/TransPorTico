@@ -92,6 +92,18 @@ google.maps.event.addDomListener ( window, "load", function ( )
 
         var DS = new google.maps.DirectionsService ;
         var DR = new google.maps.DirectionsRenderer ( objeto_de_configuracion_del_DirectionsService ) ;
+
+        var objeto_de_configuracion_del_DistanceMatrixService =
+        {
+            origins: [ Marcador_del_mapa_de_Google.getPosition ( ) ],
+            destinations: [ Marcador_del_mapa_de_Google_2.getPosition ( ) ],
+            travelMode: 'DRIVING',
+            unitSystem: google.maps.UnitSystem.METRIC,
+            avoidHighways: false,
+            avoidTolls: false
+        }
+
+        const Servicio_de_Google = new google.maps.DistanceMatrixService ;
         
         var Autocompletado_de_origen = document.getElementById ( 'Autocompletado_de_origen' ) ;
         
@@ -125,6 +137,11 @@ google.maps.event.addDomListener ( window, "load", function ( )
                 // DR.setMap ( Mapa_de_Google ) ;
             
                 Dibujar_ruta ( DS, DR ) ;
+
+                objeto_de_configuracion_del_DistanceMatrixService.origins = [ Marcador_del_mapa_de_Google.getPosition ( ) ] ;
+                objeto_de_configuracion_del_DistanceMatrixService.destinations = [ Marcador_del_mapa_de_Google_2.getPosition ( ) ] ;
+
+                Servicio_de_Google.getDistanceMatrix ( objeto_de_configuracion_del_DistanceMatrixService, Calcular_distancia ) ;
             }
         } ) ;
         
@@ -163,6 +180,11 @@ google.maps.event.addDomListener ( window, "load", function ( )
             // DR.setMap ( Mapa_de_Google ) ;
 			
             Dibujar_ruta ( DS, DR ) ;
+
+            objeto_de_configuracion_del_DistanceMatrixService.origins = [ Marcador_del_mapa_de_Google.getPosition ( ) ] ;
+            objeto_de_configuracion_del_DistanceMatrixService.destinations = [ Marcador_del_mapa_de_Google_2.getPosition ( ) ] ;
+
+            Servicio_de_Google.getDistanceMatrix ( objeto_de_configuracion_del_DistanceMatrixService, Calcular_distancia ) ;
         } ) ;
 		
 	function Dibujar_ruta ( DS, DR )
@@ -188,6 +210,34 @@ google.maps.event.addDomListener ( window, "load", function ( )
                     alert ( 'Error' + Status ) ;
 		}
             } ) ;
-	}
+    }
+    
+    function Calcular_distancia ( Respuesta, Status )
+    {
+        // alert ( "Ejecutando Calcular_distancia" ) ;
+
+        if ( Status === 'OK' )
+        {
+            var origen = Respuesta.originAddresses ;
+            var destino = Respuesta.destinationAddresses ;
+
+            for ( var a = 0 ; a < origen.length ; a ++ )
+            {
+                var resultados = Respuesta.rows [ a ].elements ;
+
+                for ( var b = 0 ; b < resultados.length ; b ++ )
+                {
+                    var element = resultados [ b ] ;
+                    
+                    document.getElementById ( 'input_de_distancia' ).value = element.distance.text ;
+                    document.getElementById ( 'input_de_costo' ).value = ( ( element.distance.value / 1000 ) * 750 ) ;
+                }
+            }
+        }
+        else
+        {
+            alert ( 'Error was: ' + Status ) ;
+        }
+    }
     } ) ;
 } ) ;
