@@ -131,10 +131,10 @@ google.maps.event.addDomListener ( window, "load", function ( )
             
             if ( Destino_seleccionado === true )
             {
-                // var DS = new google.maps.DirectionsService ;
-                // var DR = new google.maps.DirectionsRenderer ;
-            
-                // DR.setMap ( Mapa_de_Google ) ;
+                document.getElementById ( 'x_de_origen' ).value = Marcador_del_mapa_de_Google.getPosition ( ).lat ( ) ;
+                document.getElementById ( 'y_de_origen' ).value = Marcador_del_mapa_de_Google.getPosition ( ).lng ( ) ;
+                document.getElementById ( 'x_de_destino' ).value = Marcador_del_mapa_de_Google_2.getPosition ( ).lat ( ) ;
+                document.getElementById ( 'y_de_destino' ).value = Marcador_del_mapa_de_Google_2.getPosition ( ).lng ( ) ;
             
                 Dibujar_ruta ( DS, DR ) ;
 
@@ -171,13 +171,11 @@ google.maps.event.addDomListener ( window, "load", function ( )
             Marcador_del_mapa_de_Google_2.setPosition ( Lugar_nuevo.geometry.location ) ;
             Marcador_del_mapa_de_Google_2.setVisible ( true ) ;
             Destino_seleccionado = true ;
-			
-            // Marcar ruta en el mapa
-            
-            // var DS = new google.maps.DirectionsService ;
-            // var DR = new google.maps.DirectionsRenderer ;
-			
-            // DR.setMap ( Mapa_de_Google ) ;
+
+            document.getElementById ( 'x_de_origen' ).value = Marcador_del_mapa_de_Google.getPosition ( ).lat ( ) ;
+            document.getElementById ( 'y_de_origen' ).value = Marcador_del_mapa_de_Google.getPosition ( ).lng ( ) ;
+            document.getElementById ( 'x_de_destino' ).value = Marcador_del_mapa_de_Google_2.getPosition ( ).lat ( ) ;
+            document.getElementById ( 'y_de_destino' ).value = Marcador_del_mapa_de_Google_2.getPosition ( ).lng ( ) ;
 			
             Dibujar_ruta ( DS, DR ) ;
 

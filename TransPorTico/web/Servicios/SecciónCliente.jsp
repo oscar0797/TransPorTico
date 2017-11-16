@@ -249,6 +249,8 @@
                             </div>
                             <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
                                 <input type="text" class="form-control" id="Autocompletado_de_origen"/>
+                                <input type="hidden" id="x_de_origen"/>
+                                <input type="hidden" id="y_de_origen"/>
                             </div>
                         </div>
                         <div class="tamañoLetraInput form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-left: 0px ;">
@@ -257,6 +259,8 @@
                             </div>
                             <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
                                 <input id="Autocompletado_de_destino" type="text" class="form-control"/>
+                                <input id="x_de_destino" type="hidden"/>
+                                <input id="y_de_destino" type="hidden"/>
                             </div>
                             <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
                                 <button id="Solicitar_viaje" type="button" class="text-center btn btn-info" onclick="solicitar_viaje ( ) ;">
