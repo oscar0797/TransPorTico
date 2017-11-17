@@ -283,7 +283,7 @@
                         <div class="tamañoLetraInput form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
                                 <label>
-                                    Costo
+                                    Costo: 
                                 </label>
                             </div>
                             <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
@@ -298,6 +298,31 @@
                                     <input type="radio"name="Tipo_de_moneda"/>
                                     USD
                                 </label>
+                            </div>
+                        </div>
+                        <div class="tamañoLetraInput form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                                <label>
+                                    Tiempo estimado: 
+                                </label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+                                <input id="input_de_tiempo_estimado" type="text" class="form-control" readonly/>
+                                <input id="input_de_distancia_2" type="hidden"/>
+                            </div>
+                        </div>
+                        <div class="tamañoLetraInput form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                                <label for="seleccionar_vehiculo">
+                                    Seleccione un vehículo: 
+                                </label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+                                <select id="seleccionar_vehiculo" class="form-control">
+                                    <option selected>--</option>
+                                    <option>Audi RS6</option>
+                                    <option>Audi S8+</option>
+                                </select>
                             </div>
                         </div>
                     </div>

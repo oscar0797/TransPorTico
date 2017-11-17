@@ -5,12 +5,21 @@
  */
 
 
-function solicitar_viaje ( )
+$( document ).ready
+(
+    function ( )
+    {
+        $ ( "#seleccionar_vehiculo" ).attr ( "disabled", "true" ) ;
+    }
+) ;
+
+ function solicitar_viaje ( )
 {
     if ( validar_origen_y_destino ( ) )
     {
         $( "#Autocompletado_de_origen" ).attr ( "disabled", "true" ) ;
         $( "#Autocompletado_de_destino" ).attr ( "disabled", "true" ) ;
+        $( "#seleccionar_vehiculo" ).removeAttr ( "disabled", ) ;
     }
     else
     {
