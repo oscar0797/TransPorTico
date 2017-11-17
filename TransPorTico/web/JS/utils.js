@@ -44,6 +44,10 @@ $(document).ready(function () {
      $("#"+idDiv).modal();
  }
  
+ function mostrarModalAsignacion(idDiv){
+     $("#"+idDiv).modal();
+ }
+ 
  function ocultarModal(idDiv){
      $("#"+idDiv).modal("hide");	
  }

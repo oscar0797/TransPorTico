@@ -93,6 +93,10 @@ public class ChoferServlet extends HttpServlet {
                     json = gson.toJson(choferBL.findAll());
                     out.print(json);
                     break;
+                    case "buscarCedula":
+                    json = gson.toJson(choferBL.findByQuery("FROM Chofer WHERE cedula=" + request.getParameter("cedula")));
+                    out.print(json);
+                    break;
                 default:
                     out.print("E~No se indico la acción que se desea realizar");
                     break;

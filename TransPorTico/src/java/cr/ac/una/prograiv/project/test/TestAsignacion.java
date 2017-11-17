@@ -26,7 +26,7 @@ public class TestAsignacion {
     }
     
     public static void saveAsignacion(){
-        Asignacion asig = new Asignacion(1,1);
+        Asignacion asig = new Asignacion(4,1);
         AsignacionBL bl = new AsignacionBL();
         bl.save(asig);
         System.out.println("Asignacion guardado con exito");

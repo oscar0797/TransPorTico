@@ -7,6 +7,7 @@
 
 $(document).ready(function () {
     consultarVehiculos(1);
+    consultarChoferes2();
     // paginador(1);
     $("form").submit(function (event) {
         if (validar() === false) {
@@ -14,6 +15,81 @@ $(document).ready(function () {
         }
     });
 });
+
+/*function consultarCedula() {
+    //Se envia la información por ajax
+    var id;
+    $.ajax({
+        url: '../ChoferServlet',
+        data: {
+            accion: "buscarCedula",
+            cedula: $("#inputChofer").val( )
+            
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            //alert("Se presento un error a la hora de cargar la información de los Chofers en la base de datos");
+            mostrarModal("myModal", "Error al cargar en la base de datos");
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el datos
+            id=data[1].nombre;
+            alert("id");
+            alert(id);
+            // se oculta el modal esta funcion se encuentra en el utils.js
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+    return id;
+}*/
+
+
+function consultarChoferes2() {
+    //Se envia la información por ajax
+    $.ajax({
+        url: '../ChoferServlet',
+        data: {
+            accion: "consultarChoferes"
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            //alert("Se presento un error a la hora de cargar la información de los Chofers en la base de datos");
+            mostrarModal("myModal", "Error al cargar en la base de datos");
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el datos
+            llenarAutoComplete(data);
+            // se oculta el modal esta funcion se encuentra en el utils.js
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+}
+
+
+function llenarAutoComplete(data) {
+    var opcions = {
+        data,
+        getValue: function(data) {
+	return data.pkIdChofer.toString();
+},
+
+	list: {
+		match: {
+			enabled: true
+		}
+	},
+        template: {
+		type: "description",
+		fields: {
+			description: "nombre" 
+		}
+	},
+        theme: "dark-light"
+        
+    };
+
+    $("#autoChofer").easyAutocomplete(opcions);
+}
+
+
 
 function registrarVehiculo() {
     if (validar()) {
@@ -100,15 +176,15 @@ function dibujarTabla(numpag, dataJson) {
     }
 }
 
-function dibujarTablaChofer(numpag, dataJson) {
+/*function dibujarTablaChofer(numpag, dataJson) {
     //limpia la información que tiene la tabla
-    $("#tablaVehiculos").html("");
+    $("#tabla").html("");
 
     //muestra el enzabezado de la tabla
     var head = $("<thead />");
     var row = $("<tr />");
     head.append(row);
-    $("#tablaVehiculos").append(head);
+    $("#tabla").append(head);
     row.append($("<th><b>Cedula</b></th>"));
     row.append($("<th><b>Nombre</b></th>"));
     row.append($("<th><b>Tipo  de Licencia</b></th>"));
@@ -118,7 +194,7 @@ function dibujarTablaChofer(numpag, dataJson) {
     for (; i < dataJson.length && (cont < 10); i++, cont++) {
         dibujarFilaChofer(dataJson[i]);
     }
-}
+}*/
 
 function dibujarFila(rowData) {
 //Cuando dibuja la tabla en cada boton se le agrega la funcionalidad de cargar o eliminar la informacion
@@ -132,7 +208,7 @@ function dibujarFila(rowData) {
     row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="modificarChofer(' + rowData.pkIdChofer + ')">' +
             '<i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>' +
             '</button>' +
-            '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="muestraRegistraAsignacion(' + "'" + rowData.pkIdVehiculo + "'" + ',' + rowData.pkIdVehiculo + ')" data-target="#confirm-delete" data-toggle="modal">' +
+            '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="muestraRegistraAsignacion(' + rowData.pkIdVehiculo + ')">' +
             '<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>' +
             '</button></td>'));
 
@@ -144,15 +220,15 @@ function dibujarFila(rowData) {
             '</button></td>'));
 }
 
-function dibujarFilaChofer(rowData) {
+/*function dibujarFilaChofer(rowData) {
     //Cuando dibuja la tabla en cada boton se le agrega la funcionalidad de cargar o eliminar la informacion
     //de una persona    
     var row = $('<tr />');
-    $("#tablaChoferes").append(row);
+    $("#tabla").append(row);
     row.append($("<td>" + rowData.cedula + "</td>"));
     row.append($("<td>" + rowData.nombre + "</td>"));
     row.append($("<td>" + rowData.tipoLicencia + "</td>"));
-}
+}*/
 
 function mostrarMensaje(classCss, msg, neg) {
     //se le eliminan los estilos al mensaje

@@ -36,7 +36,7 @@
         <script src="../JS/Gestión.js" type="text/javascript"></script>
         <link href="../Imágenes/Inicio/mundo.gif" rel="icon">
         <script src="../JS/Publico.js" type="text/javascript"></script>
-        <meta charset="utf-8">
+                <meta charset="utf-8">
     </head>
     <body >
         <div  class="container-fluid FondoTB">
