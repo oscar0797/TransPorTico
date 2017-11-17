@@ -47,3 +47,8 @@ function validar_origen_y_destino ( )
 
     return validacion ;
 }
+
+function consultar_vehiculos ( )
+{
+    
+}

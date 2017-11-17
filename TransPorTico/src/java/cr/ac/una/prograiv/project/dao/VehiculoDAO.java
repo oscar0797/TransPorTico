@@ -92,7 +92,7 @@ public class VehiculoDAO extends HibernateUtil implements IBaseDAO<Vehiculo,Inte
         List<Vehiculo> vehiculos;
         try{
             iniciarOperacion();
-            vehiculos = (List<Vehiculo>) getSesion().createQuery(query);
+            vehiculos = /*(List<Vehiculo>)*/ getSesion().createQuery(query).list ( ) ;
         }catch(HibernateException he){
             manejarException(he);
             throw he;

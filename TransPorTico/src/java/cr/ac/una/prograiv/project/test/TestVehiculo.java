@@ -19,15 +19,16 @@ import java.util.List;
  */
 public class TestVehiculo {
    public static void main(String []args){
-       saveVehiculo();
+       //saveVehiculo();
        //mergeVehiculo(1);
        //deleteVehiculo(1);
        //findAllVehiculo();
        //findIdVehiculo(1);
+       findAllVehiculoActivo ( ) ;
    }
     public static void saveVehiculo(){
-        for(int i =1; i<30; i++){
-        Vehiculo ve = new Vehiculo(i,"modelo1","placa1","negro",10,10,true,true,new Date(),"Nadie");
+        for(int i =1; i<5; i++){
+        Vehiculo ve = new Vehiculo(i,"modelo1","placa1","negro",10,10,false,false,new Date(),"Nadie");
         VehiculoBL bl = new VehiculoBL();
         bl.save(ve);
         }
@@ -45,6 +46,14 @@ public class TestVehiculo {
         VehiculoBL bl = new VehiculoBL();
         vearios = bl.findAll();
         vearios.forEach((aux) -> {System.out.println(aux.toString());});
+    }
+    
+    public static void findAllVehiculoActivo ( )
+    {
+        List < Vehiculo > vearios ;
+        VehiculoBL bl = new VehiculoBL ( ) ;
+        vearios = bl.findByQuery ( "FROM Vehiculo WHERE activo=true" ) ;
+        vearios.forEach ( ( aux ) -> { System.out.println ( aux.toString ( ) ) ; } ) ;
     }
     
     public static void mergeVehiculo(Integer key){
