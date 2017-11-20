@@ -20,6 +20,8 @@ $( document ).ready
         $( "#Autocompletado_de_origen" ).attr ( "disabled", "true" ) ;
         $( "#Autocompletado_de_destino" ).attr ( "disabled", "true" ) ;
         $( "#seleccionar_vehiculo" ).removeAttr ( "disabled", ) ;
+        
+        consultar_vehiculos_activos ( ) ;
     }
     else
     {
@@ -48,7 +50,37 @@ function validar_origen_y_destino ( )
     return validacion ;
 }
 
-function consultar_vehiculos ( )
+function consultar_vehiculos_activos ( )
 {
+    $.ajax
+    ( {
+        url: '../VehiculoServlet',
+        data:
+        {
+            accion: "consultarVehiculosActivos"
+        },
+        error: function ( )
+        {
+            alert ( "Error al cargar en la base de datos" ) ;
+        },
+        success: function ( data )
+        {
+            // alert ( "Se estan consultando los vehiculos activos" ) ;
+            dibujar_una_cosa ( data ) ;
+        },
+        type: 'POST',
+        dataType: "json"
+    } ) ;
+}
+
+function dibujar_una_cosa ( data )
+{
+    $ ( "#seleccionar_vehiculo" ).html ( "" ) ;
+    var opcion_por_defecto = $ ( "<option value=0 selected> -- </option>" ) ;
+    $ ( "#seleccionar_vehiculo" ).append ( opcion_por_defecto ) ;
     
+    for ( var a = 0 ; a < data.length ; a ++ )
+    {
+        $ ( "#seleccionar_vehiculo" ).append ( $ ( "<option value=" + data[ a ].pkIdVehiculo + ">" + data [ a ].placa + "</option>" ) ) ;
+    }
 }

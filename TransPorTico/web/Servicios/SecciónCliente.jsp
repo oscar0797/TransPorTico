@@ -264,7 +264,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
                                 <button id="Solicitar_viaje" type="button" class="text-center btn btn-info" onclick="solicitar_viaje ( ) ;">
-                                    Solicitar viaje
+                                    Vehículos disponibles
                                 </button>
                             </div>
                         </div>

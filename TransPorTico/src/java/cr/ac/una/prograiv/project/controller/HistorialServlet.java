@@ -5,6 +5,10 @@
  */
 package cr.ac.una.prograiv.project.controller;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import cr.ac.una.prograiv.project.bl.HistorialBL;
+import cr.ac.una.prograiv.project.domain.Historial;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -27,20 +31,27 @@ public class HistorialServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet HistorialServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet HistorialServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+    protected void processRequest ( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException
+    {
+        response.setContentType ( "text/html;charset=UTF-8" ) ;
+        PrintWriter out = response.getWriter ( ) ;
+        
+        try
+        {
+            String json ;
+            Gson gson = new GsonBuilder ( ).setDateFormat ( "dd/MM/yyyy" ).create ( ) ;
+            int idHistorial ;
+            Historial H1 = new Historial ( ) ;
+            HistorialBL HBL1 = new HistorialBL ( ) ;
+            String accion = request.getParameter ( "accion" ) ;
+        }
+        catch ( NumberFormatException e )
+        {
+            out.print ( "E~" + e.getMessage ( ) ) ;
+        }
+        catch ( Exception e )
+        {
+            out.print ( "E~" + e.getMessage ( ) ) ;
         }
     }
 

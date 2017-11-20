@@ -19,12 +19,12 @@ import java.util.List;
  */
 public class TestVehiculo {
    public static void main(String []args){
-       //saveVehiculo();
+       saveVehiculo();
        //mergeVehiculo(1);
        //deleteVehiculo(1);
        //findAllVehiculo();
        //findIdVehiculo(1);
-       findAllVehiculoActivo ( ) ;
+       //findAllVehiculoActivo ( ) ;
    }
     public static void saveVehiculo(){
         for(int i =1; i<5; i++){
