@@ -37,6 +37,7 @@
         <script src="../JS/Mapa_de_usuario.js" type="text/javascript"></script>
         <script src="../JS/utils.js" type="text/javascript"></script>
         <script src="../JS/Servicio.js" type="text/javascript"></script>
+        <script src="../JS/Servicio_2.js" type="text/javascript"></script>
         <script src="../JS/Publico.js" type="text/javascript"></script>        
         <script src="../JS/UsuarioJS.js" type="text/javascript"></script>
         <script src="../JS/Validaciones.js" type="text/javascript"></script>
@@ -93,7 +94,7 @@
                                             </div>                                          
                                             <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" id="groupTipo">                                                                                                                               
                                                 <label class="col-form-label">Verifique el nombre de usuario*</label>
-                                                <button id="btnVerificar" type="button" class="text-center btn btn-info " onclick="verificaNombreUsuario('inputNombreUsuario', 3, 'La cantidad mínima de dígitos es 3')">Verificar</button>                                                                                                                                            
+                                                <button id="btnVerificar" type="button" class="text-center btn btn-info " onclick="verificaNombreUsuario('inputNombreUsuario', 3, 'La cantidad mínima de dígitos es 3')">Verificar</button>
                                             </div>
                                         </div>
                                         <div class="form-row col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -248,6 +249,8 @@
                             </div>
                             <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
                                 <input type="text" class="form-control" id="Autocompletado_de_origen"/>
+                                <input type="hidden" id="x_de_origen"/>
+                                <input type="hidden" id="y_de_origen"/>
                             </div>
                         </div>
                         <div class="tamañoLetraInput form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-left: 0px ;">
@@ -256,6 +259,70 @@
                             </div>
                             <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
                                 <input id="Autocompletado_de_destino" type="text" class="form-control"/>
+                                <input id="x_de_destino" type="hidden"/>
+                                <input id="y_de_destino" type="hidden"/>
+                            </div>
+                            <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+                                <button id="Solicitar_viaje" type="button" class="text-center btn btn-info" onclick="solicitar_viaje ( ) ;">
+                                    Vehículos disponibles
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                        <div class="tamañoLetraInput form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                                <label>
+                                    Distancia:
+                                </label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+                                <input id="input_de_distancia" type="text" class="form-control" readonly/>
+                            </div>
+                        </div>
+                        <div class="tamañoLetraInput form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                                <label>
+                                    Costo: 
+                                </label>
+                            </div>
+                            <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+                                <input id="input_de_costo" type="number" class="form-control" readonly/>
+                            </div>
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-center clase_No_1">
+                                <label class="radio-inline">
+                                    <input type="radio" name="Tipo_de_moneda" checked/>
+                                    CRC
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio"name="Tipo_de_moneda"/>
+                                    USD
+                                </label>
+                            </div>
+                        </div>
+                        <div class="tamañoLetraInput form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                                <label>
+                                    Tiempo estimado: 
+                                </label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+                                <input id="input_de_tiempo_estimado" type="text" class="form-control" readonly/>
+                                <input id="input_de_distancia_2" type="hidden"/>
+                            </div>
+                        </div>
+                        <div class="tamañoLetraInput form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                                <label for="seleccionar_vehiculo">
+                                    Seleccione un vehículo: 
+                                </label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+                                <select id="seleccionar_vehiculo" class="form-control">
+                                    <option selected>--</option>
+                                    <option>Audi RS6</option>
+                                    <option>Audi S8+</option>
+                                </select>
                             </div>
                         </div>
                     </div>

@@ -10,19 +10,29 @@ $(document).ready(function () {
 });
 
 function muestraRegistraAsignacion(vehiculo){
-    $("#collapseTwo").addClass('show');
-    registrarAsignacion(vehiculo);
+   // mostrarModal("nuevaAsignacion", "Espere por favor..", "Cargando información de la base de datos");
+    mostrarModalAsignacion("nuevaAsignacion");
+    $("#inputVehiculo").val(vehiculo);
+    
 }
 
-function registrarAsignacion(vehiculo) {
+/*function guardarAsignacion(){
+   var id = consultarCedula();
+   alert(id);
+    registrarAsignacion(id);
+}*/
+
+function registrarAsignacion() {
+    alert($("#autoChofer").val());
     mostrarModal("myModal", "Espere por favor..", "Cargando información de la base de datos");
     if (validar()) {
         $.ajax({
             url: '../AsignacionServlet',
             data: {
                 accion: $("#asignacionAction").val(),
-                chofer: $("#inputChofer").val( ),
-                vehiculo: vehiculo
+                chofer: $("#autoChofer").val(),
+                vehiculo :$("#inputVehiculo").val()
+                
             },
             error: function () {
                 mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
@@ -33,8 +43,8 @@ function registrarAsignacion(vehiculo) {
                 if (tipoRespuesta === "E~") {
                     mostrarModal("myModal", "Se genero un error", respuestaTxt);
                 } else {
-                    consultarAsignacions(1);
-                    mostrarModal("myModal", "Registro de Asignacion", $("#inputVehiculo").val() + "->" + $("#inputVehiculo").val() + " agregado con exito");
+                   // consultarAsignacions(1);
+                    mostrarModal("myModal", "Registro de Asignacion", $("#inputVehiculo").val() + "->" + $("#autoChofer").val() + " agregado con exito");
                     limpiarForm();
                 }
             },
@@ -45,11 +55,11 @@ function registrarAsignacion(vehiculo) {
         mostrarMensaje("mesageRegistro", "alert alert-danger", "Debe digitar los campos del formulario", "Error!");
         $("#collapseOne").addClass('show');
     }
-    //$("#choferAction").val("#agregarAsignacion");
-    $("#collapseOne").addClass('show');
+    $("#choferAction").val("#agregarAsignacion");
+    //$("#collapseOne").addClass('show');
 }
 
-function consultarAsignacions(numpag) {
+/*function consultarAsignacions(numpag) {
 //Se envia la información por ajax
     $.ajax({
         url: '../AsignacionServlet',
@@ -71,7 +81,7 @@ function consultarAsignacions(numpag) {
     });
 }
 
-function dibujarTabla(numpag, dataJson) {
+function dibujarTablaAsignacion(numpag, dataJson) {
     //limpia la información que tiene la tabla
     $("#tablaAsignaciones").html("");
 
@@ -90,7 +100,7 @@ function dibujarTabla(numpag, dataJson) {
     }
 }
 
-function dibujarFila(rowData) {
+function dibujarFilaAsignacion(rowData) {
 //Cuando dibuja la tabla en cada boton se le agrega la funcionalidad de cargar o eliminar la informacion
 //de una persona    
     var row = $('<tr />');
@@ -103,7 +113,7 @@ function dibujarFila(rowData) {
             '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="validaEliminacion(' + "'" + rowData.modelo + "'" + ',' + rowData.pkIdAsignacion + ')" data-target="#confirm-delete" data-toggle="modal">' +
             '<i class="fa fa-times" aria-hidden="true"></i>' +
             '</button></td>'));
-}
+}*/
 
 function mostrarMensaje(name, classCss, msg, neg) {
 //se le eliminan los estilos al mensaje
@@ -117,7 +127,7 @@ function mostrarMensaje(name, classCss, msg, neg) {
     $(".mesajeResultText").html(msg);
 }
 
-function paginador(pagAct, tam) {
+/*function paginador(pagAct, tam) {
     var ini = 1;
     $("#paginacionOpc").html("");
     if (pagAct > 5) {
@@ -134,18 +144,18 @@ function paginador(pagAct, tam) {
         }
     }
     $("#paginacionOpc").append('<li onclick="consultarAsignacions(' + (ini - 1) + '), paginador(' + (ini -1) + ',' + tam +')"><a>&raquo;</a></li>');
-}
+}*/
 
 function validar() {
     var validacion = true;
     //Elimina estilo de error en los css
     //notese que es sobre el grupo que contienen el input
-    $("#inputChofer").removeClass("error");
+    $("#autoChofer").removeClass("error");
     $("#inputVehiculo").removeClass("error");
     //valida cada uno de los campos del formulario
     //Nota: Solo si fueron digitadoslse;
-    if ($("#inputChofer").val() === "") {
-        $("#inputChofer").addClass("error");
+    if ($("#autoChofer").val() === "") {
+        $("#autoChofer").addClass("error");
         validacion = false;
     }
     if ($("#inputVehiculo").val() === "") {

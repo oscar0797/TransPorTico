@@ -17,20 +17,20 @@ import java.util.List;
 public class TestChofer {
 
     public static void main(String[] args) {
-      //  saveChofer();
+        saveChofer();
         //mergeChofer(16);
         //deleteChofer();
         //findAllChofer();
         //findIdChofer(1);
+        //findbyquery("5555555555");
 
     }
 
     public static void saveChofer() {
-        for(int i =1; i<30; i++){
-        Chofer cho1 = new Chofer(Integer.toString(i), "Chofer1", new Date(), "B1", new Date(), new Date(), "anybody");
+        Chofer cho1 = new Chofer("100", "greivin", new Date(), "B1", new Date(), new Date(), "anybody");
         ChoferBL bl1 = new ChoferBL();
         bl1.save(cho1);
-    }
+    
         /*
         Chofer cho2 = new Chofer("3", "Chofer22", new Date(), "B1", new Date(), new Date(), "anybody");
         ChoferBL bl2 = new ChoferBL();
@@ -53,6 +53,15 @@ public class TestChofer {
         });
     }
 
+     public static void findbyquery(String cedula) {
+        List<Chofer> choferes;
+        ChoferBL bl = new ChoferBL();
+        choferes = bl.findByQuery("FROM Chofer WHERE cedula=" + cedula);
+        choferes.forEach((aux) -> {
+            System.out.println(aux.toString());
+        });
+    }
+     
     public static void mergeChofer(Integer Key) {
         Chofer cho = new Chofer(Key, "99", "hola", new Date(), "B1", new Date(), new Date(), "Nadie");
         ChoferBL bl = new ChoferBL();

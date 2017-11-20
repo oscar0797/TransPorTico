@@ -24,11 +24,13 @@
         <!------------- ARCHIVOS CSS----------------------------------------->
         <!------------------------------------------------------------------------------------------>
         <link href="../CSS/CSSAdministración.css" rel="stylesheet" type="text/css"/>
-        <link href="../CSS/datetimepicker.min.css" rel="stylesheet" type="text/css"/>       
+        <link href="../CSS/datetimepicker.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../CSS/easy-autocomplete.css" rel="stylesheet" type="text/css"/>
+        <link href="../CSS/easy-autocomplete.themes.css" rel="stylesheet" type="text/css"/>
         <!------------------------------------------------------------------------------------------>
         <!------------- ARCHIVOS JS----------------------------------------->
         <!------------------------------------------------------------------------------------------>
-
+        <script src="../JS/jquery.easy-autocomplete.js" type="text/javascript"></script>
         <script src="../JS/datetimepicker.js" type="text/javascript"></script>
         <script src="../JS/utils.js" type="text/javascript"></script>
         <script src="../JS/Publico.js" type="text/javascript"></script>
@@ -36,6 +38,7 @@
         <script src="../JS/Validaciones.js" type="text/javascript"></script>
         <script src="../JS/Geolocalizacion.js" type="text/javascript"></script>
         <script src="../JS/Mapa_de_vehiculo.js" type="text/javascript"></script>
+        <script src="../JS/AsignacionJS.js" type="text/javascript"></script>
     </head>
     <body class="bg-muted">
         <div class="container-fluid"><br>
@@ -56,7 +59,47 @@
                     </div>
                 </div>
             </div>
-
+            
+            <div  class="modal fade" id="nuevaAsignacion" style="margin-top: 10%" role="dialog">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title" id="myModalTitle">Modal Header</h4>
+                        </div>
+                        <div class="modal-body">
+                        <Form >
+                            <table>
+                                <tr>
+                                    <td>
+                                        <div class="form-group col-xs-12 col-sm-9 col-md-9 col-lg-9" id="groupVehiculo">
+                                            <label for="inputVehiculo">Vehiculo*</label>
+                                            <input type="text" class="form-control" style="WIDTH: 228px" id="inputVehiculo" autofocus="autofocus" colspan="4" readonly onpaste="return false">
+                                        </div>
+                                        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" id="groupChofer">
+                                            <label for="autoChofer">Chofer*</label>
+                                            <input type="text" class="form-control"style="WIDTH: 228px " id="autoChofer" autofocus="autofocus" placeholder="Asigna chofer" onpaste="return false">
+                                        </div>
+                                        </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                <div class="form-group estilo2" >
+                                    <input type="hidden" value="agregarAsignacion" id="asignacionAction"/> 
+                                    <input type="hidden"  id="asignasionAux"/>
+                                    <button type="submit" class="btn btn-success" onclick="registrarAsignacion()">Guardar</button>                                    
+                                    <button type="submit" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                </div>
+                                </td>
+                                </tr>
+                            </table>
+                            </form>
+                    </div>
+                
+            </div>
+            </div>
+            </div>
+            
             <!------------------------------------------------------------------------------------------>
             <!------------- ACORDION FORMULARIO  VEHÍCULO ---------------------------------------------->
             <!------------------------------------------------------------------------------------------>

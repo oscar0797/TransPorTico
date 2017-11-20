@@ -94,7 +94,7 @@ public class ChoferDAO extends HibernateUtil implements IBaseDAO<Chofer, Integer
         try {
             List<Chofer> choferes;
             iniciarOperacion();
-            choferes = (List<Chofer>) getSesion().createQuery(query).list();
+            choferes =  getSesion().createQuery(query).list();
             return choferes;
         } catch (HibernateException he) {
             manejarException(he);

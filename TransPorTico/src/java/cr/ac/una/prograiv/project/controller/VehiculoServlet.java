@@ -86,6 +86,11 @@ public class VehiculoServlet extends HttpServlet {
                     out.print(json);
                     break;
 
+                case "consultarVehiculosActivos":
+                    json = new Gson ( ).toJson ( vehBL.findByQuery ( "FROM Vehiculo WHERE activo=true" ) ) ;
+                    out.print ( json ) ;
+                    break ;
+
                 case "eliminarVehiculo":
                 {
                     vehiculo.setPkIdVehiculo ( Integer.parseInt ( request.getParameter ( "idVehiculo" ) ) ) ;
