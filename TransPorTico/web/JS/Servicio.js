@@ -257,24 +257,43 @@ google.maps.event.addDomListener ( window, "load", function ( )
     } ) ;
 } ) ;
 
-function Calcular_la_distancia_del_vehiculo ( Latitud, Longitud )
+function Calcular_la_distancia_del_vehiculo ( coordenadas_de_los_vehiculos, data )
 {
-    objeto_de_configuracion_del_DistanceMatrixService.destinations =
-    [{
-        lat: Latitud,
-        lng: Longitud
-    }] ;
+    var coordenadas_del_usuario = [ ] ;
+    
+    var latitud_del_usuario = objeto_de_configuracion_del_DistanceMatrixService.origins [ 0 ].lat ( ) ;
+    var longitud_del_usuario = objeto_de_configuracion_del_DistanceMatrixService.origins [ 0 ].lng ( ) ;
+    
+    objeto_de_configuracion_del_DistanceMatrixService.destinations = coordenadas_de_los_vehiculos ;
+    
+    for ( var a = 0 ; a < coordenadas_de_los_vehiculos.length ; a ++ )
+    {
+        coordenadas_del_usuario.push ( { lat: latitud_del_usuario, lng: longitud_del_usuario } ) ;
+    }
+    
+    objeto_de_configuracion_del_DistanceMatrixService.origins = coordenadas_del_usuario ;
     
     Servicio_de_Google.getDistanceMatrix ( objeto_de_configuracion_del_DistanceMatrixService, function ( Respuesta, Status )
     {
         if ( Status === 'OK' )
         {
-            var resultados = Respuesta.rows [ 0 ].elements ;
-            var element = resultados [ 0 ] ;
+            var origen = Respuesta.originAddresses ;
+            var destino = Respuesta.destinationAddresses ;
             
-//            alert ( element.distance.value / 1000 ) ;
-
-//            return element.distance.value / 1000 ;
+            for ( var a = 0 ; a < origen.length ; a ++ )
+            {
+                var resultados = Respuesta.rows [ a ].elements ;
+                
+                for ( var b = 0 ; b < resultados.length ; b ++ )
+                {
+                    var element = resultados [ b ] ;
+                    
+                    if ( element.distance.value < 5000 )
+                    {                    
+                        $ ( "#seleccionar_vehiculo" ).append ( $ ( "<option value=" + data[ b ].pkIdVehiculo + ">" + data [ b ].placa + "</option>" ) ) ;
+                    }
+                }
+            }
         }
         else
         {
