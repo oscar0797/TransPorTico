@@ -3,6 +3,18 @@
 
 var Destino_seleccionado = false ;
 
+var objeto_de_configuracion_del_DistanceMatrixService =
+{
+    origins: null,
+    destinations: null,
+    travelMode: 'DRIVING',
+    unitSystem: google.maps.UnitSystem.METRIC,
+    avoidHighways: false,
+    avoidTolls: false
+}
+
+const Servicio_de_Google = new google.maps.DistanceMatrixService ;
+
 google.maps.event.addDomListener ( window, "load", function ( )
 {
     const Ubicacion = new Geolocalizacion ( ( ) =>
@@ -93,17 +105,17 @@ google.maps.event.addDomListener ( window, "load", function ( )
         var DS = new google.maps.DirectionsService ;
         var DR = new google.maps.DirectionsRenderer ( objeto_de_configuracion_del_DirectionsService ) ;
 
-        var objeto_de_configuracion_del_DistanceMatrixService =
-        {
-            origins: [ Marcador_del_mapa_de_Google.getPosition ( ) ],
-            destinations: [ Marcador_del_mapa_de_Google_2.getPosition ( ) ],
-            travelMode: 'DRIVING',
-            unitSystem: google.maps.UnitSystem.METRIC,
-            avoidHighways: false,
-            avoidTolls: false
-        }
-
-        const Servicio_de_Google = new google.maps.DistanceMatrixService ;
+//        var objeto_de_configuracion_del_DistanceMatrixService =
+//        {
+//            origins: [ Marcador_del_mapa_de_Google.getPosition ( ) ],
+//            destinations: [ Marcador_del_mapa_de_Google_2.getPosition ( ) ],
+//            travelMode: 'DRIVING',
+//            unitSystem: google.maps.UnitSystem.METRIC,
+//            avoidHighways: false,
+//            avoidTolls: false
+//        }
+//
+//        const Servicio_de_Google = new google.maps.DistanceMatrixService ;
         
         var Autocompletado_de_origen = document.getElementById ( 'Autocompletado_de_origen' ) ;
         
