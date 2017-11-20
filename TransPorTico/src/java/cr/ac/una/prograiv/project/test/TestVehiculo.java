@@ -27,8 +27,8 @@ public class TestVehiculo {
        //findAllVehiculoActivo ( ) ;
    }
     public static void saveVehiculo(){
-        for(int i =1; i<5; i++){
-        Vehiculo ve = new Vehiculo(i,"modelo1","placa1","negro",10,10,false,false,new Date(),"Nadie");
+        for(int i =1; i<=1; i++){
+        Vehiculo ve = new Vehiculo(i,"modelo1","placa1","negro",10.006040, -84.108973,false,false,new Date(),"Nadie");
         VehiculoBL bl = new VehiculoBL();
         bl.save(ve);
         }

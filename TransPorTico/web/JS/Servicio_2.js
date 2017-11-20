@@ -81,6 +81,12 @@ function dibujar_una_cosa ( data )
     
     for ( var a = 0 ; a < data.length ; a ++ )
     {
-        $ ( "#seleccionar_vehiculo" ).append ( $ ( "<option value=" + data[ a ].pkIdVehiculo + ">" + data [ a ].placa + "</option>" ) ) ;
+        var aux = Calcular_la_distancia_del_vehiculo ( data [ a ].ubicacionX, data [ a ].ubicacionY ) ;
+        alert ( aux ) ;
+        
+        if ( Calcular_la_distancia_del_vehiculo ( data [ a ].ubicacionX, data [ a ].ubicacionY ) > 0 )
+        {
+            $ ( "#seleccionar_vehiculo" ).append ( $ ( "<option value=" + data[ a ].pkIdVehiculo + ">" + data [ a ].placa + "</option>" ) ) ;
+        }
     }
 }
