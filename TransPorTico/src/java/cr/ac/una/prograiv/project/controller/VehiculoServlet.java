@@ -43,8 +43,7 @@ public class VehiculoServlet extends HttpServlet {
             VehiculoBL vehBL = new VehiculoBL();
             String accion = request.getParameter("accion");
             switch (accion) {
-                case "agregarVehiculo":
-                case "modificarVehiculo":
+                case "agregarVehiculo": case "modificarVehiculo":
 
                     if (accion.equals("modificarVehiculo")) {
                         vehiculo = new Vehiculo(

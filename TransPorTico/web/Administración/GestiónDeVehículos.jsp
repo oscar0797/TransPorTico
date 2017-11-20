@@ -145,10 +145,10 @@
                                         <div class="form-group col-xs-12 col-sm-9 col-md-9 col-lg-9" id="groupPlaca">
                                             <label for="inputPlaca">Placa*</label>
                                             <input type="text" class="form-control" id="inputPlaca" autofocus="autofocus" placeholder="Ingrese la placa" onpaste="return false"
-                                                   onkeyup="validaTamMax('inputPlaca', 8, 'La cantidad máxima de dígitos es 8')">
+                                                   onkeyup="validaTamMax('inputPlaca', 6, 'La cantidad máxima de dígitos es 6')">
                                         </div>
                                         <div class="form-group col-xs-12 col-sm-2 col-md-2 col-lg-2">
-                                            <label style="height: 30%; align-content: rigth;" ></label>
+                                            <label style="height: 25%; align-content: rigth;" ></label>
                                             <button id="btnVerificar" type="button" class="btn btn-info " onclick="verificaPlaca('inputPlaca', 10, 'La cantidad mínima de dígitos es 10')">Verificar</button>
                                         </div>
                                         <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" id="groupContrasena2">
