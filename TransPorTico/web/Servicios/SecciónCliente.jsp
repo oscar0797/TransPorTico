@@ -325,6 +325,17 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="tamañoLetraInput form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                                <label for="conductor">
+                                    Conductor: 
+                                </label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+                                <input id="chofer_del_vehículo" type="text" class="form-control" readonly/>
+                                <input id="id_del_chofer" type="hidden"/>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>

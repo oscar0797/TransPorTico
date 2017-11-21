@@ -291,6 +291,8 @@ function Calcular_la_distancia_del_vehiculo ( coordenadas_de_los_vehiculos, data
                     if ( element.distance.value < 5000 )
                     {                    
                         $ ( "#seleccionar_vehiculo" ).append ( $ ( "<option value=" + data[ b ].pkIdVehiculo + ">" + data [ b ].placa + "</option>" ) ) ;
+                        
+                        alert ( data [ b ].pkIdVehiculo ) ;
                     }
                 }
             }
