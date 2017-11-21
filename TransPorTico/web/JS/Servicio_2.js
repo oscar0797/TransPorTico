@@ -75,18 +75,18 @@ function consultar_vehiculos_activos ( )
 
 function dibujar_una_cosa ( data )
 {
+    var coordenadas_de_los_autos = [] ;
+    
     $ ( "#seleccionar_vehiculo" ).html ( "" ) ;
     var opcion_por_defecto = $ ( "<option value=0 selected> -- </option>" ) ;
     $ ( "#seleccionar_vehiculo" ).append ( opcion_por_defecto ) ;
     
     for ( var a = 0 ; a < data.length ; a ++ )
     {
-        var aux = Calcular_la_distancia_del_vehiculo ( data [ a ].ubicacionX, data [ a ].ubicacionY ) ;
-        alert ( aux ) ;
-        
-        if ( Calcular_la_distancia_del_vehiculo ( data [ a ].ubicacionX, data [ a ].ubicacionY ) > 0 )
-        {
-            $ ( "#seleccionar_vehiculo" ).append ( $ ( "<option value=" + data[ a ].pkIdVehiculo + ">" + data [ a ].placa + "</option>" ) ) ;
-        }
+        coordenadas_de_los_autos.push ( { lat: data [ a ].ubicacionX, lng: data [ a ].ubicacionY } ) ;
     }
+    
+    Calcular_la_distancia_del_vehiculo ( coordenadas_de_los_autos, data ) ;
+    
+    // alert ( coordenadas_de_los_autos [ 0 ] ) ;
 }
