@@ -161,9 +161,9 @@
                                     <button type="submit" class="btn btn-danger" data-toggle="collapse" href="#collapseOne">Cancelar</button>
                                 </div>
                                 <div class="form-group estiloAlertaPieForm" >
-                                    <div class="alert alert-success hiddenDiv" id="mensajeAlert">
-                                        <strong id="mesajeResultNeg">Info!</strong> 
-                                        <span  id="mesajeResultText">Este cuadro de alerta podría indicar un cambio informativo neutro o una acción.</span>
+                                    <div class="alert alert-success hiddenDiv" id="mensajeAlertaChofer">
+                                        <strong id="mesajeResultNegChofer">Info!</strong> 
+                                        <span  id="mesajeResultTextChofer">Este cuadro de alerta podría indicar un cambio informativo neutro o una acción.</span>
                                     </div>
                                 </div>
                             </form>

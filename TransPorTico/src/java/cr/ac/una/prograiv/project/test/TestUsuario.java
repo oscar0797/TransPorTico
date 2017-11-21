@@ -21,7 +21,7 @@ import java.awt.Polygon;
 public class TestUsuario {
 
     public static void main(String[] args) {
-        //saveUsuario();
+        saveUsuario();
         //mergeUsuario(1);
         //deleteUsuario();
         //findAllUsuario();

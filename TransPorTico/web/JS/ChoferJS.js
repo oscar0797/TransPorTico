@@ -32,7 +32,7 @@ function registraChofer() {
                 idChofer: $("#choferAux").val()
             },
             error: function () {
-                mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
+                mostrarMensajeChofer("alert alert-danger", "Se generó un error, contacte al administrador (Error del ajax)", "Error!");
             },
             success: function (data) {
                 var respuestaTxt = data.substring(2);
@@ -53,7 +53,7 @@ function registraChofer() {
             dataType: "text"
         });
     } else {
-        mostrarMensaje("alert alert-danger", "Debe digitar los campos del formulario", "Error!");
+        mostrarMensajeChofer("alert alert-danger", "Debe digitar los campos del formulario", "Error!");
         $("#collapseOne").addClass('show');
     }
     $("#choferAction").val("#agregarChofer");   
@@ -126,18 +126,18 @@ function dibujarFila(rowData) {
             '</button></td>'));
 }
 
-function mostrarMensaje(classCss, msg, neg) {
+function mostrarMensajeChofer(classCss, msg, neg) {
     //se le eliminan los estilos al mensaje
-    $("#mensajeAlert").removeClass();
+    $("#mensajeAlertaChofer").removeClass();
 
     //se setean los estilos
-    $("#mensajeAlert").addClass(classCss);
+    $("#mensajeAlertaChofer").addClass(classCss);
 
     //se muestra la capa del mensaje con los parametros del metodo
-    $("#mensajeAlert").fadeIn("slow");
-    $("#mesajeResultNeg").html(neg);
-    $("#mesajeResultText").html(msg);
-    $("#mesajeResultText").html(msg);
+    $("#mensajeAlertaChofer").fadeIn("slow");
+    $("#mesajeResultNegChofer").html(neg);
+    $("#mesajeResultTextChofer").html(msg);
+    $("#mesajeResultTextChofer").html(msg);
 }
 
 /*

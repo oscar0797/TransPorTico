@@ -18,7 +18,7 @@ function validaNum(id) {
 
 function validaTamMax(id, tam, mensaje) {
     var nombre = $('#' + id).val();
-    if (nombre.length > tam) {
+    if (nombre.length() > tam) {
         $('#' + id).val(nombre.slice(0, tam));
         $('#' + id).addClass("error");
         alert(mensaje);
@@ -132,4 +132,36 @@ function busquedaPalabraClave(idTabla, idInput) {
             tableReg.rows[i].style.display = 'none';
         }
     }
+}
+
+function verificaPlacaRegistro(id, tam, mensaje) {
+    var placaa = $("#inputPlaca").val();
+    $.ajax({
+        url: '../VehiculoServlet',
+        data: {
+            accion: "verificarPlaca",
+            placa: placaa
+        },
+        error: function () {
+            mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
+        },
+        success: function (data) {
+            var respuestaTxt = data.substring(2);
+            var tipoRespuesta = data.substring(0, 2);
+            if (tipoRespuesta !== "E~") {
+                if (validaTamMin(id, tam, mensaje)) {
+                    $("#inputPlaca").val(placaa);
+                    $("#inputPlaca").addClass("correcto");
+                    $("#collapseOne").addClass('show');
+                    alert("Placa verificada correctamente, proceda a llenar los demás campos");
+                    activaFormVehiculo();
+                }
+            } else {
+                $("#inputPlaca").addClass("error");
+                alert("La placa ya existe, por favor digite una nueva");
+            }
+        },
+        type: "POST",
+        dataType: "text"
+    });
 }

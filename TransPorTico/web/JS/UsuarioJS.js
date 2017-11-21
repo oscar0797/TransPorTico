@@ -363,36 +363,36 @@ function desactivaForm() {
     $("#inputTipo").attr("disabled", "true");
 }
 
-//function verificaNombreUsuarioEdicion(usuario) {
-//    var nombree = $("#inputNombreUsuario").val();
-//    $.ajax({
-//        url: '../UsuarioServlet',
-//        data: {
-//            accion: "verificarNombreUsuario",
-//            nombreUsuario: nombree
-//        },
-//        error: function () {
-//            mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
-//        },
-//        success: function (data) {
-//            var respuestaTxt = data.substring(2);
-//            var tipoRespuesta = data.substring(0, 2);
-//            if (tipoRespuesta !== "E~" || nombree === usuario.nombreUsuario) {
-//                $("#inputNombreUsuario").val(nombree);
-//                $("#inputNombreUsuario").addClass("correcto");
-//                $("#collapseOne").addClass('show');
-//                desactivaForm();
-//                //activaForm();
-//            } else {
-//                $("#inputNombreUsuario").addClass("error");
-//                desactivaForm();
-//
-//            }
-//        },
-//        type: "POST",
-//        dataType: "text"
-//    });
-//}
+function verificaNombreUsuarioEdicion(usuario) {
+    var nombree = $("#inputNombreUsuario").val();
+    $.ajax({
+        url: '../UsuarioServlet',
+        data: {
+            accion: "verificarNombreUsuario",
+            nombreUsuario: nombree
+        },
+        error: function () {
+            mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
+        },
+        success: function (data) {
+            var respuestaTxt = data.substring(2);
+            var tipoRespuesta = data.substring(0, 2);
+            if (tipoRespuesta !== "E~" || nombree === usuario.nombreUsuario) {
+                $("#inputNombreUsuario").val(nombree);
+                $("#inputNombreUsuario").addClass("correcto");
+                $("#collapseOne").addClass('show');
+                desactivaForm();
+                //activaForm();
+            } else {
+                $("#inputNombreUsuario").addClass("error");
+                desactivaForm();
+
+            }
+        },
+        type: "POST",
+        dataType: "text"
+    });
+}
 
 function aux(usuario) {
     var unica = usuario.nombreUsuario;

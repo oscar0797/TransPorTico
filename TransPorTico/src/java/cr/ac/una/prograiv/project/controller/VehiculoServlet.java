@@ -6,6 +6,7 @@
 package cr.ac.una.prograiv.project.controller;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import cr.ac.una.prograiv.project.Validaciones.Validaciones;
 import cr.ac.una.prograiv.project.bl.VehiculoBL;
 import cr.ac.una.prograiv.project.domain.Vehiculo;
@@ -39,8 +40,10 @@ public class VehiculoServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             String json;
+            Gson gson = new GsonBuilder().setDateFormat("dd/MM/yyyy").create();
             Vehiculo vehiculo = new Vehiculo();
             VehiculoBL vehBL = new VehiculoBL();
+            Validaciones val = new Validaciones();
             String accion = request.getParameter("accion");
             switch (accion) {
                 case "agregarVehiculo":
@@ -87,17 +90,29 @@ public class VehiculoServlet extends HttpServlet {
                     break;
 
                 case "consultarVehiculosActivos":
-                    json = new Gson ( ).toJson ( vehBL.findByQuery ( "FROM Vehiculo WHERE activo=true" ) ) ;
-                    out.print ( json ) ;
-                    break ;
+                    json = new Gson().toJson(vehBL.findByQuery("FROM Vehiculo WHERE activo=true"));
+                    out.print(json);
+                    break;
 
                 case "eliminarVehiculo":
-                {
-                    vehiculo.setPkIdVehiculo ( Integer.parseInt ( request.getParameter ( "idVehiculo" ) ) ) ;
-                    vehBL.delete ( vehiculo ) ;
-                    out.print ( "C~Vehículo eliminado con exito" ) ;
-                    break ;
-                }
+                    vehiculo.setPkIdVehiculo(Integer.parseInt(request.getParameter("idVehiculo")));
+                    vehBL.delete(vehiculo);
+                    out.print("C~Vehículo eliminado con exito");
+                    break;
+                case "buscarVehiculo":
+                    vehiculo = vehBL.findByID(Integer.parseInt(request.getParameter("idVehiculo")));
+                    json = gson.toJson(vehiculo);
+                    out.print(json);
+                    break;
+                case "verificarPlaca":
+                    boolean existe = val.existePlaca(request.getParameter("placa"));
+                    if (existe) {
+                        out.print("E~La placa digitada ya existe");
+                    } else {
+                        out.print("C~La placa digitada no existe");
+                    }
+                    break;
+
             }
         } catch (NumberFormatException e) {
             out.print("E~" + e.getMessage());

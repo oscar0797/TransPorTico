@@ -35,10 +35,11 @@
         <script src="../JS/utils.js" type="text/javascript"></script>
         <script src="../JS/Publico.js" type="text/javascript"></script>
         <script src="../JS/VehiculoJS.js" type="text/javascript"></script>
+        <script src="../JS/AsignacionJS.js" type="text/javascript"></script>
         <script src="../JS/Validaciones.js" type="text/javascript"></script>
         <script src="../JS/Geolocalizacion.js" type="text/javascript"></script>
         <script src="../JS/Mapa_de_vehiculo.js" type="text/javascript"></script>
-        <script src="../JS/AsignacionJS.js" type="text/javascript"></script>
+        
     </head>
     <body class="bg-muted">
         <div class="container-fluid"><br>
@@ -59,7 +60,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div  class="modal fade" id="nuevaAsignacion" style="margin-top: 10%" role="dialog">
                 <div class="modal-dialog modal-sm">
                     <div class="modal-content">
@@ -68,38 +69,38 @@
                             <h4 class="modal-title" id="myModalTitle">Modal Header</h4>
                         </div>
                         <div class="modal-body">
-                        <Form >
-                            <table>
-                                <tr>
-                                    <td>
-                                        <div class="form-group col-xs-12 col-sm-9 col-md-9 col-lg-9" id="groupVehiculo">
-                                            <label for="inputVehiculo">Vehiculo*</label>
-                                            <input type="text" class="form-control" style="WIDTH: 228px" id="inputVehiculo" autofocus="autofocus" colspan="4" readonly onpaste="return false">
-                                        </div>
-                                        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" id="groupChofer">
-                                            <label for="autoChofer">Chofer*</label>
-                                            <input type="text" class="form-control"style="WIDTH: 228px " id="autoChofer" autofocus="autofocus" placeholder="Asigna chofer" onpaste="return false">
-                                        </div>
+                            <Form >
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <div class="form-group col-xs-12 col-sm-9 col-md-9 col-lg-9" id="groupVehiculo">
+                                                <label for="inputVehiculo">Vehiculo*</label>
+                                                <input type="text" class="form-control" style="WIDTH: 228px" id="inputVehiculo" autofocus="autofocus" colspan="4" readonly onpaste="return false">
+                                            </div>
+                                            <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" id="groupChofer">
+                                                <label for="autoChofer">Chofer*</label>
+                                                <input type="text" class="form-control"style="WIDTH: 228px " id="autoChofer" autofocus="autofocus" placeholder="Asigna chofer" onpaste="return false">
+                                            </div>
                                         </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                <div class="form-group estilo2" >
-                                    <input type="hidden" value="agregarAsignacion" id="asignacionAction"/> 
-                                    <input type="hidden"  id="asignasionAux"/>
-                                    <button type="submit" class="btn btn-success" onclick="registrarAsignacion()">Guardar</button>                                    
-                                    <button type="submit" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                                </div>
-                                </td>
-                                </tr>
-                            </table>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-group estilo2" >
+                                                <input type="hidden" value="agregarAsignacion" id="asignacionAction"/> 
+                                                <input type="hidden"  id="asignasionAux"/>
+                                                <button type="submit" class="btn btn-success" onclick="registrarAsignacion()">Guardar</button>                                    
+                                                <button type="submit" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
                             </form>
+                        </div>
+
                     </div>
-                
+                </div>
             </div>
-            </div>
-            </div>
-            
+
             <!------------------------------------------------------------------------------------------>
             <!------------- ACORDION FORMULARIO  VEHÍCULO ---------------------------------------------->
             <!------------------------------------------------------------------------------------------>
@@ -108,7 +109,7 @@
                 <div id="imagenFondo" class="card ">
                     <div class="card-header" role="tab" id="headingOne">
                         <div class="form-row img-responsive align-top col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                           <div  class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <div  class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onClick="Dibujar_un_mapa( )">
                                     <p class="estilo2 btn-success btn-sm "><span class="glyphicon glyphicon-plus"></span>Registrar un nuevo vehículo</p>                                    
                                 </a>       
@@ -145,11 +146,11 @@
                                         <div class="form-group col-xs-12 col-sm-9 col-md-9 col-lg-9" id="groupPlaca">
                                             <label for="inputPlaca">Placa*</label>
                                             <input type="text" class="form-control" id="inputPlaca" autofocus="autofocus" placeholder="Ingrese la placa" onpaste="return false"
-                                                   onkeyup="validaTamMax('inputPlaca', 8, 'La cantidad máxima de dígitos es 8')">
+                                                   onkeyup="validaTamMax('inputPlaca', 6, 'La cantidad máxima de dígitos es 6')">
                                         </div>
                                         <div class="form-group col-xs-12 col-sm-2 col-md-2 col-lg-2">
-                                            <label style="height: 30%; align-content: rigth;" ></label>
-                                            <button id="btnVerificar" type="button" class="btn btn-info " onclick="verificaPlaca('inputPlaca', 10, 'La cantidad mínima de dígitos es 10')">Verificar</button>
+                                            <label style="height: 25%; align-content: rigth;" ></label>
+                                            <button id="btnVerificar" type="button" class="btn btn-info " onclick="verificaPlacaRegistro('inputPlaca', 6, 'La cantidad mínima de dígitos es 6')">Verificar</button>
                                         </div>
                                         <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12" id="groupContrasena2">
                                             <label for="inputModelo">Modelo*</label>
@@ -196,9 +197,9 @@
                                     <button type="submit" class="btn btn-danger" data-toggle="collapse" href="#collapseOne">Cancelar</button>
                                 </div>
                                 <div class="form-group estiloAlertaPieForm" >
-                                    <div class="alert alert-success hiddenDiv" id="mensajeAlert">
-                                        <strong id="mesajeResultNeg">Info!</strong> 
-                                        <span  id="mesajeResultText">Este cuadro de alerta podría indicar un cambio informativo neutro o una acción.</span>
+                                    <div class="alert alert-success hiddenDiv" id="mensajeAlertaVehiculo">
+                                        <strong id="mesajeResultNegVehiculo">Info!</strong> 
+                                        <span  id="mesajeResultTextVehiculo">Este cuadro de alerta podría indicar un cambio informativo neutro o una acción.</span>
                                     </div>
                                 </div>
                             </form>
@@ -222,7 +223,7 @@
         </div> 
 
         <!-- ********************************************************** -->
-        <!-- MODAL CONFIRMACIÓN ELIMINAR UN USUARIO -->
+        <!-- MODAL CONFIRMACIÓN ELIMINAR UN VEHICULO -->
         <!-- ********************************************************** -->
         <div id="topModal">
             <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -239,7 +240,7 @@
                                             podrá ser recuperada.
                                             <br><br>
                                             Desea confirmar la eliminación de 
-                                            <span id="vehiculoEliminar">
+                                            <span id="placaEliminar">
 
                                             </span>
                                             ?
@@ -247,7 +248,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                        <button class="btn btn-danger btn-ok" id="eliminar" value="" data-dismiss="modal">Eliminar</button>
+                                        <button class="btn btn-danger btn-ok" id="eliminarVehiculo" value="" data-dismiss="modal">Eliminar</button>
                                     </div>
                                     </div>
                                     </div>
