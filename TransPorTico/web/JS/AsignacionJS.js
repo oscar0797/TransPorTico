@@ -25,7 +25,7 @@ function muestraRegistraAsignacion(vehiculo){
 function registrarAsignacion() {
     alert($("#autoChofer").val());
     mostrarModal("myModal", "Espere por favor..", "Cargando información de la base de datos");
-    if (validar()) {
+    if (validarAsignacion()) {
         $.ajax({
             url: '../AsignacionServlet',
             data: {
@@ -146,7 +146,7 @@ function mostrarMensaje(name, classCss, msg, neg) {
     $("#paginacionOpc").append('<li onclick="consultarAsignacions(' + (ini - 1) + '), paginador(' + (ini -1) + ',' + tam +')"><a>&raquo;</a></li>');
 }*/
 
-function validar() {
+function validarAsignacion() {
     var validacion = true;
     //Elimina estilo de error en los css
     //notese que es sobre el grupo que contienen el input

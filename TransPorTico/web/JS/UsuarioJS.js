@@ -365,7 +365,7 @@ function desactivaForm() {
 
 function verificaNombreUsuarioEdicion(usuario) {
     var nombree = $("#inputNombreUsuario").val();
-    $.ajax({verificaNombreUsuario
+    $.ajax({
         url: '../UsuarioServlet',
         data: {
             accion: "verificarNombreUsuario",

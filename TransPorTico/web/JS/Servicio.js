@@ -15,6 +15,8 @@ var objeto_de_configuracion_del_DistanceMatrixService =
 
 const Servicio_de_Google = new google.maps.DistanceMatrixService ;
 
+var distancia ;
+
 google.maps.event.addDomListener ( window, "load", function ( )
 {
     const Ubicacion = new Geolocalizacion ( ( ) =>
@@ -240,7 +242,7 @@ google.maps.event.addDomListener ( window, "load", function ( )
                     var element = resultados [ b ] ;
                     
                     document.getElementById ( 'input_de_distancia' ).value = element.distance.text ;
-                    document.getElementById ( 'input_de_costo' ).value = ( ( element.distance.value / 1000 ) * 750 ) ;
+                    document.getElementById ( 'input_de_costo' ).value = ( ( element.distance.value / 1000 ) * 420 ) ;
                     document.getElementById ( 'input_de_tiempo_estimado' ).value = element.duration.text ;
                     // alert ( element.duration.value / 60 ) ;
                     document.getElementById ( 'input_de_distancia_2' ).value = element.duration.value / 60 ;
@@ -254,3 +256,29 @@ google.maps.event.addDomListener ( window, "load", function ( )
     }
     } ) ;
 } ) ;
+
+function Calcular_la_distancia_del_vehiculo ( Latitud, Longitud )
+{
+    objeto_de_configuracion_del_DistanceMatrixService.destinations =
+    [{
+        lat: Latitud,
+        lng: Longitud
+    }] ;
+    
+    Servicio_de_Google.getDistanceMatrix ( objeto_de_configuracion_del_DistanceMatrixService, function ( Respuesta, Status )
+    {
+        if ( Status === 'OK' )
+        {
+            var resultados = Respuesta.rows [ 0 ].elements ;
+            var element = resultados [ 0 ] ;
+            
+//            alert ( element.distance.value / 1000 ) ;
+
+//            return element.distance.value / 1000 ;
+        }
+        else
+        {
+            alert ( 'Error was: ' + Status ) ;
+        }
+    } ) ;
+}

@@ -11,38 +11,12 @@ $(document).ready(function () {
     consultarChoferes2();
     // paginador(1);
     $("form").submit(function (event) {
-        if (validar() === false) {
+        if (validarInputsVacios() === false) {
             event.preventDefault();
         }
     });
+    desactivaFormVehiculo();
 });
-
-/*function consultarCedula() {
- //Se envia la información por ajax
- var id;
- $.ajax({
- url: '../ChoferServlet',
- data: {
- accion: "buscarCedula",
- cedula: $("#inputChofer").val( )
- 
- },
- error: function () { //si existe un error en la respuesta del ajax
- //alert("Se presento un error a la hora de cargar la información de los Chofers en la base de datos");
- mostrarModal("myModal", "Error al cargar en la base de datos");
- },
- success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el datos
- id=data[1].nombre;
- alert("id");
- alert(id);
- // se oculta el modal esta funcion se encuentra en el utils.js
- },
- type: 'POST',
- dataType: "json"
- });
- return id;
- }*/
-
 
 function consultarChoferes2() {
     //Se envia la información por ajax
@@ -90,10 +64,11 @@ function llenarAutoComplete(data) {
     $("#autoChofer").easyAutocomplete(opcions);
 }
 
-
-
 function registrarVehiculo() {
-    if (validar()) {
+    if (validarInputsVacios()) {
+        var gg = $("#vehiculoAction").val();
+        var xn = $("#UbicacionX").val( );
+        var ff = $("#UbicacionY").val( );
         $.ajax({
             url: '../VehiculoServlet',
             data: {
@@ -102,11 +77,11 @@ function registrarVehiculo() {
                 modelo: $("#inputModelo").val( ),
                 placa: $("#inputPlaca").val( ),
                 color: $("#inputColor").val( ),
-                ubicacionX: $("#UbicacionX").val( ),
-                ubicacionY: $("#UbicacionY").val( )
+                ubicacionX: $("#inputUbicacionX").val( ),
+                ubicacionY: $("#inputUbicacionY").val( )
             },
             error: function () {
-                mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
+                mostrarMensajeVehiculo("alert alert-danger", "Se generó un error, contacte al administrador (Error del ajax)", "Error!");
             },
             success: function (data) {
                 var respuestaTxt = data.substring(2);
@@ -123,10 +98,44 @@ function registrarVehiculo() {
             dataType: "text"
         });
     } else {
-        mostrarMensaje("alert alert-danger", "Debe digitar los campos del formulario", "Error!");
+        mostrarMensajeVehiculo("alert alert-danger", "Debe digitar los campos del formulario", "Error!");
         $("#collapseOne").addClass('show');
     }
-    $("#choferAction").val("#agregarChofer");
+    $("#vehiculoAction").val("#agregarChofer");
+}
+
+function validarInputsVacios() {
+    var validacion = true;
+    //Elimina estilo de error en los css
+    //notese que es sobre el grupo que contienen el input
+    $("#inputPlaca").removeClass("error");
+    $("#inputModelo").removeClass("error");
+    $("#inputAno").removeClass("error");
+    $("#inputColor").removeClass("error");
+    $("#inputUbicacion").removeClass("error");
+    //valida cada uno de los campos del formulario
+    //Nota: Solo si fueron digitadoslse;
+    if ($("#inputPlaca").val() === "") {
+        $("#inputPlaca").addClass("error");
+        validacion = false;
+    }
+    if ($("#inputModelo").val() === "") {
+        $("#inputModelo").addClass("error");
+        validacion = false;
+    }
+    if ($("#inputAno").val() === "") {
+        $("#inputAno").addClass("error");
+        validacion = false;
+    }
+    if ($("#inputColor").val() === "") {
+        $("#inputColor").addClass("error");
+        validacion = false;
+    }
+    if ($("#inputUbicacion").val() === "") {
+        $("#inputUbicacion").addClass("error");
+        validacion = false;
+    }
+    return validacion;
 }
 
 function limpiarForm() {
@@ -177,26 +186,6 @@ function dibujarTabla(numpag, dataJson) {
     }
 }
 
-/*function dibujarTablaChofer(numpag, dataJson) {
- //limpia la información que tiene la tabla
- $("#tabla").html("");
- 
- //muestra el enzabezado de la tabla
- var head = $("<thead />");
- var row = $("<tr />");
- head.append(row);
- $("#tabla").append(head);
- row.append($("<th><b>Cedula</b></th>"));
- row.append($("<th><b>Nombre</b></th>"));
- row.append($("<th><b>Tipo  de Licencia</b></th>"));
- //carga la tabla con el json devuelto
- var cont = 0;
- var i = 10 * (numpag - 1);
- for (; i < dataJson.length && (cont < 10); i++, cont++) {
- dibujarFilaChofer(dataJson[i]);
- }
- }*/
-
 function dibujarFila(rowData) {
 //Cuando dibuja la tabla en cada boton se le agrega la funcionalidad de cargar o eliminar la informacion
 //de una persona    
@@ -206,57 +195,34 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.modelo + "</td>"));
     row.append($("<td>" + rowData.ano + "</td>"));
     row.append($("<td>" + rowData.color + "</td>"));
-    row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="modificarChofer(' + rowData.pkIdChofer + ')">' +
+    row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="modificarVehiculo(' + rowData.pkIdVehiculo + ')">' +
             '<i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>' +
             '</button>' +
             '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="muestraRegistraAsignacion(' + rowData.pkIdVehiculo + ')">' +
             '<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>' +
             '</button></td>'));
 
-    row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="modificarChofer(' + rowData.pkIdChofer + ')">' +
+    row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="modificarVehiculo(' + rowData.pkIdVehiculo + ')">' +
             '<i class="fa fa-pencil" aria-hidden="true"></i>' +
             '</button>' +
-            '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="validaEliminacion(' + "'" + rowData.modelo + "'" + ',' + rowData.pkIdVehiculo + ')" data-target="#confirm-delete" data-toggle="modal">' +
+            '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="validaEliminacionVehiculo(' + "'" + rowData.modelo + "'" + ',' + rowData.pkIdVehiculo + ')" data-target="#confirm-delete" data-toggle="modal">' +
             '<i class="fa fa-times" aria-hidden="true"></i>' +
             '</button></td>'));
 }
 
-/*function dibujarFilaChofer(rowData) {
- //Cuando dibuja la tabla en cada boton se le agrega la funcionalidad de cargar o eliminar la informacion
- //de una persona    
- var row = $('<tr />');
- $("#tabla").append(row);
- row.append($("<td>" + rowData.cedula + "</td>"));
- row.append($("<td>" + rowData.nombre + "</td>"));
- row.append($("<td>" + rowData.tipoLicencia + "</td>"));
- }*/
-
-function mostrarMensaje(classCss, msg, neg) {
+function mostrarMensajeVehiculo(classCss, msg, neg) {
     //se le eliminan los estilos al mensaje
-    $("#mensajeAlert").removeClass();
+    $("#mensajeAlertaVehiculo").removeClass();
 
     //se setean los estilos
-    $("#mensajeAlert").addClass(classCss);
+    $("#mensajeAlertaVehiculo").addClass(classCss);
 
     //se muestra la capa del mensaje con los parametros del metodo
-    $("#mensajeAlert").fadeIn("slow");
-    $("#mesajeResultNeg").html(neg);
-    $("#mesajeResultText").html(msg);
-    $("#mesajeResultText").html(msg);
+    $("#mensajeAlertaVehiculo").fadeIn("slow");
+    $("#mesajeResultNegVehiculo").html(neg);
+    $("#mesajeResultTextVehiculo").html(msg);
+    $("#mesajeResultTextVehiculo").html(msg);
 }
-
-/*
- function mostrarMensaje(name, classCss, msg, neg) {
- //se le eliminan los estilos al mensaje
- $("#" + name).removeClass();
- //se setean los estilos
- $("#" + name).addClass(classCss);
- //se muestra la capa del mensaje con los parametros del metodo
- $("#" + name).fadeIn("slow");
- $(".mesajeResultNeg").html(neg);
- $(".mesajeResultText").html(msg);
- $(".mesajeResultText").html(msg);
- }*/
 
 function paginador(pagAct, tam) {
     var ini = 1;
@@ -277,51 +243,45 @@ function paginador(pagAct, tam) {
     $("#paginacionOpc").append('<li onclick="consultarVehiculos(' + (ini - 1) + '), paginador(' + (ini - 1) + ',' + tam + ')"><a>&raquo;</a></li>');
 }
 
-function validar() {
-    var validacion = true;
-    //Elimina estilo de error en los css
-    //notese que es sobre el grupo que contienen el input
-    $("#inputPlaca").removeClass("error");
-    $("#inputModelo").removeClass("error");
-    $("#inputAno").removeClass("error");
-    $("#inputColor").removeClass("error");
-    $("#inputUbicacion").removeClass("error");
-    //valida cada uno de los campos del formulario
-    //Nota: Solo si fueron digitadoslse;
-    if ($("#inputPlaca").val() === "") {
-        $("#inputPlaca").addClass("error");
-        validacion = false;
-    }
-    if ($("#inputModelo").val() === "") {
-        $("#inputModelo").addClass("error");
-        validacion = false;
-    }
-    if ($("#inputAno").val() === "") {
-        $("#inputAno").addClass("error");
-        validacion = false;
-    }
-    if ($("#inputColor").val() === "") {
-        $("#inputColor").addClass("error");
-        validacion = false;
-    }
-    if ($("#inputUbicacion").val() === "") {
-        $("#inputUbicacion").addClass("error");
-        validacion = false;
-    }
-    return validacion;
+function activaFormVehiculo() {
+    $("#inputPlaca").attr("disabled", "true");
+    $("#inputModelo").removeAttr("disabled");
+    $("#inputAno").removeAttr("disabled");
+    $("#inputColor").removeAttr("disabled");
+    $("#inputUbicacion").removeAttr("disabled");
+}
+function desactivaFormVehiculo() {
+    $("#inputPlaca").removeAttr("disabled");
+    $("#inputModelo").attr("disabled", "true");
+    $("#inputAno").attr("disabled", "true");
+    $("#inputColor").attr("disabled", "true");
+    $("#inputUbicacion").attr("disabled", "true");
 }
 
-function validaEliminacion(mod, idVehiculo) {
-    $('#vehiculoEliminar').text(mod);
-    $('#eliminar').click(function () {
-        // alert ( idVehiculo ) ;
+function mostrarMensaje(classCss, msg, neg) {
+    //se le eliminan los estilos al mensaje
+    $("#mensajeAlert").removeClass();
+
+    //se setean los estilos
+    $("#mensajeAlert").addClass(classCss);
+
+    //se muestra la capa del mensaje con los parametros del metodo
+    $("#mensajeAlert").fadeIn("slow");
+    $("#mesajeResultNeg").html(neg);
+    $("#mesajeResultText").html(msg);
+    $("#mesajeResultText").html(msg);
+}
+
+function validaEliminacionVehiculo(placa, idVehiculo) {
+    $('#placaEliminar').text(placa);
+    $('#eliminarVehiculo').click(function () {
         eliminarVehiculo(idVehiculo);
     });
 }
 
 function eliminarVehiculo(idVehiculo) {
-//mostrarModal("myModal", "Espere por favor..", "Se esta eliminando al chofer seleccionado");
-//Se envia la información por ajax
+    //mostrarModal("myModal", "Espere por favor..", "Se esta eliminando al vehiculo seleccionado");
+    //Se envia la información por ajax
     $.ajax({
         url: '../VehiculoServlet',
         data: {
@@ -348,48 +308,31 @@ function eliminarVehiculo(idVehiculo) {
     $("#myModal").hide();
 }
 
-function modificarChofer(pkIdChofer) {
-    $("#choferAction").val("buscarChofer");
+function modificarVehiculo(pkIdVehiculo) {
+    $("#vehiculoAction").val("buscarVehiculo");
     //mostrarModal("myModal", "Espere por favor..", "Buscando en la base de datos");
     //Se envia la información por ajax
     $.ajax({
-        url: '../ChoferServlet',
+        url: '../VehiculoServlet',
         data: {
-            accion: $("#choferAction").val(),
-            idChofer: pkIdChofer
+            accion: $("#vehiculoAction").val(),
+            idVehiculo: pkIdVehiculo
         },
         error: function () { //si existe un error en la respuesta del ajax
-            alert("Se presento un error a la hora de buscar el chofer en la base de datos");
+            alert("Se presento un error a la hora de buscar el vehiculo en la base de datos");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            cargaChofer(data);
-            $("#choferAction").val("modificarChofer");
+            cargaVehiculo(data);
+            $("#vehiculoAction").val("modificarVehiculo");
             $("#collapseOne").addClass('show');
+            verificaPlacaEdicion(data);
         },
         type: 'POST',
         dataType: "json"
     });
 }
 
-function cargaChofer(chofer) {
-    $("#choferAux").val(chofer.pkIdChofer);
-    $("#inputCedula").val(chofer.cedula);
-    $("#inputNombre").val(chofer.nombre);
-    var fecha1 = new Date(chofer.fechaNacimiento);
-    var fechatxt = fecha1.getDate() + "/" + fecha1.getMonth() + 1 + "/" + fecha1.getFullYear();
-    $("#fechaNacimiento").data({date: fechatxt});
-    $("#inputFechaNacimiento").val(fechatxt);
-    $("#inputTipoLicencia").val(chofer.tipoLicencia);
-    fecha1 = new Date(chofer.vencimientoLicencia);
-    fechatxt = fecha1.getDate() + "/" + fecha1.getMonth() + 1 + "/" + fecha1.getFullYear();
-    $("#fechaVencimiento").data({date: fechatxt});
-    $("#inputFechaVencimiento").val(fechatxt);
-    //$("#myModalFormulario").modal();
-    $("#choferAction").val("modificarChofer");
-}
-
-
-function verificaPlaca(id, tam, mensaje) {
+function verificaPlacaEdicion(vehiculo) {
     var placaa = $("#inputPlaca").val();
     $.ajax({
         url: '../VehiculoServlet',
@@ -403,23 +346,15 @@ function verificaPlaca(id, tam, mensaje) {
         success: function (data) {
             var respuestaTxt = data.substring(2);
             var tipoRespuesta = data.substring(0, 2);
-            if (tipoRespuesta !== "E~") {
-                if (validaTamMin(id, tam, mensaje)) {
-                    $("#inputPlaca").val(placaa);
-                    $("#inputPlaca").addClass("correcto");
-                    $("#collapseOne").addClass('show');
-                    alert("Placa verificada correctamente, proceda a llenar los demás campos");
-                    activaForm();
-                }
+            if (tipoRespuesta !== "E~" || placaa === vehiculo.placa) { 
+                $("#inputPlaca").val(placaa);
+                $("#inputPlaca").addClass("correcto");
+                $("#collapseOne").addClass('show');
+                alert("La placa no se modifica, si la placa es incorrecta, elimine el registro e ingrese uno nuevo");
+                activaForm();
             } else {
                 $("#inputPlaca").addClass("error");
-                var ff = unica;
-                if ($("#usuarioAction").val() === "modificarUsuario" && $("#inputNombreUsuario").val() === ff) { //????
-                    alert("Nombre de usuario verificado correctamente, proceda a llenar los demás campos");
-                    activaForm();
-                } else {
-                    alert("El nombre de usuario que digitó ya existe, por favor digite uno nuevo");
-                }
+                activaFormVehiculo();
             }
         },
         type: "POST",
@@ -427,33 +362,12 @@ function verificaPlaca(id, tam, mensaje) {
     });
 }
 
-function aux(usuario) {
-    var unica = usuario.nombreUsuario;
-}
-
-function modificarVehiculo(pkIdUsuario) {
-    $("#vehiculoAction").val("buscarVehiculo");
-
-    //mostrarModal("myModal", "Espere por favor..", "Buscando en la base de datos");
-    //Se envia la información por ajax
-    $.ajax({
-        url: '../VehiculoServlet',
-        data: {
-            accion: $("#vehiculoAction").val(),
-            idUsuario: pkIdUsuario
-        },
-        error: function () { //si existe un error en la respuesta del ajax
-            alert("Se presento un error a la hora de buscar el usuario en la base de datos");
-        },
-        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            cargaUsuario(data);
-            $("#vehiculoAction").val("modificarVehiculo");
-            $("#collapseOne").addClass('show');
-            $("#encabezado").addClass('show');
-            verificaNombreUsuarioEdicion(data);
-            aux(data);
-        },
-        type: 'POST',
-        dataType: "json"
-    });
+function cargaVehiculo(vehiculo) {
+    $("#vehiculoAux").val(vehiculo.pkIdVehiculo);
+    $("#inputPlaca").val(vehiculo.placa);
+    $("#inputModelo").val(vehiculo.modelo);
+    $("#inputAno").val(vehiculo.ano);
+    $("#inputColor").val(vehiculo.color);
+   // $("#inputUbicacion").val(  "Modificar aquí..." );
+    $("#vehiculoAction").val("modificarVehiculo");
 }
