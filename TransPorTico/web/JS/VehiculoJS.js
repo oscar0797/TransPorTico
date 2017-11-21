@@ -58,7 +58,7 @@ function llenarAutoComplete(data) {
             }
         },
         theme: "dark-light"
-
+//gris oscuro
     };
 
     $("#autoChofer").easyAutocomplete(opcions);
