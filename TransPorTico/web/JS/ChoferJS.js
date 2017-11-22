@@ -6,6 +6,7 @@
 
 $(document).ready(function () {
     consultarChoferes(1);
+    consultarChoferesAutoComplete();
     //paginador(1);
     	
     $("form").submit(function (event) {
@@ -82,7 +83,47 @@ function consultarChoferes(numpag) {
         dataType: "json"
     });
 }
+function consultarChoferesAutoComplete() {
+    //Se envia la información por ajax
+    $.ajax({
+        url: '../ChoferServlet',
+        data: {
+            accion: "consultarChoferes"
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            //alert("Se presento un error a la hora de cargar la información de los Chofers en la base de datos");
+            mostrarModal("myModal", "Error al cargar en la base de datos");
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el datos
+            llenarAutoCompleteChofer(data);
+            // se oculta el modal esta funcion se encuentra en el utils.js
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+}
 
+function llenarAutoCompleteChofer(data) {
+    var opcions = {
+        data,
+        getValue: "cedula",
+
+        list: {
+            match: {
+                enabled: true
+            }
+        },
+        template: {
+            type: "description",
+            fields: {
+                description: "nombre"
+            }
+        },
+        theme: "dark-light"
+//gris oscuro
+    };
+    $("#buscarCel").easyAutocomplete(opcions);
+}
 
 function dibujarTabla(numpag, dataJson) {
     //limpia la información que tiene la tabla
@@ -332,3 +373,33 @@ function desactivaForm() {
     $("#inputFechaVencimiento").attr("disabled", "true");
 }
 
+function buscarPorCedula() {
+    //alert($("#buscarCel").val());
+    var id = $("#buscarCel").val();
+    $.ajax({
+        url: '../ChoferServlet',
+        data: {
+            accion: "buscarCedula",
+            cedula: id
+        },
+        error: function () {
+            mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
+            $("#buscarCel").addClass("error");
+            alert("No se encontró al chofer, digite una nueva busqueda");
+        },
+        success: function (data) {
+      //      alert( data[0].cedula);
+          //  var respuestaTxt = data.substring(2);
+          //  var tipoRespuesta = data.substring(0, 2);
+            if (id === data[0].cedula){
+              //  alert("entro al if");
+               
+                dibujarTabla(1, data);
+            } else {
+                alert("No se encontró al usuario, digite una nueva busqueda");
+            }
+        },
+        type: "POST",
+        dataType: "json"
+    });
+}

@@ -26,7 +26,7 @@ public class TestUsuario {
         //deleteUsuario();
         //findAllUsuario();
         //findIdUsuario(17);
-        findByName("ASAS");
+       // findByName("ASAS");
 
     }
 
@@ -102,10 +102,10 @@ public class TestUsuario {
 
     }
     
-    public static void findByName(String name){
+   /* public static void findByName(String name){
         UsuarioBL bl = new UsuarioBL();
         Usuario u;
         u = bl.findByName(name);
         System.out.println(u.getPkIdUsuario());
-    }
+    }*/
 }

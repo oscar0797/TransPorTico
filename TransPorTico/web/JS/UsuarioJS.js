@@ -8,6 +8,7 @@ var unica = "";
 
 $(document).ready(function () {
     consultarUsuarios(1);
+    consultarUsuariosAutoComplete();
     // paginador(1);
 
     $("form").submit(function (event) {
@@ -23,6 +24,48 @@ $(document).ready(function () {
     $("#inputApellido2").click(ayuda("inputApellido2", 'Sólo texto'));
     $("#inputDireccion").click(ayuda("inputDireccion", 'Sólo texto'));
 });
+
+function consultarUsuariosAutoComplete() {
+    //Se envia la información por ajax
+    $.ajax({
+        url: '../UsuarioServlet',
+        data: {
+            accion: "consultarUsuarios"
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            //alert("Se presento un error a la hora de cargar la información de los Chofers en la base de datos");
+            mostrarModal("myModal", "Error al cargar en la base de datos");
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el datos
+            llenarAutoCompleteUsuario(data);
+            // se oculta el modal esta funcion se encuentra en el utils.js
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+}
+
+function llenarAutoCompleteUsuario(data) {
+    var opcions = {
+        data,
+        getValue: "nombreUsuario",
+
+        list: {
+            match: {
+                enabled: true
+            }
+        },
+        template: {
+            type: "description",
+            fields: {
+                description: "nombre"
+            }
+        },
+        theme: "dark-light"
+//gris oscuro
+    };
+    $("#buscarUsu").easyAutocomplete(opcions);
+}
 
 function registraUsuario() {    
     if (validar()) {
@@ -81,7 +124,7 @@ function consultarUsuarios(numpag) {
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             dibujarTabla(numpag, data);
             paginador(numpag, data.length / 10);
-            doSearch(data);
+            //doSearch(data);
             // se oculta el modal esta funcion se encuentra en el utils.js
         },
         type: 'POST',
@@ -435,7 +478,7 @@ function verificaNombreUsuario(id, tam, mensaje) {
         dataType: "text"
     });
 }
-
+/*
 function as() {
     $.ajax({
         url: '../UsuarioServlet',
@@ -480,14 +523,14 @@ function as() {
                  tableReg.rows[i].style.display = 'none';
                  }
                  */
-            }
+          /*  }
 
         },
         type: 'POST',
         dataType: "json"
     });
-}
-
+}*/
+/*
 function doSearch(data) {
     var tableReg = document.getElementById('tablaUsuarios');
     var searchText = document.getElementById('buscar').value.toLowerCase();
@@ -516,10 +559,11 @@ function doSearch(data) {
             tableReg.rows[i].style.display = 'none';
         }
     }
-}
+}*/
 
 function buscarUsuario() {
-    var nombree = $("#buscar").val();
+   // alert($("#buscarUsu").val());
+    var nombree = $("#buscarUsu").val();
     $.ajax({
         url: '../UsuarioServlet',
         data: {
@@ -528,20 +572,22 @@ function buscarUsuario() {
         },
         error: function () {
             mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
-            $("#buscar").addClass("error");
+            $("#buscarUsu").addClass("error");
             alert("No se encontró al usuario, digite una nueva busqueda");
         },
         success: function (data) {
-            var tt = data.nombreUsuario;
-            var respuestaTxt = data.substring(2);
-            var tipoRespuesta = data.substring(0, 2);
-            if (nombree === data.nombreUsuario){
+          //  alert( data[0].nombreUsuario);
+          //  var respuestaTxt = data.substring(2);
+          //  var tipoRespuesta = data.substring(0, 2);
+            if (nombree === data[0].nombreUsuario){
+                //alert("entro al if");
+               
                 dibujarTabla(1, data);
             } else {
                 alert("No se encontró al usuario, digite una nueva busqueda");
             }
         },
         type: "POST",
-        dataType: "text"
+        dataType: "json"
     });
 }
