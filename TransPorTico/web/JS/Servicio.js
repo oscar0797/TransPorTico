@@ -141,7 +141,7 @@ google.maps.event.addDomListener ( window, "load", function ( )
             {
                 Mapa_de_Google.setCenter ( Lugar_nuevo.geometry.location ) ;
             }
-            Marcador_del_mapa_de_Google.setPosition ( Lugar_nuevo.geometry.location ) ; alert ( Destino_seleccionado ) ;
+            Marcador_del_mapa_de_Google.setPosition ( Lugar_nuevo.geometry.location ) ; // alert ( Destino_seleccionado ) ;
             
             if ( Destino_seleccionado === true )
             {
@@ -243,6 +243,7 @@ google.maps.event.addDomListener ( window, "load", function ( )
                     
                     document.getElementById ( 'input_de_distancia' ).value = element.distance.text ;
                     document.getElementById ( 'input_de_costo' ).value = ( ( element.distance.value / 1000 ) * 420 ) ;
+                    document.getElementById ( 'input_de_costo_en_dolares' ).value = ( ( ( element.distance.value / 1000 ) * 420 ) / 599 ) ;
                     document.getElementById ( 'input_de_tiempo_estimado' ).value = element.duration.text ;
                     // alert ( element.duration.value / 60 ) ;
                     document.getElementById ( 'input_de_distancia_2' ).value = element.duration.value ;

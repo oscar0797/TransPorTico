@@ -289,6 +289,7 @@
                             </div>
                             <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
                                 <input id="input_de_costo" type="text" class="form-control" readonly/>
+                                <input id="input_de_costo_en_dolares" type="hidden"/>
                             </div>
                             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-center clase_No_1">
                                 <label class="radio-inline">
@@ -338,8 +339,15 @@
                             </div>
                         </div>
                         <div class="tamañoLetraInput form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <div id="paypal-button">
-                                
+                            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                                <label>
+                                    Haga clic para realizar el pago
+                                </label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10" style="margin-top: 2.5% ;">
+                                <div id="paypal-button">
+
+                                </div>
                             </div>
                         </div>
                     </div>

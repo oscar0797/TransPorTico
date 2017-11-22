@@ -95,6 +95,12 @@ paypal.Button.render
 ( {
     env: 'sandbox',
     
+    client:
+    {
+        sandbox: 'AUfQ5jWy3TU8iWv9lE9I6ru82VHZEIbJHNLjlZ7sivbokLDq2p6LgEdpdWCTdlUD4jm2m3et7o6PjhpO',
+        production: 'AQgZCHhzpxC22R81y3hkWRijAsHB8HykRj73aNRurag1-A6aWpeEhjx7p1LRU60AZZMMwpvlx64KNRiW'
+    },
+    
     commit: true,
     
     style:
@@ -105,13 +111,33 @@ paypal.Button.render
     
     payment: function ( data, actions )
     {
-        alert ( "Ejecutando el payment" ) ;
         registrarHistorial ( ) ;
+        
+        var costo =  $ ( "#input_de_costo_en_dolares" ).val ( ).substring ( 0, 4 ) ;
+        
+        return actions.payment.create
+        ( {
+            payment:
+            {
+                transactions:
+                [
+                    {
+                        amount: { total: costo, currency: 'USD' }
+                    }
+                ]
+            }
+        } ) ;
     },
     
     onAuthorize: function ( data, actions )
     {
-        alert ( "Ejecutando el onAuthorize" ) ;
+        return action.payment.execute ( ).then
+        (
+            function ( payment )
+            {
+                alert ( "Pago realizado con éxito" ) ;
+            }
+        ) ;
     },
     
     onCancel: function ( data, actions )
