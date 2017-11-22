@@ -8,7 +8,10 @@ $(document).ready(function () {
     consultarChoferes(1);
     consultarChoferesAutoComplete();
     //paginador(1);
-    	
+
+    $("#mensajeAlertaChofer").hide();
+    $("#mesajeResultNegChofer").removeClass();
+
     $("form").submit(function (event) {
         if (validar() === false) {
             event.preventDefault();
@@ -20,7 +23,7 @@ $(document).ready(function () {
 });
 
 function registraChofer() {
-       if (validar()) {
+    if (validar()) {
         $.ajax({
             url: '../ChoferServlet',
             data: {
@@ -42,12 +45,12 @@ function registraChofer() {
                     mostrarModal("myModal", "Se genero un error", respuestaTxt);
                 } else {
                     consultarChoferes(1);
-                    if($("#choferAction").val() === "agregarChofer"){
-                    alert( $("#inputNombre").val() + " ha sido guardado con éxito.");
-                    limpiarForm();
-                }else{
-                    alert( $("#inputNombre").val() + " ha sido editado con éxito.");
-                }
+                    if ($("#choferAction").val() === "agregarChofer") {
+                        alert($("#inputNombre").val() + " ha sido guardado con éxito.");
+                        limpiarForm();
+                    } else {
+                        alert($("#inputNombre").val() + " ha sido editado con éxito.");
+                    }
                 }
             },
             type: "POST",
@@ -57,7 +60,7 @@ function registraChofer() {
         mostrarMensajeChofer("alert alert-danger", "Debe digitar los campos del formulario", "Error!");
         $("#collapseOne").addClass('show');
     }
-    $("#choferAction").val("#agregarChofer");   
+    $("#choferAction").val("#agregarChofer");
 }
 
 function limpiarForm() {
@@ -182,19 +185,19 @@ function mostrarMensajeChofer(classCss, msg, neg) {
 }
 
 /*
-function mostrarMensaje(name, classCss, msg, neg) {
-    //se le eliminan los estilos al mensaje
-    $("#" + name).removeClass();
-
-    //se setean los estilos
-    $("#" + name).addClass(classCss);
-
-    //se muestra la capa del mensaje con los parametros del metodo
-    $("#" + name).fadeIn("slow");
-    $(".mesajeResultNeg").html(neg);
-    $(".mesajeResultText").html(msg);
-    $(".mesajeResultText").html(msg);
-}*/
+ function mostrarMensaje(name, classCss, msg, neg) {
+ //se le eliminan los estilos al mensaje
+ $("#" + name).removeClass();
+ 
+ //se setean los estilos
+ $("#" + name).addClass(classCss);
+ 
+ //se muestra la capa del mensaje con los parametros del metodo
+ $("#" + name).fadeIn("slow");
+ $(".mesajeResultNeg").html(neg);
+ $(".mesajeResultText").html(msg);
+ $(".mesajeResultText").html(msg);
+ }*/
 
 function paginador(pagAct, tam) {
     var ini = 1;
@@ -212,7 +215,7 @@ function paginador(pagAct, tam) {
             $("#paginacionOpc").append('<li onclick="consultarChoferes(' + ini + '),paginador(' + ini + ',' + tam + ') "><a>' + ini + '</a></li>');
         }
     }
-    $("#paginacionOpc").append('<li onclick="consultarChoferes(' + (ini - 1) + '), paginador(' + (ini -1) + ',' + tam +')"><a>&raquo;</a></li>');
+    $("#paginacionOpc").append('<li onclick="consultarChoferes(' + (ini - 1) + '), paginador(' + (ini - 1) + ',' + tam + ')"><a>&raquo;</a></li>');
 }
 
 function validar() {
@@ -342,7 +345,7 @@ function verificaCedulaEdicion(chofer) {
         success: function (data) {
             var respuestaTxt = data.substring(2);
             var tipoRespuesta = data.substring(0, 2);
-            if (tipoRespuesta !== "E~" || cedulaa === chofer.cedula) { 
+            if (tipoRespuesta !== "E~" || cedulaa === chofer.cedula) {
                 $("#inputCedula").val(cedulaa);
                 $("#inputCedula").addClass("correcto");
                 $("#collapseOne").addClass('show');
@@ -388,12 +391,12 @@ function buscarPorCedula() {
             alert("No se encontró al chofer, digite una nueva busqueda");
         },
         success: function (data) {
-      //      alert( data[0].cedula);
-          //  var respuestaTxt = data.substring(2);
-          //  var tipoRespuesta = data.substring(0, 2);
-            if (id === data[0].cedula){
-              //  alert("entro al if");
-               
+            //      alert( data[0].cedula);
+            //  var respuestaTxt = data.substring(2);
+            //  var tipoRespuesta = data.substring(0, 2);
+            if (id === data[0].cedula) {
+                //  alert("entro al if");
+
                 dibujarTabla(1, data);
             } else {
                 alert("No se encontró al usuario, digite una nueva busqueda");

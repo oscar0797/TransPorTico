@@ -4,7 +4,21 @@
     Author     : Oscar
 --%>
 
+<%@page import="cr.ac.una.prograiv.project.domain.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+    HttpSession sesion = request.getSession(true);
+    Integer tipoUsuario = 0;
+    Usuario usuario = null;
+    if (sesion != null) {
+        if (sesion.getAttribute("usuario") == null) {
+        } else {
+            tipoUsuario = (Integer) sesion.getAttribute("tipoUsuario");
+            usuario = (Usuario) sesion.getAttribute("usuario");
+        }
+    }
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,7 +30,8 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBe7lRExeChAWuRiEpRkE-l8aldatSkkAw&libraries=places"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="../CSS/CSS_Servicio.css" rel="stylesheet" type="text/css"/>      
+        <link href="../CSS/CSS_Servicio.css" rel="stylesheet" type="text/css"/>  
+        
 
         <script src="../JS/datetimepicker.js" type="text/javascript"></script>
         <script src="../JS/Geolocalizacion.js" type="text/javascript"></script>
@@ -29,6 +44,16 @@
         <script src="../JS/HistorialJS.js" type="text/javascript"></script>
     </head>
     <body id="imagenFondoServicio">
+        <div class="container">
+            <div id="sesionContent" class="collapse modal fade">
+                <button style="color: red;" data-toggle="collapse" href="#sesionContent" class="close btn-danger" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
+                <p><b>Usuario :</b> <% out.print(usuario.getNombreUsuario()); %></p>
+                <p><b>Nombre :</b> <% out.print(usuario.getNombre() + " " + usuario.getApellido1() + " " + usuario.getApellido2()); %></p>
+                <p><b>Teléfono :</b> <% out.print(usuario.getTelefono()); %></p>
+                <p><b>Correo :</b> <% out.print(usuario.getCorreo());%></p>
+                <a href="../SecciónPública/Inicio.jsp" class="center-block"><button type="button" class="btn btn-danger" > Cerrar sesión</button></a> 
+            </div>
+        </div>   
         <div id="encabezado">
             <h1>
                 Trans~Por~Tico
@@ -50,10 +75,11 @@
                         <li><a href="SecciónCliente.jsp" class="btn-lg glyphicon glyphicon"><b>Servicio</b></a></li>
                         <li class="active"><a href="HistorialCliente.jsp" class="btn-lg glyphicon glyphicon"> Historial</a></li>
                     </ul>
-                    <div class="nav navbar-nav navbar-right" id="menuLogSign">
-                        <button type="button" class="btn-lg btn-primary glyphicon glyphicon-user" data-toggle="modal" data-target="#myModalRegistro"> Registrarse</button>
-                        <button type="button" class="btn-lg btn-primary glyphicon glyphicon-log-in" data-toggle="modal" data-target="#myModalIngreso"> Entrar</button>
-                    </div>
+                    <div id="modalCliente">
+                        <a data-toggle="collapse" href="#sesionContent" aria-expanded="true" aria-controls="sesionContent">
+                            <p class="btn-warning btn-lg "><span class="glyphicon glyphicon-user"></span>Usuario Actual</p>                                    
+                        </a>
+                    </div>                     
                 </div>
             </nav>
         </div>
