@@ -26,6 +26,7 @@
         <script src="../JS/Publico.js" type="text/javascript"></script>        
         <script src="../JS/UsuarioJS.js" type="text/javascript"></script>
         <script src="../JS/Validaciones.js" type="text/javascript"></script>
+        <script src="../JS/HistorialJS.js" type="text/javascript"></script>
     </head>
     <body id="imagenFondoServicio">
         <div id="encabezado">
@@ -56,38 +57,20 @@
                 </div>
             </nav>
         </div>
-        <table class="table-bordered">
-            <lu>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </lu>
-            <lu>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </lu>
-            <lu>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </lu>
-            <lu>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </lu>
-            <lu>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </lu>
-        </table>
+        
+        <!------------------------------------------------------------------------------------------>
+        <!------------- TABLA DATOS  USUARIO----------------------------------------->
+        <!------------------------------------------------------------------------------------------>
+
+        <div class="card bg-light mb-3" style="max-width: 100%;">
+            <div><br></div>
+            <div class="card-body" id="imagenFondoo">
+                <table class="table table-hover table-condensed table-responsive table-bordered" id="tablaHistorial"></table>
+            </div>
+            <div class="card-footer">
+                <li class="pagination pagination-sm"  align-content="center" id="paginacionOpc"></ul>
+            </div>
+        </div>
         <!-- ********************************************************** -->
         <!-- MODAL FORMULARIO REGISTRO -->
         <!-- ********************************************************** -->

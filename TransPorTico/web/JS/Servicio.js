@@ -304,3 +304,33 @@ function Calcular_la_distancia_del_vehiculo ( coordenadas_de_los_vehiculos, data
         }
     } ) ;
 }
+
+function Geocodificador_inverso ( latitud, longitud )
+{
+    var Geocodificador = new google.maps.Geocoder ;
+    
+    Geocodificador.geocode
+    (
+        {
+            'location': { latitud, longitud }
+        },
+        function ( results, status )
+        {
+            if ( status === 'OK' )
+            {
+                if ( results [ 1 ] )
+                {
+                    return results [ 1 ].formatted_address ;
+                }
+                else
+                {
+                    aler ( 'No results found' ) ;
+                }
+            }
+            else
+            {
+                alert ( "Geocoder failed due to: " + status ) ;
+            }
+        }
+    ) ;
+}
