@@ -7,21 +7,24 @@
 
 $ ( document ).ready ( function ( )
 {
-    consultarHistorial ( 1 ) ;
+    consultarHistorialUsuario ( 1 ) ;
 } ) ;
 
-function consultarHistorial ( numpag )
+function consultarHistorialUsuario ( numpag )
 {
+    alert ( $( "#userServiceInput" ).val ( ) ) ;
+    
     $.ajax
     ( {
         url: '../HistorialServlet',
         data:
         {
-            accion: "consultarHistorial"
+            accion: "consultarHistorialUsuario",
+            FKidUsuario: $( "#userServiceInput" ).val ( )
         },
         error: function ( )
         {
-            dibujarTabla ( numpag ) ;
+            alert ( "Adios mundo" ) ;
         },
         success: function ( data )
         {
@@ -32,7 +35,7 @@ function consultarHistorial ( numpag )
     } ) ;
 }
 
-function dibujarTabla ( numpag, data )
+function dibujarTablaHistorialUsuario ( numpag, data )
 {
     $( "#tablaHistorial" ).html ( "" ) ;
     var head = $( "<thead />" ) ;

@@ -97,6 +97,9 @@
                 <li class="pagination pagination-sm"  align-content="center" id="paginacionOpc"></ul>
             </div>
         </div>
+        <div>
+            <input type="hidden" id="userServiceInput" value="<%out.print ( usuario.getPkIdUsuario() );%>"/>
+        </div>
         <!-- ********************************************************** -->
         <!-- MODAL FORMULARIO REGISTRO -->
         <!-- ********************************************************** -->

@@ -86,7 +86,11 @@ public class HistorialServlet extends HttpServlet {
                     out.print ( json ) ;
                     break ;
                     
-                
+                case "consultarHistorialUsuario":
+                    String dato = request.getParameter ( "FKidUsuario" ) ;
+                    json = new Gson ( ).toJson ( HBL1.findByQuery ( "FROM Historial WHERE FK_idUsuario=" + dato ) ) ;
+                    out.print ( json ) ;
+                    break ;
                 
                 default:
                     out.print ( "E~No se indico la acción que se desea realizar" ) ;
