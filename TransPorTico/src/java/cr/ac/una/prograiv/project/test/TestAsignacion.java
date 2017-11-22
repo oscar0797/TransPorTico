@@ -22,7 +22,7 @@ public class TestAsignacion {
         //deleteAsignacion(1);
         //findAllAsignacion();
         //findIdAsignacion(1);
-
+findChofers("16");
     }
 
     public static void saveAsignacion() {
@@ -61,10 +61,8 @@ public class TestAsignacion {
 
     public static void findChofers(String key) {
         AsignacionBL bl = new AsignacionBL();
-        List<Asignacion> c;
-        c = bl.findByQuery("select chofer.nombre , chofer.tipoLicencia FROM\n"
-                + " transporte.chofer, transporte.asignacion \n"
-                + " where asignacion.FK_idVehiculo =" + key + " and asignacion.FK_idChofer = chofer.PK_idChofer");
+        List c;
+        c = bl.findByQuery("SELECT new list( nombre,tipoLicencia)"+"FROM Chofer, Asignacion where FK_idVehiculo =" + "'" + key + "'" + " and FK_idChofer = PK_idChofer");
         System.out.println(c.size());
     }
 

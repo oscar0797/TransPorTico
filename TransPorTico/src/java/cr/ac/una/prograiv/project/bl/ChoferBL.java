@@ -5,8 +5,8 @@
  */
 package cr.ac.una.prograiv.project.bl;
 
+import cr.ac.una.prograiv.project.domain.Asignacion;
 import cr.ac.una.prograiv.project.domain.Chofer;
-import cr.ac.una.prograiv.project.domain.Usuario;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -57,5 +57,10 @@ public class ChoferBL extends BaseBL implements IBaseBL <Chofer,Integer>{
     @Override
     public List<Chofer> findByQuery(String query) {
         return this.getDAO("cr.ac.una.prograiv.project.domain.Chofer").findByQuery(query);
+    }
+    
+    @Override
+    public List findHQLQuery(String query) {
+        return this.getDAO("cr.ac.una.prograiv.project.domain.Chofer").findHQLQuery(query);
     }
 }

@@ -57,4 +57,8 @@ public class VehiculoBL extends BaseBL implements IBaseBL<Vehiculo,Integer>{
         return this.getDAO("cr.ac.una.prograiv.project.domain.Vehiculo").findByQuery(query);
     }
     
+    @Override
+    public List findHQLQuery(String query) {
+        return this.getDAO("cr.ac.una.prograiv.project.domain.Asignacion").findHQLQuery(query);
+    }
 }

@@ -21,4 +21,5 @@ public interface IBaseDAO <T,K>{
     public abstract void delete(T obj);
     public abstract List<T> findAll();
     public abstract List<T> findByQuery(String query);
+    public abstract List findHQLQuery(String query);
 }

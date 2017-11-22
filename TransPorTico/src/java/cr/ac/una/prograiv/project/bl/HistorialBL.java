@@ -56,5 +56,10 @@ public class HistorialBL extends BaseBL implements IBaseBL<Historial,Integer>{
     public List<Historial> findByQuery(String query) {
         return this.getDAO("cr.ac.una.prograiv.project.domain.Historial").findByQuery(query);
     }
+    
+    @Override
+    public List findHQLQuery(String query) {
+        return this.getDAO("cr.ac.una.prograiv.project.domain.Historial").findHQLQuery(query);
+    }
 }
 

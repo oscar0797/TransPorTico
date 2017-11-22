@@ -104,4 +104,19 @@ public class ChoferDAO extends HibernateUtil implements IBaseDAO<Chofer, Integer
         }
     }
 
+    @Override
+    public List findHQLQuery(String query) {
+        List lista=null;
+        try{
+            iniciarOperacion();
+            lista = getSesion().createQuery(query).list();
+            return lista;
+        }catch(HibernateException he){
+            manejarException(he);
+            throw he;
+        }finally{
+            getSesion().close();
+        }
+        
+    }
 }
