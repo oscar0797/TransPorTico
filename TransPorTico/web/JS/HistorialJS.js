@@ -12,7 +12,7 @@ $ ( document ).ready ( function ( )
 
 function consultarHistorialUsuario ( numpag )
 {
-    alert ( $( "#userServiceInput" ).val ( ) ) ;
+//    alert ( $( "#userServiceInput" ).val ( ) ) ;
     
     $.ajax
     ( {
@@ -28,14 +28,14 @@ function consultarHistorialUsuario ( numpag )
         },
         success: function ( data )
         {
-            alert ( "Hola mundo" ) ;
+            dibujarTablaHistorial ( numpag, data ) ;
         },
         type: 'POST',
         dataType: "json"
     } ) ;
 }
 
-function dibujarTablaHistorialUsuario ( numpag, data )
+function dibujarTablaHistorial ( numpag, data )
 {
     $( "#tablaHistorial" ).html ( "" ) ;
     var head = $( "<thead />" ) ;
@@ -50,4 +50,22 @@ function dibujarTablaHistorialUsuario ( numpag, data )
     row.append ( $( "<th><b>Monto</b></th>" ) ) ;
     row.append ( $( "<th><b>Tiempo de llegada</b></th>" ) ) ;
     row.append ( $( "<th><b>Cometarios</b></th>" ) ) ;
+    
+    var cont = 0 ;
+    var a = 10 * ( numpag - 1 ) ;
+    
+    for ( var a = 0 ; a < data.length && ( cont < 10 ) ; a ++, cont ++ )
+    {
+        dibujarFilaHistorial ( data [ a ] ) ;
+    }
+}
+
+function dibujarFilaHistorial ( data )
+{
+    var row = $( '<tr />' ) ;
+    $ ( "#tablaHistorial" ).append ( row ) ;
+    row.append ( $ ( "<th>" + data.vehiculo + "</th>" ) ) ;
+    Geocodificador_inverso ( row, data, "origen" ) ;
+    Geocodificador_inverso ( row, data, "destino" ) ;
+    Geocodificador_inverso ( row, data, "otro" ) ;
 }

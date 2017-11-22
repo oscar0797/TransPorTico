@@ -165,7 +165,7 @@ function registrarHistorial ( )
                 accion: "agregarHistorial",
                 FKidVehiculo: $( "#seleccionar_vehiculo" ).val ( ),
                 FKidChofer: "1",
-                FKidUsuario: "1",
+                FKidUsuario: $( "#userServiceInput" ).val ( ),
                 origenX: $( "#x_de_origen" ).val ( ) ,
                 origenY: $( "#y_de_origen" ).val ( ),
                 destinoX: $( "#x_de_destino" ).val ( ),

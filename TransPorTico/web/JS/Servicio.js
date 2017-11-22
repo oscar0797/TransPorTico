@@ -305,14 +305,25 @@ function Calcular_la_distancia_del_vehiculo ( coordenadas_de_los_vehiculos, data
     } ) ;
 }
 
-function Geocodificador_inverso ( latitud, longitud )
+function Geocodificador_inverso ( row, data, aux )
 {
+    alert ( "Ejecutando Geocodificador_inverso" ) ;
+    
+    if ( aux === "origen" )
+    {
+        coordenadas = { lat: data.origenX, lng: data.origenY }
+    }
+    else
+    {
+        coordenadas = { lat: data.destinoX, lng: data.destinoY }
+    }
+    
     var Geocodificador = new google.maps.Geocoder ;
     
     Geocodificador.geocode
     (
         {
-            'location': { latitud, longitud }
+            'location': coordenadas
         },
         function ( results, status )
         {
@@ -320,7 +331,18 @@ function Geocodificador_inverso ( latitud, longitud )
             {
                 if ( results [ 1 ] )
                 {
-                    return results [ 1 ].formatted_address ;
+                    if ( aux === "otro" )
+                    {
+                        for ( var a = 0 ; a < 1000 ; a ++ )
+                        {
+                            
+                        }
+                        row.append ( $ ( "<th>" + data.monto + "</th>" ) ) ;
+                    }
+                    else
+                    {
+                        row.append ( $ ( "<th>" +  results [ 1 ].formatted_address + "</th>" ) ) ;
+                    }
                 }
                 else
                 {
