@@ -10,6 +10,10 @@ $(document).ready(function () {
     consultarVehiculos(1);
     consultarChoferes2();
     consultarVehiculos2();
+    
+    $("#mensajeAlertaVehiculo").hide();
+    $("#mesajeResultNegVehiculo").removeClass();
+    
     // paginador(1);
     $("form").submit(function (event) {
         if (validarInputsVacios() === false) {

@@ -328,12 +328,18 @@ li a:hover {
     background-image: url(../Imágenes/Fondos/fondoServicio.jpg);
     color: white;
 }
+
 #topModal{
     top:-50%;
     outline: none;
 }
+
 #modalUser{
     position:absolute;
     top:4%;
     margin-left: 81%;
+}
+
+#myModal{
+    background: red;
 }
