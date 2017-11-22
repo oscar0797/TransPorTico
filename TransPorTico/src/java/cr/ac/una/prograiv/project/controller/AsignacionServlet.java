@@ -78,6 +78,10 @@ public class AsignacionServlet extends HttpServlet {
                     json = gson.toJson(asigBL.findAll());
                     out.print(json);
                     break;
+                    case "listaChoferes":
+                    json = gson.toJson(asigBL.findByQuery("FROM Chofer WHERE cedula=" + request.getParameter("cedula")));
+                    out.print(json);
+                    break;
                 default:
                     out.print("E~No se indico la acción que se desea realizar");
                     break;
