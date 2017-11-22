@@ -10,6 +10,9 @@ $(document).ready(function () {
     consultarUsuarios(1);
     consultarUsuariosAutoComplete();
     // paginador(1);
+    
+    $("#mensajeAlert").hide();
+    $("#mesajeResultNeg").removeClass();
 
     $("form").submit(function (event) {
         if (validar() === false){
