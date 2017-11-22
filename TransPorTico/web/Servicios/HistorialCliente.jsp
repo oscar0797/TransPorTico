@@ -45,7 +45,7 @@
     <body id="imagenFondoServicio">
         <div class="container">
             <div id="sesionContent" class="collapse modal fade">
-                <button style="color: #FF0101;" data-toggle="collapse" href="#collapseOne" class="close btn-danger" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
+                <button style="color: red;" data-toggle="collapse" href="#sesionContent" class="close btn-danger" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
                 <p><b>Usuario :</b> <% out.print(usuario.getNombreUsuario()); %></p>
                 <p><b>Nombre :</b> <% out.print(usuario.getNombre() + " " + usuario.getApellido1() + " " + usuario.getApellido2()); %></p>
                 <p><b>Teléfono :</b> <% out.print(usuario.getTelefono()); %></p>
@@ -74,9 +74,9 @@
                         <li><a href="SecciónCliente.jsp" class="btn-lg glyphicon glyphicon"><b>Servicio</b></a></li>
                         <li class="active"><a href="HistorialCliente.jsp" class="btn-lg glyphicon glyphicon"> Historial</a></li>
                     </ul>
-                    <div id="modalCliente" class=" col-sm-2 col-md-2 col-lg-2" border="2px">
+                    <div id="modalCliente">
                         <a data-toggle="collapse" href="#sesionContent" aria-expanded="true" aria-controls="sesionContent">
-                            <p class="estilo2 btn-warning btn-lg "><span class="glyphicon glyphicon-user"></span>Usuario Actual</p>                                    
+                            <p class="btn-warning btn-lg "><span class="glyphicon glyphicon-user"></span>Usuario Actual</p>                                    
                         </a>
                     </div>                     
                 </div>

@@ -41,7 +41,7 @@
     <body >
         <div class="container ">
             <div id="sesionCont" class="collapse modal fade">
-                <button style="color: #FF0101;" data-toggle="collapse" href="#collapseOne" class="close btn-danger" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
+                <button style="color: #FF0101;" data-toggle="collapse" href="#sesionCont" class="close btn-danger" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
                 <p><b>Usuario :</b> <% out.print(usuario.getNombreUsuario()); %></p>
                 <p><b>Nombre :</b> <% out.print(usuario.getNombre() + " " + usuario.getApellido1() + " " + usuario.getApellido2()); %></p>
                 <p><b>Teléfono :</b> <% out.print(usuario.getTelefono()); %></p>
