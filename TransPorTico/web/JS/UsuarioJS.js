@@ -585,7 +585,7 @@ function doSearch(data) {
 }*/
 
 function buscarUsuario() {
-   // alert($("#buscarUsu").val());
+    alert($("#buscarUsu").val());
     var nombree = $("#buscarUsu").val();
     $.ajax({
         url: '../UsuarioServlet',
@@ -599,11 +599,12 @@ function buscarUsuario() {
             alert("No se encontró al usuario, digite una nueva busqueda");
         },
         success: function (data) {
-          //  alert( data[0].nombreUsuario);
-          //  var respuestaTxt = data.substring(2);
-          //  var tipoRespuesta = data.substring(0, 2);
+            alert("repuesta");
+            alert( data[0].nombreUsuario);
+            //var respuestaTxt = data.substring(2);
+            //var tipoRespuesta = data.substring(0, 2);
             if (nombree === data[0].nombreUsuario){
-                //alert("entro al if");
+                alert("entro al if");
                
                 dibujarTabla(1, data);
             } else {

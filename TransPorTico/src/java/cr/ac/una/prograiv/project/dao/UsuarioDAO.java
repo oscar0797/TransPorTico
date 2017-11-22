@@ -94,7 +94,7 @@ public class UsuarioDAO extends HibernateUtil implements IBaseDAO<Usuario, Integ
         try {
             List<Usuario> usuarios;
             iniciarOperacion();
-            usuarios = (List<Usuario>) getSesion().createQuery(query).list();
+            usuarios = getSesion().createQuery(query).list();
             return usuarios;
         } catch (HibernateException he) {
             manejarException(he);
