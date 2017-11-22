@@ -79,7 +79,8 @@ public class AsignacionServlet extends HttpServlet {
                     out.print(json);
                     break;
                     case "listaChoferes":
-                    json = gson.toJson(asigBL.findByQuery("FROM Chofer WHERE cedula=" + request.getParameter("cedula")));
+                        String key= request.getParameter("idVehiculo");
+                    json = gson.toJson(asigBL.findHQLQuery("FROM Chofer , Asignacion  where FK_idVehiculo =" + "'" + key + "'" + " and FK_idChofer = PK_idChofer"));
                     out.print(json);
                     break;
                 default:

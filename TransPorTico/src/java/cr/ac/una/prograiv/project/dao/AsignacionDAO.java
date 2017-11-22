@@ -7,6 +7,7 @@ package cr.ac.una.prograiv.project.dao;
 
 import cr.ac.una.prograiv.project.domain.Asignacion;
 import cr.ac.una.prograiv.project.utils.HibernateUtil;
+import java.util.LinkedHashMap;
 import java.util.List;
 import org.hibernate.HibernateException;
 
@@ -90,14 +91,31 @@ public class AsignacionDAO extends HibernateUtil implements IBaseDAO<Asignacion,
         List<Asignacion> asignaciones;
         try{
             iniciarOperacion();
-            asignaciones = (List<Asignacion>) getSesion().createQuery(query);
+            asignaciones = getSesion().createQuery(query).list();
+            return asignaciones;
         }catch(HibernateException he){
             manejarException(he);
             throw he;
         }finally{
             getSesion().close();
         }
-        return asignaciones;
+        
+    }
+    
+    @Override
+    public List findHQLQuery(String query) {
+        List lista=null;
+        try{
+            iniciarOperacion();
+            lista = getSesion().createQuery(query).list();
+            return lista;
+        }catch(HibernateException he){
+            manejarException(he);
+            throw he;
+        }finally{
+            getSesion().close();
+        }
+        
     }
 }
 

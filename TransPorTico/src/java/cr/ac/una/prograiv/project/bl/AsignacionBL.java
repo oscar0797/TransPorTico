@@ -56,5 +56,10 @@ public class AsignacionBL extends BaseBL implements IBaseBL<Asignacion,Integer>{
     public List<Asignacion> findByQuery(String query) {
         return this.getDAO("cr.ac.una.prograiv.project.domain.Asignacion").findByQuery(query);
     }
+    
+    @Override
+    public List findHQLQuery(String query) {
+        return this.getDAO("cr.ac.una.prograiv.project.domain.Asignacion").findHQLQuery(query);
+    }
 }
 

@@ -23,6 +23,30 @@ $(document).ready(function () {
     desactivaFormVehiculo();
 });
 
+function listarChoferes(id){
+    alert(id);
+    $.ajax({
+        url: '../AsignacionServlet',
+        data: {
+            accion: "listaChoferes",
+            idVehiculo: id
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            //alert("Se presento un error a la hora de cargar la información de los Chofers en la base de datos");
+            mostrarModal("myModal", "Error al cargar en la base de datos");
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el datos
+            alert(data[0].nombre.Chofer.nombre);
+            dibujarTablaChoferes(data);
+            // se oculta el modal esta funcion se encuentra en el utils.js
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+}
+    
+
+
 function consultarChoferes2() {
     //Se envia la información por ajax
     $.ajax({
@@ -236,6 +260,33 @@ function dibujarTabla(numpag, dataJson) {
     }
 }
 
+function dibujarTablaChoferes(dataJson) {
+    //limpia la información que tiene la tabla
+    $("#tablaChoferesVehiculo").html("");
+
+    //muestra el enzabezado de la tabla
+    var head = $("<thead />");
+    var row = $("<tr />");
+    head.append(row);
+    $("#tablaChoferesVehiculo").append(head);
+    row.append($("<th><b>Nombre</b></th>"));
+    row.append($("<th><b>Tipo de licencia</b></th>"));
+    //carga la tabla con el json devuelto
+    
+    for (i=0; i < dataJson.length; i++) {
+        dibujarFilaChoferes(dataJson[i]);
+    }
+}
+
+function dibujarFilaChoferes(rowData) {
+//Cuando dibuja la tabla en cada boton se le agrega la funcionalidad de cargar o eliminar la informacion
+//de una persona    
+    var row = $('<tr />');
+    $("#tablaChoferesVehiculo").append(row);
+    row.append($("<td>" + rowData.nombre + "</td>"));
+    row.append($("<td>" + rowData.tipoLicencia + "</td>"));
+}
+
 function dibujarFila(rowData) {
 //Cuando dibuja la tabla en cada boton se le agrega la funcionalidad de cargar o eliminar la informacion
 //de una persona    
@@ -245,7 +296,7 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.modelo + "</td>"));
     row.append($("<td>" + rowData.ano + "</td>"));
     row.append($("<td>" + rowData.color + "</td>"));
-    row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="modificarVehiculo(' + rowData.pkIdVehiculo + ')">' +
+    row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="listarChoferes(' + rowData.pkIdVehiculo + ')">' +
             '<i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>' +
             '</button>' +
             '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="muestraRegistraAsignacion(' + rowData.pkIdVehiculo + ')">' +

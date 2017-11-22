@@ -70,4 +70,9 @@ public class UsuarioBL extends BaseBL implements IBaseBL<Usuario, Integer> {
     public List<Usuario> findByQuery(String query) {
         return this.getDAO(Usuario.class.getName()).findByQuery(query);
     }
+    
+    @Override
+    public List findHQLQuery(String query) {
+        return this.getDAO("cr.ac.una.prograiv.project.domain.Usuario").findHQLQuery(query);
+    }
 }

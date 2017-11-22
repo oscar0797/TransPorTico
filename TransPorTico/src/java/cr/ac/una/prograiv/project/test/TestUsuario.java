@@ -113,7 +113,7 @@ public class TestUsuario {
     public static void findcedula(String key) {
         UsuarioBL bl = new UsuarioBL();
         List<Usuario> c;
-        c = bl.findByQuery("FROM Usuario WHERE nombreUsuario=" + key);
+        c = bl.findByQuery("FROM Usuario WHERE nombreUsuario=" + "'" + key + "'");
         System.out.println(c.size());
     }
 }
