@@ -46,8 +46,7 @@ public class VehiculoServlet extends HttpServlet {
             Validaciones val = new Validaciones();
             String accion = request.getParameter("accion");
             switch (accion) {
-                case "agregarVehiculo":
-                case "modificarVehiculo":
+                case "agregarVehiculo": case "modificarVehiculo":
 
                     if (accion.equals("modificarVehiculo")) {
                         vehiculo = new Vehiculo(
@@ -62,6 +61,7 @@ public class VehiculoServlet extends HttpServlet {
                                 new Date(),
                                 "anybody"
                         );
+                        int ff = Integer.parseInt(request.getParameter("idVehiculo"));
                         vehiculo.setPkIdVehiculo(Integer.parseInt(request.getParameter("idVehiculo")));
                         vehBL.merge(vehiculo);
                         out.print("C~Vehículo modificado con exito");

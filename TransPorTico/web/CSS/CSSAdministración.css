@@ -318,3 +318,22 @@ li a:hover {
 .normal{
     border: 1px solid gray;
 }
+
+#sesionCont{
+    position:absolute;
+    top:14%;
+    margin-left: 42.5%;
+    width: 20%;
+    height: 25%;
+    background-image: url(../Imágenes/Fondos/fondoServicio.jpg);
+    color: white;
+}
+#topModal{
+    top:-50%;
+    outline: none;
+}
+#modalUser{
+    position:absolute;
+    top:4%;
+    margin-left: 81%;
+}

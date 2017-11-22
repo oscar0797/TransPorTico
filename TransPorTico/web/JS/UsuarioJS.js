@@ -11,7 +11,13 @@ $(document).ready(function () {
     // paginador(1);
 
     $("form").submit(function (event) {
-        if (validar() === false) {
+        if (validar() === false){
+            event.preventDefault();
+        }
+    });
+    
+    $("form").submit(function (event) {
+        if (validarContrasenas() === false ){
             event.preventDefault();
         }
     });
@@ -24,42 +30,47 @@ $(document).ready(function () {
     $("#inputDireccion").click(ayuda("inputDireccion", 'Sólo texto'));
 });
 
-function registraUsuario() {    
+function registraUsuario() {
     if (validar()) {
-        $.ajax({
-            url: '../UsuarioServlet',
-            data: {
-                accion: $("#usuarioAction").val(),
-                nombreUsuario: $("#inputNombreUsuario").val(),
-                contrasena1: $("#inputContrasena1").val(),
-                contrasena2: $("#inputContrasena2").val(),
-                nombre: $("#inputNombre").val(),
-                apellido1: $("#inputApellido1").val(),
-                apellido2: $("#inputApellido2").val(),
-                correo: $("#inputCorreo").val(),
-                fechaNacimiento: $("#inputFechaNacimiento").val(),
-                telefono: $("#inputTelefono").val(),
-                direccion: $("#inputDireccion").val(),
-                tipo: $("#inputTipo").val(),
-                idUsuario: $("#usuarioAux").val()
-            },
-            error: function () {
-                mostrarMensaje("alert alert-danger", "Se generó un error, contacte al administrador (Error del ajax)", "Error!");
-            },
-            success: function (data) {
-                var respuestaTxt = data.substring(2);
-                var tipoRespuesta = data.substring(0, 2);
-                if (tipoRespuesta === "E~") {
-                    mostrarModal("myModal", "Se genero un error", respuestaTxt);
-                } else {
-                    consultarUsuarios(1);
-                    mostrarModal("myModal", "Registro de Usuarios", $("#inputNombre").val() + " agregado con exito");
-                    limpiarForm();
-                }
-            },
-            type: "POST",
-            dataType: "texT"
-        });
+        if (validarContrasenas()) {                       
+            $.ajax({
+                url: '../UsuarioServlet',
+                data: {
+                    accion: $("#usuarioAction").val(),
+                    nombreUsuario: $("#inputNombreUsuario").val(),
+                    contrasena1: $("#inputContrasena1").val(),
+                    contrasena2: $("#inputContrasena2").val(),
+                    nombre: $("#inputNombre").val(),
+                    apellido1: $("#inputApellido1").val(),
+                    apellido2: $("#inputApellido2").val(),
+                    correo: $("#inputCorreo").val(),
+                    fechaNacimiento: $("#inputFechaNacimiento").val(),
+                    telefono: $("#inputTelefono").val(),
+                    direccion: $("#inputDireccion").val(),
+                    tipo: $("#inputTipo").val(),
+                    idUsuario: $("#usuarioAux").val()
+                },
+                error: function () {
+                    mostrarMensaje("alert alert-danger", "Se generó un error, contacte al administrador (Error del ajax)", "Error!");
+                },
+                success: function (data) {
+                    var respuestaTxt = data.substring(2);
+                    var tipoRespuesta = data.substring(0, 2);
+                    if (tipoRespuesta === "E~") {
+                        mostrarModal("myModal", "Se genero un error", respuestaTxt);
+                    } else {
+                        consultarUsuarios(1);
+                        mostrarModal("myModal", "Registro de Usuarios", $("#inputNombre").val() + " agregado con exito");
+                        limpiarForm();
+                    }
+                },
+                type: "POST",
+                dataType: "texT"
+            });
+        } else {
+            mostrarMensaje("alert alert-danger", "Las contraseñas no coinciden", "Error!");
+            $("#collapseOne").addClass('show');
+        }
     } else {
         mostrarMensaje("alert alert-danger", "Debe digitar los campos del formulario", "Error!");
         $("#collapseOne").addClass('show');
@@ -149,19 +160,19 @@ function mostrarMensaje(classCss, msg, neg) {
 
 
 /*
-function mostrarMensaje(name, classCss, msg, neg) {
-    //se le eliminan los estilos al mensaje
-    $("#" + name).removeClass();
-
-    //se setean los estilos
-    $("#" + name).addClass(classCss);
-
-    //se muestra la capa del mensaje con los parametros del metodo
-    $("#" + name).fadeIn("slow");
-    $(".mesajeResultNeg").html(neg);
-    $(".mesajeResultText").html(msg);
-    $(".mesajeResultText").html(msg);
-}*/
+ function mostrarMensaje(name, classCss, msg, neg) {
+ //se le eliminan los estilos al mensaje
+ $("#" + name).removeClass();
+ 
+ //se setean los estilos
+ $("#" + name).addClass(classCss);
+ 
+ //se muestra la capa del mensaje con los parametros del metodo
+ $("#" + name).fadeIn("slow");
+ $(".mesajeResultNeg").html(neg);
+ $(".mesajeResultText").html(msg);
+ $(".mesajeResultText").html(msg);
+ }*/
 
 function paginador(pagAct, tam) {
     var ini = 1;
@@ -249,7 +260,19 @@ function validar() {
     if ($("#inputTipo").val() === "") {
         $("#inputTipo").addClass("error");
         validacion = false;
-    }  
+    }
+    return validacion;
+}
+
+function validarContrasenas() {
+    var validacion = true;
+    $("#inputContrasena2").removeClass("error");
+    var contr1 = $("#inputContrasena1").val();
+    var contr2 = $("#inputContrasena2").val();
+    if (contr1 !== contr2) {
+        $("#inputContrasena2").addClass("error");
+        validacion = false;
+    }
     return validacion;
 }
 
@@ -535,7 +558,7 @@ function buscarUsuario() {
             var tt = data.nombreUsuario;
             var respuestaTxt = data.substring(2);
             var tipoRespuesta = data.substring(0, 2);
-            if (nombree === data.nombreUsuario){
+            if (nombree === data.nombreUsuario) {
                 dibujarTabla(1, data);
             } else {
                 alert("No se encontró al usuario, digite una nueva busqueda");

@@ -66,19 +66,16 @@ function llenarAutoComplete(data) {
 
 function registrarVehiculo() {
     if (validarInputsVacios()) {
-        var gg = $("#vehiculoAction").val();
-        var xn = $("#UbicacionX").val( );
-        var ff = $("#UbicacionY").val( );
         $.ajax({
             url: '../VehiculoServlet',
             data: {
                 accion: $("#vehiculoAction").val(),
-                ano: $("#inputAno").val( ),
-                modelo: $("#inputModelo").val( ),
-                placa: $("#inputPlaca").val( ),
-                color: $("#inputColor").val( ),
-                ubicacionX: $("#inputUbicacionX").val( ),
-                ubicacionY: $("#inputUbicacionY").val( )
+                ano: $("#inputAno").val(),
+                modelo: $("#inputModelo").val(),
+                placa: $("#inputPlaca").val(),
+                color: $("#inputColor").val(),
+                ubicacionX: $("#inputUbicacionX").val(),
+                ubicacionY: $("#inputUbicacionY").val()
             },
             error: function () {
                 mostrarMensajeVehiculo("alert alert-danger", "Se generó un error, contacte al administrador (Error del ajax)", "Error!");
@@ -87,11 +84,15 @@ function registrarVehiculo() {
                 var respuestaTxt = data.substring(2);
                 var tipoRespuesta = data.substring(0, 2);
                 if (tipoRespuesta === "E~") {
-                    mostrarModal("myModal", "Se generó un error", respuestaTxt);
+                    mostrarModal("myModal", "Se genero un error", respuestaTxt);
                 } else {
                     consultarVehiculos(1);
-                    mostrarModal("myModal", "Registro de Vehiculos", $("#inputPlaca").val() + " agregado con exito");
+                    if($("#vehiculoAction").val() === "agregarVehiculo"){
+                    alert( $("#inputModelo").val() + " ha sido guardado con éxito.");
                     limpiarForm();
+                }else{
+                    alert( $("#inputPlaca").val() + " ha sido editado con éxito.");
+                }
                 }
             },
             type: "POST",
@@ -351,7 +352,7 @@ function verificaPlacaEdicion(vehiculo) {
                 $("#inputPlaca").addClass("correcto");
                 $("#collapseOne").addClass('show');
                 alert("La placa no se modifica, si la placa es incorrecta, elimine el registro e ingrese uno nuevo");
-                activaForm();
+                activaFormVehiculo();
             } else {
                 $("#inputPlaca").addClass("error");
                 activaFormVehiculo();

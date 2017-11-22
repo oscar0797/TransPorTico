@@ -116,3 +116,11 @@ function limpiarForm() {
 }
 
 
+$('[title="Televisor1"]').popover({
+  html: true,
+  content: $('#tv1Cont')
+  }).click(function() {
+  $('#tv1Cont').show();
+  $(this).popover('show');
+  });
+

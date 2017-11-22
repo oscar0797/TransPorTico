@@ -19,15 +19,14 @@ import java.util.List;
  */
 public class TestVehiculo {
    public static void main(String []args){
-       saveVehiculo();
+       //saveVehiculo();
        //mergeVehiculo(1);
-       //deleteVehiculo(1);
+       deleteVehiculo(3);
        //findAllVehiculo();
        //findIdVehiculo(1);
        //findAllVehiculoActivo ( ) ;
    }
-    public static void saveVehiculo(){
-        
+    public static void saveVehiculo(){        
         for(int i =1; i<=1; i++){
         Vehiculo ve = new Vehiculo(2017,"Modelo1","OCM123","negro",10.006040, -84.108973,false,false,new Date(),"Nadie");
         VehiculoBL bl = new VehiculoBL();
@@ -58,7 +57,7 @@ public class TestVehiculo {
     }
     
     public static void mergeVehiculo(Integer key){
-        Vehiculo ve = new Vehiculo(key,2000,"modelo","placa","negro",10,10,true,true,new Date(),"Nadie");
+        Vehiculo ve = new Vehiculo(key,2000,"kkkk","placa","negro",10,10,true,true,new Date(),"Nadie");
         VehiculoBL bl = new VehiculoBL();
         bl.merge(ve);
     }

@@ -36,13 +36,26 @@
         <script src="../JS/Gestión.js" type="text/javascript"></script>
         <link href="../Imágenes/Inicio/mundo.gif" rel="icon">
         <script src="../JS/Publico.js" type="text/javascript"></script>
-                <meta charset="utf-8">
+        <meta charset="utf-8">
     </head>
     <body >
-        <div  class="container-fluid FondoTB">
-            <h2 class="TB hidden-xs">ADMINISTRACIÓN</h2> 
-            <!--<img class="img-circle" src="../Imágenes/Inicio/mundo.gif" alt=""/> -->
+        <div class="container ">
+            <div id="sesionCont" class="collapse modal fade">
+                <button style="color: #FF0101;" data-toggle="collapse" href="#collapseOne" class="close btn-danger" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
+                <p><b>Usuario :</b> <% out.print(usuario.getNombreUsuario()); %></p>
+                <p><b>Nombre :</b> <% out.print(usuario.getNombre() + " " + usuario.getApellido1() + " " + usuario.getApellido2()); %></p>
+                <p><b>Teléfono :</b> <% out.print(usuario.getTelefono()); %></p>
+                <p><b>Email :</b> <% out.print(usuario.getCorreo());%></p>
+                <a href="../SecciónPública/Inicio.jsp" class="center-block"><button type="button" class="btn btn-danger" > Cerrar sesión</button></a> 
+            </div>
+        </div>         
+
+        <div  class="container-fluid FondoTB">  
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h2 class="TB hidden-xs">ADMINISTRACIÓN</h2>
+            </div>
         </div>
+
         <div class="container-fluid fondo">
             <div class="row">
                 <div class="col-sm-2 padding-0" >
@@ -77,7 +90,11 @@
                 </div>
             </div>
         </div>
-
+        <div id="modalUser" class=" col-sm-2 col-md-2 col-lg-2" border="2px">
+            <a data-toggle="collapse" href="#sesionCont" aria-expanded="true" aria-controls="sesionCont">
+                <p class="estilo2 btn-warning btn-sm "><span class="glyphicon glyphicon-user"></span>Usuario Actual</p>                                    
+            </a>
+        </div>  
         <footer>
             <div class="container-fluid pie">
                 <div class="row">

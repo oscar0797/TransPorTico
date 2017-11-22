@@ -4,6 +4,11 @@
  * and open the template in the editor.
  */
 
+function infoUser(){
+    $("#sesionCont").addClass('show');
+}
+
+
     $('.nav-tabs-dropdown').each(function (i, elm) {
 
         $(elm).text($(elm).next('ul').find('li.active a').text());
