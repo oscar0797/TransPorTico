@@ -45,7 +45,7 @@
                 <p><b>Usuario :</b> <% out.print(usuario.getNombreUsuario()); %></p>
                 <p><b>Nombre :</b> <% out.print(usuario.getNombre() + " " + usuario.getApellido1() + " " + usuario.getApellido2()); %></p>
                 <p><b>Teléfono :</b> <% out.print(usuario.getTelefono()); %></p>
-                <p><b>Email :</b> <% out.print(usuario.getCorreo());%></p>
+                <p><b>Correo :</b> <% out.print(usuario.getCorreo());%></p>
                 <a href="../SecciónPública/Inicio.jsp" class="center-block"><button type="button" class="btn btn-danger" > Cerrar sesión</button></a> 
             </div>
         </div>         

@@ -334,3 +334,19 @@ footer{
     top:4%;
     margin-left: 81%;
 }
+
+#sesionContentHistorial{
+    position:absolute;
+    top:14%;
+    margin-left: 40.5%;
+    width: 25%;
+    height: 30%;
+    background-image: url(../Imágenes/Fondos/fondoServicio.jpg);
+    color: white;
+}
+
+#modalClienteHistorial{
+    position:absolute;
+    top:4%;
+    margin-left: 81%;
+}
