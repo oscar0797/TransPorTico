@@ -9,6 +9,7 @@ var unica="";
 $(document).ready(function () {
     consultarVehiculos(1);
     consultarChoferes2();
+    consultarVehiculos2();
     // paginador(1);
     $("form").submit(function (event) {
         if (validarInputsVacios() === false) {
@@ -31,6 +32,26 @@ function consultarChoferes2() {
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el datos
             llenarAutoComplete(data);
+            // se oculta el modal esta funcion se encuentra en el utils.js
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+}
+
+function consultarVehiculos2() {
+    //Se envia la información por ajax
+    $.ajax({
+        url: '../VehiculoServlet',
+        data: {
+            accion: "consultarVehiculos"
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            //alert("Se presento un error a la hora de cargar la información de los Chofers en la base de datos");
+            mostrarModal("myModal", "Error al cargar en la base de datos");
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el datos
+            llenarAutoCompleteVehiculo(data);
             // se oculta el modal esta funcion se encuentra en el utils.js
         },
         type: 'POST',
@@ -62,6 +83,30 @@ function llenarAutoComplete(data) {
     };
 
     $("#autoChofer").easyAutocomplete(opcions);
+}
+
+function llenarAutoCompleteVehiculo(data) {
+    var opcions = {
+        data,
+        getValue: "placa"
+        ,
+
+        list: {
+            match: {
+                enabled: true
+            }
+        },
+        template: {
+            type: "description",
+            fields: {
+                description: "modelo"
+            }
+        },
+        theme: "dark-light"
+//gris oscuro
+    };
+
+    $("#buscarPlaca").easyAutocomplete(opcions);
 }
 
 function registrarVehiculo() {
@@ -370,4 +415,35 @@ function cargaVehiculo(vehiculo) {
     $("#inputColor").val(vehiculo.color);
    // $("#inputUbicacion").val(  "Modificar aquí..." );
     $("#vehiculoAction").val("modificarVehiculo");
+}
+
+function buscarPorPlaca() {
+    //alert($("#buscarPlaca").val());
+    var plate = $("#buscarPlaca").val();
+    $.ajax({
+        url: '../VehiculoServlet',
+        data: {
+            accion: "buscarPlaca",
+            placa: plate
+        },
+        error: function () {
+            mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
+            $("#buscarPlaca").addClass("error");
+            alert("No se encontró al vehiculo, digite una nueva busqueda");
+        },
+        success: function (data) {
+           // alert( data[0].placa);
+          //  var respuestaTxt = data.substring(2);
+          //  var tipoRespuesta = data.substring(0, 2);
+            if (plate === data[0].placa){
+               // alert("entro al if");
+               
+                dibujarTabla(1, data);
+            } else {
+                alert("No se encontró al usuario, digite una nueva busqueda");
+            }
+        },
+        type: "POST",
+        dataType: "json"
+    });
 }

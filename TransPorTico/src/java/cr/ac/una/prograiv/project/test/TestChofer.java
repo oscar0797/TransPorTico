@@ -17,16 +17,18 @@ import java.util.List;
 public class TestChofer {
 
     public static void main(String[] args) {
-        saveChofer();
+       // saveChofer();
         //mergeChofer(16);
         //deleteChofer();
         //findAllChofer();
         //findIdChofer(1);
         //findbyquery("5555555555");
+        findcedula("578378829");
 
     }
 
     public static void saveChofer() {
+        
         Chofer cho1 = new Chofer("100", "greivin", new Date(), "B1", new Date(), new Date(), "anybody");
         ChoferBL bl1 = new ChoferBL();
         bl1.save(cho1);
@@ -101,5 +103,12 @@ public class TestChofer {
         Chofer c;
         c = bl.findByID(key);
         System.out.println(c.getNombre());
+    }
+    
+    public static void findcedula(String key) {
+        ChoferBL bl = new ChoferBL();
+        List<Chofer> c;
+        c = bl.findByQuery("FROM Chofer WHERE cedula=" + key);
+        System.out.println(c.size());
     }
 }

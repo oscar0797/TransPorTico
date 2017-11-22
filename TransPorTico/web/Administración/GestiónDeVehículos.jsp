@@ -118,10 +118,10 @@
                                 <p>Buscar por placa:</p>
                             </div>
                             <div class="col-sm-3 col-md-3 col-lg-3">                               
-                                <input style="width: 100%" type="text" class="form-control" id="buscar" placeholder="Placa del vehículo" >
+                                <input style="width: 100%" type="text" class="form-control" id="buscarPlaca" placeholder="Placa del vehículo" >
                             </div>
                             <div class="col-md-1">
-                                <button type="button"  class="btn btn-info center-block"  id="btMostarForm" onclick="buscarVehiculo()">
+                                <button type="button"  class="btn btn-info center-block"  id="btMostarForm" onclick="buscarPorPlaca()">
                                     <b>Buscar</b> <span class="glyphicon glyphicon-search"></span></button>
                             </div>
                         </div>
