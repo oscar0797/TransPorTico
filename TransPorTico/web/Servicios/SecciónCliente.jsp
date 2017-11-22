@@ -44,6 +44,17 @@
         <script src="../JS/Validaciones.js" type="text/javascript"></script>
     </head>
     <body id="imagenFondoServicio">
+        <div class="container">
+            <div id="sesionContent" class="collapse modal fade">
+                <button style="color: #FF0101;" data-toggle="collapse" href="#collapseOne" class="close btn-danger" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
+                <p><b>Usuario :</b> <% out.print(usuario.getNombreUsuario()); %></p>
+                <p><b>Nombre :</b> <% out.print(usuario.getNombre() + " " + usuario.getApellido1() + " " + usuario.getApellido2()); %></p>
+                <p><b>Teléfono :</b> <% out.print(usuario.getTelefono()); %></p>
+                <p><b>Correo :</b> <% out.print(usuario.getCorreo());%></p>
+                <a href="../SecciónPública/Inicio.jsp" class="center-block"><button type="button" class="btn btn-danger" > Cerrar sesión</button></a> 
+            </div>
+        </div>   
+
         <div id="encabezado">
             <h1>
                 Trans~Por~Tico
@@ -65,10 +76,11 @@
                         <li class="active"><a href="SecciónCliente.jsp" class="btn-lg glyphicon glyphicon"><b>Servicio</b></a></li>
                         <li><a href="HistorialCliente.jsp" class="btn-lg glyphicon glyphicon"> Historial</a></li>
                     </ul>
-                    <div class="nav navbar-nav navbar-right" id="menuLogSign">
-                        <button type="button" class="btn-lg btn-primary glyphicon glyphicon-user" data-toggle="modal" data-target="#myModalRegistro"> Registrarse</button>
-                        <button type="button" class="btn-lg btn-primary glyphicon glyphicon-log-in" data-toggle="modal" data-target="#myModalIngreso"> Entrar</button>
-                    </div>
+                    <div id="modalCliente" class=" col-sm-2 col-md-2 col-lg-2" border="2px">
+                        <a data-toggle="collapse" href="#sesionContent" aria-expanded="true" aria-controls="sesionContent">
+                            <p class="estilo2 btn-warning btn-lg "><span class="glyphicon glyphicon-user"></span>Usuario Actual</p>                                    
+                        </a>
+                    </div> 
                 </div>
             </nav>
         </div>
@@ -264,7 +276,7 @@
                                 <input id="y_de_destino" type="hidden"/>
                             </div>
                             <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
-                                <button id="Solicitar_viaje" type="button" class="text-center btn btn-info" onclick="solicitar_viaje ( ) ;">
+                                <button id="Solicitar_viaje" type="button" class="text-center btn btn-info" onclick="solicitar_viaje( );">
                                     Vehículos disponibles
                                 </button>
                             </div>
@@ -348,12 +360,14 @@
                                 <div id="paypal-button">
 
                                 </div>
+                                <input type="hidden" id="userServiceInput" value="<%usuario.getPkIdUsuario();%>"/>
                             </div>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
+
         <br></br>
         <footer>
             <div class="container-fluid pie">

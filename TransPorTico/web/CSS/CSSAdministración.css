@@ -322,9 +322,9 @@ li a:hover {
 #sesionCont{
     position:absolute;
     top:14%;
-    margin-left: 42.5%;
-    width: 20%;
-    height: 25%;
+    margin-left: 40.5%;
+    width: 25%;
+    height: 30%;
     background-image: url(../Imágenes/Fondos/fondoServicio.jpg);
     color: white;
 }
