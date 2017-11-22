@@ -23,7 +23,7 @@ function muestraRegistraAsignacion(vehiculo){
 }*/
 
 function registrarAsignacion() {
-    alert($("#autoChofer").val());
+    //alert($("#autoChofer").val());
     mostrarModal("myModal", "Espere por favor..", "Cargando información de la base de datos");
     if (validarAsignacion()) {
         $.ajax({
@@ -44,7 +44,9 @@ function registrarAsignacion() {
                     mostrarModal("myModal", "Se genero un error", respuestaTxt);
                 } else {
                    // consultarAsignacions(1);
+                    ocultarModal("nuevaAsignacion");
                     mostrarModal("myModal", "Registro de Asignacion", $("#inputVehiculo").val() + "->" + $("#autoChofer").val() + " agregado con exito");
+                    ocultarModal("myModal");
                     limpiarForm();
                 }
             },
