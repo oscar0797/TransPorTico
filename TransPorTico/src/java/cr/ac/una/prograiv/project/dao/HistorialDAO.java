@@ -90,14 +90,13 @@ public class HistorialDAO extends HibernateUtil implements IBaseDAO<Historial,In
         List<Historial> historiales;
         try{
             iniciarOperacion();
-            historiales = (List<Historial>) getSesion().createQuery(query);
+            return historiales = getSesion().createQuery(query).list ( ) ;
         }catch(HibernateException he){
             manejarException(he);
             throw he;
         }finally{
             getSesion().close();
         }
-        return historiales;
     } 
     
     @Override

@@ -21,10 +21,11 @@ public class TestHistorial {
 
     public static void main(String[] args) {
         //saveHistorial();
-        mergeHistorial(1);
+        //mergeHistorial(1);
         //deleteHistorial(1);
         //findAllHistorial
         //findIdHostorial(1);
+        consultarHistorialUsuario ( ) ;
     }
 
     public static void saveHistorial() {
@@ -59,5 +60,14 @@ public class TestHistorial {
     public static Historial findIdHostorial(Integer key) {
         HistorialBL bl = new HistorialBL();
         return bl.findByID(key);
+    }
+    
+    public static void consultarHistorialUsuario ( )
+    {
+        List <Historial> vearios ;
+        HistorialBL HBL1 = new HistorialBL ( ) ;
+        vearios = HBL1.findByQuery ( "FROM Historial WHERE FK_idUsuario=1" ) ;
+        vearios.forEach ( ( aux ) -> { System.out.println ( aux.toString ( ) ) ; } ) ; 
+        
     }
 }

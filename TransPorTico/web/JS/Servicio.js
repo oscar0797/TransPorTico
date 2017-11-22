@@ -304,3 +304,55 @@ function Calcular_la_distancia_del_vehiculo ( coordenadas_de_los_vehiculos, data
         }
     } ) ;
 }
+
+function Geocodificador_inverso ( row, data, aux )
+{
+    alert ( "Ejecutando Geocodificador_inverso" ) ;
+    
+    if ( aux === "origen" )
+    {
+        coordenadas = { lat: data.origenX, lng: data.origenY }
+    }
+    else
+    {
+        coordenadas = { lat: data.destinoX, lng: data.destinoY }
+    }
+    
+    var Geocodificador = new google.maps.Geocoder ;
+    
+    Geocodificador.geocode
+    (
+        {
+            'location': coordenadas
+        },
+        function ( results, status )
+        {
+            if ( status === 'OK' )
+            {
+                if ( results [ 1 ] )
+                {
+                    if ( aux === "otro" )
+                    {
+                        for ( var a = 0 ; a < 1000 ; a ++ )
+                        {
+                            
+                        }
+                        row.append ( $ ( "<th>" + data.monto + "</th>" ) ) ;
+                    }
+                    else
+                    {
+                        row.append ( $ ( "<th>" +  results [ 1 ].formatted_address + "</th>" ) ) ;
+                    }
+                }
+                else
+                {
+                    aler ( 'No results found' ) ;
+                }
+            }
+            else
+            {
+                alert ( "Geocoder failed due to: " + status ) ;
+            }
+        }
+    ) ;
+}

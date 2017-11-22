@@ -360,7 +360,7 @@
                                 <div id="paypal-button">
 
                                 </div>
-                                <input type="hidden" id="userServiceInput" value="<%usuario.getPkIdUsuario();%>"/>
+                                <input type="hidden" id="userServiceInput" value="<%out.print ( usuario.getPkIdUsuario() ) ;%>"/>
                             </div>
                         </div>
                     </div>
