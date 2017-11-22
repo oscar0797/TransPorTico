@@ -15,46 +15,57 @@ import java.util.List;
  * @author Oscar
  */
 public class TestAsignacion {
-    
-     public static void main(String []args){
-        saveAsignacion();
+
+    public static void main(String[] args) {
+       // saveAsignacion();
         //mergeAsignacion(1);
         //deleteAsignacion(1);
         //findAllAsignacion();
         //findIdAsignacion(1);
-         
+
     }
-    
-    public static void saveAsignacion(){
-        Asignacion asig = new Asignacion(4,1);
+
+    public static void saveAsignacion() {
+        Asignacion asig = new Asignacion(4, 1);
         AsignacionBL bl = new AsignacionBL();
         bl.save(asig);
         System.out.println("Asignacion guardado con exito");
     }
-    
-    public static void findAllAsignacion(){
+
+    public static void findAllAsignacion() {
         List<Asignacion> asigferes;
         AsignacionBL bl = new AsignacionBL();
         asigferes = bl.findAll();
-        asigferes.forEach((aux) -> {System.out.println(aux.toString());});
+        asigferes.forEach((aux) -> {
+            System.out.println(aux.toString());
+        });
     }
-    
-    public static void mergeAsignacion(Integer Key){
-        Asignacion asig = new Asignacion(1,1,1);
+
+    public static void mergeAsignacion(Integer Key) {
+        Asignacion asig = new Asignacion(1, 1, 1);
         AsignacionBL bl = new AsignacionBL();
         bl.merge(asig);
     }
-    
-     public static void deleteAsignacion(Integer key){ 
-        Asignacion asig = new Asignacion(); 
+
+    public static void deleteAsignacion(Integer key) {
+        Asignacion asig = new Asignacion();
         asig.setPkIdAsignacion(key);
         AsignacionBL bl = new AsignacionBL();
         bl.delete(asig);
     }
-     
-     public static Asignacion findIdAsignacion(Integer key){ 
-        AsignacionBL bl = new AsignacionBL();
-       return bl.findByID(key);
-    }
-}
 
+    public static Asignacion findIdAsignacion(Integer key) {
+        AsignacionBL bl = new AsignacionBL();
+        return bl.findByID(key);
+    }
+
+    public static void findChofers(String key) {
+        AsignacionBL bl = new AsignacionBL();
+        List<Asignacion> c;
+        c = bl.findByQuery("select chofer.nombre , chofer.tipoLicencia FROM\n"
+                + " transporte.chofer, transporte.asignacion \n"
+                + " where asignacion.FK_idVehiculo =" + key + " and asignacion.FK_idChofer = chofer.PK_idChofer");
+        System.out.println(c.size());
+    }
+
+}

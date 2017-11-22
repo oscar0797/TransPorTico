@@ -122,7 +122,9 @@ public class UsuarioServlet extends HttpServlet {
                     }
                     break;
                 case "buscarNombreUsuario":
-                    json = new Gson().toJson(usuBL.findByName(request.getParameter("nombreUsuario")));
+                    String nombre = request.getParameter("nombreUsuario");
+                    System.out.println(nombre);
+                    json = new Gson().toJson(usuBL.findByQuery("FROM Usuario WHERE nombreUsuario=" + nombre));
                     out.print(json);
                     break;
                 default:

@@ -39,7 +39,7 @@
         <script src="../JS/Validaciones.js" type="text/javascript"></script>
         <script src="../JS/Geolocalizacion.js" type="text/javascript"></script>
         <script src="../JS/Mapa_de_vehiculo.js" type="text/javascript"></script>
-        
+
     </head>
     <body class="bg-muted">
         <div class="container-fluid"><br>
@@ -60,7 +60,9 @@
                     </div>
                 </div>
             </div>
+        </div>
 
+        <div class="container-fluid"><br>
             <div  class="modal fade" id="nuevaAsignacion" style="margin-top: 10%" role="dialog">
                 <div class="modal-dialog modal-sm">
                     <div class="modal-content">
@@ -100,11 +102,12 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!------------------------------------------------------------------------------------------>
-            <!------------- ACORDION FORMULARIO  VEHÍCULO ---------------------------------------------->
-            <!------------------------------------------------------------------------------------------>
-
+        <!------------------------------------------------------------------------------------------>
+        <!------------- ACORDION FORMULARIO  VEHÍCULO ---------------------------------------------->
+        <!------------------------------------------------------------------------------------------>
+        <div class="container-fluid">
             <div id="accordion" role="tablist">
                 <div id="imagenFondo" class="card ">
                     <div class="card-header" role="tab" id="headingOne">
@@ -254,7 +257,22 @@
                                     </div>
                                     </div>
                                     </div>
-                                    </div>
+
+
+                                    <div class="container-fluid"><br>
+                                        <div  class="modal fade" id="choferesVehiculo" style="margin-top: 10%" role="dialog">
+                                            <div class="modal-dialog modal-sm">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <h4 class="modal-title" id="myModalTitle">Modal Header</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                            <table class="table table-hover table-condensed table-responsive table-bordered" id="tablaChoferesVehiculo"></table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
