@@ -113,6 +113,12 @@ public class VehiculoServlet extends HttpServlet {
                     }
                     break;
 
+                case "buscarPlaca":
+                    String p = request.getParameter("placa");
+                    json = gson.toJson(vehBL.findByQuery("FROM Vehiculo WHERE placa=" + "'" + p + "'"));
+                    out.print(json);
+                    break;
+
             }
         } catch (NumberFormatException e) {
             out.print("E~" + e.getMessage());

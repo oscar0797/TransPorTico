@@ -25,6 +25,8 @@
         <!------------------------------------------------------------------------------------------>
         <link href="../CSS/CSSAdministración.css" rel="stylesheet" type="text/css"/>
         <link href="../CSS/datetimepicker.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../CSS/easy-autocomplete.css" rel="stylesheet" type="text/css"/>
+        <link href="../CSS/easy-autocomplete.themes.css" rel="stylesheet" type="text/css"/>
         <!------------------------------------------------------------------------------------------>
         <!------------- ARCHIVOS JS----------------------------------------->
         <!------------------------------------------------------------------------------------------>
@@ -34,6 +36,7 @@
         <script src="../JS/Publico.js" type="text/javascript"></script>
         <script src="../JS/ChoferJS.js" type="text/javascript"></script>
         <script src="../JS/Validaciones.js" type="text/javascript"></script>
+        <script src="../JS/jquery.easy-autocomplete.js" type="text/javascript"></script>
 
     </head>
     <body class="bg-muted">
@@ -79,10 +82,10 @@
                                 <p>Buscar por cédula:</p>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">                               
-                                <input style="width: 100%" type="text" class="form-control" id="buscar" placeholder="Cédula del chofer" >
+                                <input style="width: 100%" type="text" class="form-control" id="buscarCel" placeholder="Cédula del chofer" >
                             </div>
                             <div class="col-xs-12 col-md-12 col-md-1 col-lg-1">
-                                <button type="button"  class="btn btn-info center-block"  id="btMostarForm" onclick="buscarChofer()">
+                                <button type="button"  class="btn btn-info center-block"  id="btMostarForm" onclick="buscarPorCedula()">
                                     <b>Buscar</b> <span class="glyphicon glyphicon-search"></span></button>
                             </div>
                         </div>

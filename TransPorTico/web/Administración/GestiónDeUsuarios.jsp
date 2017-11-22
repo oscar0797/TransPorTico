@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBe7lRExeChAWuRiEpRkE-l8aldatSkkAw&libraries=places"></script>
+        
 
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>       
@@ -25,7 +26,9 @@
         <!------------- ARCHIVOS CSS----------------------------------------->
         <!------------------------------------------------------------------------------------------>
         <link href="../CSS/CSSAdministración.css" rel="stylesheet" type="text/css"/>
-        <link href="../CSS/datetimepicker.min.css" rel="stylesheet" type="text/css"/>       
+        <link href="../CSS/datetimepicker.min.css" rel="stylesheet" type="text/css"/>     
+         <link href="../CSS/easy-autocomplete.css" rel="stylesheet" type="text/css"/>
+        <link href="../CSS/easy-autocomplete.themes.css" rel="stylesheet" type="text/css"/>
         <!------------------------------------------------------------------------------------------>
         <!------------- ARCHIVOS JS----------------------------------------->
         <!------------------------------------------------------------------------------------------>
@@ -37,7 +40,7 @@
         <script src="../JS/Validaciones.js" type="text/javascript"></script>
         <script src="../JS/Geolocalizacion.js" type="text/javascript"></script>
         <script src="../JS/Mapa_de_usuario.js" type="text/javascript"></script>
-
+        <script src="../JS/jquery.easy-autocomplete.js" type="text/javascript"></script>
     </head>
     <body class="bg-muted">
         <div class="container-fluid"><br>
@@ -75,7 +78,7 @@
                                 <p>Buscar por nombre de usuario:</p>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">                               
-                                <input style="width: 100%" type="text" class="form-control" id="buscar" placeholder="Nombre de usuario" >
+                                <input style="width: 100%" type="text" class="form-control" id="buscarUsu" placeholder="Nombre de usuario" >
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1">
                                 <button type="button"  class="btn btn-info center-block"  id="btMostarForm" onclick="buscarUsuario()">

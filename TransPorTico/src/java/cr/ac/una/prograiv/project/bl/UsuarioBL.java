@@ -6,6 +6,7 @@
 package cr.ac.una.prograiv.project.bl;
 
 import cr.ac.una.prograiv.project.domain.Usuario;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -33,12 +34,14 @@ public class UsuarioBL extends BaseBL implements IBaseBL<Usuario, Integer> {
         return null;
     }
 
-    public Usuario findByName(String name) {
+    public List<Usuario> findByName(String name) {
         List<Usuario> usuarios = findAll();
+        List<Usuario> users = new LinkedList<>();
         for (Usuario aux : usuarios) {
             if (aux.getNombreUsuario().equals(name)) {
-                return aux;
+                users.add(aux);
             }
+            return users;
         }
         return null;
     }

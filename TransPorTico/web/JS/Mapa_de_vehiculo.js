@@ -3,6 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+var Mapa_de_Google = null ;
+
+const Marcado_del_mapa_de_Google = null ;
+
+var Geocodificador = new google.maps.Geocoder ;
+
 function Dibujar_un_mapa ( )
 {
     // alert ( "Hola mapa" ) ;
@@ -23,7 +29,7 @@ function Dibujar_un_mapa ( )
                 zoom: 14
             }
 
-            const Mapa_de_Google = new google.maps.Map ( mapa, Objeto_de_configuracion_del_mapa ) ;
+            Mapa_de_Google = new google.maps.Map ( mapa, Objeto_de_configuracion_del_mapa ) ;
         },
         1000
     ) ;
@@ -45,9 +51,9 @@ function Obtener_ubicacion ( )
             zoom: 15
         }
             
-        const Mapa_de_Google = new google.maps.Map ( mapa, Objeto_de_configuracion_del_mapa ) ;
+        Mapa_de_Google = new google.maps.Map ( mapa, Objeto_de_configuracion_del_mapa ) ;
         
-        const Marcador_del_mapa_de_Google = new google.maps.Marker (
+        Marcador_del_mapa_de_Google = new google.maps.Marker (
         {
             position:
             {
@@ -58,7 +64,7 @@ function Obtener_ubicacion ( )
             title: 'Ubicación actual'
         } ) ;
 
-        var Geocodificador = new google.maps.Geocoder ;
+//        var Geocodificador = new google.maps.Geocoder ;
         
         var coordenadas_geograficas =
         {
@@ -127,4 +133,36 @@ function Obtener_ubicacion ( )
             // alert ( Marcador_del_mapa_de_Google.getPosition ( ) ) ;
         } ) ;
     } ) ;
+}
+
+function edicion_de_ubicacion ( latitud, longitud )
+{
+    Marcador_del_mapa_de_Google.setPosition ( { lat: latitud, lng: longitud } ) ;
+    
+    Mapa_de_Google.setCenter ( { lat: latitud, lng: longitud } ) ;
+    
+    Geocodificador.geocode
+    (
+        {
+            'location': { lat: latitud, lng: longitud }
+        },
+        function ( results, status )
+        {
+            if ( status === 'OK' )
+            {
+                if ( results [ 1 ] )
+                {
+                    document.getElementById ( 'inputUbicacion' ).value = results [ 1 ].formatted_address ;
+                }
+                else
+                {
+                    aler ( 'No results found' ) ;
+                }
+            }
+            else
+            {
+                alert ( 'Geocoder failed due to: ' + status ) ;
+            }
+        }
+    ) ;
 }

@@ -7,6 +7,7 @@ package cr.ac.una.prograiv.project.bl;
 
 import cr.ac.una.prograiv.project.domain.Chofer;
 import cr.ac.una.prograiv.project.domain.Usuario;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -25,6 +26,19 @@ public class ChoferBL extends BaseBL implements IBaseBL <Chofer,Integer>{
         this.getDAO(obj.getClass().getName()).merge(obj);
     }
 
+    
+    public List<Chofer> findByCedula(String cedula) {
+        List<Chofer> drivers = findAll();
+        List<Chofer> choferes = new LinkedList<>();
+        for (Chofer aux : drivers) {
+            if (aux.getCedula().equals(cedula)) {
+                choferes.add(aux);
+            }
+            return choferes;
+        }
+        return null;
+    }
+    
     @Override
     public Chofer findByID(Integer key) {
         return (Chofer) this.getDAO("cr.ac.una.prograiv.project.domain.Chofer").findByID(key);
