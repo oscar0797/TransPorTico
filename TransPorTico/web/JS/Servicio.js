@@ -245,7 +245,7 @@ google.maps.event.addDomListener ( window, "load", function ( )
                     document.getElementById ( 'input_de_costo' ).value = ( ( element.distance.value / 1000 ) * 420 ) ;
                     document.getElementById ( 'input_de_tiempo_estimado' ).value = element.duration.text ;
                     // alert ( element.duration.value / 60 ) ;
-                    document.getElementById ( 'input_de_distancia_2' ).value = element.duration.value / 60 ;
+                    document.getElementById ( 'input_de_distancia_2' ).value = element.duration.value ;
                 }
             }
         }
@@ -291,6 +291,8 @@ function Calcular_la_distancia_del_vehiculo ( coordenadas_de_los_vehiculos, data
                     if ( element.distance.value < 5000 )
                     {                    
                         $ ( "#seleccionar_vehiculo" ).append ( $ ( "<option value=" + data[ b ].pkIdVehiculo + ">" + data [ b ].placa + "</option>" ) ) ;
+                        
+//                        alert ( data [ b ].pkIdVehiculo ) ;
                     }
                 }
             }

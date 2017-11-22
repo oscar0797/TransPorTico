@@ -29,6 +29,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBe7lRExeChAWuRiEpRkE-l8aldatSkkAw&libraries=places"></script>
+        <script src="https://www.paypalobjects.com/api/checkout.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="../CSS/CSS_Servicio.css" rel="stylesheet" type="text/css"/>      
 
@@ -287,7 +288,7 @@
                                 </label>
                             </div>
                             <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-                                <input id="input_de_costo" type="number" class="form-control" readonly/>
+                                <input id="input_de_costo" type="text" class="form-control" readonly/>
                             </div>
                             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-center clase_No_1">
                                 <label class="radio-inline">
@@ -323,6 +324,22 @@
                                     <option>Audi RS6</option>
                                     <option>Audi S8+</option>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="tamañoLetraInput form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                                <label for="conductor">
+                                    Conductor: 
+                                </label>
+                            </div>
+                            <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+                                <input id="chofer_del_vehículo" type="text" class="form-control" readonly/>
+                                <input id="id_del_chofer" type="hidden"/>
+                            </div>
+                        </div>
+                        <div class="tamañoLetraInput form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div id="paypal-button">
+                                
                             </div>
                         </div>
                     </div>
