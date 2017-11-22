@@ -11,6 +11,7 @@ import cr.ac.una.prograiv.project.bl.HistorialBL;
 import cr.ac.una.prograiv.project.domain.Historial;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -44,6 +45,46 @@ public class HistorialServlet extends HttpServlet {
             Historial H1 = new Historial ( ) ;
             HistorialBL HBL1 = new HistorialBL ( ) ;
             String accion = request.getParameter ( "accion" ) ;
+            
+            switch ( accion )
+            {
+                case "agregarHistorial":
+                    
+                    System.out.println ( request.getParameter ( "FKidChofer" ) ) ;
+                    System.out.println ( request.getParameter ( "FKidUsuario" ) ) ;
+                    System.out.println ( request.getParameter ( "FKidVehiculo" ) ) ;
+                    System.out.println ( request.getParameter ( "origenX" ) ) ;
+                    System.out.println ( request.getParameter ( "origenY" ) ) ;
+                    System.out.println ( request.getParameter ( "destinoX" ) ) ;
+                    System.out.println ( request.getParameter ( "destinoY" ) ) ;
+                    System.out.println ( request.getParameter ( "monto" ) ) ;
+                    System.out.println ( request.getParameter ( "tiempo" ) ) ;
+                    
+                    H1 = new Historial
+                    (
+                        Integer.parseInt ( request.getParameter ( "FKidChofer" ) ),
+                        Integer.parseInt ( request.getParameter ( "FKidUsuario" ) ),
+                        Integer.parseInt ( request.getParameter ( "FKidVehiculo" ) ),
+                        Double.parseDouble ( request.getParameter ( "origenX" ) ),
+                        Double.parseDouble ( request.getParameter ( "origenY" ) ),
+                        Double.parseDouble ( request.getParameter ( "destinoX" ) ),
+                        Double.parseDouble ( request.getParameter ( "destinoY" ) ),
+                        Double.parseDouble ( request.getParameter ( "monto" ) ),
+                        Integer.parseInt ( request.getParameter ( "tiempo" ) ),
+                        "Sin comentarios",
+                        new Date ( ),
+                        "anybody"
+                    ) ;            
+                    
+                    HBL1.save ( H1 ) ;
+                    
+                    out.print ( "C~Historial agregado con exito" ) ;
+                    break ;
+                
+                default:
+                    out.print ( "E~No se indico la acción que se desea realizar" ) ;
+                    break ;
+            }
         }
         catch ( NumberFormatException e )
         {
