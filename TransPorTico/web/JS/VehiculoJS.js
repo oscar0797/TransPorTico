@@ -287,7 +287,7 @@ function dibujarFilaChoferes(rowData) {
     row.append($("<td>" + rowData.nombre + "</td>"));
     row.append($("<td>" + rowData.tipoLicencia + "</td>"));
 }
-
+//hola
 function dibujarFila(rowData) {
 //Cuando dibuja la tabla en cada boton se le agrega la funcionalidad de cargar o eliminar la informacion
 //de una persona    
