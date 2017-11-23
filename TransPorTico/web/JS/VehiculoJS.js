@@ -24,7 +24,7 @@ $(document).ready(function () {
 });
 
 function listarChoferes(id){
-    alert(id);
+   // alert(id);
     $.ajax({
         url: '../AsignacionServlet',
         data: {
@@ -36,8 +36,9 @@ function listarChoferes(id){
             mostrarModal("myModal", "Error al cargar en la base de datos");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el datos
-            alert(data[0].nombre.Chofer.nombre);
-            dibujarTablaChoferes(data);
+            //alert(data[0][0].nombre);
+            dibujarTablaChoferes(data[0]);
+            mostrarModalAsignacion("choferesVehiculo");
             // se oculta el modal esta funcion se encuentra en el utils.js
         },
         type: 'POST',

@@ -12,7 +12,7 @@ $(document).ready(function () {
 function muestraRegistraAsignacion(vehiculo){
    // mostrarModal("nuevaAsignacion", "Espere por favor..", "Cargando información de la base de datos");
     mostrarModalAsignacion("nuevaAsignacion");
-    $("#inputVehiculo").val(vehiculo);
+    //$("#inputVehiculo").val(vehiculo);
     
 }
 
@@ -205,7 +205,7 @@ function eliminarAsignacion(idAsignacion) {
 }
 
 function modificarAsignacion(pkIdAsignacion) {
-    $("#asignacionAction").val("buscarAsignacion");
+   // $("#asignacionAction").val("buscarAsignacion");
     //mostrarModal("myModal", "Espere por favor..", "Buscando en la base de datos");
     //Se envia la información por ajax
     $.ajax({
