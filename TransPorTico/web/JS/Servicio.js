@@ -333,11 +333,13 @@ function Geocodificador_inverso ( row, data, aux )
                 {
                     if ( aux === "otro" )
                     {
-                        for ( var a = 0 ; a < 1000 ; a ++ )
+                        for ( var a = 0 ; a < 10000 ; a ++ )
                         {
                             
                         }
-                        row.append ( $ ( "<th>" + data.monto + "</th>" ) ) ;
+                        row.append ( $ ( "<th>" + "CRC" + data.monto + "</th>" ) ) ;
+                        row.append ( $ ( "<th>" + data.tiempo / 60 + " min" + "</th>" ) ) ;
+                        row.append ( $ ( "<th>" + data.retroalimentacion + "/th>" ) ) ;
                     }
                     else
                     {
