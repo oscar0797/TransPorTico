@@ -274,7 +274,7 @@ function dibujarTablaChoferes(dataJson) {
     row.append($("<th><b>Tipo de licencia</b></th>"));
     //carga la tabla con el json devuelto
     
-    for (i=0; i < dataJson.length; i++) {
+    for (i=0; i < dataJson.length-1; i++) {
         dibujarFilaChoferes(dataJson[i]);
     }
 }
